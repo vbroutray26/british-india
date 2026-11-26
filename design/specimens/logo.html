@@ -1,0 +1,38 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Logo trace review</title>
+<style>
+body{margin:0;font:14px system-ui;background:#EFE5CF;color:#231C14}
+.row{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.cell{padding:20px;border:1px solid #B8A988}
+.cell h2{font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin:0 0 10px}
+.cell img,.cell .svg{width:100%;height:auto;display:block}
+.dark{background:#17130E;color:#EFE5CF;--logo-accent:#D9A34E}
+.light{--logo-accent:#9C7A3C}
+.now{background:#FAFAF7;color:#111827;--logo-accent:#0E7C86}
+.small{display:flex;gap:24px;align-items:end;padding:20px;flex-wrap:wrap}
+.small div{text-align:center}
+.zoom{width:100%;height:520px;overflow:hidden;position:relative}
+.zoom img,.zoom object{position:absolute;width:300%;left:-60%;top:-40%}
+</style></head><body>
+<div class="row">
+ <div class="cell light"><h2>Original raster (WebP 960)</h2><img src="logo-960.webp" alt=""></div>
+ <div class="cell light"><h2>Mono trace</h2><div class="svg" id="m1"></div></div>
+ <div class="cell light"><h2>Duotone trace</h2><div class="svg" id="d1"></div></div>
+</div>
+<div class="row">
+ <div class="cell dark"><h2>Dark mode: raster</h2><img src="logo-960.webp" alt=""></div>
+ <div class="cell dark"><h2>Dark mode: mono</h2><div class="svg" id="m2"></div></div>
+ <div class="cell now"><h2>Now mode: duotone</h2><div class="svg" id="d2"></div></div>
+</div>
+<div class="row">
+ <div class="cell light"><h2>Zoom: raster</h2><div class="zoom"><img src="logo-960.webp" alt=""></div></div>
+ <div class="cell light"><h2>Zoom: duotone</h2><div class="zoom" id="z"></div></div>
+ <div class="cell light"><h2>Small sizes (duotone)</h2><div class="small" id="s"></div></div>
+</div>
+<script>
+Promise.all([fetch('brand_logo_mono.svg').then(r=>r.text()),fetch('brand_logo_duotone.svg').then(r=>r.text())]).then(([m,d])=>{
+ for(const id of ['m1','m2']) document.getElementById(id).innerHTML=m;
+ for(const id of ['d1','d2']) document.getElementById(id).innerHTML=d;
+ const z=document.getElementById('z'); z.innerHTML=d; const s=z.querySelector('svg'); Object.assign(s.style,{position:'absolute',width:'300%',left:'-60%',top:'-40%'});
+ const sm=document.getElementById('s'); for(const px of [180,96,48,32]){const w=document.createElement('div'); w.innerHTML=d+'<br>'+px+'px'; w.querySelector('svg').style.height=px+'px'; w.querySelector('svg').style.width='auto'; sm.append(w);}
+});
+</script></body></html>

@@ -219,6 +219,10 @@ importers:
       '@fontsource/rozha-one':
         specifier: ^5.3.0
         version: 5.3.0
+    devDependencies:
+      svgo:
+        specifier: ^4.1.0
+        version: 4.1.0
 
   workers/api:
     devDependencies:

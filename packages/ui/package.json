@@ -20,5 +20,8 @@
     "@fontsource/anek-odia": "^5.3.0",
     "@fontsource/gloock": "^5.3.0",
     "@fontsource/rozha-one": "^5.3.0"
+  },
+  "devDependencies": {
+    "svgo": "^4.1.0"
   }
 }
