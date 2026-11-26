@@ -130,9 +130,28 @@ def main() -> None:
         r.save(tmp)
         subprocess.run(["cwebp", "-quiet", "-q", "82", str(tmp), "-o", str(WEB / f"logo-{width}.webp")], check=True)
         tmp.unlink()
-    for p in (mono, duo):
+    accent_only = write_svg("brand_logo_accent.svg", w, h, [("currentColor", tf_acc, d_acc)], title)
+    for p in (mono, duo, accent_only):
         svgo(p)
         print(f"{p.name}: {p.stat().st_size / 1024:.0f} KB")
+    # Site copies. The site paints these as CSS masks (background-color + mask-image), so the
+    # colours come from tokens and the files stay cacheable (no inline SVG in every page).
+    for src, dst in [(lite, "logo-lite.svg"), (mono, "logo-ink.svg"), (accent_only, "logo-accent.svg"),
+                     (OUT / "brand_favicon_t-initial.svg", "favicon.svg")]:
+        (WEB / dst).write_bytes(src.read_bytes())
+    # A favicon has no surrounding CSS, so currentColor would be black on dark browser chrome.
+    # Give the site copy its own colours (Then ink / Then-dark ink from tokens.json).
+    fav = WEB / "favicon.svg"
+    fav.write_text(fav.read_text().replace(
+        'fill="currentColor"', 'class="ink"', 1).replace(
+        "<path", "<style>.ink{fill:#231C14}@media (prefers-color-scheme:dark){.ink{fill:#EFE5CF}}</style><path", 1))
+    # PNG favicons from the raster T on paper (spec §13.2: 32/180/512).
+    t = im.crop(FAVICON_REGIONS["t-initial"])
+    side = max(t.size)
+    sq = Image.new("RGB", (side, side), t.getpixel((2, 2)))
+    sq.paste(t, ((side - t.width) // 2, (side - t.height) // 2))
+    for px, name in [(32, "favicon-32.png"), (180, "apple-touch-icon.png"), (512, "icon-512.png")]:
+        sq.resize((px, px), Image.LANCZOS).save(WEB / name, optimize=True)
     for p in sorted(WEB.glob("logo-*.webp")):
         print(f"{p.name}: {p.stat().st_size / 1024:.0f} KB")
 

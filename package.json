@@ -1,7 +1,7 @@
 {
   "name": "british-india",
   "private": true,
-  "description": "British India — Places in the colonial record, 1860s–1947",
+  "description": "Towns of British India — Places in the colonial record, 1860s–1947",
   "license": "MIT",
   "packageManager": "pnpm@12.6.0",
   "engines": { "node": ">=22.23.4" },

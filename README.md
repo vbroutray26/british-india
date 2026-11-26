@@ -1,4 +1,4 @@
-# British India
+# Towns of British India
 *Places in the colonial record, 1860s–1947.*
 
 A free, public, multilingual (English, ଓଡ଼ିଆ, हिन्दी) place-history site. Type a place and see what

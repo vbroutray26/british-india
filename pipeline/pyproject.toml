@@ -1,7 +1,7 @@
 [project]
 name = "bi-pipeline"
 version = "0.1.0"
-description = "British India data pipeline (spec §8)"
+description = "Towns of British India data pipeline (spec §8)"
 requires-python = ">=3.12"
 dependencies = [
   "pyyaml>=6",

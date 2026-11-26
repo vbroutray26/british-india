@@ -1,4 +1,4 @@
-# Project: British India — Places in the colonial record, 1860s–1947
+# Project: Towns of British India — Places in the colonial record, 1860s–1947
 Read the relevant sections of `docs/spec.md` before coding (cite FR/DP/AC IDs in commits).
 Current milestone and decisions: `docs/decisions.md`.
 

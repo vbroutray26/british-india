@@ -2,6 +2,7 @@
 
 | ID | Decision | Date |
 |---|---|---|
+| D-01a | **Title renamed to "Towns of British India"** (supersedes the title in D-01; subtitle unchanged: "Places in the colonial record, 1860s–1947"). Matches the owner's logo and the `british-india-towns` subdomain. Drafts for review: Odia "ବ୍ରିଟିଶ ଭାରତର ନଗର", Hindi "ब्रिटिश भारत के नगर". | 2026-11-26 |
 | D-06a | Host the static site on **Cloudflare Workers static assets** (not Pages), account subdomain `british-india-towns.workers.dev`. Site: `british-india.british-india-towns.workers.dev`; API: `british-india-api.british-india-towns.workers.dev`. | 2026-11-26 |
 | D-09a | Corrections/contact email: vbroutray@gmail.com (public on the site). | 2026-11-26 |
 | D-10 | Odia **and Hindi** reviewer: project owner. | 2026-11-26 |

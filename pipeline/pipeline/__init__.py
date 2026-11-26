@@ -1,4 +1,4 @@
-"""British India data pipeline. Stages DP-00..DP-16 live in sub-packages (spec §8)."""
+"""Towns of British India data pipeline. Stages DP-00..DP-16 live in sub-packages (spec §8)."""
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[2]

@@ -12,6 +12,7 @@ and be checked for stray text and cultural errors.
 | `brand/brand_favicon_t-initial.svg` | Favicon candidate: the ornate T from "TOWNS" | Same | 2026-11-26 | Project-owned | 5.6 KB — default favicon |
 | `brand/brand_favicon_train.svg` | Favicon candidate: the locomotive | Same | 2026-11-26 | Project-owned | 12.8 KB — illegible at 16 px; kept for social avatar trials |
 | `apps/web/public/brand/logo-{480,960,1440}.webp` | Raster of the master (cream background) for share cards / OG | `design/tools/logo.py` (cwebp q82) | 2026-11-26 | Project-owned | 48 / 135 / 215 KB |
+| `apps/web/public/brand/logo-{lite,ink,accent}.svg`, `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png`, `icon-512.png` | Site copies. Logos are painted as CSS masks (colour from tokens `--color-text`, `--color-logo-accent`); the favicon carries its own light/dark colours | `design/tools/logo.py` | 2026-11-26 | Project-owned | Header uses lite; home hero uses ink + accent |
 
 ## Exceptions to spec §13.2
 - **Brand SVG ≤ 6 KB:** not achievable for this detailed artwork. Mitigation: the lite SVG (9 KB gzip)

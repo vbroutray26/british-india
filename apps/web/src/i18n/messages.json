@@ -1,6 +1,6 @@
 {
   "$comment": "UI strings (FR-LANG-01). review_status: reviewed | draft. FR-LANG-09: or/hi UI strings must be 'reviewed' before production release (enforced from M7; M0 ships drafts to preview).",
-  "site.title":        { "en": "British India", "hi": "ब्रिटिश भारत", "or": "ବ୍ରିଟିଶ ଭାରତ" },
+  "site.title":        { "en": "Towns of British India", "hi": "ब्रिटिश भारत के नगर", "or": "ବ୍ରିଟିଶ ଭାରତର ନଗର" },
   "site.subtitle":     { "en": "Places in the colonial record, 1860s–1947", "hi": "औपनिवेशिक अभिलेखों में स्थान, 1860 का दशक–1947", "or": "ଔପନିବେଶିକ ଅଭିଲେଖରେ ସ୍ଥାନ, ୧୮୬୦ ଦଶକ–୧୯୪୭" },
   "nav.skip":          { "en": "Skip to content", "hi": "सामग्री पर जाएँ", "or": "ବିଷୟବସ୍ତୁକୁ ଯାଆନ୍ତୁ" },
   "lang.label":        { "en": "Language", "hi": "भाषा", "or": "ଭାଷା" },
