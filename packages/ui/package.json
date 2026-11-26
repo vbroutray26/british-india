@@ -6,11 +6,17 @@
     "./tokens.css": "./dist/tokens.css",
     "./tokens.json": "./tokens.json",
     "./base.css": "./src/base.css",
-    "./fonts.css": "./src/fonts.css"
+    "./fonts.css": "./src/fonts.css",
+    "./components/*": "./src/components/*",
+    "./components": "./src/components/index.ts"
   },
   "scripts": {
     "build": "node scripts/build-tokens.mjs",
-    "test": "node scripts/build-tokens.mjs && node --test scripts/*.test.mjs"
+    "test": "node scripts/build-tokens.mjs && node --test scripts/*.test.mjs && vitest run",
+    "typecheck": "svelte-check --tsconfig ./tsconfig.json --threshold error",
+    "storybook": "node scripts/build-tokens.mjs && storybook dev -p 6006 --no-open",
+    "build-storybook": "node scripts/build-tokens.mjs && storybook build -o storybook-static --quiet",
+    "deploy-storybook": "pnpm build-storybook && pnpm --dir ../../apps/web exec wrangler deploy --config ../../packages/ui/wrangler.jsonc"
   },
   "dependencies": {
     "@fontsource-variable/newsreader": "^5.3.0",
@@ -22,6 +28,23 @@
     "@fontsource/rozha-one": "^5.3.0"
   },
   "devDependencies": {
-    "svgo": "^4.1.0"
+    "@storybook/addon-a11y": "^10.6.9",
+    "@storybook/addon-docs": "^10.6.9",
+    "@storybook/svelte-vite": "^10.6.9",
+    "@sveltejs/vite-plugin-svelte": "^7.3.2",
+    "@testing-library/jest-dom": "^8.0.0",
+    "@testing-library/svelte": "^5.4.2",
+    "axe-core": "^4.14.1",
+    "jsdom": "^31.0.1",
+    "storybook": "^10.6.9",
+    "svelte": "^5.59.1",
+    "svelte-check": "^4.7.8",
+    "svgo": "^4.1.0",
+    "typescript": "^6.0.3",
+    "vite": "^8.3.8",
+    "vitest": "^5.1.1"
+  },
+  "peerDependencies": {
+    "svelte": "^5.59.1"
   }
 }

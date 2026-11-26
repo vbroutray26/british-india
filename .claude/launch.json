@@ -1,7 +1,37 @@
 {
   "version": "0.0.1",
   "configurations": [
-    { "name": "design-specimens", "runtimeExecutable": "python3", "runtimeArgs": ["-m", "http.server", "4400", "--directory", "design/specimens"], "port": 4400 },
-    { "name": "web", "runtimeExecutable": "pnpm", "runtimeArgs": ["dev"], "port": 4321 }
+    {
+      "name": "design-specimens",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "4400",
+        "--directory",
+        "design/specimens"
+      ],
+      "port": 4400
+    },
+    {
+      "name": "web",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": [
+        "dev"
+      ],
+      "port": 4321
+    },
+    {
+      "name": "storybook-static",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "6007",
+        "--directory",
+        "packages/ui/storybook-static"
+      ],
+      "port": 6007
+    }
   ]
 }

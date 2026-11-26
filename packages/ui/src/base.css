@@ -1,28 +1,68 @@
-/* Base styles. Semantic tokens only — no raw hex (CLAUDE.md). */
+/* Base styles (spec §11). Semantic tokens only — no raw hex (CLAUDE.md). */
 *, *::before, *::after { box-sizing: border-box; }
-html { color-scheme: light dark; -webkit-text-size-adjust: 100%; }
+html { color-scheme: light dark; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 body {
   margin: 0; background: var(--color-bg); color: var(--color-text);
   font-family: var(--font-sans); font-size: var(--step-0); line-height: var(--leading-latin);
+  font-synthesis-weight: none; text-rendering: optimizeLegibility;
 }
-:lang(hi) body, body:lang(hi) { line-height: var(--leading-deva); }
-:lang(or) body, body:lang(or) { line-height: var(--leading-odia); }
-a { color: var(--color-link); text-underline-offset: 0.15em; }
+:lang(hi) body, body:lang(hi), :lang(hi) { line-height: var(--leading-deva); }
+:lang(or) body, body:lang(or), :lang(or) { line-height: var(--leading-odia); }
+[data-mode] { background: var(--color-bg); color: var(--color-text); }
+img, svg, video { max-width: 100%; height: auto; }
+a { color: var(--color-link); text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
 :focus-visible { outline: 3px solid var(--color-focus); outline-offset: 2px; }
-h1, h2, h3 { font-family: var(--font-display); line-height: 1.15; font-weight: 400; }
+::selection { background: var(--color-highlight); color: var(--color-text); }
+h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.15; font-weight: 400; font-synthesis: none; margin: 0 0 var(--space-3); }
+p { margin: 0 0 var(--space-4); }
+hr { border: 0; border-top: 1px solid var(--color-rule); margin: var(--space-8) 0; }
+table { border-collapse: collapse; }
+button, input, select, textarea { font: inherit; color: inherit; }
+
+/* Type roles (spec §11.2 scale, ratio ≈ 1.25) */
+.t-display { font-family: var(--font-display); font-size: var(--step-7); line-height: 1; letter-spacing: var(--tracking-tight); }
+.t-h1 { font-family: var(--font-display); font-size: var(--step-5); line-height: 1.1; }
+.t-h2 { font-family: var(--font-display); font-size: var(--step-3); line-height: 1.15; }
+.t-h3 { font-family: var(--font-display); font-size: var(--step-2); line-height: 1.2; }
+.t-h4 { font-family: var(--font-sans); font-size: var(--step-1); font-weight: 600; line-height: 1.3; }
+.t-lede { font-size: var(--step-1); line-height: 1.5; }
+.t-body { font-size: var(--step-0); }
+.t-small { font-size: var(--step--1); }
+.t-label { font-family: var(--font-sans); font-size: var(--step--1); font-weight: 600; letter-spacing: var(--tracking-label); text-transform: uppercase; }
+.t-quote { font-family: var(--font-serif); font-size: var(--step-0); line-height: 1.65; }
+.t-mono { font-family: var(--font-mono); font-size: 0.9em; }
+.t-num { font-variant-numeric: tabular-nums lining-nums; }
+.t-muted { color: var(--color-text-muted); }
+/* Indic scripts have no case and break with tracking: labels stay as written. */
+:lang(or) .t-label, :lang(hi) .t-label { text-transform: none; letter-spacing: 0; }
+:lang(or) :is(.t-display, .t-h1, .t-h2, .t-h3), :lang(hi) :is(.t-display, .t-h1, .t-h2, .t-h3) { letter-spacing: 0; line-height: 1.35; }
+
+/* Script rules (D-17): no synthetic italic or bold; Indic emphasis is upright. */
+h1, h2, h3, .t-display, .t-h1, .t-h2, .t-h3 { font-synthesis: none; }
+:lang(or) :is(em, i, cite, .subtitle), :lang(hi) :is(em, i, cite, .subtitle) { font-style: normal; font-synthesis: none; }
+:lang(or) em, :lang(hi) em { font-weight: 600; }
+:lang(or) :is(h1, h2, h3), :lang(hi) :is(h1, h2, h3) { line-height: 1.35; }
+.serif { font-family: var(--font-serif); }
+
+/* Layout (spec §11.2 grid: 12 columns, max 1200 px, reading column 680 px) */
+.container { width: 100%; max-width: var(--layout-container); margin-inline: auto; padding-inline: var(--layout-gutter-sm); }
+@media (min-width: 840px) { .container { padding-inline: var(--layout-gutter-md); } }
+@media (min-width: 1080px) { .container { padding-inline: var(--layout-gutter-lg); } }
+.reading { max-width: var(--layout-reading); }
+:lang(or) .reading, :lang(hi) .reading { max-width: var(--layout-reading-indic); }
+.grid-12 { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--layout-gutter-sm); }
+@media (min-width: 840px) { .grid-12 { gap: var(--layout-gutter-md); } }
+.stack > * + * { margin-top: var(--stack-gap, var(--space-4)); }
+.cluster { display: flex; flex-wrap: wrap; gap: var(--cluster-gap, var(--space-2)); align-items: center; }
+
+/* Accessibility helpers */
 .visually-hidden {
   position: absolute !important; width: 1px; height: 1px; overflow: hidden;
-  clip: rect(0 0 0 0); white-space: nowrap;
+  clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
 }
 .skip-link { position: absolute; left: var(--space-2); top: -100px; }
 .skip-link:focus { top: var(--space-2); z-index: var(--z-toast); background: var(--color-surface); padding: var(--space-2) var(--space-3); }
-
-/* Type rules per script (D-17, M0 finding).
-   Gloock and Rozha One ship one weight and no italic: never let the browser fake them. */
-h1, h2, h3, .display { font-synthesis: none; }
-/* Odia and Devanagari have no true italic: emphasis uses weight or colour, never a slant. */
-:lang(or) :is(em, i, cite, .subtitle), :lang(hi) :is(em, i, cite, .subtitle) { font-style: normal; font-synthesis: none; }
-:lang(or) em, :lang(hi) em { font-weight: 600; }
-/* Indic display faces need more room above and below the line for matras and conjuncts. */
-:lang(or) :is(h1, h2, h3), :lang(hi) :is(h1, h2, h3) { line-height: 1.35; }
-.serif { font-family: var(--font-serif); }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}

@@ -1,24 +1,113 @@
 {
   "$comment": "UI strings (FR-LANG-01). review_status: reviewed | draft. FR-LANG-09: or/hi UI strings must be 'reviewed' before production release (enforced from M7; M0 ships drafts to preview).",
-  "site.title":        { "en": "Towns of British India", "hi": "ब्रिटिश भारत के नगर", "or": "ବ୍ରିଟିଶ ଭାରତର ନଗର" },
-  "site.subtitle":     { "en": "Places in the colonial record, 1860s–1947", "hi": "औपनिवेशिक अभिलेखों में स्थान, 1860 का दशक–1947", "or": "ଔପନିବେଶିକ ଅଭିଲେଖରେ ସ୍ଥାନ, ୧୮୬୦ ଦଶକ–୧୯୪୭" },
-  "nav.skip":          { "en": "Skip to content", "hi": "सामग्री पर जाएँ", "or": "ବିଷୟବସ୍ତୁକୁ ଯାଆନ୍ତୁ" },
-  "lang.label":        { "en": "Language", "hi": "भाषा", "or": "ଭାଷା" },
-  "lang.self":         { "en": "English", "hi": "हिन्दी", "or": "ଓଡ଼ିଆ" },
-  "home.lede":         { "en": "Type a place and see what the colonial-era record said about it, how it changed, and how it stands today — with every fact traced to its source.", "hi": "कोई स्थान लिखें और देखें कि औपनिवेशिक काल के अभिलेखों ने उसके बारे में क्या कहा, वह कैसे बदला और आज कैसा है — हर तथ्य उसके स्रोत तक जुड़ा हुआ।", "or": "ଗୋଟିଏ ସ୍ଥାନର ନାମ ଲେଖନ୍ତୁ ଏବଂ ଦେଖନ୍ତୁ ଔପନିବେଶିକ ଯୁଗର ଅଭିଲେଖ ଏହା ବିଷୟରେ କ'ଣ କହିଥିଲା, ଏହା କିପରି ବଦଳିଲା ଏବଂ ଆଜି କିପରି ଅଛି — ପ୍ରତ୍ୟେକ ତଥ୍ୟ ତା'ର ସୂତ୍ର ସହ ଯୋଡ଼ା।" },
-  "home.status":       { "en": "We are building this site in the open, starting with Puri district, Odisha.", "hi": "हम यह साइट खुले तौर पर बना रहे हैं, ओडिशा के पुरी ज़िले से शुरुआत करते हुए।", "or": "ଆମେ ଏହି ସାଇଟ୍ ଖୋଲାଖୋଲି ଭାବେ ତିଆରି କରୁଛୁ, ଓଡ଼ିଶାର ପୁରୀ ଜିଲ୍ଲାରୁ ଆରମ୍ଭ କରି।" },
-  "home.notice":       { "en": "The sources on this site were written by colonial officials. We show them critically, with context.", "hi": "इस साइट के स्रोत औपनिवेशिक अधिकारियों द्वारा लिखे गए थे। हम उन्हें संदर्भ के साथ, आलोचनात्मक दृष्टि से दिखाते हैं।", "or": "ଏହି ସାଇଟର ସୂତ୍ରଗୁଡ଼ିକ ଔପନିବେଶିକ ଅଧିକାରୀମାନେ ଲେଖିଥିଲେ। ଆମେ ସେଗୁଡ଼ିକୁ ପ୍ରସଙ୍ଗ ସହ ସମାଲୋଚନାତ୍ମକ ଭାବେ ଦେଖାଉ।" },
-  "page.pending":      { "en": "This page is being written.", "hi": "यह पृष्ठ लिखा जा रहा है।", "or": "ଏହି ପୃଷ୍ଠା ଲେଖାଯାଉଛି।" },
-  "page.home":         { "en": "Home", "hi": "मुखपृष्ठ", "or": "ମୁଖ୍ୟପୃଷ୍ଠା" },
-  "footer.about":      { "en": "About", "hi": "परिचय", "or": "ପରିଚୟ" },
-  "footer.sources":    { "en": "Sources", "hi": "स्रोत", "or": "ସୂତ୍ର" },
-  "footer.credits":    { "en": "Credits", "hi": "आभार", "or": "କୃତଜ୍ଞତା" },
-  "footer.methods":    { "en": "Methods", "hi": "पद्धति", "or": "ପଦ୍ଧତି" },
-  "footer.data":       { "en": "Data", "hi": "डेटा", "or": "ତଥ୍ୟ" },
-  "footer.corrections":{ "en": "Corrections", "hi": "सुधार", "or": "ସଂଶୋଧନ" },
-  "footer.takedown":   { "en": "Takedown", "hi": "हटाने का अनुरोध", "or": "ଅପସାରଣ ଅନୁରୋଧ" },
-  "footer.cite":       { "en": "Cite", "hi": "उद्धरण", "or": "ଉଦ୍ଧୃତି" },
-  "footer.contact":    { "en": "Contact", "hi": "संपर्क", "or": "ଯୋଗାଯୋଗ" },
-  "footer.licence":    { "en": "Code MIT · Data CC BY 4.0 · Third-party media excluded", "hi": "कोड MIT · डेटा CC BY 4.0 · तृतीय-पक्ष मीडिया शामिल नहीं", "or": "କୋଡ୍ MIT · ତଥ୍ୟ CC BY 4.0 · ତୃତୀୟ ପକ୍ଷ ମିଡିଆ ବାଦ୍" },
-  "ui.untranslated":   { "en": "Not yet translated", "hi": "अभी अनुवाद नहीं हुआ", "or": "ଏପର୍ଯ୍ୟନ୍ତ ଅନୁବାଦ ହୋଇନାହିଁ" }
+  "site.title": {
+    "en": "Towns of British India",
+    "hi": "ब्रिटिश भारत के नगर",
+    "or": "ବ୍ରିଟିଶ ଭାରତର ନଗର"
+  },
+  "site.subtitle": {
+    "en": "Places in the colonial record, 1860s–1947",
+    "hi": "औपनिवेशिक अभिलेखों में स्थान, 1860 का दशक–1947",
+    "or": "ଔପନିବେଶିକ ଅଭିଲେଖରେ ସ୍ଥାନ, ୧୮୬୦ ଦଶକ–୧୯୪୭"
+  },
+  "nav.skip": {
+    "en": "Skip to content",
+    "hi": "सामग्री पर जाएँ",
+    "or": "ବିଷୟବସ୍ତୁକୁ ଯାଆନ୍ତୁ"
+  },
+  "lang.label": {
+    "en": "Language",
+    "hi": "भाषा",
+    "or": "ଭାଷା"
+  },
+  "lang.self": {
+    "en": "English",
+    "hi": "हिन्दी",
+    "or": "ଓଡ଼ିଆ"
+  },
+  "home.lede": {
+    "en": "Type a place and see what the colonial-era record said about it, how it changed, and how it stands today — with every fact traced to its source.",
+    "hi": "कोई स्थान लिखें और देखें कि औपनिवेशिक काल के अभिलेखों ने उसके बारे में क्या कहा, वह कैसे बदला और आज कैसा है — हर तथ्य उसके स्रोत तक जुड़ा हुआ।",
+    "or": "ଗୋଟିଏ ସ୍ଥାନର ନାମ ଲେଖନ୍ତୁ ଏବଂ ଦେଖନ୍ତୁ ଔପନିବେଶିକ ଯୁଗର ଅଭିଲେଖ ଏହା ବିଷୟରେ କ'ଣ କହିଥିଲା, ଏହା କିପରି ବଦଳିଲା ଏବଂ ଆଜି କିପରି ଅଛି — ପ୍ରତ୍ୟେକ ତଥ୍ୟ ତା'ର ସୂତ୍ର ସହ ଯୋଡ଼ା।"
+  },
+  "home.status": {
+    "en": "We are building this site in the open, starting with Puri district, Odisha.",
+    "hi": "हम यह साइट खुले तौर पर बना रहे हैं, ओडिशा के पुरी ज़िले से शुरुआत करते हुए।",
+    "or": "ଆମେ ଏହି ସାଇଟ୍ ଖୋଲାଖୋଲି ଭାବେ ତିଆରି କରୁଛୁ, ଓଡ଼ିଶାର ପୁରୀ ଜିଲ୍ଲାରୁ ଆରମ୍ଭ କରି।"
+  },
+  "home.notice": {
+    "en": "The sources on this site were written by colonial officials. We show them critically, with context.",
+    "hi": "इस साइट के स्रोत औपनिवेशिक अधिकारियों द्वारा लिखे गए थे। हम उन्हें संदर्भ के साथ, आलोचनात्मक दृष्टि से दिखाते हैं।",
+    "or": "ଏହି ସାଇଟର ସୂତ୍ରଗୁଡ଼ିକ ଔପନିବେଶିକ ଅଧିକାରୀମାନେ ଲେଖିଥିଲେ। ଆମେ ସେଗୁଡ଼ିକୁ ପ୍ରସଙ୍ଗ ସହ ସମାଲୋଚନାତ୍ମକ ଭାବେ ଦେଖାଉ।"
+  },
+  "page.pending": {
+    "en": "This page is being written.",
+    "hi": "यह पृष्ठ लिखा जा रहा है।",
+    "or": "ଏହି ପୃଷ୍ଠା ଲେଖାଯାଉଛି।"
+  },
+  "page.home": {
+    "en": "Home",
+    "hi": "मुखपृष्ठ",
+    "or": "ମୁଖ୍ୟପୃଷ୍ଠା"
+  },
+  "footer.about": {
+    "en": "About",
+    "hi": "परिचय",
+    "or": "ପରିଚୟ"
+  },
+  "footer.sources": {
+    "en": "Sources",
+    "hi": "स्रोत",
+    "or": "ସୂତ୍ର"
+  },
+  "footer.credits": {
+    "en": "Credits",
+    "hi": "आभार",
+    "or": "କୃତଜ୍ଞତା"
+  },
+  "footer.methods": {
+    "en": "Methods",
+    "hi": "पद्धति",
+    "or": "ପଦ୍ଧତି"
+  },
+  "footer.data": {
+    "en": "Data",
+    "hi": "डेटा",
+    "or": "ତଥ୍ୟ"
+  },
+  "footer.corrections": {
+    "en": "Corrections",
+    "hi": "सुधार",
+    "or": "ସଂଶୋଧନ"
+  },
+  "footer.takedown": {
+    "en": "Takedown",
+    "hi": "हटाने का अनुरोध",
+    "or": "ଅପସାରଣ ଅନୁରୋଧ"
+  },
+  "footer.cite": {
+    "en": "Cite",
+    "hi": "उद्धरण",
+    "or": "ଉଦ୍ଧୃତି"
+  },
+  "footer.contact": {
+    "en": "Contact",
+    "hi": "संपर्क",
+    "or": "ଯୋଗାଯୋଗ"
+  },
+  "footer.licence": {
+    "en": "Code MIT · Data CC BY 4.0 · Third-party media excluded",
+    "hi": "कोड MIT · डेटा CC BY 4.0 · तृतीय-पक्ष मीडिया शामिल नहीं",
+    "or": "କୋଡ୍ MIT · ତଥ୍ୟ CC BY 4.0 · ତୃତୀୟ ପକ୍ଷ ମିଡିଆ ବାଦ୍"
+  },
+  "ui.untranslated": {
+    "en": "Not yet translated",
+    "hi": "अभी अनुवाद नहीं हुआ",
+    "or": "ଏପର୍ଯ୍ୟନ୍ତ ଅନୁବାଦ ହୋଇନାହିଁ"
+  },
+  "footer.navLabel": {
+    "en": "Site information",
+    "hi": "साइट जानकारी",
+    "or": "ସାଇଟ୍ ସୂଚନା"
+  }
 }

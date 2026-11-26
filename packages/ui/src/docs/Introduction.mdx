@@ -1,0 +1,35 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Introduction" />
+
+# Towns of British India — design system
+
+*Places in the colonial record, 1860s–1947.* This catalogue is the single reference for how the site looks and behaves (spec §11).
+Use the toolbar to switch **language** (English, ଓଡ଼ିଆ, हिन्दी), **Then / Now** and **light / dark** on every story.
+
+## Concept
+**The gazetteer as an object.** A survey sheet that unfolds; hachure, fold creases, index-style type, ink printed on paper.
+Switching to **Now** brings clean, bright, data-led views. Archival evidence appears in *Then*; modern data in *Now*.
+
+## Rules every component follows
+1. **Tokens only.** Colours, type, spacing, radii, shadows and motion come from `tokens.json` → CSS custom properties. No raw hex in components.
+2. **Three languages are equals.** Components take every visible string as a prop. Odia and Hindi get their own font stacks, line heights (1.75 / 1.7), no tracking or upper-casing, and no fake italics.
+3. **Source first.** Facts show value, year, source, a link to the passage and a review badge. Missing data says *not recorded in these sources* — never blank, never zero.
+4. **Show your work.** Anything machine-written carries the AI label until a person reviews it.
+5. **Accessible by default.** WCAG 2.2 AA: 44 px touch targets, visible 3 px focus ring, keyboard support, colour never the only signal, charts with tables, maps with lists. Every component is tested with axe.
+6. **Light by default.** Server-rendered HTML first; JavaScript only where interaction needs it. Motion uses transform/opacity and stops under *reduced motion*.
+7. **Strict CSP.** No inline styles or scripts in rendered HTML — positions in charts use SVG attributes, not `style=""`.
+
+## Where things live
+| | |
+|---|---|
+| Tokens | `packages/ui/tokens.json` (tests: contrast in 4 modes, colour-blind separation) |
+| Base, type, layout | `packages/ui/src/base.css` |
+| Fonts | `packages/ui/src/fonts.css` (D-17) |
+| Components | `packages/ui/src/components/*.svelte` |
+| Icons | `packages/ui/src/components/icons.ts` — interim set until the illustrated set (§13.2) arrives |
+
+## Not here yet (by milestone)
+- **Map** (MapLibre basemap, overlay control, layer panel, legend, popup) — M4. `MapListView` is ready now.
+- **PageScanViewer** (IIIF zoom/pan) — M3, with the first scans.
+- Illustrations, textures and motif patterns — from the owner's design tool (§13).

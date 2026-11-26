@@ -1,0 +1,42 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs/blocks';
+import tokens from '../../tokens.json';
+
+<Meta title="Foundations/Colour" />
+
+export const pick = (o) => Object.fromEntries(Object.entries(o).filter(([k]) => !k.startsWith('$')));
+export const sem = (mode, pal) => Object.fromEntries(Object.entries(tokens.semantic[mode]).map(([k, ref]) => [k, tokens.color[pal][ref.split('.')[1]]]));
+
+# Colour
+
+Two modes, each with a light and dark scheme. **Components use the semantic names** (`--color-text`, `--color-link`, `--viz-1` …); modes remap them.
+Every text pairing is tested at ≥ 4.5:1 and every chart colour at ≥ 3:1 in all four schemes.
+
+## Then — paper, ink, survey colours
+<ColorPalette>
+  <ColorItem title="Then · palette" subtitle="--then-*" colors={pick(tokens.color.then)} />
+  <ColorItem title="Then · dark" subtitle="--then-dark-*" colors={pick(tokens.color['then-dark'])} />
+</ColorPalette>
+
+## Now — clean, bright, data-led
+<ColorPalette>
+  <ColorItem title="Now · palette" subtitle="--now-*" colors={pick(tokens.color.now)} />
+  <ColorItem title="Now · dark" subtitle="--now-dark-*" colors={pick(tokens.color['now-dark'])} />
+</ColorPalette>
+
+## Semantic roles (what components use)
+<ColorPalette>
+  <ColorItem title="Then" subtitle="--color-*" colors={sem('then', 'then')} />
+  <ColorItem title="Now" subtitle="--color-*" colors={sem('now', 'now')} />
+</ColorPalette>
+
+## Data visualisation
+Eight categorical colours per scheme, chosen by `scripts/pick-viz.mjs`: ≥ 3:1 on the background, clearly different with normal vision,
+and the first six still distinct under protanopia, deuteranopia and tritanopia. Always pair colour with shape or labels.
+<ColorPalette>
+  <ColorItem title="Then" subtitle="--viz-1…8" colors={tokens.viz.then} />
+  <ColorItem title="Then · dark" subtitle="--viz-1…8" colors={tokens.viz['then-dark']} />
+  <ColorItem title="Now" subtitle="--viz-1…8" colors={tokens.viz.now} />
+  <ColorItem title="Now · dark" subtitle="--viz-1…8" colors={tokens.viz['now-dark']} />
+  <ColorItem title="Sequential" subtitle="--viz-seq-1…5 (Then / Now)" colors={[...tokens.viz.sequential.then, ...tokens.viz.sequential.now]} />
+  <ColorItem title="Diverging" subtitle="--viz-div-1…5 (Then / Now)" colors={[...tokens.viz.diverging.then, ...tokens.viz.diverging.now]} />
+</ColorPalette>

@@ -1,0 +1,36 @@
+import { Meta, Typeset } from '@storybook/addon-docs/blocks';
+import tokens from '../../tokens.json';
+
+<Meta title="Foundations/Typography" />
+
+# Typography (D-17)
+
+| Role | English | ଓଡ଼ିଆ | हिन्दी |
+|---|---|---|---|
+| Display (titles, headings) | **Gloock** | Noto Serif Oriya | Rozha One |
+| Interface and body | **Urbanist** | Anek Odia | Anek Devanagari |
+| Archival voice (passages) | **Newsreader** (true italic) | Noto Serif Oriya | Rozha One *(text serif to choose in M7)* |
+| Data, IDs | system monospace | — | — |
+
+Each language has its **own font stack** listing only its script, so shared characters (the danda ।, ZWJ) never pull in another script's font.
+Measured font weight per page: English ≈ 130 KB, Odia ≈ 230 KB, Hindi ≈ 293 KB.
+
+**Rules:** no synthetic italic or bold; Odia and Hindi emphasis is upright (weight or colour); no upper-casing or letter-spacing in Indic scripts;
+line height 1.55 (Latin), 1.7 (Devanagari), 1.75 (Odia); reading measure 680 px (Latin), 620 px (Indic).
+
+## Scale (fluid, ratio ≈ 1.25)
+<Typeset fontFamily="Gloock, serif" fontSizes={['var(--step-7)', 'var(--step-6)', 'var(--step-5)', 'var(--step-4)', 'var(--step-3)', 'var(--step-2)']} sampleText="Towns of British India" />
+<Typeset fontFamily="'Urbanist Variable', sans-serif" fontWeight={400} fontSizes={['var(--step-1)', 'var(--step-0)', 'var(--step--1)']} sampleText="Type a place and see what the colonial-era record said about it." />
+<Typeset fontFamily="'Newsreader Variable', serif" fontSizes={['var(--step-0)']} sampleText="Placeholder passage set in the archival voice, with its page reference beside it." />
+
+## Classes
+`.t-display` `.t-h1` `.t-h2` `.t-h3` `.t-h4` `.t-lede` `.t-body` `.t-small` `.t-label` `.t-quote` `.t-mono` `.t-num` `.t-muted`
+
+<div lang="or" style={{ marginTop: 24 }}>
+  <p className="t-h2">ବ୍ରିଟିଶ ଭାରତର ନଗର</p>
+  <p className="t-lede">ଗୋଟିଏ ସ୍ଥାନର ନାମ ଲେଖନ୍ତୁ ଏବଂ ଦେଖନ୍ତୁ ଔପନିବେଶିକ ଯୁଗର ଅଭିଲେଖ ଏହା ବିଷୟରେ କ'ଣ କହିଥିଲା।</p>
+</div>
+<div lang="hi">
+  <p className="t-h2">ब्रिटिश भारत के नगर</p>
+  <p className="t-lede">कोई स्थान लिखें और देखें कि औपनिवेशिक काल के अभिलेखों ने उसके बारे में क्या कहा।</p>
+</div>

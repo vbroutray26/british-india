@@ -1,0 +1,38 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import tokens from '../../tokens.json';
+
+<Meta title="Foundations/Spacing, layout and motion" />
+
+# Spacing, layout, elevation, motion
+
+## Spacing (4 px base)
+<div>
+  {Object.entries(tokens.space).map(([k, v]) => (
+    <div key={k} style={{ display: 'flex', alignItems: 'center', gap: 16, margin: '6px 0' }}>
+      <code style={{ width: 120 }}>--space-{k}</code>
+      <span style={{ display: 'inline-block', height: 12, width: v, background: 'var(--color-accent)' }} />
+      <span>{v}</span>
+    </div>
+  ))}
+</div>
+
+## Layout
+12-column grid; max content width **{tokens.layout.container}**; reading column **{tokens.layout.reading}** (Indic {tokens.layout['reading-indic']});
+gutters 16 / 24 / 32 px; breakpoints {Object.entries(tokens.breakpoint).filter(([k]) => !k.startsWith('$')).map(([k, v]) => `${k} ${v}`).join(' · ')}.
+Touch targets ≥ 44 × 44 px with ≥ 8 px between them.
+
+## Radii and elevation
+**Then** is squared and printed: radius {tokens.radius.then.card}, hard ink-offset shadows. **Now** is softer: radius {tokens.radius.now.card}, soft shadows.
+
+<div style={{ display: 'flex', gap: 24, flexWrap: 'wrap' }}>
+  {['1', '2', '3'].map((n) => (
+    <div key={n} style={{ width: 160, height: 96, padding: 12, background: 'var(--color-surface)', borderRadius: 'var(--radius-card)', boxShadow: `var(--shadow-${n})` }}>--shadow-{n}</div>
+  ))}
+</div>
+
+## Motion
+Durations {Object.entries(tokens.duration).map(([k, v]) => `${k} ${v}`).join(' · ')}. Easing: out `{tokens.ease.out}`, in-out `{tokens.ease['in-out']}`.
+Animate only `transform` and `opacity`; stagger ≤ 60 ms; every animation has a reduced-motion equivalent (durations become 0).
+
+## Z-index
+{Object.entries(tokens.z).map(([k, v]) => `${k} ${v}`).join(' · ')}

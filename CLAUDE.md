@@ -13,7 +13,8 @@ Current milestone and decisions: `docs/decisions.md`.
 - Every image/map/audio needs a data/media.yaml row (credit, alt, caption, rights_basis).
 - Pipeline stages are idempotent and resumable; add a test for each rule.
 - Performance and accessibility budgets in spec §6 are failing conditions.
-- No inline scripts or styles in built HTML (strict CSP in apps/web/public/_headers).
+- No inline scripts, `<style>` or `style=""` attributes in built HTML (strict CSP in apps/web/public/_headers). Chart positions use SVG attributes.
+- UI comes from the design system in packages/ui (Storybook). Components take every visible string as a prop; add a story and a test (render + axe) for each new component.
 - Write tests first; run the full test suite before declaring a task done.
 - Keep PRs small; update docs and the data dictionary.
 - Raw scans never go in this public repo; they belong in the private british-india-raw repo.
@@ -25,5 +26,8 @@ Current milestone and decisions: `docs/decisions.md`.
 - `pnpm build` — tokens → CSS, then static site to apps/web/dist
 - `pnpm --filter @bi/web deploy` — deploy site to Cloudflare (needs `wrangler login`)
 - `pnpm --filter @bi/api deploy` — deploy API worker
+- `pnpm --filter @bi/ui storybook` — design system catalogue on :6006; `pnpm --filter @bi/ui deploy-storybook` publishes it
+- `pnpm --filter @bi/ui typecheck` — svelte-check (TypeScript 6 in this package)
+- `node packages/ui/scripts/pick-viz.mjs` — re-derive colour-blind-safe chart palettes
 - `cd pipeline && uv run pytest` — pipeline tests
 - `pnpm validate:data` — validate data/sources.yaml and data/media.yaml

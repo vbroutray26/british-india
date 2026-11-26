@@ -4,6 +4,8 @@ import '@bi/ui/tokens.css';
 import '@bi/ui/base.css';
 import '../styles/shell.css';
 import { LOCALES, t, switchLocalePath, INFO_PAGES, type Locale } from '../i18n';
+import Header from '@bi/ui/components/Header.svelte';
+import Footer from '@bi/ui/components/Footer.svelte';
 
 interface Props { lang: Locale; title?: string; description?: string; mode?: 'then' | 'now' }
 const { lang, title, description, mode = 'then' } = Astro.props;
@@ -35,25 +37,19 @@ const beacon = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
   </head>
   <body>
     <a class="skip-link" href="#main">{t('nav.skip', lang)}</a>
-    <header class="site-header">
-      <a class="brand" href={`/${lang}/`}>
-        <span class="brand-mark" aria-hidden="true"></span>
-        <span class={lang === 'en' ? 'visually-hidden' : 'brand-name'}>{siteTitle}</span>
-      </a>
-      <nav aria-label={t('lang.label', lang)} class="lang-switch">
-        <ul>
-          {LOCALES.map((l) => (
-            <li><a href={switchLocalePath(path, l)} hreflang={l} lang={l} class={l === lang ? undefined : 'sys'} aria-current={l === lang ? 'true' : undefined}>{t('lang.self', l)}</a></li>
-          ))}
-        </ul>
-      </nav>
-    </header>
-    <main id="main"><slot /></main>
-    <footer class="site-footer">
-      <nav aria-label="Footer">
-        <ul>{INFO_PAGES.map((p) => <li><a href={`/${lang}/${p}/`}>{t(`footer.${p}`, lang)}</a></li>)}</ul>
-      </nav>
-      <p class="licence">{t('footer.licence', lang)}</p>
-    </footer>
+    <Header
+      homeHref={`/${lang}/`}
+      siteTitle={siteTitle}
+      showTitle={lang !== 'en'}
+      lang={lang}
+      languageLabel={t('lang.label', lang)}
+      languages={LOCALES.map((l) => ({ lang: l, name: t('lang.self', l), href: switchLocalePath(path, l) }))}
+    />
+    <main id="main" class="container"><slot /></main>
+    <Footer
+      navLabel={t('footer.navLabel', lang)}
+      links={INFO_PAGES.map((p) => ({ text: t(`footer.${p}`, lang), href: `/${lang}/${p}/` }))}
+      licence={t('footer.licence', lang)}
+    />
   </body>
 </html>

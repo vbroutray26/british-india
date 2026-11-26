@@ -16,6 +16,8 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm test
       - run: pnpm --filter @bi/api typecheck
+      - run: pnpm --filter @bi/ui typecheck
+      - run: pnpm --filter @bi/ui build-storybook
       - run: pnpm build
       - name: No inline scripts in built HTML (NFR-SEC-01)
         run: |

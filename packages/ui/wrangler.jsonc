@@ -1,0 +1,8 @@
+{
+  // Design system catalogue (Storybook), separate from the site so its CSP stays strict.
+  // URL: https://british-india-design.british-india-towns.workers.dev
+  "$schema": "../../apps/web/node_modules/wrangler/config-schema.json",
+  "name": "british-india-design",
+  "compatibility_date": "2026-11-01",
+  "assets": { "directory": "./storybook-static" }
+}

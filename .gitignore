@@ -24,3 +24,4 @@ data/raw/*
 # review copies of brand assets (masters live in design/assets/brand)
 design/specimens/*.svg
 design/specimens/*.webp
+packages/ui/storybook-static/
