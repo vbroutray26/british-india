@@ -9,7 +9,7 @@ and be checked for stray text and cultural errors.
 | `brand/brand_logo_duotone.svg` | Full-detail vector: ink (`currentColor`) + accent (`--logo-accent`) | Traced by `design/tools/logo.py` (potrace + SVGO) from the master | 2026-11-26 | Project-owned | 250 KB / 96 KB gzip — hero use only |
 | `brand/brand_logo_mono.svg` | Full-detail vector, ink only | Same | 2026-11-26 | Project-owned | 118 KB / 46 KB gzip |
 | `brand/brand_logo_lite.svg` | Simplified vector for header/footer (≤ 120 px tall) | Same, traced at 520 px width | 2026-11-26 | Project-owned | 25 KB / 9 KB gzip |
-| `brand/brand_favicon_t-initial.svg` | Favicon candidate: the ornate T from "TOWNS" | Same | 2026-11-26 | Project-owned | 5.6 KB — default favicon |
+| `brand/brand_favicon_t-initial.svg` | **Favicon**: the complete T of "TOWNS", isolated as one connected shape, ink + accent layers | Same | 2026-11-26 | Project-owned | 7.4 KB |
 | `brand/brand_favicon_train.svg` | Favicon candidate: the locomotive | Same | 2026-11-26 | Project-owned | 12.8 KB — illegible at 16 px; kept for social avatar trials |
 | `apps/web/public/brand/logo-{480,960,1440}.webp` | Raster of the master (cream background) for share cards / OG | `design/tools/logo.py` (cwebp q82) | 2026-11-26 | Project-owned | 48 / 135 / 215 KB |
 | `apps/web/public/brand/logo-{lite,ink,accent}.svg`, `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png`, `icon-512.png` | Site copies. Logos are painted as CSS masks (colour from tokens `--color-text`, `--color-logo-accent`); the favicon carries its own light/dark colours | `design/tools/logo.py` | 2026-11-26 | Project-owned | Header uses lite; home hero uses ink + accent |

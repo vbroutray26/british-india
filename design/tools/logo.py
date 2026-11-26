@@ -8,7 +8,7 @@ The owner supplied only a raster (brand_logo_source.webp). This script:
   4. writes web rasters (WebP) of the original artwork for places where full detail matters.
 
 Run from the repo root:
-  uv run --with pillow --with numpy python design/tools/logo.py
+  uv run --with pillow --with numpy --with scipy python design/tools/logo.py
 Requires: potrace (brew install potrace), cwebp.
 """
 from __future__ import annotations
@@ -83,9 +83,34 @@ def write_svg(name: str, w: int, h: int, layers: list[tuple[str, str, str]], tit
 
 # Regions in crop coordinates (1x) for favicon candidates: (left, top, right, bottom).
 FAVICON_REGIONS = {
-    "t-initial": (30, 30, 240, 320),      # ornate T of TOWNS (full stem)
-    "train": (35, 735, 345, 925),         # locomotive
+    "train": (35, 735, 345, 925),         # locomotive (social-avatar trials only)
 }
+# The complete T of "TOWNS" is isolated as one connected shape (it overlaps the O's box, so a
+# rectangle crop cannot separate them). Search area and a seed point inside the T's stem.
+T_AREA = (0, 0, 520, 380)
+T_SEED = (180, 200)  # (x, y) in T_AREA
+T_PAPER_MAX = 200    # anything darker than paper belongs to a glyph
+
+
+def isolate_t(im: Image.Image) -> tuple[Image.Image, np.ndarray]:
+    """Return the complete T on a square paper canvas, and its mask (same size)."""
+    from scipy import ndimage
+
+    reg = im.crop(T_AREA)
+    a = np.asarray(reg)
+    lab, _ = ndimage.label(a.astype(float).mean(2) <= T_PAPER_MAX)
+    mask = ndimage.binary_fill_holes(lab == lab[T_SEED[1], T_SEED[0]])
+    ys, xs = np.where(mask)
+    x0, x1, y0, y1 = xs.min(), xs.max() + 1, ys.min(), ys.max() + 1
+    paper = np.array(a[2, 2], dtype=np.uint8)
+    glyph = np.where(mask[y0:y1, x0:x1, None], a[y0:y1, x0:x1], paper)
+    side = round(max(x1 - x0, y1 - y0) * 1.08)  # 4% margin each side
+    canvas = np.tile(paper, (side, side, 1))
+    m = np.zeros((side, side), bool)
+    oy, ox = (side - (y1 - y0)) // 2, (side - (x1 - x0)) // 2
+    canvas[oy:oy + y1 - y0, ox:ox + x1 - x0] = glyph
+    m[oy:oy + y1 - y0, ox:ox + x1 - x0] = mask[y0:y1, x0:x1]
+    return Image.fromarray(canvas), m
 
 
 def svgo(path: Path) -> None:
@@ -101,6 +126,16 @@ def main() -> None:
     tf_l, d_l = trace(ink_l, turdsize=6)
     lite = write_svg("brand_logo_lite.svg", ink_l.shape[1], ink_l.shape[0], [("currentColor", tf_l, d_l)], "Towns of British India")
     svgo(lite)
+    # Favicon: the complete T, ink + accent layers.
+    t_img, t_mask = isolate_t(im)
+    ink_t, acc_t = masks(t_img, 512 / t_img.width)
+    tf_ti, d_ti = trace(ink_t, turdsize=20)
+    tf_ta, d_ta = trace(acc_t, turdsize=20)
+    fav_t = write_svg("brand_favicon_t-initial.svg", 512, 512,
+                      [("currentColor", tf_ti, d_ti), ("var(--logo-accent, currentColor)", tf_ta, d_ta)],
+                      "Towns of British India")
+    svgo(fav_t)
+    print(f"{fav_t.name}: {fav_t.stat().st_size / 1024:.1f} KB")
     for name, box in FAVICON_REGIONS.items():
         region = im.crop(box)
         side = max(region.size)
@@ -140,18 +175,19 @@ def main() -> None:
                      (OUT / "brand_favicon_t-initial.svg", "favicon.svg")]:
         (WEB / dst).write_bytes(src.read_bytes())
     # A favicon has no surrounding CSS, so currentColor would be black on dark browser chrome.
-    # Give the site copy its own colours (Then ink / Then-dark ink from tokens.json).
+    # Give the site copy its own colours (Then ink/ochre and Then-dark ink/ochre from tokens.json).
     fav = WEB / "favicon.svg"
-    fav.write_text(fav.read_text().replace(
-        'fill="currentColor"', 'class="ink"', 1).replace(
-        "<path", "<style>.ink{fill:#231C14}@media (prefers-color-scheme:dark){.ink{fill:#EFE5CF}}</style><path", 1))
-    # PNG favicons from the raster T on paper (spec §13.2: 32/180/512).
-    t = im.crop(FAVICON_REGIONS["t-initial"])
-    side = max(t.size)
-    sq = Image.new("RGB", (side, side), t.getpixel((2, 2)))
-    sq.paste(t, ((side - t.width) // 2, (side - t.height) // 2))
-    for px, name in [(32, "favicon-32.png"), (180, "apple-touch-icon.png"), (512, "icon-512.png")]:
-        sq.resize((px, px), Image.LANCZOS).save(WEB / name, optimize=True)
+    svg = fav.read_text().replace('fill="currentColor"', 'class="ink"', 1)
+    svg = svg.replace('fill="var(--logo-accent, currentColor)"', 'class="acc"', 1)
+    svg = svg.replace("<path", "<style>.ink{fill:#231C14}.acc{fill:#B9822B}@media (prefers-color-scheme:dark)"
+                      "{.ink{fill:#EFE5CF}.acc{fill:#D9A34E}}</style><path", 1)
+    fav.write_text(svg)
+    # PNG favicons from the raster T (spec §13.2: 32/180/512). 32 px is transparent; touch icons are opaque.
+    rgba = t_img.convert("RGBA")
+    rgba.putalpha(Image.fromarray((t_mask * 255).astype("uint8")))
+    rgba.resize((32, 32), Image.LANCZOS).save(WEB / "favicon-32.png", optimize=True)
+    for px, name in [(180, "apple-touch-icon.png"), (512, "icon-512.png")]:
+        t_img.resize((px, px), Image.LANCZOS).quantize(64).save(WEB / name, optimize=True)
     for p in sorted(WEB.glob("logo-*.webp")):
         print(f"{p.name}: {p.stat().st_size / 1024:.0f} KB")
 
