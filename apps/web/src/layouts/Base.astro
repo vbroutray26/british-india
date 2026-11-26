@@ -1,4 +1,5 @@
 ---
+import '@bi/ui/fonts.css';
 import '@bi/ui/tokens.css';
 import '@bi/ui/base.css';
 import '../styles/shell.css';
@@ -35,7 +36,7 @@ const beacon = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
       <nav aria-label={t('lang.label', lang)} class="lang-switch">
         <ul>
           {LOCALES.map((l) => (
-            <li><a href={switchLocalePath(path, l)} hreflang={l} lang={l} aria-current={l === lang ? 'true' : undefined}>{t('lang.self', l)}</a></li>
+            <li><a href={switchLocalePath(path, l)} hreflang={l} lang={l} class={l === lang ? undefined : 'sys'} aria-current={l === lang ? 'true' : undefined}>{t('lang.self', l)}</a></li>
           ))}
         </ul>
       </nav>

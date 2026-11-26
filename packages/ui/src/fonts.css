@@ -1,0 +1,13 @@
+/* Self-hosted fonts (D-17, pairing A). OFL-licensed, from Fontsource.
+   unicode-range on every @font-face means a page only downloads the scripts it shows. */
+@import '@fontsource/gloock/latin.css';            /* display, Latin */
+@import '@fontsource/gloock/latin-ext.css';        /* diacritics: Jagannáth, Pooree… */
+@import '@fontsource/rozha-one/devanagari.css';    /* display, Devanagari */
+@import '@fontsource-variable/noto-serif-oriya/wght.css'; /* display, Odia */
+@import '@fontsource-variable/urbanist/wght.css';  /* sans, Latin */
+@import '@fontsource/anek-devanagari/devanagari-400.css'; /* sans, Devanagari — static: 91 KB vs 252 KB variable */
+@import '@fontsource/anek-devanagari/devanagari-600.css';
+@import '@fontsource/anek-odia/oriya-400.css';   /* sans, Odia — static: 34 KB vs 87 KB variable */
+@import '@fontsource/anek-odia/oriya-600.css';
+@import '@fontsource-variable/newsreader/wght.css';        /* passages (archival voice) */
+@import '@fontsource-variable/newsreader/wght-italic.css'; /* true italic for subtitles/quotes */

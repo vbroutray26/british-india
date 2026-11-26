@@ -7,7 +7,10 @@
 .site-footer { margin-top: var(--space-24); padding-block: var(--space-8); border-top: 1px solid var(--color-rule); color: var(--color-text-muted); font-size: var(--step--1); }
 .site-footer a { display: inline-flex; align-items: center; min-height: 44px; padding-inline: var(--space-2); }
 .hero { padding-block: var(--space-24) var(--space-16); max-width: 680px; }
-.hero h1 { font-size: var(--step-6); margin: 0; }
-.hero .subtitle { font-family: var(--font-serif); font-style: italic; font-size: var(--step-1); color: var(--color-text-muted); margin-top: var(--space-2); }
+.hero h1 { font-size: var(--step-6); margin: 0; letter-spacing: -0.01em; }
+:lang(or) .hero h1, :lang(hi) .hero h1 { letter-spacing: 0; }
+.hero .subtitle { font-family: var(--font-serif); font-style: italic; font-synthesis: none; font-size: var(--step-1); color: var(--color-text-muted); margin-top: var(--space-2); }
 .hero .lede { font-size: var(--step-1); }
 .notice { border-left: 3px solid var(--color-ai); padding: var(--space-3) var(--space-4); background: var(--color-surface); }
+/* Other-language labels use the device font so they don't download a whole script's web font (NFR-PERF-08). */
+.lang-switch a.sys { font-family: system-ui, -apple-system, 'Segoe UI', 'Noto Sans Oriya', 'Noto Sans Devanagari', sans-serif; }

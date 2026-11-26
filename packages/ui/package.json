@@ -5,10 +5,20 @@
   "exports": {
     "./tokens.css": "./dist/tokens.css",
     "./tokens.json": "./tokens.json",
-    "./base.css": "./src/base.css"
+    "./base.css": "./src/base.css",
+    "./fonts.css": "./src/fonts.css"
   },
   "scripts": {
     "build": "node scripts/build-tokens.mjs",
     "test": "node scripts/build-tokens.mjs && node --test scripts/*.test.mjs"
+  },
+  "dependencies": {
+    "@fontsource-variable/newsreader": "^5.3.0",
+    "@fontsource-variable/noto-serif-oriya": "^5.3.0",
+    "@fontsource-variable/urbanist": "^5.3.0",
+    "@fontsource/anek-devanagari": "^5.3.0",
+    "@fontsource/anek-odia": "^5.3.0",
+    "@fontsource/gloock": "^5.3.0",
+    "@fontsource/rozha-one": "^5.3.0"
   }
 }

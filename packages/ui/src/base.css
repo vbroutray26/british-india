@@ -16,3 +16,13 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.15; font-weight: 4
 }
 .skip-link { position: absolute; left: var(--space-2); top: -100px; }
 .skip-link:focus { top: var(--space-2); z-index: var(--z-toast); background: var(--color-surface); padding: var(--space-2) var(--space-3); }
+
+/* Type rules per script (D-17, M0 finding).
+   Gloock and Rozha One ship one weight and no italic: never let the browser fake them. */
+h1, h2, h3, .display { font-synthesis: none; }
+/* Odia and Devanagari have no true italic: emphasis uses weight or colour, never a slant. */
+:lang(or) :is(em, i, cite, .subtitle), :lang(hi) :is(em, i, cite, .subtitle) { font-style: normal; font-synthesis: none; }
+:lang(or) em, :lang(hi) em { font-weight: 600; }
+/* Indic display faces need more room above and below the line for matras and conjuncts. */
+:lang(or) :is(h1, h2, h3), :lang(hi) :is(h1, h2, h3) { line-height: 1.35; }
+.serif { font-family: var(--font-serif); }
