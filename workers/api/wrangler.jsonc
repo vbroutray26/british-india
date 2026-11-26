@@ -1,0 +1,12 @@
+{
+  // Small API (spec §7.1): /corrections now; /takedown and /ask later.
+  // URL: https://british-india-api.british-india-towns.workers.dev
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "british-india-api",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-11-01",
+  "vars": { "ALLOWED_ORIGIN": "https://british-india.british-india-towns.workers.dev" }
+  // M0 stub: KV for the private correction store and Turnstile are added once created:
+  // "kv_namespaces": [{ "binding": "CORRECTIONS", "id": "<id>" }]
+  // secret: TURNSTILE_SECRET (wrangler secret put TURNSTILE_SECRET)
+}

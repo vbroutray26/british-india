@@ -1,0 +1,22 @@
+node_modules/
+dist/
+.astro/
+.wrangler/
+.dev.vars
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+storybook-static/
+coverage/
+# pipeline
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+data/interim/
+# raw scans live in the private data repo (see docs/architecture.md)
+data/raw/*
+!data/raw/README.md

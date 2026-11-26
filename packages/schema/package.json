@@ -1,0 +1,7 @@
+{
+  "name": "@bi/schema",
+  "private": true,
+  "type": "module",
+  "exports": { "./schemas/*": "./schemas/*" },
+  "$comment": "JSON Schemas (draft 2020-12) shared by the Python pipeline and the site. Validated by pipeline/validate."
+}

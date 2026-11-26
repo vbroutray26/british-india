@@ -1,0 +1,17 @@
+{
+  "name": "british-india",
+  "private": true,
+  "description": "British India — Places in the colonial record, 1860s–1947",
+  "license": "MIT",
+  "packageManager": "pnpm@12.6.0",
+  "engines": { "node": ">=22.23.4" },
+  "scripts": {
+    "dev": "pnpm --filter @bi/web dev",
+    "build": "pnpm --filter @bi/ui build && pnpm --filter @bi/web build",
+    "test": "pnpm -r --if-present test",
+    "lint": "pnpm -r --if-present lint",
+    "typecheck": "pnpm -r --if-present typecheck",
+    "validate:data": "cd pipeline && uv run python -m pipeline.validate",
+    "deploy": "pnpm build && pnpm --filter @bi/web deploy"
+  }
+}

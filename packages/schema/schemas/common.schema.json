@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://british-india/schemas/common.schema.json",
+  "$defs": {
+    "lang": { "enum": ["en", "or", "hi"] },
+    "anyLang": { "type": "string", "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]+)*$" },
+    "slug": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+    "rightsBasis": { "enum": ["public-domain", "open-licence", "permission", "unclear", "project-accepted"] },
+    "isoDate": { "type": "string", "pattern": "^\\d{4}(-\\d{2}(-\\d{2})?)?$" },
+    "trilingual": {
+      "type": "object",
+      "required": ["en", "or", "hi"],
+      "properties": { "en": { "type": "string", "minLength": 1 }, "or": { "type": "string" }, "hi": { "type": "string" } },
+      "additionalProperties": false
+    },
+    "review": {
+      "type": "object",
+      "required": ["status"],
+      "properties": {
+        "status": { "enum": ["unreviewed", "accepted", "edited", "rejected"] },
+        "reviewer": { "type": "string" },
+        "date": { "$ref": "#/$defs/isoDate" }
+      },
+      "additionalProperties": false
+    }
+  }
+}

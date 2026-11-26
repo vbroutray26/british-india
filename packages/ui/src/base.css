@@ -1,0 +1,18 @@
+/* Base styles. Semantic tokens only — no raw hex (CLAUDE.md). */
+*, *::before, *::after { box-sizing: border-box; }
+html { color-scheme: light dark; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--color-bg); color: var(--color-text);
+  font-family: var(--font-sans); font-size: var(--step-0); line-height: var(--leading-latin);
+}
+:lang(hi) body, body:lang(hi) { line-height: var(--leading-deva); }
+:lang(or) body, body:lang(or) { line-height: var(--leading-odia); }
+a { color: var(--color-link); text-underline-offset: 0.15em; }
+:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 2px; }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.15; font-weight: 400; }
+.visually-hidden {
+  position: absolute !important; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+.skip-link { position: absolute; left: var(--space-2); top: -100px; }
+.skip-link:focus { top: var(--space-2); z-index: var(--z-toast); background: var(--color-surface); padding: var(--space-2) var(--space-3); }

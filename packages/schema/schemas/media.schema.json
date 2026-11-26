@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://british-india/schemas/media.schema.json",
+  "title": "Media register (spec §4.3). FR-MEDIA-07: build fails without credit, alt, caption.",
+  "type": "object",
+  "required": ["version", "media"],
+  "properties": {
+    "version": { "type": "integer", "const": 1 },
+    "media": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["media_id", "type", "source_url", "licence_stated", "rights_basis", "credit_line", "alt_text", "caption", "file", "status"],
+        "properties": {
+          "media_id": { "type": "string", "pattern": "^md_[a-z0-9-]+$" },
+          "type": { "enum": ["photo", "engraving", "map", "satellite", "audio", "scan"] },
+          "source_url": { "type": "string", "format": "uri" },
+          "creator": { "type": "string" },
+          "date_created": { "type": "string" },
+          "place_id": { "type": "string", "pattern": "^pl_" },
+          "licence_stated": { "type": "string" },
+          "rights_basis": { "$ref": "common.schema.json#/$defs/rightsBasis" },
+          "credit_line": { "type": "string", "minLength": 1 },
+          "alt_text": { "$ref": "common.schema.json#/$defs/trilingual" },
+          "caption": { "$ref": "common.schema.json#/$defs/trilingual" },
+          "file": { "type": "string", "minLength": 1 },
+          "accepted_by": { "type": "string" },
+          "accepted_on": { "$ref": "common.schema.json#/$defs/isoDate" },
+          "status": { "enum": ["active", "withdrawn"] }
+        },
+        "if": { "properties": { "rights_basis": { "enum": ["unclear", "project-accepted"] } } },
+        "then": { "required": ["accepted_by", "accepted_on"] },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

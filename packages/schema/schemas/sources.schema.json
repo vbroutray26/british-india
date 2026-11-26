@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://british-india/schemas/sources.schema.json",
+  "title": "Source register (spec §4.2)",
+  "type": "object",
+  "required": ["version", "sources"],
+  "properties": {
+    "version": { "type": "integer", "const": 1 },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["source_id", "title", "year", "language", "acquired_from", "ocr_origin", "licence_stated", "rights_basis", "credit_line", "status"],
+        "properties": {
+          "source_id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+          "title": { "type": "string", "minLength": 1 },
+          "author": { "type": "string" },
+          "publisher": { "type": "string" },
+          "year": { "type": ["integer", "string"] },
+          "edition": { "type": "string" },
+          "volume": { "type": "string" },
+          "language": { "$ref": "common.schema.json#/$defs/anyLang" },
+          "acquired_from": { "type": "string", "minLength": 1 },
+          "scan_ref": { "type": "string" },
+          "pages": { "type": "integer", "minimum": 1 },
+          "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+          "ocr_origin": { "enum": ["existing", "re-ocr", "manual", "pending"] },
+          "licence_stated": { "type": "string" },
+          "rights_basis": { "$ref": "common.schema.json#/$defs/rightsBasis" },
+          "credit_line": { "type": "string", "minLength": 1 },
+          "use": { "type": "array", "items": { "type": "string" } },
+          "status": { "enum": ["candidate", "verified", "acquired", "ingested", "withdrawn"] },
+          "verified_on": { "$ref": "common.schema.json#/$defs/isoDate" },
+          "notes": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

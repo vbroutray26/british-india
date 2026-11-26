@@ -1,0 +1,232 @@
+# Source register (spec §4.2). One record per source and edition.
+# status: candidate = located, not yet checked page-by-page; verified = scan and
+#   page count checked; acquired = raw files + sha256 stored (DP-00); ingested.
+# Located 2026-11-26 via the Internet Archive search API. Scan quality, page
+# counts and the exact pages for Puri entries are checked in M2 (DP-00) [verify].
+# IIIF manifests: https://iiif.archive.org/iiif/3/<identifier>/manifest.json
+version: 1
+sources:
+  # ---------------------------------------------------------------- primary "then" text
+  - source_id: omalley-puri-1908
+    title: "Bengal District Gazetteers: Puri"
+    author: "L. S. S. O'Malley"
+    publisher: "Bengal Secretariat Book Depot, Calcutta"
+    year: 1908
+    language: en
+    acquired_from: https://archive.org/details/dli.ministry.08613
+    scan_ref: https://iiif.archive.org/iiif/3/dli.ministry.08613/manifest.json
+    ocr_origin: existing
+    licence_stated: none stated
+    rights_basis: public-domain
+    credit_line: "O'Malley, L. S. S. Bengal District Gazetteers: Puri (1908). Scan: Digital Library of India via Internet Archive."
+    use: [primary-then-text, floods, famine, trade, temples, festivals, administration]
+    status: candidate
+    notes: >-
+      Duplicate upload with identical PDF (34.2 MB): dli.ministry.19456. Use as fallback.
+      Check whether this scan includes the statistical appendix volume.
+
+  - source_id: puri-statistics-1905
+    title: "Puri District Gazetteer: Statistics, 1901-02"
+    publisher: "Bengal Secretariat Book Depot, Calcutta"
+    year: 1905
+    language: en
+    acquired_from: https://archive.org/details/dli.ministry.08614
+    scan_ref: https://iiif.archive.org/iiif/3/dli.ministry.08614/manifest.json
+    ocr_origin: existing
+    licence_stated: none stated
+    rights_basis: public-domain
+    credit_line: "Puri District Gazetteer: Statistics, 1901-02 (1905). Scan: Digital Library of India via Internet Archive."
+    use: [census, revenue, statistics-tables]
+    status: candidate
+    notes: Small PDF (0.85 MB); tables — table extraction path in DP-01.
+
+  - source_id: igi-v20-1908
+    title: "The Imperial Gazetteer of India, New Edition, Vol. XX: Pardi to Pusad"
+    author: "W. W. Hunter, J. S. Cotton, R. Burn, W. S. Meyer (eds.)"
+    publisher: "Clarendon Press, Oxford"
+    year: 1908
+    edition: "New edition (1907-09)"
+    volume: "XX"
+    language: en
+    acquired_from: https://archive.org/details/imperialgazettee030651mbp
+    scan_ref: https://iiif.archive.org/iiif/3/imperialgazettee030651mbp/manifest.json
+    ocr_origin: existing
+    licence_stated: none stated
+    rights_basis: public-domain
+    credit_line: "The Imperial Gazetteer of India, vol. XX (Oxford, 1908). Scan via Internet Archive."
+    use: [district-entry, town-entries, coordinates-in-headings]
+    status: candidate
+    notes: >-
+      Contains the Puri District, Puri Subdivision and Puri Town entries. Other Puri-district
+      places (e.g. Konarak, Chilka Lake, Khurda, Satyabadi) are in other volumes — list them in M2.
+      DSAL also hosts page images of the IGI (dsal.uchicago.edu/reference/gazetteer) — alternative scan.
+
+  - source_id: igi-bengal-v2-1909
+    title: "Imperial Gazetteer of India, Provincial Series: Bengal, Vol. II"
+    publisher: "Superintendent of Government Printing, Calcutta"
+    year: 1909
+    volume: "II"
+    language: en
+    acquired_from: https://archive.org/details/in.ernet.dli.2015.120370
+    scan_ref: https://iiif.archive.org/iiif/3/in.ernet.dli.2015.120370/manifest.json
+    ocr_origin: existing
+    licence_stated: none stated
+    rights_basis: public-domain
+    credit_line: "Imperial Gazetteer of India, Provincial Series: Bengal, vol. II (Calcutta, 1909). Scan: Digital Library of India via Internet Archive."
+    use: [orissa-division, linked-district-entries]
+    status: candidate
+    notes: "[verify] that the Orissa Division (Cuttack, Balasore, Puri, Angul) is in vol. II."
+
+  # ---------------------------------------------------------------- 1870s edition
+  - source_id: hunter-sab-v19-1877
+    title: "A Statistical Account of Bengal, Vol. XIX: Districts of Puri and the Orissa Tributary States"
+    author: "W. W. Hunter"
+    publisher: "Trübner & Co., London"
+    year: 1877
+    volume: "XIX"
+    language: en
+    acquired_from: https://archive.org/details/india.history.resource.78545
+    scan_ref: https://iiif.archive.org/iiif/3/india.history.resource.78545/manifest.json
+    ocr_origin: existing
+    licence_stated: none stated
+    rights_basis: public-domain
+    credit_line: "Hunter, W. W. A Statistical Account of Bengal, vol. XIX (London, 1877). Scan via Internet Archive."
+    use: [edition-1870s, feudatory-states]
+    status: candidate
+
+  - source_id: hunter-orissa-1872-v1
+    title: "Orissa (Vol. I)"
+    author: "W. W. Hunter"
+    publisher: "Smith, Elder & Co., London"
+    year: 1872
+    volume: "I"
+    language: en
+    acquired_from: https://archive.org/details/orissa00huntgoog
+    scan_ref: https://iiif.archive.org/iiif/3/orissa00huntgoog/manifest.json
+    pages: 510
+    ocr_origin: existing
+    licence_stated: none stated
+    rights_basis: public-domain
+    credit_line: "Hunter, W. W. Orissa, vol. I (London, 1872). Google Books scan via Internet Archive."
+    use: [edition-1870s, jagannath, famine-1866]
+    status: candidate
+    notes: "orissa00/01/02/03huntgoog are different copies; confirm which is vol. I and which vol. II. DLI copy: in.ernet.dli.2015.43086."
+
+  - source_id: hunter-orissa-1872-v2
+    title: "Orissa (Vol. II)"
+    author: "W. W. Hunter"
+    publisher: "Smith, Elder & Co., London"
+    year: 1872
+    volume: "II"
+    language: en
+    acquired_from: https://archive.org/details/in.ernet.dli.2015.79787
+    scan_ref: https://iiif.archive.org/iiif/3/in.ernet.dli.2015.79787/manifest.json
+    ocr_origin: existing
+    licence_stated: none stated
+    rights_basis: public-domain
+    credit_line: "Hunter, W. W. Orissa, vol. II (London, 1872). Scan: Digital Library of India via Internet Archive."
+    use: [edition-1870s]
+    status: candidate
+
+  # ---------------------------------------------------------------- census series
+  - source_id: census-1891-bengal-v4
+    title: "Census of India, 1891, Vol. IV: The Lower Provinces of Bengal and their Feudatories"
+    year: 1893
+    language: en
+    acquired_from: https://archive.org/details/india.history.resource.110122
+    scan_ref: https://iiif.archive.org/iiif/3/india.history.resource.110122/manifest.json
+    ocr_origin: existing
+    licence_stated: none stated
+    rights_basis: public-domain
+    credit_line: "Census of India, 1891, vol. IV (Calcutta, 1893). Scan via Internet Archive."
+    use: [census]
+    status: candidate
+
+  - source_id: census-1901-bengal-v6a
+    title: "Census of India, 1901, Vol. VI-A: Lower Provinces of Bengal and their Feudatories, Part II (Imperial Tables)"
+    year: 1902
+    language: en
+    acquired_from: https://archive.org/details/in.gov.ignca.30991
+    scan_ref: https://iiif.archive.org/iiif/3/in.gov.ignca.30991/manifest.json
+    ocr_origin: existing
+    licence_stated: none stated
+    rights_basis: public-domain
+    credit_line: "Census of India, 1901, vol. VI-A (Calcutta, 1902). Scan: IGNCA via Internet Archive."
+    use: [census]
+    status: candidate
+
+  - source_id: census-1911-bbo-v5-p3
+    title: "Census of India, 1911, Vol. V: Bengal, Bihar and Orissa and Sikkim, Part III (Tables)"
+    year: 1913
+    language: en
+    acquired_from: https://archive.org/details/india.history.resource.92557
+    scan_ref: https://iiif.archive.org/iiif/3/india.history.resource.92557/manifest.json
+    ocr_origin: existing
+    licence_stated: none stated
+    rights_basis: public-domain
+    credit_line: "Census of India, 1911, vol. V, pt. III (Calcutta, 1913). Scan via Internet Archive."
+    use: [census]
+    status: candidate
+    notes: "Still to locate: 1872, 1881, 1921 and 1931 tables covering Puri (Bihar and Orissa volumes from 1921)."
+
+  # ---------------------------------------------------------------- language, antiquities
+  - source_id: lsi-v5-p2-1903
+    title: "Linguistic Survey of India, Vol. V, Part II: Indo-Aryan Family, Eastern Group (Bihari and Oriya)"
+    author: "G. A. Grierson"
+    year: 1903
+    volume: "V, Part II"
+    language: en
+    acquired_from: https://archive.org/details/in.ernet.dli.2015.73105
+    scan_ref: https://iiif.archive.org/iiif/3/in.ernet.dli.2015.73105/manifest.json
+    ocr_origin: existing
+    licence_stated: none stated
+    rights_basis: public-domain
+    credit_line: "Grierson, G. A. Linguistic Survey of India, vol. V, pt. II (Calcutta, 1903). Scan: Digital Library of India via Internet Archive."
+    use: [language-layer]
+    status: candidate
+
+  - source_id: mitra-antiquities-v1-1875
+    title: "The Antiquities of Orissa, Vol. I"
+    author: "Rajendralala Mitra"
+    year: 1875
+    volume: "I"
+    language: en
+    acquired_from: https://archive.org/details/india.history.resource.84485
+    scan_ref: https://iiif.archive.org/iiif/3/india.history.resource.84485/manifest.json
+    ocr_origin: existing
+    licence_stated: none stated
+    rights_basis: public-domain
+    credit_line: "Mitra, Rajendralala. The Antiquities of Orissa, vol. I (Calcutta, 1875). Scan via Internet Archive."
+    use: [temples, monuments]
+    status: candidate
+
+  - source_id: mitra-antiquities-v2-1880
+    title: "The Antiquities of Orissa, Vol. II"
+    author: "Rajendralala Mitra"
+    year: 1880
+    volume: "II"
+    language: en
+    acquired_from: https://archive.org/details/india.history.resource.84484
+    scan_ref: https://iiif.archive.org/iiif/3/india.history.resource.84484/manifest.json
+    ocr_origin: existing
+    licence_stated: none stated
+    rights_basis: public-domain
+    credit_line: "Mitra, Rajendralala. The Antiquities of Orissa, vol. II (Calcutta, 1880). Scan via Internet Archive."
+    use: [temples, monuments, jagannath-temple]
+    status: candidate
+    notes: Avoid the 1961 Chattopadhyaya reprint editions (later editorial matter may still be in copyright).
+
+  # ---------------------------------------------------------------- "now"
+  - source_id: census-2011-dchb-puri
+    title: "Census of India 2011: District Census Handbook, Puri (Village and Town Directory / Primary Census Abstract)"
+    publisher: "Directorate of Census Operations, Odisha"
+    year: 2011
+    language: en
+    acquired_from: https://censusindia.gov.in
+    ocr_origin: pending
+    licence_stated: "[verify] Government Open Data Licence – India (data.gov.in) for tabular releases"
+    rights_basis: open-licence
+    credit_line: "Census of India 2011, District Census Handbook: Puri. Office of the Registrar General & Census Commissioner, India."
+    use: [now-data, village-matching]
+    status: candidate
+    notes: Locate the exact PDF and the PCA tables on censusindia.gov.in and data.gov.in in M5.

@@ -1,0 +1,5 @@
+# Media register (spec §4.3). One row per image, map, audio clip or excerpt.
+# FR-MEDIA-07: the build fails if an active item lacks credit_line, alt_text.en or caption.en.
+# Takedown (FR-MEDIA-05): set status: withdrawn — the build then excludes the asset.
+version: 1
+media: []

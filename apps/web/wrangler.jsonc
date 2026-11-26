@@ -1,0 +1,11 @@
+{
+  // Static site served by Workers static assets (free tier).
+  // URL: https://british-india.british-india-towns.workers.dev
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "british-india",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page"
+  }
+}

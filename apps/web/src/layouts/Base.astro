@@ -1,0 +1,51 @@
+---
+import '@bi/ui/tokens.css';
+import '@bi/ui/base.css';
+import '../styles/shell.css';
+import { LOCALES, t, switchLocalePath, INFO_PAGES, type Locale } from '../i18n';
+
+interface Props { lang: Locale; title?: string; description?: string; mode?: 'then' | 'now' }
+const { lang, title, description, mode = 'then' } = Astro.props;
+const siteTitle = t('site.title', lang);
+const fullTitle = title ? `${title} · ${siteTitle}` : `${siteTitle} — ${t('site.subtitle', lang)}`;
+const path = Astro.url.pathname;
+const site = Astro.site!;
+const beacon = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
+---
+<!doctype html>
+<html lang={lang} data-mode={mode}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description ?? t('home.lede', lang)} />
+    <link rel="canonical" href={new URL(path, site).href} />
+    {LOCALES.map((l) => <link rel="alternate" hreflang={l} href={new URL(switchLocalePath(path, l), site).href} />)}
+    <link rel="alternate" hreflang="x-default" href={new URL(switchLocalePath(path, 'en'), site).href} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={new URL(path, site).href} />
+    <meta name="color-scheme" content="light dark" />
+    {beacon && <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={JSON.stringify({ token: beacon })}></script>}
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{t('nav.skip', lang)}</a>
+    <header class="site-header">
+      <a class="wordmark" href={`/${lang}/`}>{siteTitle}</a>
+      <nav aria-label={t('lang.label', lang)} class="lang-switch">
+        <ul>
+          {LOCALES.map((l) => (
+            <li><a href={switchLocalePath(path, l)} hreflang={l} lang={l} aria-current={l === lang ? 'true' : undefined}>{t('lang.self', l)}</a></li>
+          ))}
+        </ul>
+      </nav>
+    </header>
+    <main id="main"><slot /></main>
+    <footer class="site-footer">
+      <nav aria-label="Footer">
+        <ul>{INFO_PAGES.map((p) => <li><a href={`/${lang}/${p}/`}>{t(`footer.${p}`, lang)}</a></li>)}</ul>
+      </nav>
+      <p class="licence">{t('footer.licence', lang)}</p>
+    </footer>
+  </body>
+</html>

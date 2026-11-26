@@ -1,0 +1,4 @@
+{
+  "$comment": "Per-key, per-language review status (FR-LANG-04/09). Owner reviews Odia and Hindi. Anything not listed is 'draft'.",
+  "reviewed": { "en": ["*"], "or": [], "hi": [] }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "@bi/web",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "typecheck": "astro check",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.12",
+    "typescript": "^7.0.2",
+    "vitest": "^5.1.1",
+    "wrangler": "^4.168.0"
+  },
+  "dependencies": {
+    "@astrojs/svelte": "^9.1.6",
+    "@bi/ui": "workspace:*",
+    "astro": "^7.4.13",
+    "svelte": "^5.59.1"
+  }
+}

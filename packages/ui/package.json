@@ -1,0 +1,14 @@
+{
+  "name": "@bi/ui",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./tokens.css": "./dist/tokens.css",
+    "./tokens.json": "./tokens.json",
+    "./base.css": "./src/base.css"
+  },
+  "scripts": {
+    "build": "node scripts/build-tokens.mjs",
+    "test": "node scripts/build-tokens.mjs && node --test scripts/*.test.mjs"
+  }
+}

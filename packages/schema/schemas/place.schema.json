@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://british-india/schemas/place.schema.json",
+  "title": "Place (spec §7.3)",
+  "type": "object",
+  "required": ["place_id", "type", "names", "status", "review"],
+  "properties": {
+    "place_id": { "type": "string", "pattern": "^pl_[a-z0-9-]+$" },
+    "type": { "enum": ["district", "subdivision", "tahsil", "thana", "town", "village", "river", "lake", "hill", "island", "temple", "monument", "port", "railway-station", "canal", "estate", "state", "region"] },
+    "names": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object", "required": ["text", "lang", "kind"],
+        "properties": {
+          "text": { "type": "string", "minLength": 1 },
+          "lang": { "$ref": "common.schema.json#/$defs/anyLang" },
+          "script": { "enum": ["Latn", "Orya", "Deva"] },
+          "kind": { "enum": ["primary", "alias", "historic", "transliteration"] },
+          "years": { "type": "string" },
+          "source_id": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "parent_ids": { "type": "array", "items": { "type": "string", "pattern": "^pl_" } },
+    "child_ids": { "type": "array", "items": { "type": "string", "pattern": "^pl_" } },
+    "geometry": {
+      "type": "object", "required": ["kind", "quality"],
+      "properties": {
+        "kind": { "enum": ["point", "polygon", "line"] },
+        "coordinates": { "type": "array" },
+        "quality": { "enum": ["exact", "heading", "area", "unknown"] },
+        "source": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "status": { "enum": ["existing", "renamed", "lost", "uncertain"] },
+    "external_ids": {
+      "type": "object",
+      "properties": { "wikidata": { "type": "string", "pattern": "^Q\\d+$" }, "lgd": { "type": "string" }, "census2011": { "type": "string" }, "osm": { "type": "string" }, "geonames": { "type": "string" } },
+      "additionalProperties": false
+    },
+    "review": { "$ref": "common.schema.json#/$defs/review" }
+  },
+  "additionalProperties": false
+}
