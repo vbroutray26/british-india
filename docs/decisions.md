@@ -13,4 +13,4 @@
 | D-18 | Node >= 22.23.4 (Astro 7), pnpm 12, Python 3.12 via uv. | 2026-11-26 |
 
 ## Milestone status
-- **M0 Foundations** — in progress. Deferred to M1: Storybook (lands with the first components).
+- **M0 Foundations** — done 2026-11-26. Live: https://british-india.british-india-towns.workers.dev · API: https://british-india-api.british-india-towns.workers.dev. CI green. Deferred to M1: Storybook; CI auto-deploy (needs CLOUDFLARE_API_TOKEN secret + DEPLOY_ENABLED var); no synthetic italics for Odia/Devanagari.
