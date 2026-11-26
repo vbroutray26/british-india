@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Font specimen — British India (D-17)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Instrument+Serif:ital@0;1&family=Libre+Caslon+Display&family=Gilda+Display&family=Ibarra+Real+Nova:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=Urbanist:wght@400;500;600&family=Outfit:wght@400;500;600&family=Sora:wght@400;500;600&family=Albert+Sans:wght@400;500;600&family=Red+Hat+Display:wght@400;500;600&family=Lexend:wght@400;500;600&family=Noto+Serif+Oriya:wght@400;600&family=Noto+Sans+Oriya:wght@400;600&family=Anek+Odia:wght@400;500;600&family=Baloo+Bhaina+2:wght@400;600&family=Rozha+One&family=Tiro+Devanagari+Hindi&family=Noto+Serif+Devanagari:wght@400;600&family=Anek+Devanagari:wght@400;500;600&family=Martel:wght@400;600&display=swap">
+<style>
+  /* Values mirror packages/ui/tokens.json (Then palette). Specimen only. */
+  :root {
+    --paper: #EFE5CF; --paper-2: #E6D9BC; --ink: #231C14; --muted: #5E513F;
+    --red: #A63A24; --blue: #2B4A7A; --ochre: #B9822B; --rule: #B8A988;
+    --now-bg: #FAFAF7; --now-ink: #111827; --teal: #0E7C86;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.55 system-ui, sans-serif; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 48px 24px 96px; }
+  .intro { max-width: 720px; }
+  .intro h1 { font: 400 40px/1.1 Gloock, serif; margin: 0 0 12px; }
+  .intro p { color: var(--muted); }
+  .criteria { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; margin: 24px 0 8px; padding: 0; list-style: none; }
+  .criteria li { border-top: 2px solid var(--ink); padding-top: 8px; font-size: 14px; }
+  .criteria b { display: block; }
+  h2.section { font: 600 13px/1 system-ui; letter-spacing: .12em; text-transform: uppercase; color: var(--red); margin: 64px 0 16px; }
+
+  .pair { border: 1px solid var(--rule); background: var(--paper); margin-bottom: 32px; box-shadow: 4px 4px 0 var(--rule); }
+  .pair-head { display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: baseline; justify-content: space-between; padding: 14px 20px; border-bottom: 1px solid var(--rule); background: var(--paper-2); }
+  .pair-head .name { font: 600 15px system-ui; }
+  .pair-head .meta { font: 13px ui-monospace, Menlo, monospace; color: var(--muted); }
+  .tag { display: inline-block; font: 600 11px system-ui; letter-spacing: .08em; text-transform: uppercase; background: var(--red); color: var(--paper); padding: 3px 8px; margin-left: 8px; vertical-align: 2px; }
+  .pair-body { display: grid; grid-template-columns: 1.35fr 1fr; }
+  @media (max-width: 860px) { .pair-body { grid-template-columns: 1fr; } }
+  .latin { padding: 28px 28px 32px; border-right: 1px solid var(--rule); }
+  .indic { padding: 28px; display: grid; gap: 24px; align-content: start; }
+
+  .title { font-family: var(--display); font-size: clamp(48px, 7vw, 84px); line-height: 1; margin: 0; font-weight: 400; letter-spacing: -.01em; }
+  .subtitle { font-family: var(--display); font-style: italic; font-size: 22px; color: var(--muted); margin: 10px 0 20px; }
+  .lede { font-family: var(--sans); font-size: 18px; line-height: 1.55; margin: 0 0 20px; max-width: 34em; }
+  .ui { font-family: var(--sans); display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+  .ui span { border: 1px solid var(--ink); padding: 8px 14px; font-size: 14px; font-weight: 500; }
+  .ui span.on { background: var(--ink); color: var(--paper); }
+  .h2 { font-family: var(--display); font-size: 30px; line-height: 1.15; margin: 0 0 8px; font-weight: 400; }
+  .passage { font-family: Newsreader, serif; font-size: 17px; line-height: 1.6; border-left: 3px solid var(--ochre); padding-left: 16px; margin: 0; }
+  .passage-note { font-family: var(--sans); font-size: 12px; color: var(--muted); margin-top: 6px; }
+  .fact { font-family: var(--sans); display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 24px; }
+  .fact div { border-top: 1px solid var(--ink); padding-top: 6px; }
+  .fact small { display: block; font-size: 12px; color: var(--muted); letter-spacing: .04em; text-transform: uppercase; }
+  .fact strong { font-family: var(--display); font-weight: 400; font-size: 32px; }
+
+  .indic h3 { margin: 0; font-weight: 400; }
+  .lbl { font: 600 11px system-ui; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+  .or-d { font-family: var(--or-display); font-size: 40px; line-height: 1.3; }
+  .or-s { font-family: var(--or-sans); font-size: 17px; line-height: 1.75; margin: 6px 0 0; }
+  .hi-d { font-family: var(--hi-display); font-size: 40px; line-height: 1.3; }
+  .hi-s { font-family: var(--hi-sans); font-size: 17px; line-height: 1.7; margin: 6px 0 0; }
+  .why { padding: 14px 20px; border-top: 1px solid var(--rule); font-size: 14px; color: var(--muted); }
+  .why b { color: var(--ink); }
+
+  /* Mixer */
+  .mixer { border: 1px solid var(--rule); background: var(--paper); box-shadow: 4px 4px 0 var(--rule); }
+  .controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; padding: 16px 20px; background: var(--paper-2); border-bottom: 1px solid var(--rule); }
+  .controls label { font: 600 12px system-ui; display: grid; gap: 4px; }
+  .controls select { font: 15px system-ui; padding: 8px; min-height: 44px; border: 1px solid var(--ink); background: var(--paper); color: var(--ink); }
+  .mode { display: flex; gap: 8px; align-items: end; }
+  .mode button { font: 500 14px system-ui; min-height: 44px; padding: 0 14px; border: 1px solid var(--ink); background: var(--paper); color: var(--ink); cursor: pointer; }
+  .mode button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+  .mixer.now, .mixer.now .controls { background: var(--now-bg); color: var(--now-ink); }
+  .mixer.now .passage { border-color: var(--teal); }
+  .mixer.now .ui span.on { background: var(--teal); border-color: var(--teal); color: #fff; }
+  .note { font-size: 14px; color: var(--muted); max-width: 760px; }
+  .note li { margin-bottom: 6px; }
+  :focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="intro">
+    <h1>Choosing the type for British India</h1>
+    <p>Free alternatives to Ivy Presto with a geometric sans. Every face here is on Google Fonts (SIL Open Font Licence), so it can be self-hosted at no cost. Each pairing also needs Odia and Devanagari partners, because the spec treats the three languages as equals (G-05).</p>
+    <ul class="criteria">
+      <li><b>Display serif</b>High contrast, sharp and elegant, close to Ivy Presto. Used for titles and headings only.</li>
+      <li><b>Sans</b>Geometric, in the Montserrat family style but less common. Used for interface text and data.</li>
+      <li><b>Passage serif</b>Newsreader stays for long gazetteer quotes, because display faces tire the eye at reading length.</li>
+      <li><b>Indic partners</b>An Odia and a Devanagari face that echo each pairing's mood.</li>
+    </ul>
+    <p class="note">Sample layout only: the passage below is placeholder text written for this page, not a quote from any source.</p>
+  </section>
+
+  <h2 class="section">Curated pairings</h2>
+  <div id="pairs"></div>
+
+  <h2 class="section">Mix and match</h2>
+  <section class="mixer" id="mixer">
+    <div class="controls">
+      <label>Display serif <select id="m-display"></select></label>
+      <label>Sans <select id="m-sans"></select></label>
+      <label>Odia display <select id="m-or-display"></select></label>
+      <label>Odia sans <select id="m-or-sans"></select></label>
+      <label>Devanagari display <select id="m-hi-display"></select></label>
+      <label>Devanagari sans <select id="m-hi-sans"></select></label>
+      <div class="mode" role="group" aria-label="Mode">
+        <button type="button" id="mode-then" aria-pressed="true">Then</button>
+        <button type="button" id="mode-now" aria-pressed="false">Now</button>
+      </div>
+    </div>
+    <div class="pair-body" id="mixer-body"></div>
+  </section>
+
+  <h2 class="section">Notes</h2>
+  <ul class="note">
+    <li><b>Odia is the hard constraint.</b> No free high-contrast Odia display serif exists. Noto Serif Oriya is the most refined free option, so Odia headings will look calmer than Latin ones in every pairing. A custom Odia display face could be commissioned later.</li>
+    <li><b>Rozha One</b> is the closest Devanagari match to an Ivy Presto-style face (high contrast, sharp). <b>Tiro Devanagari Hindi</b> is quieter and more bookish.</li>
+    <li><b>Anek Odia and Anek Devanagari</b> come from the same family, which keeps the sans text in both scripts consistent.</li>
+    <li>Gloock, Libre Caslon Display and Gilda Display ship in one weight with no italic, so the browser fakes the italic subtitle. Instrument Serif and Bodoni Moda have true italics. Per the M0 finding, the final build will not use a faked slant for Odia or Devanagari either way.</li>
+    <li>Size: each Latin display face is about 20–40 KB as a subset WOFF2, within the spec's budget (NFR-PERF-05/07).</li>
+  </ul>
+</main>
+
+<template id="body-tpl">
+  <div class="latin">
+    <h3 class="title">British India</h3>
+    <p class="subtitle">Places in the colonial record, 1860s–1947</p>
+    <p class="lede">Type a place and see what the colonial-era record said about it, how it changed, and how it stands today — with every fact traced to its source.</p>
+    <div class="ui"><span class="on">English</span><span>Then</span><span>Now</span><span>Search a town, river or temple</span></div>
+    <h4 class="h2">Puri</h4>
+    <p class="passage">Placeholder passage: this is where an exact quotation from the 1908 gazetteer will sit, set in Newsreader, with its page reference beside it.</p>
+    <p class="passage-note">Source · edition · page — copy citation</p>
+    <div class="fact"><div><small>Edition</small><strong>1872</strong></div><div><small>Edition</small><strong>1908</strong></div><div><small>Census</small><strong>2011</strong></div></div>
+  </div>
+  <div class="indic">
+    <div lang="or"><div class="lbl">Odia</div><h3 class="or-d">ବ୍ରିଟିଶ ଭାରତ</h3><p class="or-s">ଗୋଟିଏ ସ୍ଥାନର ନାମ ଲେଖନ୍ତୁ ଏବଂ ଦେଖନ୍ତୁ ଔପନିବେଶିକ ଯୁଗର ଅଭିଲେଖ ଏହା ବିଷୟରେ କ'ଣ କହିଥିଲା।</p></div>
+    <div lang="hi"><div class="lbl">Hindi</div><h3 class="hi-d">ब्रिटिश भारत</h3><p class="hi-s">कोई स्थान लिखें और देखें कि औपनिवेशिक काल के अभिलेखों ने उसके बारे में क्या कहा।</p></div>
+  </div>
+</template>
+
+<script>
+  const PAIRS = [
+    { name: 'A · Gloock + Urbanist', rec: true, display: 'Gloock', sans: 'Urbanist', orD: 'Noto Serif Oriya', orS: 'Anek Odia', hiD: 'Rozha One', hiS: 'Anek Devanagari',
+      why: '<b>Closest to Ivy Presto.</b> Sharp, high-contrast serifs with some warmth, rather than cold Didone. Urbanist is a clean geometric sans that is less widely used than Montserrat. Rozha One gives Hindi headings the same drama.' },
+    { name: 'B · Bodoni Moda + Outfit', display: 'Bodoni Moda', sans: 'Outfit', orD: 'Noto Serif Oriya', orS: 'Anek Odia', hiD: 'Rozha One', hiS: 'Anek Devanagari',
+      why: '<b>Editorial Didone.</b> The most fashion-magazine of the four, with a true italic and an optical-size axis. Outfit is round and friendly, close to Montserrat in feel. The risk: thin hairlines can break up on low-end phone screens at small sizes.' },
+    { name: 'C · Instrument Serif + Sora', display: 'Instrument Serif', sans: 'Sora', orD: 'Noto Serif Oriya', orS: 'Anek Odia', hiD: 'Tiro Devanagari Hindi', hiS: 'Anek Devanagari',
+      why: '<b>Contemporary and condensed.</b> Narrow and elegant with a true italic; long titles in Odia and Hindi fit more easily beside it. Sora is wider and more technical, which suits the data-led Now mode.' },
+    { name: 'D · Libre Caslon Display + Albert Sans', display: 'Libre Caslon Display', sans: 'Albert Sans', orD: 'Noto Serif Oriya', orS: 'Noto Sans Oriya', hiD: 'Tiro Devanagari Hindi', hiS: 'Anek Devanagari',
+      why: '<b>Period-appropriate.</b> Caslon is the type of the colonial printing press, so it reads as an echo of the gazetteers themselves. It is the quietest and most classical option. Albert Sans is a clean Scandinavian-style geometric.' },
+  ];
+  const OPTS = {
+    display: ['Gloock', 'Bodoni Moda', 'Instrument Serif', 'Libre Caslon Display', 'Gilda Display', 'Ibarra Real Nova'],
+    sans: ['Urbanist', 'Outfit', 'Sora', 'Albert Sans', 'Red Hat Display', 'Lexend'],
+    orD: ['Noto Serif Oriya', 'Anek Odia', 'Baloo Bhaina 2', 'Noto Sans Oriya'],
+    orS: ['Anek Odia', 'Noto Sans Oriya', 'Baloo Bhaina 2'],
+    hiD: ['Rozha One', 'Tiro Devanagari Hindi', 'Noto Serif Devanagari', 'Martel'],
+    hiS: ['Anek Devanagari', 'Noto Sans Devanagari', 'Martel'],
+  };
+  const tpl = document.getElementById('body-tpl');
+  const apply = (el, p) => {
+    el.style.setProperty('--display', `'${p.display}', serif`);
+    el.style.setProperty('--sans', `'${p.sans}', sans-serif`);
+    el.style.setProperty('--or-display', `'${p.orD}', serif`);
+    el.style.setProperty('--or-sans', `'${p.orS}', sans-serif`);
+    el.style.setProperty('--hi-display', `'${p.hiD}', serif`);
+    el.style.setProperty('--hi-sans', `'${p.hiS}', sans-serif`);
+  };
+  const pairsEl = document.getElementById('pairs');
+  for (const p of PAIRS) {
+    const sec = document.createElement('section');
+    sec.className = 'pair';
+    sec.innerHTML = `<div class="pair-head"><span class="name">${p.name}${p.rec ? '<span class="tag">Recommended</span>' : ''}</span>
+      <span class="meta">${p.display} · ${p.sans} · ${p.orD} / ${p.orS} · ${p.hiD} / ${p.hiS}</span></div>
+      <div class="pair-body"></div><div class="why">${p.why}</div>`;
+    sec.querySelector('.pair-body').append(tpl.content.cloneNode(true));
+    apply(sec, p);
+    pairsEl.append(sec);
+  }
+  // Mixer
+  const mixer = document.getElementById('mixer');
+  document.getElementById('mixer-body').append(tpl.content.cloneNode(true));
+  const ids = { display: 'm-display', sans: 'm-sans', orD: 'm-or-display', orS: 'm-or-sans', hiD: 'm-hi-display', hiS: 'm-hi-sans' };
+  const state = { ...PAIRS[0] };
+  for (const [k, id] of Object.entries(ids)) {
+    const sel = document.getElementById(id);
+    for (const f of OPTS[k]) sel.add(new Option(f, f, false, f === state[k]));
+    sel.addEventListener('change', () => { state[k] = sel.value; apply(mixer, state); });
+  }
+  apply(mixer, state);
+  const then = document.getElementById('mode-then'), now = document.getElementById('mode-now');
+  const setMode = (isNow) => { mixer.classList.toggle('now', isNow); now.setAttribute('aria-pressed', isNow); then.setAttribute('aria-pressed', !isNow); };
+  then.onclick = () => setMode(false); now.onclick = () => setMode(true);
+</script>
+</body>
+</html>
