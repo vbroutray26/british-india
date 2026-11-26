@@ -19,11 +19,17 @@ sources:
     licence_stated: none stated
     rights_basis: public-domain
     credit_line: "O'Malley, L. S. S. Bengal District Gazetteers: Puri (1908). Scan: Digital Library of India via Internet Archive."
+    pages: 340
+    sha256: 631ba5e9380092d6a7920d55400491fbbf98c7db10bc6272eaa4a7b16176f3c0
     use: [primary-then-text, floods, famine, trade, temples, festivals, administration]
-    status: candidate
+    status: acquired
+    verified_on: "2026-11-26"
     notes: >-
-      Duplicate upload with identical PDF (34.2 MB): dli.ministry.19456. Use as fallback.
-      Check whether this scan includes the statistical appendix volume.
+      Acquired 2026-11-26 (DP-00): PDF, hOCR, djvu.txt, page map, scandata; checksums in
+      data/manifests/omalley-puri-1908.json. 340 scan leaves; printed pp. 1–299 body, 301–311 index.
+      One leaf appears to be missing (the page carrying the short Udayagiri entry, listed in the contents);
+      check the duplicate upload dli.ministry.19456 (identical PDF size, likely the same scan) or another copy.
+      Existing OCR: Tesseract 5 (archive.org derivative), mean word confidence 87.3.
 
   - source_id: puri-statistics-1905
     title: "Puri District Gazetteer: Statistics, 1901-02"

@@ -30,4 +30,6 @@ Current milestone and decisions: `docs/decisions.md`.
 - `pnpm --filter @bi/ui typecheck` — svelte-check (TypeScript 6 in this package)
 - `node packages/ui/scripts/pick-viz.mjs` — re-derive colour-blind-safe chart palettes
 - `cd pipeline && uv run pytest` — pipeline tests
+- `cd pipeline && uv run python -m pipeline.run --source omalley-puri-1908` — run DP-01…DP-07 (raw data: `gh repo clone vbroutray26/british-india-raw data/raw`)
+- `cd pipeline && uv run python -m pipeline.gold score --source <id>` — rule extraction vs GS-NUMERIC
 - `pnpm validate:data` — validate data/sources.yaml and data/media.yaml

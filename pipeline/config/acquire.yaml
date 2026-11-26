@@ -1,0 +1,10 @@
+# DP-00 acquire config: which files to fetch per source (spec §8.1).
+# Page images are NOT downloaded in bulk: they are read on demand over IIIF (spec §6.3).
+defaults:
+  host: internet-archive
+  # suffixes of archive.org derivative files to fetch
+  files: [".pdf", "_hocr.html", "_djvu.txt", "_page_numbers.json", "_scandata.xml"]
+  exclude: ["_text.pdf"]
+sources:
+  omalley-puri-1908:
+    identifier: dli.ministry.08613

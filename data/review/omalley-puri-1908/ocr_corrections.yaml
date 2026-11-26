@@ -1,0 +1,12 @@
+# OCR corrections applied by DP-01 to text_clean (text_raw keeps the OCR "as scanned", FR-TEXT-03).
+# Each correction is checked against the page image and recorded here; git is the audit log (FR-ADMIN-06).
+# page: printed page; find/replace: exact strings on that page's OCR text.
+version: 1
+corrections:
+  - page: "61"
+    find: "in 1901 was 49,364"
+    replace: "in 1901 was 49,334"
+    evidence: "page image, leaf 79; flagged by DP-04 numeric consistency check (two figures for Puri town, 1901)"
+    by: claude
+    date: "2026-11-26"
+    review: pending

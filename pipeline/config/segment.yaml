@@ -1,0 +1,39 @@
+# DP-02 segmentation config. Page numbers are printed page numbers (from the host's page map).
+sources:
+  omalley-puri-1908:
+    first_page: 1          # Chapter I starts here (front matter and plates are skipped)
+    last_page: 299         # Index (pp. 301–311) is excluded
+    gazetteer_pages: [233, 299]   # Chapter XVI, place entries in alphabetical order
+    # Entry headings as printed in the Table of Contents (p. xiv, scan leaf 16), transcribed from the
+    # page image on 2026-11-26. Diacritics as printed. review: owner to confirm against the scan.
+    gazetteer_headings_review: pending
+    # Udayagiri is listed in the contents but its page appears to be missing from this scan
+    # (340 leaves vs 339 mapped pages; the Index begins on the leaf after p. 299, printed p. 301).
+    # The caves are described under Khandagiri. Check the duplicate scan dli.ministry.19456 or another copy.
+    known_missing: [Udayagiri]
+    gazetteer_headings:
+      - Atri
+      - Balukhand
+      - Bānpur
+      - Barāl
+      - Bārunai Hill
+      - Bhubaneswar
+      - Biswanāth Hill
+      - Chitrakot Hill
+      - Dhauli
+      - Jatnī
+      - Kaipadar
+      - Kākatpur
+      - Kālupārā Ghāt
+      - Khandagiri
+      - Khurdā
+      - Khurdā subdivision
+      - Kodhār
+      - Konārak
+      - Kotdesh
+      - Pārikud
+      - Pipli
+      - Purī
+      - Purī subdivision
+      - Satyabādī
+      - Udayagiri

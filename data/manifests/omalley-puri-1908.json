@@ -1,0 +1,46 @@
+{
+  "files": {
+    "2531.30196.pdf": {
+      "bytes": 34157730,
+      "format": "Image Container PDF",
+      "md5": "22d40ac22221233f6592df60042ef7e1",
+      "retrieved_on": "2026-11-26",
+      "sha256": "631ba5e9380092d6a7920d55400491fbbf98c7db10bc6272eaa4a7b16176f3c0"
+    },
+    "2531.30196_djvu.txt": {
+      "bytes": 829582,
+      "format": "DjVuTXT",
+      "md5": "860ecc535f3431ffce7ad41564bc2343",
+      "retrieved_on": "2026-11-26",
+      "sha256": "b4e1379615175c4d78b1c2d47e9ff563c0be2f5b7c301e7d9c1118e374155287"
+    },
+    "2531.30196_hocr.html": {
+      "bytes": 20397314,
+      "format": "hOCR",
+      "md5": "196d9cb12695aea55e521c3e9d78c50f",
+      "retrieved_on": "2026-11-26",
+      "sha256": "69b7528660ad9bf942ab99d076e6f4609ba5d65e12e16875d5ad9eb02cd111f6"
+    },
+    "2531.30196_page_numbers.json": {
+      "bytes": 63412,
+      "format": "Page Numbers JSON",
+      "md5": "4397f9d8981441f0d4f9594e0b2a86a3",
+      "retrieved_on": "2026-11-26",
+      "sha256": "2ed7e02110b7cde5af902e15f635cbe76d1c60ae7d621df05fc011b8a9f92c85"
+    },
+    "2531.30196_scandata.xml": {
+      "bytes": 119872,
+      "format": "Scandata",
+      "md5": "c8476f918082c1cb10b8de65b21f80cd",
+      "retrieved_on": "2026-11-26",
+      "sha256": "1f5c8d29ffab3290cc1dde9e3d92c785c686324bec64be99a99fc5242b8e401f"
+    }
+  },
+  "host": "internet-archive",
+  "identifier": "dli.ministry.08613",
+  "iiif_manifest": "https://iiif.archive.org/iiif/3/dli.ministry.08613/manifest.json",
+  "printed_pages_mapped": 339,
+  "scan_leaves": 340,
+  "source_id": "omalley-puri-1908",
+  "url": "https://archive.org/details/dli.ministry.08613"
+}

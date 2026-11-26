@@ -8,10 +8,16 @@ dependencies = [
   "jsonschema>=4.23",
   "referencing>=0.35",
   "pydantic>=2.9",
+  "rapidfuzz>=3.14.6",
 ]
 
 [dependency-groups]
-dev = ["pytest>=8", "ruff>=0.7"]
+dev = [
+    "pillow>=13.0.0",
+    "pypdfium2>=5.15.2",
+    "pytest>=8",
+    "ruff>=0.7",
+]
 
 [tool.uv]
 package = false

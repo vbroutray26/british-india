@@ -18,8 +18,7 @@ __pycache__/
 .ruff_cache/
 data/interim/
 # raw scans live in the private data repo (see docs/architecture.md)
-data/raw/*
-!data/raw/README.md
+data/raw/
 
 # review copies of brand assets (masters live in design/assets/brand)
 design/specimens/*.svg
