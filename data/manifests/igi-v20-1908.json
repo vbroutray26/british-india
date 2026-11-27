@@ -1,0 +1,32 @@
+{
+  "files": {
+    "imperialgazettee030651mbp.pdf": {
+      "bytes": 25091900,
+      "format": "Text PDF",
+      "md5": "ae09a4af4fb3e1a489a1caf8c1a59959",
+      "retrieved_on": "2026-11-27",
+      "sha256": "7388eb5c72e0227af953255687c02be69c80faeccbfdb69a05515a0e9f33e6a6"
+    },
+    "imperialgazettee030651mbp_djvu.txt": {
+      "bytes": 1209767,
+      "format": "DjVuTXT",
+      "md5": "64f16f47bb91cd1f5428c21bfc9898ab",
+      "retrieved_on": "2026-11-27",
+      "sha256": "7262e53341e0bed1f85b939644dc9c9776aa1d58c1886e4873c807c3e1b25e81"
+    },
+    "imperialgazettee030651mbp_scandata.xml": {
+      "bytes": 134511,
+      "format": "Scandata",
+      "md5": "b29a2e4c35bfb6c55383232b9e966ee3",
+      "retrieved_on": "2026-11-27",
+      "sha256": "4d3533c78298ced7b8c636f28c17b3002bf6bd4b2a78a599b7092f27faa137b7"
+    }
+  },
+  "host": "internet-archive",
+  "identifier": "imperialgazettee030651mbp",
+  "iiif_manifest": "https://iiif.archive.org/iiif/3/imperialgazettee030651mbp/manifest.json",
+  "printed_pages_mapped": 0,
+  "scan_leaves": 448,
+  "source_id": "igi-v20-1908",
+  "url": "https://archive.org/details/imperialgazettee030651mbp"
+}

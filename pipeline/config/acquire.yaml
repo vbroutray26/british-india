@@ -8,3 +8,5 @@ defaults:
 sources:
   omalley-puri-1908:
     identifier: dli.ministry.08613
+  igi-v20-1908:
+    identifier: imperialgazettee030651mbp   # no hOCR or page map on archive.org: DP-01 needs another OCR path

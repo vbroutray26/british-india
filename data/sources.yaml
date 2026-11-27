@@ -61,11 +61,18 @@ sources:
     rights_basis: public-domain
     credit_line: "The Imperial Gazetteer of India, vol. XX (Oxford, 1908). Scan via Internet Archive."
     use: [district-entry, town-entries, coordinates-in-headings]
-    status: candidate
+    pages: 448
+    sha256: 7388eb5c72e0227af953255687c02be69c80faeccbfdb69a05515a0e9f33e6a6
+    status: acquired
+    verified_on: "2026-11-27"
     notes: >-
       Contains the Puri District, Puri Subdivision and Puri Town entries. Other Puri-district
       places (e.g. Konarak, Chilka Lake, Khurda, Satyabadi) are in other volumes — list them in M2.
       DSAL also hosts page images of the IGI (dsal.uchicago.edu/reference/gazetteer) — alternative scan.
+      Acquired 2026-11-27 (DP-00): PDF, djvu.txt, scandata (448 leaves); checksums in
+      data/manifests/igi-v20-1908.json. The archive.org item has no hOCR and no page map, so DP-01 cannot
+      run on it as built; the Puri entries (printed pp. ~399-411: District, Subdivision, Town) need the
+      second-read engine (Vision) on full-resolution pages, or hOCR from another copy.
 
   - source_id: igi-bengal-v2-1909
     title: "Imperial Gazetteer of India, Provincial Series: Bengal, Vol. II"
