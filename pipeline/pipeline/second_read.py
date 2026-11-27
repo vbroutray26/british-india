@@ -40,11 +40,13 @@ ENGINE = "Apple Vision VNRecognizeTextRequest (accurate, en-US, no language corr
 _MACRONS = str.maketrans({"ä": "ā", "ă": "ā", "â": "ā", "à": "ā", "á": "ā", "ï": "ī", "î": "ī", "í": "ī",
                           "ü": "ū", "û": "ū", "ú": "ū", "Ä": "Ā", "Ă": "Ā", "Á": "Ā", "Ï": "Ī", "Í": "Ī",
                           "Ü": "Ū", "Ú": "Ū"})
+# Vision sometimes returns Cyrillic look-alikes for Latin letters (the book prints no Cyrillic).
+_CYRILLIC = str.maketrans(dict(zip("аеорсхуікмАВЕКМНОРСТХ", "aeopcxyikmABEKMHOPCTX", strict=True)))
 _DECIMAL = re.compile(r"(?<=\d)[:.•∙·°](?=\d)")  # the book prints decimals with a raised point
 
 
 def fix_chars(t: str) -> str:
-    return _DECIMAL.sub("·", t.translate(_MACRONS))
+    return _DECIMAL.sub("·", t.translate(_MACRONS).translate(_CYRILLIC))
 
 
 def page_numbers(text: str) -> set[str]:
@@ -121,12 +123,72 @@ def _rows(lay: dict) -> list[dict]:
     return rows
 
 
+def _insets(rec: dict, lay: dict) -> list[tuple[dict, list[dict]]]:
+    """Small tables set into the left of the text column, with the text wrapped beside them (D-32): a run of
+    at least four short lines that start at the same place right of the column's left edge and end at its
+    right edge, with at least six boxes (the cells) wholly left of them. Returns (region, cells) pairs."""
+    w, body = rec["w"], lay["body"]
+    longs = [ln for ln in body if ln["x1"] - ln["x0"] > 0.45 * w]
+    if len(longs) < 5:
+        return []
+    bx0, bx1 = statistics.median(ln["x0"] for ln in longs), statistics.median(ln["x1"] for ln in longs)
+    span = bx1 - bx0
+    narrow = sorted((ln for ln in body if ln["x1"] > bx1 - 0.02 * w and bx0 + 0.25 * span < ln["x0"] < bx0 + 0.75 * span),
+                    key=lambda ln: ln["y0"])
+    runs: list[list[dict]] = []
+    for ln in narrow:
+        if runs and abs(ln["x0"] - runs[-1][0]["x0"]) < 0.015 * w and ln["y0"] - runs[-1][-1]["y1"] < 2 * lay["lh"] and not any(
+                runs[-1][-1]["y0"] < f["y0"] < ln["y0"] for f in longs):
+            runs[-1].append(ln)
+        else:
+            runs.append([ln])
+    out = []
+    for run in runs:
+        if len(run) < 4:
+            continue
+        x, y0, y1 = min(ln["x0"] for ln in run), run[0]["y0"] - 0.5 * lay["lh"], run[-1]["y1"] + 0.5 * lay["lh"]
+        cells = [ln for ln in body if ln["x1"] <= x + 0.005 * w and y0 <= (ln["y0"] + ln["y1"]) / 2 <= y1]
+        if len(cells) >= 6 and sum(bool(_DIGITS.search(c["t"])) for c in cells) >= 3:
+            out.append(({"x_frac": round(x / w, 4), "y0_frac": round(y0 / rec["h"], 4), "y1_frac": round(y1 / rec["h"], 4),
+                         "first_frac": round(run[0]["y0"] / rec["h"], 4)}, cells))
+    return out
+
+
+def _table_rows(cells: list[dict], w: int) -> list[str]:
+    """Cells into rows: each cell joins the row whose label (a cell in the leftmost column) is nearest in height,
+    if near enough; the others (headings, units) form rows of their own."""
+    def c(b: dict) -> float:
+        return (b["y0"] + b["y1"]) / 2
+    left = min(b["x0"] for b in cells)
+    labels = sorted((b for b in cells if b["x0"] < left + 0.03 * w), key=c)
+    steps = [c(b) - c(a) for a, b in itertools.pairwise(labels)]
+    tol = 0.6 * statistics.median(steps) if steps else statistics.median(b["y1"] - b["y0"] for b in cells)
+    rows = [[b] for b in labels]
+    for b in sorted((b for b in cells if b not in labels), key=c):
+        near = min(rows, key=lambda r: abs(c(r[0]) - c(b)))
+        if abs(c(near[0]) - c(b)) < tol:
+            near.append(b)
+        else:
+            rows.append([b])
+    rows.sort(key=lambda r: c(r[0]))
+    return [fix_chars(" ".join(b["t"] for b in sorted(r, key=lambda b: b["x0"]))) for r in rows]
+
+
+def inset_tables(rec: dict) -> list[dict]:
+    """Inset tables of a page (D-32): their region (fractions of the page) and their rows, read from the cells."""
+    lay = _layout(rec)
+    return [reg | {"rows": _table_rows(cells, rec["w"])} for reg, cells in _insets(rec, lay)] if lay else []
+
+
 def body_rows(rec: dict) -> list[dict]:
-    """Printed body lines of a single-column page, margin notes left out: text, top and height as fractions of
-    the page height, and whether the line is indented (a paragraph start)."""
+    """Printed body lines of a single-column page, margin notes and the cells of inset tables left out: text,
+    top and height as fractions of the page height, and whether the line is indented (a paragraph start)."""
     lay = _layout(rec)
     if not lay:
         return []
+    cut = {id(b) for _, cells in _insets(rec, lay) for b in cells}
+    if cut:
+        lay = lay | {"body": [b for b in lay["body"] if id(b) not in cut]}
     rows = _rows(lay)
     xs = [r["f"][0]["x0"] for r in rows]
     full = [r["f"][-1]["x1"] - r["f"][0]["x0"] > 0.45 * rec["w"] for r in rows]  # table rows and short lines are not

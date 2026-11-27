@@ -198,16 +198,26 @@ def consistency(facts: list[dict]) -> list[dict]:
             for k, v in by.items() if len({x["value"]["number"] for x in v}) > 1]
 
 
+def lookback_scope(entries: list[dict]) -> dict[str, object]:
+    """What the text before a passage runs back through: a table's census year is stated above it, sometimes
+    in the section before (a side-note heading can fall between), so for a section it is the whole chapter;
+    for a gazetteer entry it is the entry alone."""
+    return {e["entry_id"]: ("chapter", e.get("chapter")) if e["kind"] == "section" else e["entry_id"] for e in entries}
+
+
 def run(source_id: str) -> list[dict]:
     d = INTERIM_DIR / "classify" / source_id
     passages = read_jsonl(d / "passages.jsonl")
     by_entry = {e: p["place_id"] for p in read_jsonl(d / "places.jsonl") for e in p["entry_ids"]}
-    spans = {e["entry_id"]: e["page_spans"] for e in read_jsonl(INTERIM_DIR / "segment" / source_id / "entries.jsonl")}
+    entries = read_jsonl(INTERIM_DIR / "segment" / source_id / "entries.jsonl")
+    spans = {e["entry_id"]: e["page_spans"] for e in entries}
+    scope = lookback_scope(entries)
     facts, before = [], {}
     for p in passages:
         e = p["entry_id"]
-        facts += extract(p, by_entry.get(e), spans.get(e), before.get(e, "")[-2000:])
-        before[e] = before.get(e, "") + "\n\n" + p["text"]
+        k = scope.get(e, e)
+        facts += extract(p, by_entry.get(e), spans.get(e), before.get(k, "")[-2000:])
+        before[k] = before.get(k, "") + "\n\n" + p["text"]
     write_jsonl(INTERIM_DIR / "rules" / source_id / "facts.jsonl", facts)
     conflicts = consistency(facts)
     write_jsonl(INTERIM_DIR / "rules" / source_id / "conflicts.jsonl", conflicts)

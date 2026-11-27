@@ -8,7 +8,8 @@ maps scan leaves to printed page numbers, separates running heads, and writes on
      text_raw, text_clean, recovered, confidence, low_conf_words, words, flags}
   A line may also carry: recovered (from the second read, D-27), first_word / first_read (the hOCR's
   reading before a fix or merge from the second read, D-29, D-31), corrected (an audited correction was
-  applied), col (1 = right column of a two-column page such as the index).
+  applied), col (1 = right column of a two-column page such as the index), table (a row of an inset
+  table, read from the second read's cells; also recovered, D-32).
 
 Layout (O'Malley district gazetteers): one text column; section headings printed as side-notes in the
 outer margin; new paragraphs indented; footnotes in smaller type at the foot. Lines are re-sorted by
@@ -23,6 +24,7 @@ from __future__ import annotations
 
 import argparse
 import html
+import itertools
 import json
 import re
 import unicodedata
@@ -44,6 +46,7 @@ class Line:
     bbox: tuple[int, int, int, int] = (0, 0, 0, 0)
     fsize: float = 0.0
     xs: list[tuple[int, int]] = field(default_factory=list)  # each word's left and right edge
+    ys: list[tuple[int, int]] = field(default_factory=list)  # each word's top and bottom
 
     @property
     def text(self) -> str:
@@ -78,6 +81,7 @@ class HocrParser(HTMLParser):
         self._word_conf: int | None = None
         self._word_fsize: float = 0.0
         self._word_x: tuple[int, int] = (0, 0)
+        self._word_y: tuple[int, int] = (0, 0)
         self._buf: list[str] = []
 
     def handle_starttag(self, tag, attrs):
@@ -95,6 +99,7 @@ class HocrParser(HTMLParser):
             self._word_conf = int(t.get("x_wconf", "0"))
             wb = [int(x) for x in t.get("bbox", "0 0 0 0").split()]
             self._word_x = (wb[0], wb[2])
+            self._word_y = (wb[1], wb[3])
             self._word_fsize = float(t.get("x_fsize", "0") or 0)
             self._buf = []
 
@@ -108,6 +113,7 @@ class HocrParser(HTMLParser):
             if w:
                 self._line.words.append((w, self._word_conf))
                 self._line.xs.append(self._word_x)
+                self._line.ys.append(self._word_y)
                 self._line.fsize = max(self._line.fsize, self._word_fsize)
             self._word_conf = None
 
@@ -242,6 +248,7 @@ def layout(lines: list[Line], page_w: int, page_h: int) -> dict:
     med_all = sizes_all[len(sizes_all) // 2] if sizes_all else 0
     # Specks: very short strings in tiny type are scan noise, not text.
     lines = [ln for ln in lines if not (len(ln.text.strip()) <= 2 and ln.fsize < med_all * 0.6)]
+    lines = [piece for ln in lines for piece in split_jumps(ln, page_w)]
     if not lines:
         return {"body": [], "margin": [], "footnotes": []}
     cols = split_columns(lines, page_w)
@@ -270,6 +277,46 @@ def layout(lines: list[Line], page_w: int, page_h: int) -> dict:
     while body and med and 0 < body[-1].fsize < med * 0.78 and body[-1].bbox[1] > page_h * 0.66:
         foot.insert(0, body.pop())
     return {"body": body, "margin": margin, "footnotes": foot, "x0": col_x0}
+
+
+def split_jumps(ln: Line, page_w: int) -> list[Line]:
+    """Split a line the OCR gathered from several printed lines (D-32): where a word jumps back left by more
+    than a fifth of the page and down or up by more than half a word's height, a new line starts. Each piece
+    gets the box of its own words, so it sorts into its printed place."""
+    if len(ln.ys) != len(ln.words) or len(ln.xs) != len(ln.words) or len(ln.words) < 2:
+        return [ln]
+    hs = sorted(b - a for a, b in ln.ys)
+    h = hs[len(hs) // 2]
+    cuts = [k for k in range(1, len(ln.words)) if ln.xs[k][0] < ln.xs[k - 1][0] - 0.2 * page_w
+            and abs(ln.ys[k][0] - ln.ys[k - 1][0]) > 0.5 * h]
+    if not cuts:
+        return [ln]
+    out = []
+    for a, b in itertools.pairwise([0, *cuts, len(ln.words)]):
+        xs, ys = ln.xs[a:b], ln.ys[a:b]
+        y0 = sorted(y for y, _ in ys)[len(ys) // 2]  # the median top: a stray mark does not move the line
+        out.append(Line(words=ln.words[a:b], bbox=(min(x for x, _ in xs), y0, max(x for _, x in xs), y0 + h),
+                        fsize=ln.fsize, xs=xs, ys=ys))
+    return out
+
+
+def cut_inset(lines: list[Line], insets: list[dict], page_w: int, page_h: int) -> list[Line]:
+    """Body lines with the words of inset tables cut out (D-32): beside a table the OCR runs its cells into the
+    wrapped text. Only the words right of the table (the text) are kept; the table is read from the second
+    read's cells. Lines left empty are dropped."""
+    out = []
+    for ln in lines:
+        c = (ln.bbox[1] + ln.bbox[3]) / 2 / page_h
+        reg = next((r for r in insets if r["y0_frac"] <= c <= r["y1_frac"]), None)
+        if reg is None or len(ln.xs) != len(ln.words):
+            out.append(ln)
+            continue
+        keep = [k for k, (a, _) in enumerate(ln.xs) if a >= (reg["x_frac"] - 0.01) * page_w]
+        if keep:
+            xs = [ln.xs[k] for k in keep]
+            out.append(Line(words=[ln.words[k] for k in keep], bbox=(xs[0][0], ln.bbox[1], xs[-1][1], ln.bbox[3]),
+                            fsize=ln.fsize, xs=xs))
+    return out
 
 
 def _gutter(ln: Line, page_w: int) -> tuple[int, float] | None:
@@ -409,6 +456,8 @@ def merge_reads(rows: list[dict], vision_dir: Path, hyphen_words: set[str]) -> i
 # ---------------------------------------------------------------- stage
 
 def run(source_id: str, raw_dir: Path = RAW_DIR, out_dir: Path = INTERIM_DIR / "ocr") -> list[dict]:
+    from pipeline.second_read import inset_tables
+
     folder = raw_dir / source_id
     hocr = next(folder.glob("*_hocr.html"))
     parser = HocrParser()
@@ -433,6 +482,11 @@ def run(source_id: str, raw_dir: Path = RAW_DIR, out_dir: Path = INTERIM_DIR / "
         lay = layout(p.lines, p.width, p.height)
         sorted_page = Page(index=p.index, width=p.width, height=p.height, lines=lay["body"])
         head, body = split_running_head(sorted_page, printed)
+        text_raw = "\n".join(ln.text for ln in body)
+        vision = folder / "ocr_vision" / f"leaf_{leaf:04d}.json"
+        insets = [] if "right" in lay or not vision.exists() else inset_tables(json.loads(vision.read_text()))
+        if insets:
+            body = cut_inset(body, insets, p.width, p.height)
         x0 = lay.get("x0")
         # Indent is measured against neighbouring lines, so page skew does not look like an indent.
         line_recs = []
@@ -442,8 +496,18 @@ def run(source_id: str, raw_dir: Path = RAW_DIR, out_dir: Path = INTERIM_DIR / "
                               "indent": bool(x0 is not None and ln.bbox[0] - min(near) > INDENT_MIN)})
             if any(ln is r for r in lay.get("right", [])):
                 line_recs[-1]["col"] = 1  # right column of a two-column page: read after the left
-        recovered = [] if "right" in lay else recover_lines(line_recs, folder / "ocr_vision" / f"leaf_{leaf:04d}.json", p.height,
+        recovered = [] if "right" in lay else recover_lines(line_recs, vision, p.height,
                                   [normalise_chars(ln.text) for ln in lay["footnotes"] + lay["margin"]] + [head or ""])
+        for t in insets:  # D-32: the table's rows, read before the text wrapped beside it
+            beside = [ln for ln in line_recs if t["y0_frac"] * p.height <= ln["y"] <= t["y1_frac"] * p.height]
+            for ln in beside:
+                ln["indent"] = False  # the wrapped lines start right of the column edge, not at an indent
+            # before the first wrapped line (the two reads place lines a few pixels apart)
+            top = min([int(t["first_frac"] * p.height)] + [ln["y"] for ln in beside]) - len(t["rows"])
+            line_recs += [{"t": r, "y": top + k, "indent": False, "recovered": True, "table": True}
+                          for k, r in enumerate(t["rows"])]
+            recovered += t["rows"]
+        line_recs.sort(key=lambda ln: (ln.get("col", 0), ln["y"]))
         words = [c for ln in body for _, c in ln.words]
         conf = round(sum(words) / len(words), 1) if words else 0.0
         low = sum(1 for c in words if c < LOW_CONF)
@@ -476,7 +540,7 @@ def run(source_id: str, raw_dir: Path = RAW_DIR, out_dir: Path = INTERIM_DIR / "
             "lines": line_recs,
             "margin": merge_margin(lay["margin"]),
             "footnotes": [normalise_chars(ln.text) for ln in lay["footnotes"]],
-            "text_raw": "\n".join(ln.text for ln in body),
+            "text_raw": text_raw,
             "text_clean": paragraphs(line_recs, hyphen_words),
             "recovered": recovered,  # lines only the second read has (D-27); not in text_raw
             "confidence": conf,

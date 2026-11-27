@@ -159,3 +159,11 @@ def test_census_table_rows_are_different_places_not_conflicts():
 def test_census_year_tolerates_ocr_consus_across_a_long_clause():
     assert pops("Tux firet consus of the district was taken in the year 1872, and the result was to show for the "
                 "district, as now constituted, a population of 769,779 persons.") == [(1872, 769779)]
+
+
+def test_a_tables_census_year_is_looked_for_back_through_the_chapter_but_not_across_gazetteer_entries():
+    from pipeline.rules import lookback_scope
+    s = lookback_scope([{"entry_id": "a", "kind": "section", "chapter": "III"}, {"entry_id": "b", "kind": "section", "chapter": "III"},
+                        {"entry_id": "c", "kind": "section", "chapter": "IV"}, {"entry_id": "d", "kind": "gazetteer", "chapter": None},
+                        {"entry_id": "e", "kind": "gazetteer", "chapter": None}])
+    assert s["a"] == s["b"] != s["c"] and s["d"] != s["e"]

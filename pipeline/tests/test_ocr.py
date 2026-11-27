@@ -124,3 +124,29 @@ def test_running_text_with_wide_word_spacing_is_not_split_into_columns():
             for i in range(6)]
     out = layout(rows, 3300, 5300)
     assert len(out["body"]) == 6
+
+
+def test_a_line_gathered_from_several_printed_lines_is_split_back_into_them():
+    good = [_words((300, f"body line {i} of the running text"), y=500 + i * 100) for i in range(5)]
+    mash = _words((1000, "Jagannath and his domain, held sacred"), (300, "But the Afghans, though defeated,"), y=0)
+    mash.ys = [(650, 700)] * 6 + [(950, 1000)] * 5  # the OCR's one line holds words from two printed lines
+    mash.bbox = (2390, 1100, 2440, 1160)
+    out = layout(good + [mash], 3300, 5300)
+    assert [l.text for l in out["body"]] == [good[0].text, good[1].text, "Jagannath and his domain, held sacred",
+                                             good[2].text, good[3].text, good[4].text, "But the Afghans, though defeated,"]
+
+
+def test_a_line_with_a_side_note_glued_on_is_not_split():
+    ln = _words((300, "settlement they numbered 1,000 with an"), (2900, "Kherids"), y=500)
+    ln.ys = [(500, 560)] * 6 + [(470, 530)]
+    from pipeline.ocr import split_jumps
+    assert split_jumps(ln, 3300) == [ln]
+
+
+def test_inset_table_cells_are_cut_from_the_lines_beside_it():
+    from pipeline.ocr import cut_inset
+    rows = [_words((300, "full width line of the running text above"), y=500),
+            _words((300, "Puri 8,59"), (1750, "from fever (using the"), y=600),
+            _words((1750, "denote malarial fever"), y=700)]
+    kept = cut_inset(rows, [{"x_frac": 1750 / 3300, "y0_frac": 580 / 5300, "y1_frac": 760 / 5300}], 3300, 5300)
+    assert [l.text for l in kept] == ["full width line of the running text above", "from fever (using the", "denote malarial fever"]

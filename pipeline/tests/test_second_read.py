@@ -17,6 +17,10 @@ def test_fix_chars_maps_umlauts_to_macrons_and_raised_points_to_middle_dot():
     assert fix_chars("Jagannäth Bhubanesvar 4:52 acres, 8.11 and Swetgangă") == "Jagannāth Bhubanesvar 4·52 acres, 8·11 and Swetgangā"
 
 
+def test_fix_chars_maps_cyrillic_look_alikes_to_latin():
+    assert fix_chars("Mоsт April mаx. Кагиu") == "Mosт April max. Kaгиu"  # т, г, и have no look-alike: left as read
+
+
 def test_fix_chars_keeps_ordinary_punctuation():
     assert fix_chars("pp. 27-28; Ch. 114. In 1905.") == "pp. 27-28; Ch. 114. In 1905."
 
@@ -284,3 +288,36 @@ def test_merge_never_swaps_a_word_for_an_unlike_one():
     v = "—A village in the Khurdā subdivision, situated"
     assert merge_line(h, v, {"a", "village", "in", "the", "khurda", "subdivision", "situated"}) == (
         "Bhubaneswar.—A village in the Khurdā subdivision, situated")
+
+
+def _inset_page():
+    """A page with a small table set into the left of the text column; the text wraps beside it."""
+    lines = body(4)  # full-width lines above, y 400..640
+    for i, t in enumerate(["exaggerate the number of deaths", "from fever (using the term to", "denote malarial fever), and to",
+                           "group under that heading all", "diseases in which the temperature"]):
+        lines.append(ln(t, 1050, 720 + i * 80, 2100))
+    cells = [("YEARS.", 330, 760), ("1901-05.", 560, 752), ("1906.", 840, 752),
+             ("Puri", 330, 860), ("8·59", 600, 856), ("7·27", 850, 853),
+             ("Bengal", 330, 940), ("21·78", 590, 938), ("22·41", 840, 934)]
+    lines += [ln(t, x, y, x + 150, 40) for t, x, y in cells]
+    lines += [ln(f"after line {i} of the running text here", 300, 1120 + i * 80, 2100) for i in range(3)]
+    return {"w": W, "h": H, "lines": lines}
+
+
+def test_an_inset_table_is_read_row_by_row_from_its_cells():
+    from pipeline.second_read import inset_tables
+    (t,) = inset_tables(_inset_page())
+    assert t["rows"] == ["YEARS. 1901-05. 1906.", "Puri 8·59 7·27", "Bengal 21·78 22·41"]
+    assert abs(t["x_frac"] - 1050 / W) < 0.001 and t["y0_frac"] < 720 / H < 1040 / H < t["y1_frac"]
+
+
+def test_body_rows_leave_out_the_cells_of_an_inset_table():
+    from pipeline.second_read import body_rows
+    texts = [r["t"] for r in body_rows(_inset_page())]
+    assert "exaggerate the number of deaths" in texts and not any("8·59" in t or "Bengal" in t for t in texts)
+
+
+def test_a_page_of_short_lines_is_not_an_inset_table():
+    from pipeline.second_read import inset_tables
+    lines = body(4) + [ln(t, 1050, 720 + i * 80, 2100) for i, t in enumerate(["one short line", "and another", "a third", "a fourth"])]
+    assert inset_tables({"w": W, "h": H, "lines": lines}) == []

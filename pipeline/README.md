@@ -138,4 +138,21 @@ full-resolution archive.org JP2), `pipeline.gold` (contact sheets for labelling;
   five worst pages CER is 2.7% and numerals 8.7%, so two free engines will not reach 2% / 0.5%: that needs
   a third reader (D-24's open question) or owner review of the text, which the spec's "after review"
   allows for numerals. GS-NUMERIC 69/69 and GS-SEG 49/50 unchanged.
+- **Inset tables and gathered lines (D-32).** GS-OCR CER 3.90% → **3.44%** (folded 3.00%; numerals
+  21.7% → **11.4%**). Where a small table is set into the text column, Vision reads each cell as its own
+  box: a run of at least four short lines starting at one place right of the column edge, with at least
+  six boxes wholly left of them, is an inset table. Its cells are grouped into rows by the label column and
+  inserted before the wrapped text, as recovered lines (`table: true`, listed in `recovered`), so DP-07
+  queues their figures as read by one engine only; the hOCR's words left of the wrapped text are cut, and
+  the wrapped lines are not taken as indents. Found on pp. 79, 127, 175, 223 and 297. Separately, the hOCR
+  sometimes gathers words from several printed lines into one "line" (p. 33: the running head and two
+  dropped lines; pp. 215, 228: text and side-note lines run together); each word keeps its own box, so a
+  line is split where a word jumps back left by more than a fifth of the page and down or up by more
+  than half a word's height, and each piece sorts into its place (3.52% → 3.48%, and p. 215's heading
+  is found again). That brings real side-notes back, one of which ("Density of population", p. 60) falls
+  between the p. 60 census table and the "census of 1901" above it, so DP-04 now looks for a table's
+  census year back through its chapter, not only its section (gazetteer entries still look only within
+  themselves). Vision's Cyrillic look-alike letters are mapped to Latin. Table cells are still misread
+  by both engines ("8-69" for 8·59) and Vision misses some (p. 175). GS-NUMERIC 69/69 and GS-SEG 49/50
+  unchanged; p. 79 is still merged.
 - GS-EXTRACT: not started.
