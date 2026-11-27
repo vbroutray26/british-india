@@ -21,3 +21,4 @@
 .hero .subtitle { font-family: var(--font-serif); font-style: italic; font-synthesis: none; font-size: var(--step-1); color: var(--color-text-muted); margin-top: var(--space-2); }
 .hero .lede { font-size: var(--step-1); }
 .notice { border-left: 3px solid var(--color-ai); padding: var(--space-3) var(--space-4); background: var(--color-surface); border-radius: var(--radius-card); }
+.hero .browse { font-size: var(--step-1); font-weight: 600; }

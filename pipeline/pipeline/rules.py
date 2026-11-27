@@ -198,6 +198,17 @@ def consistency(facts: list[dict]) -> list[dict]:
             for k, v in by.items() if len({x["value"]["number"] for x in v}) > 1]
 
 
+# In O'Malley's gazetteer entries a place's own figures (area, census) come in its opening paragraphs; later
+# paragraphs describe the temples, tanks and other features inside it (Purī p. 295: "the Narendra tank ...
+# covering an area of 8·11 acres"). A figure past the opening waits for fact_subjects.yaml (D-41).
+OPENING_PASSAGES = 4
+
+
+def entry_place(p: dict, place_id: str | None) -> str | None:
+    """The place a figure in this passage belongs to without review: the entry's place, in its opening only."""
+    return place_id if place_id and int(p["passage_id"].rsplit("_", 1)[1]) < OPENING_PASSAGES else None
+
+
 def _page(f: dict) -> str | None:
     m = re.match(r"page (\S+);", f.get("notes") or "")
     return m.group(1) if m else None
@@ -239,7 +250,7 @@ def run(source_id: str) -> list[dict]:
     for p in passages:
         e = p["entry_id"]
         k = scope.get(e, e)
-        facts += extract(p, by_entry.get(e), spans.get(e), before.get(k, "")[-2000:])
+        facts += extract(p, entry_place(p, by_entry.get(e)), spans.get(e), before.get(k, "")[-2000:])
         before[k] = before.get(k, "") + "\n\n" + p["text"]
     subjects = (read_yaml(DATA_DIR / "review" / source_id / "fact_subjects.yaml") or {}).get("subjects", []) \
         if (DATA_DIR / "review" / source_id / "fact_subjects.yaml").exists() else []

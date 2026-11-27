@@ -1,0 +1,40 @@
+---
+import Base from '../../../layouts/Base.astro';
+import PlaceCard from '@bi/ui/components/PlaceCard.svelte';
+import { LOCALES, t, type Locale } from '../../../i18n';
+import { typeLabel } from '../../../i18n/labels';
+import { ancestors, nameOf, places, slugOf, sortPlaces } from '../../../data/curated';
+
+export function getStaticPaths() {
+  return LOCALES.map((lang) => ({ params: { lang } }));
+}
+const lang = Astro.params.lang as Locale;
+const list = sortPlaces(places);
+---
+<Base lang={lang} title={t('places.title', lang)}>
+  <section class="page-head">
+    <h1>{t('places.title', lang)}</h1>
+    <p class="lede">{t('places.lede', lang)}</p>
+  </section>
+  <ul class="place-grid" role="list">
+    {list.map((p) => (
+      <li>
+        <PlaceCard
+          name={nameOf(p)}
+          type={typeLabel(p.type, lang)}
+          districtThen={p.type === 'district' ? undefined : ancestors(p).map(nameOf).join(' › ')}
+          href={`/${lang}/places/${slugOf(p.place_id)}/`}
+          labels={{ then: t('place.then', lang), now: t('place.now', lang) }}
+        />
+      </li>
+    ))}
+  </ul>
+</Base>
+
+<style>
+  .page-head { padding-block: var(--space-8) var(--space-6); max-width: var(--layout-reading); }
+  .page-head h1 { font-size: var(--step-5); margin: 0; }
+  .lede { font-size: var(--step-1); color: var(--color-text-muted); }
+  .place-grid { list-style: none; padding: 0; margin: 0 0 var(--space-16); display: grid; gap: var(--space-4);
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr)); }
+</style>

@@ -4,10 +4,43 @@
 @import '@fontsource/gloock/latin-ext.css';        /* diacritics: Jagannáth, Pooree… */
 @import '@fontsource/rozha-one/devanagari.css';    /* display, Devanagari */
 @import '@fontsource-variable/noto-serif-oriya/wght.css'; /* display, Odia */
-@import '@fontsource-variable/urbanist/wght.css';  /* sans, Latin */
 @import '@fontsource/anek-devanagari/devanagari-400.css'; /* sans, Devanagari — static: 91 KB vs 252 KB variable */
 @import '@fontsource/anek-devanagari/devanagari-600.css';
 @import '@fontsource/anek-odia/oriya-400.css';   /* sans, Odia — static: 34 KB vs 87 KB variable */
 @import '@fontsource/anek-odia/oriya-600.css';
-@import '@fontsource-variable/newsreader/wght.css';        /* passages (archival voice) */
-@import '@fontsource-variable/newsreader/wght-italic.css'; /* true italic for subtitles/quotes */
+
+/* Urbanist (sans) and Newsreader (passages; true italic for subtitles and quotes) are declared here rather than
+   imported from Fontsource: its basic-Latin face also claims the combining macron U+0304, so Chrome drew
+   ā ī ū as a base letter plus a loose macron instead of the precomposed glyph in the Latin-extended file.
+   Here the basic-Latin range leaves out combining marks, and the Latin-extended face is declared last, so it is
+   tried first for transliterated names (Purī, Bānpur). No Vietnamese subset is loaded. */
+@font-face {
+  font-family: 'Urbanist Variable'; font-style: normal; font-display: swap; font-weight: 100 900;
+  src: url('@fontsource-variable/urbanist/files/urbanist-latin-wght-normal.woff2') format('woff2-variations');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Urbanist Variable'; font-style: normal; font-display: swap; font-weight: 100 900;
+  src: url('@fontsource-variable/urbanist/files/urbanist-latin-ext-wght-normal.woff2') format('woff2-variations');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Newsreader Variable'; font-style: normal; font-display: swap; font-weight: 100 900;
+  src: url('@fontsource-variable/newsreader/files/newsreader-latin-wght-normal.woff2') format('woff2-variations');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Newsreader Variable'; font-style: normal; font-display: swap; font-weight: 100 900;
+  src: url('@fontsource-variable/newsreader/files/newsreader-latin-ext-wght-normal.woff2') format('woff2-variations');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Newsreader Variable'; font-style: italic; font-display: swap; font-weight: 100 900;
+  src: url('@fontsource-variable/newsreader/files/newsreader-latin-wght-italic.woff2') format('woff2-variations');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Newsreader Variable'; font-style: italic; font-display: swap; font-weight: 100 900;
+  src: url('@fontsource-variable/newsreader/files/newsreader-latin-ext-wght-italic.woff2') format('woff2-variations');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}

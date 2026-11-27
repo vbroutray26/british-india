@@ -109,5 +109,265 @@
     "en": "Site information",
     "hi": "साइट जानकारी",
     "or": "ସାଇଟ୍ ସୂଚନା"
+  },
+  "nav.places": {
+    "en": "Places",
+    "or": "ସ୍ଥାନ",
+    "hi": "स्थान"
+  },
+  "home.browse": {
+    "en": "Browse the places",
+    "or": "ସ୍ଥାନଗୁଡ଼ିକ ଦେଖନ୍ତୁ",
+    "hi": "स्थान देखें"
+  },
+  "places.title": {
+    "en": "Places",
+    "or": "ସ୍ଥାନ",
+    "hi": "स्थान"
+  },
+  "places.lede": {
+    "en": "Every place with its own entry in the gazetteer, and the district it describes.",
+    "or": "ଗେଜେଟିଅରରେ ନିଜସ୍ୱ ପ୍ରବନ୍ଧ ଥିବା ପ୍ରତ୍ୟେକ ସ୍ଥାନ, ଏବଂ ଏହା ବର୍ଣ୍ଣନା କରୁଥିବା ଜିଲ୍ଲା।",
+    "hi": "गज़ेटियर में अपनी प्रविष्टि वाला हर स्थान, और वह ज़िला जिसका यह वर्णन करता है।"
+  },
+  "place.breadcrumb": {
+    "en": "You are here",
+    "or": "ଆପଣ ଏଠାରେ ଅଛନ୍ତି",
+    "hi": "आप यहाँ हैं"
+  },
+  "place.oldSpellings": {
+    "en": "Old spellings",
+    "or": "ପୁରୁଣା ବନାନ",
+    "hi": "पुरानी वर्तनियाँ"
+  },
+  "place.then": {
+    "en": "Then",
+    "or": "ସେତେବେଳେ",
+    "hi": "तब"
+  },
+  "place.now": {
+    "en": "Now",
+    "or": "ଏବେ",
+    "hi": "अब"
+  },
+  "place.facts": {
+    "en": "Facts from the gazetteer",
+    "or": "ଗେଜେଟିଅରରୁ ତଥ୍ୟ",
+    "hi": "गज़ेटियर से तथ्य"
+  },
+  "place.factsPending": {
+    "en": "More facts — crops, trade, temples, events — are being extracted from these passages and will appear after review.",
+    "or": "ଅଧିକ ତଥ୍ୟ — ଫସଲ, ବାଣିଜ୍ୟ, ମନ୍ଦିର, ଘଟଣା — ଏହି ଅନୁଚ୍ଛେଦରୁ ବାହାର କରାଯାଉଛି ଏବଂ ସମୀକ୍ଷା ପରେ ଦେଖାଯିବ।",
+    "hi": "और तथ्य — फ़सलें, व्यापार, मंदिर, घटनाएँ — इन अंशों से निकाले जा रहे हैं और समीक्षा के बाद दिखेंगे।"
+  },
+  "place.earlier": {
+    "en": "Earlier figures",
+    "or": "ପୂର୍ବ ସଂଖ୍ୟା",
+    "hi": "पहले के आँकड़े"
+  },
+  "place.text": {
+    "en": "Original text",
+    "or": "ମୂଳ ପାଠ",
+    "hi": "मूल पाठ"
+  },
+  "place.contains": {
+    "en": "Places within",
+    "or": "ଏହା ଭିତରେ ଥିବା ସ୍ଥାନ",
+    "hi": "इसके भीतर के स्थान"
+  },
+  "place.districtText": {
+    "en": "The district is described in every chapter of the gazetteer; its figures are listed here only where a sentence states them for the district.",
+    "or": "ଗେଜେଟିଅରର ପ୍ରତ୍ୟେକ ଅଧ୍ୟାୟରେ ଜିଲ୍ଲାର ବର୍ଣ୍ଣନା ଅଛି; କୌଣସି ବାକ୍ୟ ଜିଲ୍ଲା ପାଇଁ କହିଥିଲେ ହିଁ ଏହାର ସଂଖ୍ୟା ଏଠାରେ ଦିଆଯାଇଛି।",
+    "hi": "गज़ेटियर के हर अध्याय में ज़िले का वर्णन है; उसके आँकड़े यहाँ तभी दिए गए हैं जब कोई वाक्य उन्हें ज़िले के लिए बताता है।"
+  },
+  "fact.population": {
+    "en": "Population",
+    "or": "ଜନସଂଖ୍ୟା",
+    "hi": "जनसंख्या"
+  },
+  "fact.area": {
+    "en": "Area",
+    "or": "କ୍ଷେତ୍ରଫଳ",
+    "hi": "क्षेत्रफल"
+  },
+  "unit.sq_miles": {
+    "en": "sq. miles",
+    "or": "ବର୍ଗ ମାଇଲ",
+    "hi": "वर्ग मील"
+  },
+  "unit.acres": {
+    "en": "acres",
+    "or": "ଏକର",
+    "hi": "एकड़"
+  },
+  "fact.viewPassage": {
+    "en": "View passage",
+    "or": "ଅନୁଚ୍ଛେଦ ଦେଖନ୍ତୁ",
+    "hi": "अंश देखें"
+  },
+  "fact.notRecorded": {
+    "en": "Not yet extracted from these sources",
+    "or": "ଏହି ଉତ୍ସରୁ ଏପର୍ଯ୍ୟନ୍ତ ବାହାର କରାଯାଇନାହିଁ",
+    "hi": "इन स्रोतों से अभी निकाला नहीं गया"
+  },
+  "fact.machine": {
+    "en": "Read by machine",
+    "or": "ଯନ୍ତ୍ର ଦ୍ୱାରା ପଢ଼ାଯାଇଛି",
+    "hi": "मशीन द्वारा पढ़ा गया"
+  },
+  "fact.approximate": {
+    "en": "Approximate",
+    "or": "ପ୍ରାୟ",
+    "hi": "लगभग"
+  },
+  "fact.correct": {
+    "en": "Suggest a correction",
+    "or": "ସଂଶୋଧନ ପରାମର୍ଶ ଦିଅନ୍ତୁ",
+    "hi": "सुधार सुझाएँ"
+  },
+  "fact.title": {
+    "en": "Fact",
+    "or": "ତଥ୍ୟ",
+    "hi": "तथ्य"
+  },
+  "fact.from": {
+    "en": "From the passage",
+    "or": "ଅନୁଚ୍ଛେଦରୁ",
+    "hi": "अंश से"
+  },
+  "fact.alsoPrinted": {
+    "en": "Also printed",
+    "or": "ଅନ୍ୟତ୍ର ମଧ୍ୟ ଛପା",
+    "hi": "अन्यत्र भी छपा"
+  },
+  "fact.method.rule": {
+    "en": "Read from the text by a pattern rule, checked against a second OCR reading.",
+    "or": "ଏକ ନିୟମ ଦ୍ୱାରା ପାଠରୁ ପଢ଼ାଯାଇଛି, ଦ୍ୱିତୀୟ OCR ପଠନ ସହ ମିଳାଯାଇଛି।",
+    "hi": "एक नियम द्वारा पाठ से पढ़ा गया, दूसरे OCR पाठ से मिलाया गया।"
+  },
+  "review.reviewed": {
+    "en": "Reviewed",
+    "or": "ସମୀକ୍ଷିତ",
+    "hi": "समीक्षित"
+  },
+  "review.unreviewed": {
+    "en": "Not yet reviewed",
+    "or": "ଏପର୍ଯ୍ୟନ୍ତ ସମୀକ୍ଷା ହୋଇନାହିଁ",
+    "hi": "अभी समीक्षा नहीं हुई"
+  },
+  "quote.page": {
+    "en": "Page",
+    "or": "ପୃଷ୍ଠା",
+    "hi": "पृष्ठ"
+  },
+  "quote.copyCitation": {
+    "en": "Copy citation",
+    "or": "ଉଦ୍ଧୃତି କପି କରନ୍ତୁ",
+    "hi": "उद्धरण कॉपी करें"
+  },
+  "quote.copied": {
+    "en": "Copied",
+    "or": "କପି ହେଲା",
+    "hi": "कॉपी हो गया"
+  },
+  "quote.permalink": {
+    "en": "Permalink",
+    "or": "ସ୍ଥାୟୀ ଲିଙ୍କ",
+    "hi": "स्थायी लिंक"
+  },
+  "quote.viewScan": {
+    "en": "View page scan",
+    "or": "ପୃଷ୍ଠାର ସ୍କାନ ଦେଖନ୍ତୁ",
+    "hi": "पृष्ठ का स्कैन देखें"
+  },
+  "text.gazetteer": {
+    "en": "Gazetteer entry",
+    "or": "ଗେଜେଟିଅର ପ୍ରବନ୍ଧ",
+    "hi": "गज़ेटियर प्रविष्टि"
+  },
+  "text.section": {
+    "en": "Chapter section",
+    "or": "ଅଧ୍ୟାୟ ବିଭାଗ",
+    "hi": "अध्याय खंड"
+  },
+  "text.pages": {
+    "en": "Pages",
+    "or": "ପୃଷ୍ଠା",
+    "hi": "पृष्ठ"
+  },
+  "text.placePage": {
+    "en": "Place page",
+    "or": "ସ୍ଥାନ ପୃଷ୍ଠା",
+    "hi": "स्थान पृष्ठ"
+  },
+  "text.ocrNote": {
+    "en": "Text from OCR of the scan, corrected where reviewed; spelling and diacritics as printed.",
+    "or": "ସ୍କାନର OCR ରୁ ପାଠ, ଯେଉଁଠି ସମୀକ୍ଷା ହୋଇଛି ସେଠାରେ ସଂଶୋଧିତ; ବନାନ ଓ ଚିହ୍ନ ଛପା ଅନୁସାରେ।",
+    "hi": "स्कैन के OCR से पाठ, जहाँ समीक्षा हुई वहाँ सुधारा गया; वर्तनी और चिह्न छपे अनुसार।"
+  },
+  "text.readMore": {
+    "en": "Read the full text",
+    "or": "ସମ୍ପୂର୍ଣ୍ଣ ପାଠ ପଢ଼ନ୍ତୁ",
+    "hi": "पूरा पाठ पढ़ें"
+  },
+  "source.label": {
+    "en": "Source",
+    "or": "ଉତ୍ସ",
+    "hi": "स्रोत"
+  },
+  "type.district": {
+    "en": "District",
+    "or": "ଜିଲ୍ଲା",
+    "hi": "ज़िला"
+  },
+  "type.subdivision": {
+    "en": "Subdivision",
+    "or": "ଉପଖଣ୍ଡ",
+    "hi": "उपखंड"
+  },
+  "type.town": {
+    "en": "Town",
+    "or": "ସହର",
+    "hi": "नगर"
+  },
+  "type.village": {
+    "en": "Village",
+    "or": "ଗାଁ",
+    "hi": "गाँव"
+  },
+  "type.hill": {
+    "en": "Hill",
+    "or": "ପାହାଡ଼",
+    "hi": "पहाड़ी"
+  },
+  "type.estate": {
+    "en": "Estate",
+    "or": "ଏଷ୍ଟେଟ",
+    "hi": "एस्टेट"
+  },
+  "type.temple": {
+    "en": "Temple",
+    "or": "ମନ୍ଦିର",
+    "hi": "मंदिर"
+  },
+  "type.lake": {
+    "en": "Lake",
+    "or": "ହ୍ରଦ",
+    "hi": "झील"
+  },
+  "type.river": {
+    "en": "River",
+    "or": "ନଦୀ",
+    "hi": "नदी"
+  },
+  "text.contents": {
+    "en": "Contents of the gazetteer",
+    "or": "ଗେଜେଟିଅରର ସୂଚୀପତ୍ର",
+    "hi": "गज़ेटियर की विषय-सूची"
+  },
+  "text.contentsLede": {
+    "en": "Every section of the gazetteer in book order, listed by its opening words, and the gazetteer entries for each place.",
+    "or": "ବହିର କ୍ରମରେ ଗେଜେଟିଅରର ପ୍ରତ୍ୟେକ ବିଭାଗ, ତାହାର ପ୍ରଥମ ଶବ୍ଦଗୁଡ଼ିକ ସହ, ଏବଂ ପ୍ରତ୍ୟେକ ସ୍ଥାନର ଗେଜେଟିଅର ପ୍ରବନ୍ଧ।",
+    "hi": "पुस्तक के क्रम में गज़ेटियर का हर खंड, उसके आरंभिक शब्दों के साथ, और हर स्थान की गज़ेटियर प्रविष्टि।"
   }
 }

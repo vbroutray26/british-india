@@ -72,29 +72,6 @@
   }
  },
  {
-  "confidence": 0.9,
-  "evidence": [
-   {
-    "char_end": 415,
-    "char_start": 397,
-    "passage_id": "ps_omalley_50fd6c3bf3_23",
-    "quote": "area of 8°11 acres"
-   }
-  ],
-  "fact_id": "ft_1f9b7666817a",
-  "method": "rule",
-  "page": "295",
-  "place_id": "pl_puri-0741",
-  "review": {
-   "status": "unreviewed"
-  },
-  "type": "area",
-  "value": {
-   "number": 8.11,
-   "unit": "acres"
-  }
- },
- {
   "as_of_year": 1891,
   "confidence": 0.9,
   "evidence": [
@@ -447,29 +424,6 @@
   "value": {
    "number": 1017284,
    "unit": "persons"
-  }
- },
- {
-  "confidence": 0.9,
-  "evidence": [
-   {
-    "char_end": 658,
-    "char_start": 640,
-    "passage_id": "ps_omalley_50fd6c3bf3_22",
-    "quote": "area of 4°52 acres"
-   }
-  ],
-  "fact_id": "ft_c5ac06e262fd",
-  "method": "rule",
-  "page": "295",
-  "place_id": "pl_puri-0741",
-  "review": {
-   "status": "unreviewed"
-  },
-  "type": "area",
-  "value": {
-   "number": 4.52,
-   "unit": "acres"
   }
  },
  {

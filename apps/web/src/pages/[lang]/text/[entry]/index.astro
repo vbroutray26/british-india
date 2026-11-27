@@ -1,0 +1,65 @@
+---
+import Base from '../../../../layouts/Base.astro';
+import Breadcrumb from '@bi/ui/components/Breadcrumb.svelte';
+import { LOCALES, t, type Locale } from '../../../../i18n';
+import { entries, nameOf, passagesOf, place, slugOf, sourceOfEntry, type Entry } from '../../../../data/curated';
+
+export function getStaticPaths() {
+  return LOCALES.flatMap((lang) => entries.map((e) => ({ params: { lang, entry: e.entry_id }, props: { e } })));
+}
+const lang = Astro.params.lang as Locale;
+const { e } = Astro.props as { e: Entry };
+const src = sourceOfEntry(e);
+const pl = e.place_id ? place(e.place_id) : undefined;
+const ps = passagesOf(e.entry_id);
+const pages = `${e.page_start}${e.page_end !== e.page_start ? `–${e.page_end}` : ''}`;
+// A page marker before the first passage that starts on a new printed page.
+// A section's side-note heading is OCR'd from the margin and often garbled, so sections are titled by page.
+const heading = e.kind === 'gazetteer' ? e.heading : `${t('text.section', lang)} · ${t('quote.page', lang)} ${e.page_start}`;
+const marked = ps.map((p, i) => ({ p, newPage: i === 0 || p.page !== ps[i - 1].page }));
+---
+<Base lang={lang} title={`${heading} — ${src?.title ?? ''}`}>
+  <div class="crumbs">
+    <Breadcrumb
+      label={t('place.breadcrumb', lang)}
+      items={[
+        { text: t('text.contents', lang), href: `/${lang}/text/` },
+        ...(pl ? [{ text: nameOf(pl), href: `/${lang}/places/${slugOf(pl.place_id)}/` }] : []),
+        { text: heading },
+      ]}
+    />
+  </div>
+  <header class="text-head">
+    <p class="kicker">{e.kind === 'gazetteer' ? t('text.gazetteer', lang) : t('text.section', lang)}</p>
+    <h1 lang={e.kind === 'gazetteer' ? 'en' : lang}>{heading}</h1>
+    {src && <p class="src">{t('source.label', lang)}: <cite>{src.author}, {src.title} ({src.year})</cite>, {t('text.pages', lang)} {pages}</p>}
+    {pl && <p><a href={`/${lang}/places/${slugOf(pl.place_id)}/`}>{t('text.placePage', lang)}: {nameOf(pl)}</a></p>}
+    <p class="ocr-note">{t('text.ocrNote', lang)}</p>
+  </header>
+  <div class="text" lang="en">
+    {marked.map(({ p, newPage }) => (
+      <>
+        {newPage && <p class="page-mark" aria-label={`${t('quote.page', lang)} ${p.page}`}>{t('quote.page', lang)} {p.page}</p>}
+        <p id={p.passage_id} class="para">{p.text} <a class="anchor" href={`#${p.passage_id}`} aria-label={t('quote.permalink', lang)}>¶</a></p>
+      </>
+    ))}
+  </div>
+  {src && <p class="credit">{src.credit_line}</p>}
+</Base>
+
+<style>
+  .crumbs { margin-top: var(--space-6); }
+  .text-head { max-width: var(--layout-reading); margin-block: var(--space-6) var(--space-8); }
+  .kicker { margin: 0; font-size: var(--step--1); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--color-text-muted); }
+  :lang(or) .kicker, :lang(hi) .kicker { text-transform: none; letter-spacing: 0; }
+  .text-head h1 { margin: var(--space-1) 0 var(--space-3); font-size: var(--step-5); }
+  .src, .ocr-note { color: var(--color-text-muted); }
+  .ocr-note { font-size: var(--step--1); }
+  .text { max-width: var(--layout-reading); font-family: var(--font-serif); font-size: var(--step-1); line-height: 1.7; }
+  .para { margin: 0 0 var(--space-4); scroll-margin-top: var(--space-16); }
+  .para:target { background: var(--color-highlight, var(--color-surface)); outline: 2px solid var(--color-accent); outline-offset: 4px; border-radius: 2px; }
+  .page-mark { margin: var(--space-6) 0 var(--space-2); font-family: var(--font-sans); font-size: var(--step--1); font-weight: 600; color: var(--color-text-muted); border-top: 1px solid var(--color-rule); padding-top: var(--space-2); }
+  .anchor { font-family: var(--font-sans); font-size: var(--step--1); color: var(--color-text-muted); text-decoration: none; padding: 0 var(--space-1); }
+  .anchor:hover, .anchor:focus-visible { color: var(--color-accent); }
+  .credit { max-width: var(--layout-reading); margin-block: var(--space-10); font-size: var(--step--1); color: var(--color-text-muted); }
+</style>

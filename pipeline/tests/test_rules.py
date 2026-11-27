@@ -208,3 +208,24 @@ def test_subject_never_moves_a_fact_already_linked():
     subj = [{"page": "233", "type": "area", "quote": "area of 575 acres", "place_id": "pl_d", "by": "c", "review": "p"}]
     assert link_subjects(facts, subj)[0]["reason"] == "no fact matches"
     assert facts[0]["place_id"] == "pl_balukhand-913a"
+
+
+def test_figures_in_an_entrys_opening_belong_to_its_place():
+    from pipeline.rules import entry_place
+    assert entry_place({"passage_id": "ps_omalley_abc_00"}, "pl_puri-0741") == "pl_puri-0741"
+    assert entry_place({"passage_id": "ps_omalley_abc_03"}, "pl_puri-0741") == "pl_puri-0741"
+
+
+def test_figures_further_into_an_entry_wait_for_a_subject():
+    # Purī p. 295: "the Narendra tank ... covering an area of 8·11 acres" is the tank, not the town
+    from pipeline.rules import entry_place
+    assert entry_place({"passage_id": "ps_omalley_abc_23"}, "pl_puri-0741") is None
+    assert entry_place({"passage_id": "ps_omalley_abc_04"}, None) is None
+
+
+def test_a_late_figure_in_an_entry_can_still_be_linked_through_the_subjects_file():
+    from pipeline.rules import link_subjects
+    facts = [_f("a", "area", "covering an area of 4°52 acres", "295")]
+    subj = [{"page": "295", "type": "area", "quote": "covering an area of 4°52 acres", "place_id": "pl_tank",
+             "by": "c", "review": "p"}]
+    assert link_subjects(facts, subj) == [] and facts[0]["place_id"] == "pl_tank"

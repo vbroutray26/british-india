@@ -1,0 +1,53 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { LOCALES, t, type Locale } from '../../../i18n';
+import { entries, nameOf, passagesOf, place, sources, type Entry } from '../../../data/curated';
+
+export function getStaticPaths() {
+  return LOCALES.map((lang) => ({ params: { lang } }));
+}
+const lang = Astro.params.lang as Locale;
+// Side-note headings are read from the margin and are often OCR junk ("REYSNEN", "DgtTaro"), so a section
+// is listed by its opening words, from the body text, until its heading is reviewed.
+const title = (e: Entry) => {
+  if (e.kind === 'gazetteer') return e.place_id ? nameOf(place(e.place_id)!) : e.heading;
+  const words = (passagesOf(e.entry_id)[0]?.text ?? e.heading).split(/\s+/).slice(0, 9).join(' ');
+  return `${words} …`;
+};
+const bySource = sources.map((s) => ({ s, sections: entries.filter((e) => e.source_id === s.source_id && e.kind === 'section'),
+  gazetteer: entries.filter((e) => e.source_id === s.source_id && e.kind === 'gazetteer') }));
+---
+<Base lang={lang} title={t('text.contents', lang)}>
+  <section class="page-head">
+    <h1>{t('text.contents', lang)}</h1>
+    <p class="lede">{t('text.contentsLede', lang)}</p>
+  </section>
+  {bySource.map(({ s, sections, gazetteer }) => (
+    <section class="toc">
+      <h2><cite>{s.title}</cite> <span class="muted">({s.author}, {s.year})</span></h2>
+      <ol class="toc-list" lang="en">
+        {sections.map((e) => (
+          <li><a href={`/${lang}/text/${e.entry_id}/`}>{title(e)}</a> <span class="pg">{e.page_start}</span></li>
+        ))}
+      </ol>
+      <h3>{t('text.gazetteer', lang)}</h3>
+      <ol class="toc-list" lang="en">
+        {gazetteer.map((e) => (
+          <li><a href={`/${lang}/text/${e.entry_id}/`}>{title(e)}</a> <span class="pg">{e.page_start}</span></li>
+        ))}
+      </ol>
+    </section>
+  ))}
+</Base>
+
+<style>
+  .page-head { padding-block: var(--space-8) var(--space-6); max-width: var(--layout-reading); }
+  .page-head h1 { font-size: var(--step-5); margin: 0; }
+  .lede { font-size: var(--step-1); color: var(--color-text-muted); }
+  .toc { margin-bottom: var(--space-16); }
+  .toc h2 { font-size: var(--step-2); }
+  .muted { color: var(--color-text-muted); font-weight: 400; font-size: var(--step-0); }
+  .toc-list { columns: 3 16rem; column-gap: var(--space-8); padding-left: 0; list-style: none; }
+  .toc-list li { break-inside: avoid; display: flex; justify-content: space-between; gap: var(--space-2); min-height: 32px; align-items: baseline; border-bottom: 1px dotted var(--color-rule); }
+  .pg { font-variant-numeric: tabular-nums; color: var(--color-text-muted); font-size: var(--step--1); }
+</style>

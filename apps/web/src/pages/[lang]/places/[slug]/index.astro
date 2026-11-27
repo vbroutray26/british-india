@@ -1,0 +1,134 @@
+---
+import Base from '../../../../layouts/Base.astro';
+import PlaceHero from '@bi/ui/components/PlaceHero.svelte';
+import FactCard from '@bi/ui/components/FactCard.svelte';
+import { LOCALES, t, type Locale } from '../../../../i18n';
+import { FACT_ICON, factLabels, factTypeLabel, heroLabels, typeLabel, unitLabel } from '../../../../i18n/labels';
+import {
+  ancestors, distinctFigures, entriesFor, factsFor, formatCoords, formatNumber, nameOf, oldSpellings,
+  passagesOf, place, places, slugOf, sourceOfFact, type Fact, type Place,
+} from '../../../../data/curated';
+
+export function getStaticPaths() {
+  return LOCALES.flatMap((lang) => places.map((p) => ({ params: { lang, slug: slugOf(p.place_id) }, props: { p } })));
+}
+const lang = Astro.params.lang as Locale;
+const { p } = Astro.props as { p: Place };
+const name = nameOf(p);
+const up = ancestors(p);
+const district = up.find((a) => a.type === 'district');
+const facts = factsFor(p.place_id);
+const CARD_TYPES = ['population', 'area'];
+const groups = CARD_TYPES.map((type) => ({ type, figures: distinctFigures(facts.filter((f) => f.type === type)) }));
+const children = (p.child_ids ?? []).map(place).filter((c): c is Place => Boolean(c));
+const own = entriesFor(p.place_id);
+const fig = (f: Fact) => (f.value.number === undefined ? '' : formatNumber(f.value.number, lang));
+const sourceText = (f: Fact) => {
+  const s = sourceOfFact(f);
+  return s ? `${s.author}, ${s.year} · ${t('quote.page', lang)} ${f.page ?? ''}`.trim() : undefined;
+};
+const excerpt = (entryId: string) => {
+  const ps = passagesOf(entryId);
+  const text = ps.slice(0, 2).map((x) => x.text).join(' ');
+  return text.length > 700 ? `${text.slice(0, 700).replace(/\s+\S*$/, '')} …` : text;
+};
+---
+<Base lang={lang} title={name}>
+  <PlaceHero
+    name={name}
+    oldSpellings={oldSpellings(p)}
+    type={typeLabel(p.type, lang)}
+    districtThen={district ? nameOf(district) : undefined}
+    coords={p.geometry ? formatCoords(p.geometry.coordinates) : undefined}
+    breadcrumb={{
+      label: t('place.breadcrumb', lang),
+      items: [
+        { text: t('places.title', lang), href: `/${lang}/places/` },
+        ...up.map((a) => ({ text: nameOf(a), href: `/${lang}/places/${slugOf(a.place_id)}/` })),
+        { text: name },
+      ],
+    }}
+    labels={heroLabels(lang)}
+  />
+
+  <section class="block" aria-labelledby="facts-h">
+    <h2 id="facts-h">{t('place.facts', lang)}</h2>
+    {p.type === 'district' && <p class="note">{t('place.districtText', lang)}</p>}
+    <div class="cards">
+      {groups.map(({ type, figures }) => (
+        <div class="card-col">
+          <FactCard
+            icon={FACT_ICON[type]}
+            label={factTypeLabel(type, lang)}
+            value={figures[0] ? fig(figures[0].fact) : undefined}
+            unit={figures[0] ? unitLabel(figures[0].fact.value.unit, lang) : undefined}
+            year={figures[0]?.fact.as_of_year ? String(figures[0].fact.as_of_year) : undefined}
+            source={figures[0] ? sourceText(figures[0].fact) : undefined}
+            passageHref={figures[0] ? `/${lang}/facts/${figures[0].fact.fact_id}/` : undefined}
+            review={figures[0]?.fact.review.status ?? 'unreviewed'}
+            method={figures[0]?.fact.method}
+            correctHref={`/${lang}/corrections/`}
+            labels={factLabels(lang)}
+          />
+          {figures.length > 1 && (
+            <details class="earlier">
+              <summary>{t('place.earlier', lang)}</summary>
+              <ul>
+                {figures.slice(1).map(({ fact }) => (
+                  <li>
+                    <a href={`/${lang}/facts/${fact.fact_id}/`}>
+                      {fact.as_of_year && <span class="yr">{fact.as_of_year}</span>} {fig(fact)} {unitLabel(fact.value.unit, lang) ?? ''}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </details>
+          )}
+        </div>
+      ))}
+    </div>
+    <p class="note">{t('place.factsPending', lang)}</p>
+  </section>
+
+  {children.length > 0 && (
+    <section class="block" aria-labelledby="within-h">
+      <h2 id="within-h">{t('place.contains', lang)}</h2>
+      <ul class="inline-list">
+        {children.map((c) => <li><a href={`/${lang}/places/${slugOf(c.place_id)}/`}>{nameOf(c)}</a> <span class="muted">{typeLabel(c.type, lang)}</span></li>)}
+      </ul>
+    </section>
+  )}
+
+  <section class="block" aria-labelledby="text-h">
+    <h2 id="text-h">{t('place.text', lang)}</h2>
+    {own.map((e) => (
+      <article class="excerpt" lang={'en'}>
+        <h3><a href={`/${lang}/text/${e.entry_id}/`}>{e.heading}</a></h3>
+        <p class="muted">{t('text.pages', lang)} {e.page_start}{e.page_end !== e.page_start ? `–${e.page_end}` : ''}</p>
+        <p class="passage">{excerpt(e.entry_id)}</p>
+        <p><a href={`/${lang}/text/${e.entry_id}/`}>{t('text.readMore', lang)}</a></p>
+      </article>
+    ))}
+    {p.type === 'district' && (
+      <p><a href={`/${lang}/text/`}>{t('text.contents', lang)} →</a></p>
+    )}
+  </section>
+</Base>
+
+<style>
+  .block { margin-block: var(--space-10); max-width: var(--layout-wide, 72rem); }
+  .block h2 { font-size: var(--step-3); margin: 0 0 var(--space-4); }
+  .cards { display: grid; gap: var(--space-4); grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr)); }
+  .card-col { display: grid; gap: var(--space-2); align-content: start; }
+  .earlier { font-size: var(--step--1); }
+  .earlier summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; font-weight: 600; }
+  .earlier ul { margin: 0; padding-left: var(--space-4); }
+  .earlier li { min-height: 32px; }
+  .yr { font-weight: 700; font-variant-numeric: tabular-nums; }
+  .note { color: var(--color-text-muted); max-width: var(--layout-reading); }
+  .muted { color: var(--color-text-muted); font-size: var(--step--1); }
+  .inline-list { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-6); }
+  .excerpt { max-width: var(--layout-reading); margin-bottom: var(--space-8); }
+  .excerpt h3 { margin: 0; font-size: var(--step-2); }
+  .passage { font-family: var(--font-serif); font-size: var(--step-0); line-height: 1.65; }
+</style>

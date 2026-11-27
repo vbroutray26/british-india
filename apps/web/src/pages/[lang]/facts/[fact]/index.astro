@@ -1,0 +1,93 @@
+---
+import Base from '../../../../layouts/Base.astro';
+import Breadcrumb from '@bi/ui/components/Breadcrumb.svelte';
+import SourceQuote from '@bi/ui/components/SourceQuote.svelte';
+import ReviewBadge from '@bi/ui/components/ReviewBadge.svelte';
+import { LOCALES, t, type Locale } from '../../../../i18n';
+import { factTypeLabel, quoteLabels, unitLabel } from '../../../../i18n/labels';
+import {
+  citation, distinctFigures, entry, facts, factsFor, formatNumber, nameOf, passage, place, slugOf, sourceOfFact, type Fact,
+} from '../../../../data/curated';
+
+export function getStaticPaths() {
+  return LOCALES.flatMap((lang) => facts.map((f) => ({ params: { lang, fact: f.fact_id }, props: { f } })));
+}
+const lang = Astro.params.lang as Locale;
+const { f } = Astro.props as { f: Fact };
+const pl = place(f.place_id)!;
+const ev = f.evidence[0];
+const ps = passage(ev.passage_id)!;
+const en = entry(ps.entry_id)!;
+const src = sourceOfFact(f)!;
+const page = f.page ?? ps.page;
+const textHref = `/${lang}/text/${en.entry_id}/#${ps.passage_id}`;
+const label = factTypeLabel(f.type, lang);
+const value = f.value.number !== undefined ? formatNumber(f.value.number, lang) : '';
+const twin = distinctFigures(factsFor(f.place_id)).find((g) => g.fact.fact_id === f.fact_id || g.also.some((a) => a.fact_id === f.fact_id));
+const others = twin ? [twin.fact, ...twin.also].filter((x) => x.fact_id !== f.fact_id) : [];
+const site = Astro.site!;
+---
+<Base lang={lang} title={`${label}: ${nameOf(pl)}${f.as_of_year ? ` (${f.as_of_year})` : ''}`}>
+  <div class="crumbs">
+    <Breadcrumb
+      label={t('place.breadcrumb', lang)}
+      items={[
+        { text: t('places.title', lang), href: `/${lang}/places/` },
+        { text: nameOf(pl), href: `/${lang}/places/${slugOf(pl.place_id)}/` },
+        { text: label },
+      ]}
+    />
+  </div>
+  <header class="fact-head">
+    <p class="kicker">{t('fact.title', lang)} · {label}</p>
+    <h1><span class="v">{value}</span> {unitLabel(f.value.unit, lang) ?? ''}</h1>
+    <p class="sub"><a href={`/${lang}/places/${slugOf(pl.place_id)}/`}>{nameOf(pl)}</a>{f.as_of_year && <> · <strong>{f.as_of_year}</strong></>}</p>
+    <ReviewBadge status={f.review.status} labels={{ reviewed: t('review.reviewed', lang), unreviewed: t('review.unreviewed', lang) }} />
+    {f.method === 'rule' && <p class="method">{t('fact.method.rule', lang)}</p>}
+  </header>
+
+  <section aria-labelledby="from-h" class="from">
+    <h2 id="from-h">{t('fact.from', lang)}</h2>
+    <SourceQuote
+      text={ps.text}
+      highlight={{ start: ev.char_start, end: ev.char_end }}
+      source={`${src.author}, ${src.title} (${src.year})`}
+      page={page}
+      permalink={textHref}
+      lang="en"
+      labels={quoteLabels(lang)}
+    />
+    <div class="cite">
+      <p class="cite-label">{t('quote.copyCitation', lang)}</p>
+      <p id="cite-text" class="cite-text">{citation(src, page)} {new URL(textHref, site).href}</p>
+      <button type="button" class="copy" hidden data-copy="#cite-text" data-status="#cite-status" data-done={t('quote.copied', lang)}>{t('quote.copyCitation', lang)}</button>
+      <span id="cite-status" class="visually-hidden" role="status"></span>
+    </div>
+  </section>
+  <script is:inline src="/js/copy.js" defer></script>
+
+  {others.length > 0 && (
+    <section class="from">
+      <h2>{t('fact.alsoPrinted', lang)}</h2>
+      <ul>
+        {others.map((o) => <li><a href={`/${lang}/facts/${o.fact_id}/`}>{t('quote.page', lang)} {o.page}</a></li>)}
+      </ul>
+    </section>
+  )}
+</Base>
+
+<style>
+  .crumbs { margin-top: var(--space-6); }
+  .fact-head { max-width: var(--layout-reading); margin-block: var(--space-6) var(--space-8); display: grid; gap: var(--space-2); justify-items: start; }
+  .kicker { margin: 0; font-size: var(--step--1); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--color-text-muted); }
+  :lang(or) .kicker, :lang(hi) .kicker { text-transform: none; letter-spacing: 0; }
+  .fact-head h1 { margin: 0; font-size: var(--step-5); font-variant-numeric: lining-nums; }
+  .sub { margin: 0; font-size: var(--step-1); }
+  .method { margin: 0; color: var(--color-text-muted); font-size: var(--step--1); }
+  .from { max-width: var(--layout-reading); margin-bottom: var(--space-10); }
+  .from h2 { font-size: var(--step-2); }
+  .cite { margin-top: var(--space-4); padding: var(--space-3) var(--space-4); border: 1px solid var(--color-rule); border-radius: var(--radius-card); }
+  .cite-label { margin: 0; font-size: var(--step--1); font-weight: 600; color: var(--color-text-muted); }
+  .cite-text { margin: var(--space-1) 0 var(--space-2); font-size: var(--step--1); overflow-wrap: anywhere; user-select: all; }
+  .copy { min-height: 44px; padding: 0 var(--space-4); font: 600 var(--step--1) var(--font-sans); border: 1px solid var(--color-rule); border-radius: var(--radius-card); background: var(--color-surface); color: var(--color-text); cursor: pointer; }
+</style>
