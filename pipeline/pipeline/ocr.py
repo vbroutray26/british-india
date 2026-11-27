@@ -319,6 +319,26 @@ def cut_inset(lines: list[Line], insets: list[dict], page_w: int, page_h: int) -
     return out
 
 
+def shift_insets(insets: list[dict], body: list[Line], rows: list[dict], page_h: int) -> list[dict]:
+    """Inset-table regions moved from the second read's page coordinates into the first OCR's: the two reads
+    crop and scale the page differently, so a line sits a little higher or lower in one than in the other.
+    The shift is the median, over the lines both read alike, of the difference in their tops."""
+    from pipeline.second_read import _align, _fold
+
+    pairs = _align([_fold(ln.text) for ln in body], [_fold(r["t"]) for r in rows], 80) if rows else []
+    if not pairs:
+        return insets
+    d = sorted(body[i].bbox[1] / page_h - rows[j]["y_frac"] for i, j in pairs)[len(pairs) // 2]
+    keys = ("y0_frac", "y1_frac", "first_frac")
+    return [t | {k: t[k] + d for k in keys} for t in insets]
+
+
+def inset_indent(x_left: int | None, inset: dict, page_w: int) -> bool:
+    """Whether a line of the text wrapped beside an inset table is indented (a paragraph start): measured
+    from the wrapped text's left edge. A line only the second read has (no hOCR box) is not."""
+    return x_left is not None and x_left - inset["x_frac"] * page_w > INDENT_MIN
+
+
 def _gutter(ln: Line, page_w: int) -> tuple[int, float] | None:
     """The widest gap between words of a line, as (index of the first word after it, gap centre), when wide
     enough to be a column gutter and near the middle of the page."""
@@ -456,7 +476,7 @@ def merge_reads(rows: list[dict], vision_dir: Path, hyphen_words: set[str]) -> i
 # ---------------------------------------------------------------- stage
 
 def run(source_id: str, raw_dir: Path = RAW_DIR, out_dir: Path = INTERIM_DIR / "ocr") -> list[dict]:
-    from pipeline.second_read import inset_tables
+    from pipeline.second_read import body_rows, inset_tables
 
     folder = raw_dir / source_id
     hocr = next(folder.glob("*_hocr.html"))
@@ -486,22 +506,24 @@ def run(source_id: str, raw_dir: Path = RAW_DIR, out_dir: Path = INTERIM_DIR / "
         vision = folder / "ocr_vision" / f"leaf_{leaf:04d}.json"
         insets = [] if "right" in lay or not vision.exists() else inset_tables(json.loads(vision.read_text()))
         if insets:
+            insets = shift_insets(insets, body, body_rows(json.loads(vision.read_text())), p.height)
             body = cut_inset(body, insets, p.width, p.height)
         x0 = lay.get("x0")
         # Indent is measured against neighbouring lines, so page skew does not look like an indent.
-        line_recs = []
+        line_recs, lefts = [], {}
         for i, ln in enumerate(body):
             near = [b.bbox[0] for b in body[max(0, i - 2):i + 3] if b is not ln] or [x0 or ln.bbox[0]]
             line_recs.append({"t": normalise_chars(ln.text), "y": ln.bbox[1],
                               "indent": bool(x0 is not None and ln.bbox[0] - min(near) > INDENT_MIN)})
+            lefts[id(line_recs[-1])] = ln.bbox[0]
             if any(ln is r for r in lay.get("right", [])):
                 line_recs[-1]["col"] = 1  # right column of a two-column page: read after the left
         recovered = [] if "right" in lay else recover_lines(line_recs, vision, p.height,
                                   [normalise_chars(ln.text) for ln in lay["footnotes"] + lay["margin"]] + [head or ""])
         for t in insets:  # D-32: the table's rows, read before the text wrapped beside it
-            beside = [ln for ln in line_recs if t["y0_frac"] * p.height <= ln["y"] <= t["y1_frac"] * p.height]
-            for ln in beside:
-                ln["indent"] = False  # the wrapped lines start right of the column edge, not at an indent
+            beside = [ln for ln in line_recs if (t["first_frac"] - 0.006) * p.height <= ln["y"] <= t["y1_frac"] * p.height]
+            for ln in beside:  # measured from the wrapped text's own edge, not the column's
+                ln["indent"] = inset_indent(lefts.get(id(ln)), t, p.width)
             # before the first wrapped line (the two reads place lines a few pixels apart)
             top = min([int(t["first_frac"] * p.height)] + [ln["y"] for ln in beside]) - len(t["rows"])
             line_recs += [{"t": r, "y": top + k, "indent": False, "recovered": True, "table": True}

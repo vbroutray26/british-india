@@ -321,3 +321,35 @@ def test_a_page_of_short_lines_is_not_an_inset_table():
     from pipeline.second_read import inset_tables
     lines = body(4) + [ln(t, 1050, 720 + i * 80, 2100) for i, t in enumerate(["one short line", "and another", "a third", "a fourth"])]
     assert inset_tables({"w": W, "h": H, "lines": lines}) == []
+
+
+def test_an_inset_table_beside_a_new_paragraph_is_found_whole():
+    from pipeline.second_read import inset_tables
+    lines = body(4)
+    wrapped = [("the margin. Of these, Chasas and Brahmans", 1050, 2100), ("alone account for nearly two-fifths of", 1050, 2100),
+               ("total population.", 1050, 1500), ("The Chasas may be described as the", 1130, 2100),
+               ("characteristic caste of Puri. As their", 1050, 2100)]
+    lines += [ln(t, x0, 720 + i * 80, x1) for i, (t, x0, x1) in enumerate(wrapped)]
+    lines += [ln(t, x, 730 + k * 80, x + 200, 40) for k, row in enumerate([("Chasa", "299,607"), ("Brahman", "100,041"),
+              ("Bauri", "84,188"), ("Gaura", "58,475"), ("Sodba", "41,080")]) for t, x in zip(row, (300, 700), strict=True)]
+    lines += [ln(f"after line {i} of the running text here", 300, 1200 + i * 80, 2100) for i in range(3)]
+    (t,) = inset_tables({"w": W, "h": H, "lines": lines})
+    assert t["rows"] == ["Chasa 299,607", "Brahman 100,041", "Bauri 84,188", "Gaura 58,475", "Sodba 41,080"]
+
+
+def test_beside_an_inset_table_indents_are_told_from_the_wrapped_texts_edge():
+    from pipeline.second_read import body_rows
+    page = _inset_page()
+    page["lines"][3] = ln("There are only 9 castes numbering over", 380, 640, 2100)  # a paragraph start above the table
+    page["lines"][6] = ln("denote malarial fever), and to", 1130, 880, 2100)  # one beside it
+    ind = {r["t"]: r["indent"] for r in body_rows(page)}
+    assert ind["There are only 9 castes numbering over"] and ind["denote malarial fever), and to"]
+    assert not ind["exaggerate the number of deaths"] and not ind["from fever (using the term to"]
+
+
+def test_a_wide_cell_among_the_wrapped_lines_does_not_cut_the_table_short():
+    from pipeline.second_read import inset_tables
+    page = _inset_page()
+    page["lines"].append(ln("Expenditure.", 790, 810, 1040, 40))  # a heading cell wide enough to look like text
+    (t,) = inset_tables(page)
+    assert abs(t["first_frac"] - 720 / H) < 0.001

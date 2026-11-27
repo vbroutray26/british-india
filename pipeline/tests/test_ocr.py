@@ -150,3 +150,18 @@ def test_inset_table_cells_are_cut_from_the_lines_beside_it():
             _words((1750, "denote malarial fever"), y=700)]
     kept = cut_inset(rows, [{"x_frac": 1750 / 3300, "y0_frac": 580 / 5300, "y1_frac": 760 / 5300}], 3300, 5300)
     assert [l.text for l in kept] == ["full width line of the running text above", "from fever (using the", "denote malarial fever"]
+
+
+def test_beside_an_inset_table_an_indent_is_measured_from_the_wrapped_texts_edge():
+    from pipeline.ocr import inset_indent
+    t = {"x_frac": 0.3}
+    assert not inset_indent(1000, t, 3300) and inset_indent(1120, t, 3300) and not inset_indent(None, t, 3300)
+
+
+def test_inset_regions_move_into_the_first_ocrs_page_coordinates():
+    from pipeline.ocr import shift_insets
+    texts = [f"line {i} of the running text on this page" for i in range(5)]
+    body = [_words((300, t), y=1000 + i * 100) for i, t in enumerate(texts)]  # tops at 0.2, 0.22, ... of 5000
+    rows = [{"t": t, "y_frac": 0.18 + i * 0.02} for i, t in enumerate(texts)]  # the second read has them 0.02 higher
+    (t,) = shift_insets([{"y0_frac": 0.5, "y1_frac": 0.6, "first_frac": 0.51, "x_frac": 0.3}], body, rows, 5000)
+    assert round(t["y0_frac"], 4) == 0.52 and round(t["first_frac"], 4) == 0.53 and t["x_frac"] == 0.3

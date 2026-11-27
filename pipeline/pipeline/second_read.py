@@ -125,28 +125,32 @@ def _rows(lay: dict) -> list[dict]:
 
 def _insets(rec: dict, lay: dict) -> list[tuple[dict, list[dict]]]:
     """Small tables set into the left of the text column, with the text wrapped beside them (D-32): a run of
-    at least four short lines that start at the same place right of the column's left edge and end at its
-    right edge, with at least six boxes (the cells) wholly left of them. Returns (region, cells) pairs."""
+    lines that start at about the same place right of the column's left edge (an indent or a paragraph's
+    short last line included), at least four of them ending at its right edge, with at least six boxes (the
+    cells) wholly left of them. Returns (region, cells) pairs."""
     w, body = rec["w"], lay["body"]
     longs = [ln for ln in body if ln["x1"] - ln["x0"] > 0.45 * w]
     if len(longs) < 5:
         return []
     bx0, bx1 = statistics.median(ln["x0"] for ln in longs), statistics.median(ln["x1"] for ln in longs)
     span = bx1 - bx0
-    narrow = sorted((ln for ln in body if ln["x1"] > bx1 - 0.02 * w and bx0 + 0.25 * span < ln["x0"] < bx0 + 0.75 * span),
+    # The wrapped text: lines starting right of the column edge; a paragraph's indented first line and its
+    # short last line belong to the run too.
+    narrow = sorted((ln for ln in body if bx0 + 0.25 * span < ln["x0"] < bx0 + 0.75 * span and ln["x1"] > ln["x0"] + 0.1 * w),
                     key=lambda ln: ln["y0"])
     runs: list[list[dict]] = []
-    for ln in narrow:
-        if runs and abs(ln["x0"] - runs[-1][0]["x0"]) < 0.015 * w and ln["y0"] - runs[-1][-1]["y1"] < 2 * lay["lh"] and not any(
-                runs[-1][-1]["y0"] < f["y0"] < ln["y0"] for f in longs):
-            runs[-1].append(ln)
+    for ln in narrow:  # a box that fits no open run (a wide cell, a split-off word) starts its own, not ending the others
+        fit = [r for r in runs if abs(ln["x0"] - min(b["x0"] for b in r)) < 0.05 * w and ln["y0"] - r[-1]["y1"] < 2 * lay["lh"]
+               and not any(r[-1]["y0"] < f["y0"] < ln["y0"] for f in longs)]
+        if fit:
+            fit[-1].append(ln)
         else:
             runs.append([ln])
     out = []
     for run in runs:
-        if len(run) < 4:
+        if sum(ln["x1"] > bx1 - 0.02 * w for ln in run) < 4:
             continue
-        x, y0, y1 = min(ln["x0"] for ln in run), run[0]["y0"] - 0.5 * lay["lh"], run[-1]["y1"] + 0.5 * lay["lh"]
+        x, y0, y1 = min(ln["x0"] for ln in run), run[0]["y0"] - 0.25 * lay["lh"], run[-1]["y1"] + 0.25 * lay["lh"]
         cells = [ln for ln in body if ln["x1"] <= x + 0.005 * w and y0 <= (ln["y0"] + ln["y1"]) / 2 <= y1]
         if len(cells) >= 6 and sum(bool(_DIGITS.search(c["t"])) for c in cells) >= 3:
             out.append(({"x_frac": round(x / w, 4), "y0_frac": round(y0 / rec["h"], 4), "y1_frac": round(y1 / rec["h"], 4),
@@ -186,17 +190,29 @@ def body_rows(rec: dict) -> list[dict]:
     lay = _layout(rec)
     if not lay:
         return []
-    cut = {id(b) for _, cells in _insets(rec, lay) for b in cells}
+    insets = _insets(rec, lay)
+    cut = {id(b) for _, cells in insets for b in cells}
     if cut:
         lay = lay | {"body": [b for b in lay["body"] if id(b) not in cut]}
     rows = _rows(lay)
     xs = [r["f"][0]["x0"] for r in rows]
-    full = [r["f"][-1]["x1"] - r["f"][0]["x0"] > 0.45 * rec["w"] for r in rows]  # table rows and short lines are not
+
+    def beside(r: dict) -> float | None:  # the left edge of the text wrapped beside an inset table, if r is in it
+        y = r["c"] / rec["h"]
+        return next((t["x_frac"] * rec["w"] for t, _ in insets if r["f"][0]["x0"] >= (t["x_frac"] - 0.005) * rec["w"]
+                     and t["y0_frac"] <= y <= t["y1_frac"]), None)
+
+    edge = [beside(r) for r in rows]
+    # table rows, short lines and the text wrapped beside a table are not full-width lines
+    full = [r["f"][-1]["x1"] - r["f"][0]["x0"] > 0.45 * rec["w"] and e is None for r, e in zip(rows, edge, strict=True)]
     page_x = statistics.median([x for x, f in zip(xs, full, strict=True) if f] or xs)
 
     def indented(k: int) -> bool:
         # against the neighbouring full-width lines (page skew drifts the margin; a table's rows start
-        # anywhere); paragraph indents measure 3-4.5% of the page width and ordinary lines stay within 2%
+        # anywhere); paragraph indents measure 3-4.5% of the page width and ordinary lines stay within 2%.
+        # Beside an inset table, against the wrapped text's own edge.
+        if edge[k] is not None:
+            return xs[k] - edge[k] > 0.025 * rec["w"]
         near = [xs[i] for i in [*range(max(0, k - 4), k), *range(k + 1, min(len(xs), k + 5))] if full[i]]
         return xs[k] - (statistics.median(near) if near else page_x) > 0.025 * rec["w"]
 

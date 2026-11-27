@@ -85,7 +85,7 @@ full-resolution archive.org JP2), `pipeline.gold` (contact sheets for labelling;
   (pp. 138, 294) and a paragraph split mid-word on p. 59. Since D-27 both dropped lines are recovered, but
   only as Vision read them: "an aren of 480 square miles" (printed 485; extracted, wrong, and queued as
   one-engine) and "3-83 acres" (a hyphen for the raised point; not read as a decimal).
-- **GS-SEG (2026-11-27): 50 boundaries; TS-DATA-02 at 45/50 (90%)**, target ≥ 98%. *Now 49/50 (D-30).* Gazetteer entries
+- **GS-SEG (2026-11-27): 50 boundaries; TS-DATA-02 at 45/50 (90%)**, target ≥ 98%. *Now 50/50 (D-30, D-33).* Gazetteer entries
   25/25 (Udayagiri's line was absent from the first OCR; recovered since D-27). Chapter sections were 3/25: DP-02 gave all of
   a page's side-notes to its first paragraph, and Tesseract's hOCR drops many side-notes. Fixed by
   placing each note beside its paragraph and adding the second read's notes; sections now 20/25
@@ -155,4 +155,14 @@ full-resolution archive.org JP2), `pipeline.gold` (contact sheets for labelling;
   themselves). Vision's Cyrillic look-alike letters are mapped to Latin. Table cells are still misread
   by both engines ("8-69" for 8·59) and Vision misses some (p. 175). GS-NUMERIC 69/69 and GS-SEG 49/50
   unchanged; p. 79 is still merged.
+- **Indents beside inset tables (D-33).** GS-SEG **50/50 (TS-DATA-02 passes at 100%)**; GS-OCR CER
+  3.44% → **3.30%** (folded 2.86%; numerals 11.4%). The p. 79 castes table was found only from its lower
+  half, so the wrapped lines above it counted as full-width lines and the paragraph start "There are only
+  9 castes" did not look indented; its side-note ("CASTES.") went to the paragraph before. Now: the run
+  of wrapped lines takes in an indented first line and a paragraph's short last line, and a box that fits
+  no run (a wide heading cell, a split-off word) no longer ends it; the region reaches a quarter line, not
+  half, above and below the run, and is moved into the first OCR's page coordinates by the median offset
+  of the lines both read alike; beside a table, indents are measured from the wrapped text's own edge, in
+  both reads, and the wrapped lines are not used as the full-width neighbours other lines are measured
+  against. Pp. 127 and 223 also gain (195 → 104 and 225 → 134 edits).
 - GS-EXTRACT: not started.
