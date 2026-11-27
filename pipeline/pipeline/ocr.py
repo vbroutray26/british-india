@@ -402,6 +402,35 @@ def split_columns(lines: list[Line], page_w: int) -> tuple[list[Line], list[Line
     return sorted(left, key=lambda l: l.bbox[1]), sorted(right, key=lambda l: l.bbox[1])
 
 
+def apply_corrections(corrections: list[dict], printed: str | None, lines: list[dict], margin: list[dict],
+                      footnotes: list[str]) -> list[str]:
+    """Apply a page's audited corrections (D-21) to its lines, margin notes and footnotes, in place.
+
+    A corrected line is marked so the second-read merge leaves it alone. A replacement that leaves a line
+    or note empty deletes it: OCR junk read from a speck or a crease (numeral review, D-36).
+    Returns the `find` strings that matched."""
+    applied = []
+    for c in corrections:
+        if str(c["page"]) != str(printed):
+            continue
+        hit = False
+        for ln in lines + margin:
+            if c["find"] in ln["t"]:
+                ln["t"] = ln["t"].replace(c["find"], c["replace"])
+                ln["corrected"] = True  # checked against the scan: the merge leaves it alone
+                hit = True
+        for i, f in enumerate(footnotes):
+            if c["find"] in f:
+                footnotes[i] = f.replace(c["find"], c["replace"])
+                hit = True
+        if hit:
+            applied.append(c["find"])
+    lines[:] = [ln for ln in lines if ln["t"].strip()]
+    margin[:] = [{k: v for k, v in m.items() if k != "corrected"} for m in margin if m["t"].strip()]
+    footnotes[:] = [f for f in footnotes if f.strip()]
+    return applied
+
+
 def merge_margin(notes: list[Line]) -> list[dict]:
     """Join stacked side-note lines into one note each (lines less than ~1.6 line-heights apart)."""
     out: list[dict] = []
@@ -588,14 +617,9 @@ def run(source_id: str, raw_dir: Path = RAW_DIR, out_dir: Path = INTERIM_DIR / "
             flags.insert(0, "page-low-confidence")
         if not words:
             flags.insert(0, "blank-or-plate")
-        applied = []
-        for c in corrections:
-            if str(c["page"]) == str(printed):
-                for ln in line_recs:
-                    if c["find"] in ln["t"]:
-                        ln["t"] = ln["t"].replace(c["find"], c["replace"])
-                        ln["corrected"] = True  # checked against the scan: the merge below leaves it alone
-                        applied.append(c["find"])
+        margin = merge_margin(lay["margin"])
+        footnotes = [normalise_chars(ln.text) for ln in lay["footnotes"]]
+        applied = apply_corrections(corrections, printed, line_recs, margin, footnotes)
         missed = [c["find"] for c in corrections if str(c["page"]) == str(printed) and c["find"] not in applied]
         if missed:
             flags.append("correction-not-applied:" + "|".join(missed))
@@ -610,8 +634,8 @@ def run(source_id: str, raw_dir: Path = RAW_DIR, out_dir: Path = INTERIM_DIR / "
             "running_head": normalise_chars(head) if head else None,
             "size": [p.width, p.height],  # OCR coordinate space, for cropping page images
             "lines": line_recs,
-            "margin": merge_margin(lay["margin"]),
-            "footnotes": [normalise_chars(ln.text) for ln in lay["footnotes"]],
+            "margin": margin,
+            "footnotes": footnotes,
             "text_raw": text_raw,
             "text_clean": paragraphs(line_recs, hyphen_words),
             "recovered": recovered,  # lines only the second read has (D-27); not in text_raw

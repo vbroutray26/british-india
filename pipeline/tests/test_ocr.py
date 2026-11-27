@@ -174,3 +174,43 @@ def test_pieces_of_one_printed_line_are_joined():
     out = layout(rows + [b, a], 3300, 5300)
     assert [l.text for l in out["body"]][-1] == "4 ot Govern ent, travelling on the Orissa"
     assert len(out["body"]) == 6
+
+
+# --- audited corrections reach footnotes and margin notes; an empty replacement deletes (numeral review)
+
+def _corr(find, replace, page="12"):
+    return {"page": page, "find": find, "replace": replace}
+
+
+def test_correction_applies_to_lines_and_marks_them():
+    from pipeline.ocr import apply_corrections
+    lines = [{"t": "came into force from the Ist July 1906.", "y": 10}]
+    applied = apply_corrections([_corr("Ist July", "1st July")], "12", lines, [], [])
+    assert lines[0]["t"] == "came into force from the 1st July 1906." and lines[0]["corrected"]
+    assert applied == ["Ist July"]
+
+
+def test_correction_only_on_its_own_page():
+    from pipeline.ocr import apply_corrections
+    lines = [{"t": "Tangri, 157.", "y": 10}]
+    assert apply_corrections([_corr("157", "187", page="13")], "12", lines, [], []) == []
+    assert lines[0]["t"] == "Tangri, 157."
+
+
+def test_correction_applies_to_footnotes_and_margin():
+    from pipeline.ocr import apply_corrections
+    foot = ["Kings of Khurda, J.A.S.B., 1808, p. 383."]
+    margin = [{"t": "Rainfall in 1891", "y": 40}]
+    applied = apply_corrections([_corr("1808, p. 383", "1898, p. 383"), _corr("in 1891", "in 1892")],
+                                "12", [], margin, foot)
+    assert foot == ["Kings of Khurda, J.A.S.B., 1898, p. 383."]
+    assert margin[0]["t"] == "Rainfall in 1892"
+    assert sorted(applied) == ["1808, p. 383", "in 1891"]
+
+
+def test_empty_replacement_deletes_a_junk_line():
+    from pipeline.ocr import apply_corrections
+    lines = [{"t": "real text", "y": 10}, {"t": "es 2) eee", "y": 20}]
+    margin = [{"t": "es 2) eee", "y": 20}]
+    apply_corrections([_corr("es 2) eee", "")], "12", lines, margin, [])
+    assert [ln["t"] for ln in lines] == ["real text"] and margin == []

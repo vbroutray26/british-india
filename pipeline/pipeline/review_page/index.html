@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Numeral review</title>
+<link rel="stylesheet" href="review.css">
+</head>
+<body>
+<header>
+  <h1>Numeral review <span id="source"></span></h1>
+  <p id="progress" aria-live="polite"></p>
+  <div class="tools">
+    <label>Show
+      <select id="filter"><option value="">all items</option></select>
+    </label>
+    <label><input type="checkbox" id="open-only" checked> unanswered only</label>
+    <button id="export" type="button">Export answers</button>
+    <label class="file">Load answers <input type="file" id="load" accept="application/json"></label>
+  </div>
+</header>
+<main>
+  <p class="where" id="where"></p>
+  <img id="crop" alt="Scan of the line being reviewed (marked in red at the left), with a line above and below">
+  <label for="text" class="lbl">Type the marked line exactly as printed. Only figures and the characters around them need care.</label>
+  <textarea id="text" rows="2" autocomplete="off" spellcheck="false"></textarea>
+  <div class="chars" id="chars" aria-label="Insert character"></div>
+  <p class="status" id="status" aria-live="polite"></p>
+  <div class="nav">
+    <button id="prev" type="button">← Previous</button>
+    <button id="save" type="button" class="primary">Save and next (Enter)</button>
+    <button id="next" type="button">Skip →</button>
+  </div>
+  <p class="hint">Enter saves what is in the box and moves on: leave it unchanged if it matches the scan.
+    Empty the box to delete OCR junk (a speck read as text). Alt+← / Alt+→ move without saving.
+    Answers are kept in this browser; export them when you stop.</p>
+</main>
+<script src="items.js"></script>
+<script src="review.js"></script>
+</body>
+</html>

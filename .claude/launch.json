@@ -32,6 +32,20 @@
         "packages/ui/storybook-static"
       ],
       "port": 6007
+    },
+    {
+      "name": "numeral-review",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "4410",
+        "--bind",
+        "127.0.0.1",
+        "--directory",
+        "data/interim/review/omalley-puri-1908"
+      ],
+      "port": 4410
     }
   ]
 }
