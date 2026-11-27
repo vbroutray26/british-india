@@ -51,6 +51,13 @@ POP_COUNTS = [
                + r"(?!\s+(?:persons\s+)?(?:to|per)\s+(?:the\s+)?square)", re.IGNORECASE),
     re.compile(r"\b(?:contain\W{0,3}ing|contained|with)\s+" + POPN + r"\s+souls\b", re.IGNORECASE),
 ]
+# A census summary table row: name, area (sq. miles), towns, villages, population, persons per sq. mile
+# ("Puri ... ... 1,528 1 1,889 658,048 431"). Accepted only when population / area agrees with the printed
+# density within 2%, so a misread figure drops the row instead of entering wrong data. The year is the last
+# "census of YEAR" before the table in the entry.
+TABLE_ROW = re.compile(r"\b([A-Z][A-Za-z]+(?:\s+[a-z]+)?)(?:\s+\.{2,})*\s+" + NUMBER + r"\s+(\d+|\.{2,})\s+" + NUMBER
+                       + r"\s+" + NUMBER + r"\s+(\d{1,4})\b")
+CENSUS_YEAR = re.compile(r"census\s+of\s+" + YEAR, re.IGNORECASE)
 # Clauses end at ";" or at a full stop before a capital ("15·4 per cent., being" does not end one).
 CLAUSE = re.compile(r"(?:[^.;]|\.(?!\s+[A-Z\"'(]|\s*$))+")
 POP_WORDS = re.compile(r"\b(?:population|souls|inhabitants|census)\b", re.IGNORECASE)
@@ -108,8 +115,9 @@ def fact(place_id: str | None, ftype: str, value: dict, p: dict, m: re.Match, co
     return f
 
 
-def extract(p: dict, place_id: str | None, spans: list[dict] | None = None) -> list[dict]:
-    """Rule facts in a passage. `spans` is the entry's page map (DP-02), for the page of each figure."""
+def extract(p: dict, place_id: str | None, spans: list[dict] | None = None, before: str = "") -> list[dict]:
+    """Rule facts in a passage. `spans` is the entry's page map (DP-02), for the page of each figure;
+    `before` is the entry's text before the passage (a table's census year is stated above it)."""
     t, out = p["text"], []
 
     def mk(*a, **k):
@@ -150,6 +158,16 @@ def extract(p: dict, place_id: str | None, spans: list[dict] | None = None) -> l
                 taken.add(m.start(1))
                 out.append(mk(place_id, "population", {"number": n, "unit": "persons"}, p, _Shift(m, cm.start()),
                               0.85 if census_year else 0.8, census_year))
+    for m in TABLE_ROW.finditer(t):
+        area, pop, dens = num(m.group(2)), num(m.group(5)), int(m.group(6))
+        years = CENSUS_YEAR.findall(before + " " + t[:m.start()])
+        if not years or not area or pop < 1000 or abs(pop / area - dens) > 0.02 * dens:
+            continue
+        for ftype, value, year in (("area", {"number": area, "unit": "sq_miles"}, None),
+                                   ("population", {"number": pop, "unit": "persons"}, int(years[-1]))):
+            f = mk(place_id, ftype, value, p, m, 0.8, year)
+            f["notes"] += f"; table row: {m.group(1)}"
+            out.append(f)
     for m in DISTANCE.finditer(t):
         out.append(mk(place_id, "distance", {"miles": num(m.group(1)), "relation": m.group(2).lower(), "to": m.group(3)}, p, m, 0.85))
     for m in HEIGHT.finditer(t):
@@ -173,6 +191,7 @@ def consistency(facts: list[dict]) -> list[dict]:
     for f in facts:
         if f["type"] == "population" and f.get("as_of_year"):  # yearless counts describe different tracts
             scope = f["place_id"] if f["place_id"] != "pl_unlinked" else f["evidence"][0]["passage_id"]
+            scope += f["notes"].partition("table row: ")[2]  # each row of a table is its own place
             by.setdefault((scope, f.get("as_of_year")), []).append(f)
     return [{"place_id": k[0], "year": k[1], "values": sorted({x["value"]["number"] for x in v}),
              "fact_ids": [x["fact_id"] for x in v], "quotes": [x["evidence"][0]["quote"] for x in v]}
@@ -184,7 +203,11 @@ def run(source_id: str) -> list[dict]:
     passages = read_jsonl(d / "passages.jsonl")
     by_entry = {e: p["place_id"] for p in read_jsonl(d / "places.jsonl") for e in p["entry_ids"]}
     spans = {e["entry_id"]: e["page_spans"] for e in read_jsonl(INTERIM_DIR / "segment" / source_id / "entries.jsonl")}
-    facts = [f for p in passages for f in extract(p, by_entry.get(p["entry_id"]), spans.get(p["entry_id"]))]
+    facts, before = [], {}
+    for p in passages:
+        e = p["entry_id"]
+        facts += extract(p, by_entry.get(e), spans.get(e), before.get(e, "")[-2000:])
+        before[e] = before.get(e, "") + "\n\n" + p["text"]
     write_jsonl(INTERIM_DIR / "rules" / source_id / "facts.jsonl", facts)
     conflicts = consistency(facts)
     write_jsonl(INTERIM_DIR / "rules" / source_id / "conflicts.jsonl", conflicts)

@@ -73,6 +73,7 @@ def score(source_id: str) -> dict:
     gold = [g for g in read_jsonl(GOLD / "GS-NUMERIC.jsonl") if g["source_id"] == source_id]
     facts = read_jsonl(INTERIM_DIR / "rules" / source_id / "facts.jsonl")
     res = {"labelled": len(gold), "exact": 0, "wrong": [], "missing": []}
+    dep = {g["gold_id"] for g in gold if g.get("depends_on")}  # labels whose OCR text the labeller also fixed
     for g in gold:
         # Match on what was printed (page, type, year), not on fact_id: IDs change when OCR is corrected.
         cands = [f for f in facts if f["notes"].startswith(f"page {g['page']};") and f["type"] == g["type"]
@@ -85,6 +86,11 @@ def score(source_id: str) -> dict:
         else:
             res["missing"].append(g["gold_id"])
     res["exact_rate"] = round(res["exact"] / max(1, res["labelled"]), 3)
+    # Labels that depend on an audited OCR correction by the same labeller do not test the OCR (D-28).
+    failed = {w["gold_id"] for w in res["wrong"]} | set(res["missing"])
+    ind = [g["gold_id"] for g in gold if g["gold_id"] not in dep]
+    res["independent"] = {"labelled": len(ind), "exact": sum(1 for x in ind if x not in failed),
+                          "exact_rate": round(sum(1 for x in ind if x not in failed) / max(1, len(ind)), 3)}
     return res
 
 

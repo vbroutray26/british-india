@@ -68,7 +68,10 @@ full-resolution archive.org JP2), `pipeline.gold` (contact sheets for labelling;
   tracts) and place coordinates, including the 1901 census table on p. 60; not crop acreages, tenure
   holdings, density, revenue or religious counts. The book has fewer than 100 such figures; the rest of
   the spec's 100 should come from the 1905 Statistics volume (`puri-statistics-1905`), which is tables.
-  **TS-DATA-03 fails: 60/69 exact (87%)**, target ≥ 98% (was 31/69). Half the misses were figures
+  **TS-DATA-03 fails: 66/69 exact (95.7%); 60/63 (95.2%) on labels independent of OCR corrections**,
+  target ≥ 98% (was 31/69). *Update (D-28): the p. 60 table rows are now audited OCR corrections and a
+  census-table rule reads them; the 6 table labels depend on that transcription. Still failing: p. 59
+  (paragraph split), p. 138 (recovered line reads 480 for 485), p. 294 ("3-83").* Half the misses were figures
   extracted but credited to the page their paragraph starts on; DP-04 now takes the page from the
   entry's page map at the figure itself. New patterns: "in 1891 was returned at", census year elsewhere
   in the clause (only when the clause names exactly one year), yearless counts ("its population 10,000

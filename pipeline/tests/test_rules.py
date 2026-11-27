@@ -126,3 +126,31 @@ def test_population_ignores_percentages_and_millions():
 def test_counts_without_a_year_are_not_numeric_conflicts():
     text = "its population 10,000 souls; and its population 2,000 souls."
     assert consistency(extract(P(text), "pl_x-0000")) == []
+
+
+TABLE = ("~\" 'Towns. | Villages, Puri ... ... 1,528 1 1,889 658,048 431 Khurda ... ... 971 ... 1,212 359,236 370 "
+         "District total 2,499 1 3,101 1,017,284 407 +7·6")
+
+
+def test_census_table_rows_give_area_and_population_with_the_census_year_from_before():
+    fs = extract(P(TABLE), "pl_x-0000", before="The salient statistics of the census of 1901 are reproduced below :-")
+    got = sorted((f["type"], f["value"]["number"], f.get("as_of_year"), f["notes"].split("table row: ")[1]) for f in fs)
+    assert got == [("area", 971, None, "Khurda"), ("area", 1528, None, "Puri"), ("area", 2499, None, "District total"),
+                   ("population", 359236, 1901, "Khurda"), ("population", 658048, 1901, "Puri"),
+                   ("population", 1017284, 1901, "District total")]
+    for f in fs:
+        ev = f["evidence"][0]
+        assert TABLE[ev["char_start"]:ev["char_end"]] == ev["quote"]
+
+
+def test_census_table_row_must_agree_with_its_own_density():
+    bad = "Puri ... ... 1,628 1 1,889 658,048 431"  # one misread area digit breaks population / area = density
+    assert extract(P(bad), "pl_x-0000", before="census of 1901") == []
+
+
+def test_census_table_needs_a_census_year():
+    assert extract(P(TABLE), "pl_x-0000", before="The following figures are reproduced below") == []
+
+
+def test_census_table_rows_are_different_places_not_conflicts():
+    assert consistency(extract(P(TABLE), "pl_unlinked", before="census of 1901")) == []

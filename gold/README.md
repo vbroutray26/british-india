@@ -6,7 +6,7 @@ pipeline. Per D-16, Claude drafts every label and the owner reviews it. Each row
 
 | Set | File | Measures |
 |---|---|---|
-| GS-NUMERIC | `GS-NUMERIC.jsonl` | TS-DATA-03: rule extraction of coordinates, area and population (`python -m pipeline.gold score`) |
+| GS-NUMERIC | `GS-NUMERIC.jsonl` | TS-DATA-03: rule extraction of coordinates, area and population (`python -m pipeline.gold score`). Rows with `depends_on` rest on an OCR correction by the same labeller and are also scored apart (D-28) |
 | GS-OCR | `GS-OCR.jsonl` + `GS-OCR/<source>/p<page>.txt` | TS-DATA-01: OCR character error rate (`python -m pipeline.gold_ocr score`) |
 | GS-SEG | `GS-SEG.jsonl` | TS-DATA-02: entry and section boundary accuracy (`python -m pipeline.gold_seg score`) |
 
