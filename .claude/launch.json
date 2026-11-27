@@ -46,6 +46,22 @@
         "data/interim/review/omalley-puri-1908"
       ],
       "port": 4410
+    },
+    {
+      "name": "web-dist",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": [
+        "--filter",
+        "@bi/web",
+        "exec",
+        "wrangler",
+        "dev",
+        "--port",
+        "8787",
+        "--ip",
+        "127.0.0.1"
+      ],
+      "port": 8787
     }
   ]
 }

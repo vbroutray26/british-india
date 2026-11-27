@@ -369,5 +369,80 @@
     "en": "Every section of the gazetteer in book order, listed by its opening words, and the gazetteer entries for each place.",
     "or": "ବହିର କ୍ରମରେ ଗେଜେଟିଅରର ପ୍ରତ୍ୟେକ ବିଭାଗ, ତାହାର ପ୍ରଥମ ଶବ୍ଦଗୁଡ଼ିକ ସହ, ଏବଂ ପ୍ରତ୍ୟେକ ସ୍ଥାନର ଗେଜେଟିଅର ପ୍ରବନ୍ଧ।",
     "hi": "पुस्तक के क्रम में गज़ेटियर का हर खंड, उसके आरंभिक शब्दों के साथ, और हर स्थान की गज़ेटियर प्रविष्टि।"
+  },
+  "search.title": {
+    "en": "Search",
+    "or": "ଖୋଜନ୍ତୁ",
+    "hi": "खोजें"
+  },
+  "search.lede": {
+    "en": "Find a place by name or old spelling, or search the text of the gazetteer.",
+    "or": "ନାମ ବା ପୁରୁଣା ବନାନରେ ସ୍ଥାନ ଖୋଜନ୍ତୁ, କିମ୍ବା ଗେଜେଟିଅରର ପାଠରେ ଖୋଜନ୍ତୁ।",
+    "hi": "नाम या पुरानी वर्तनी से स्थान खोजें, या गज़ेटियर के पाठ में खोजें।"
+  },
+  "search.label": {
+    "en": "Search places and passages",
+    "or": "ସ୍ଥାନ ଓ ଅନୁଚ୍ଛେଦ ଖୋଜନ୍ତୁ",
+    "hi": "स्थान और अंश खोजें"
+  },
+  "search.placeholder": {
+    "en": "A place, an old spelling or any word",
+    "or": "ସ୍ଥାନ, ପୁରୁଣା ବନାନ ବା ଯେକୌଣସି ଶବ୍ଦ",
+    "hi": "कोई स्थान, पुरानी वर्तनी या कोई भी शब्द"
+  },
+  "search.submit": {
+    "en": "Search",
+    "or": "ଖୋଜନ୍ତୁ",
+    "hi": "खोजें"
+  },
+  "search.noPlaces": {
+    "en": "No places found",
+    "or": "କୌଣସି ସ୍ଥାନ ମିଳିଲା ନାହିଁ",
+    "hi": "कोई स्थान नहीं मिला"
+  },
+  "search.placesFound": {
+    "en": "{n} places found",
+    "or": "{n}ଟି ସ୍ଥାନ ମିଳିଲା",
+    "hi": "{n} स्थान मिले"
+  },
+  "search.matched": {
+    "en": "Matched",
+    "or": "ମେଳ",
+    "hi": "मिलान"
+  },
+  "search.placesHeading": {
+    "en": "Places",
+    "or": "ସ୍ଥାନ",
+    "hi": "स्थान"
+  },
+  "search.passages": {
+    "en": "Passages",
+    "or": "ଅନୁଚ୍ଛେଦ",
+    "hi": "अंश"
+  },
+  "search.passagesFound": {
+    "en": "{n} passages",
+    "or": "{n}ଟି ଅନୁଚ୍ଛେଦ",
+    "hi": "{n} अंश"
+  },
+  "search.noPassages": {
+    "en": "No passages match",
+    "or": "କୌଣସି ଅନୁଚ୍ଛେଦ ମେଳ ଖାଉନାହିଁ",
+    "hi": "कोई अंश मेल नहीं खाता"
+  },
+  "search.searching": {
+    "en": "Searching…",
+    "or": "ଖୋଜାଯାଉଛି…",
+    "hi": "खोज जारी है…"
+  },
+  "search.unavailable": {
+    "en": "Passage search is unavailable right now. Try the contents of the gazetteer.",
+    "or": "ଅନୁଚ୍ଛେଦ ଖୋଜା ଏବେ ଉପଲବ୍ଧ ନାହିଁ। ଗେଜେଟିଅରର ସୂଚୀପତ୍ର ଦେଖନ୍ତୁ।",
+    "hi": "अंश खोज अभी उपलब्ध नहीं है। गज़ेटियर की विषय-सूची देखें।"
+  },
+  "search.noscript": {
+    "en": "Passage search needs JavaScript. The contents of the gazetteer list every section.",
+    "or": "ଅନୁଚ୍ଛେଦ ଖୋଜା ପାଇଁ JavaScript ଆବଶ୍ୟକ। ଗେଜେଟିଅରର ସୂଚୀପତ୍ରରେ ପ୍ରତ୍ୟେକ ବିଭାଗ ଅଛି।",
+    "hi": "अंश खोज के लिए JavaScript चाहिए। गज़ेटियर की विषय-सूची में हर खंड है।"
   }
 }

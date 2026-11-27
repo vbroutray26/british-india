@@ -1,0 +1,43 @@
+---
+// Place autocomplete. Rendered on the server as a plain GET form (works without JavaScript, FR-HOME-12), then
+// replaced by the live design-system combobox from a bundled module script: an external file, so the strict
+// CSP holds (NFR-SEC-01; Astro's own island loader would be an inline script).
+import SearchCombobox from '@bi/ui/components/SearchCombobox.svelte';
+import { t, type Locale } from '../i18n';
+
+interface Props { lang: Locale; size?: 'md' | 'lg' }
+const { lang, size = 'md' } = Astro.props;
+const labels = {
+  submit: t('search.submit', lang), noResults: t('search.noPlaces', lang), matched: t('search.matched', lang),
+};
+const config = {
+  index: `/${lang}/search/places.json`,
+  label: t('search.label', lang), placeholder: t('search.placeholder', lang), action: `/${lang}/search/`, size,
+  labels, resultsTemplate: t('search.placesFound', lang),
+};
+---
+<div class="place-search" data-place-search={JSON.stringify(config)}>
+  <SearchCombobox label={config.label} placeholder={config.placeholder} action={config.action} size={size}
+    search={() => []} labels={{ ...labels, results: () => '' }} />
+</div>
+
+<script>
+  import { mount } from 'svelte';
+  import SearchCombobox from '@bi/ui/components/SearchCombobox.svelte';
+  import { matchPlaces, type PlaceIndexItem } from '../search/places';
+
+  for (const el of document.querySelectorAll<HTMLElement>('[data-place-search]')) {
+    const c = JSON.parse(el.dataset.placeSearch!);
+    let index: Promise<PlaceIndexItem[]> | undefined;
+    const load = () => (index ??= fetch(c.index).then((r) => r.json()));
+    el.replaceChildren();
+    mount(SearchCombobox, {
+      target: el,
+      props: {
+        label: c.label, placeholder: c.placeholder, action: c.action, size: c.size,
+        search: async (q: string) => matchPlaces(q, await load()),
+        labels: { ...c.labels, results: (n: number) => c.resultsTemplate.replace('{n}', String(n)) },
+      },
+    });
+  }
+</script>

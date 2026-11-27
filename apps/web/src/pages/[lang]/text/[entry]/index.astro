@@ -29,21 +29,23 @@ const marked = ps.map((p, i) => ({ p, newPage: i === 0 || p.page !== ps[i - 1].p
       ]}
     />
   </div>
+  <article data-pagefind-body>
   <header class="text-head">
     <p class="kicker">{e.kind === 'gazetteer' ? t('text.gazetteer', lang) : t('text.section', lang)}</p>
     <h1 lang={e.kind === 'gazetteer' ? 'en' : lang}>{heading}</h1>
-    {src && <p class="src">{t('source.label', lang)}: <cite>{src.author}, {src.title} ({src.year})</cite>, {t('text.pages', lang)} {pages}</p>}
-    {pl && <p><a href={`/${lang}/places/${slugOf(pl.place_id)}/`}>{t('text.placePage', lang)}: {nameOf(pl)}</a></p>}
-    <p class="ocr-note">{t('text.ocrNote', lang)}</p>
+    {src && <p class="src">{t('source.label', lang)}: <cite data-pagefind-meta="source">{src.author}, {src.title} ({src.year})</cite>, {t('text.pages', lang)} {pages}</p>}
+    {pl && <p data-pagefind-ignore><a href={`/${lang}/places/${slugOf(pl.place_id)}/`}>{t('text.placePage', lang)}: {nameOf(pl)}</a></p>}
+    <p class="ocr-note" data-pagefind-ignore>{t('text.ocrNote', lang)}</p>
   </header>
   <div class="text" lang="en">
     {marked.map(({ p, newPage }) => (
       <>
-        {newPage && <p class="page-mark" aria-label={`${t('quote.page', lang)} ${p.page}`}>{t('quote.page', lang)} {p.page}</p>}
+        {newPage && <h2 id={`page-${p.page}`} class="page-mark">{t('quote.page', lang)} {p.page}</h2>}
         <p id={p.passage_id} class="para">{p.text} <a class="anchor" href={`#${p.passage_id}`} aria-label={t('quote.permalink', lang)}>¶</a></p>
       </>
     ))}
   </div>
+  </article>
   {src && <p class="credit">{src.credit_line}</p>}
 </Base>
 

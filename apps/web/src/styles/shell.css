@@ -22,3 +22,4 @@
 .hero .lede { font-size: var(--step-1); }
 .notice { border-left: 3px solid var(--color-ai); padding: var(--space-3) var(--space-4); background: var(--color-surface); border-radius: var(--radius-card); }
 .hero .browse { font-size: var(--step-1); font-weight: 600; }
+.hero .home-search { margin-block: var(--space-6); max-width: 36rem; }

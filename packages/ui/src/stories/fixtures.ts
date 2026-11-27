@@ -7,6 +7,7 @@ export const L = {
   quote: { page: 'p.', copyCitation: 'Copy citation', copied: 'Copied', permalink: 'Permalink', viewScan: 'View scan' },
   review: { reviewed: 'Reviewed', unreviewed: 'Not yet reviewed' },
   actions: { share: 'Share', cite: 'Cite', correct: 'Correct', listen: 'Listen' },
+  results: { page: 'Page', noResults: 'No passages match', count: (n: number) => `${n} passages`, searching: 'Searching…' },
   search: { submit: 'Search', noResults: 'No places found', results: (n: number) => `${n} places found`, matched: 'Matched' },
   ask: { ask: 'Ask', asking: 'Searching the records…', tryOne: 'Try:', scope: 'Answers come only from the gazetteers, with page references.' },
   answer: { ai: 'Written by AI from the passages cited', unanswerable: "I couldn't find this in the records", nearest: 'Closest passages', helpful: 'Helpful', notHelpful: 'Not helpful', report: 'Report a problem', thanks: 'Thank you for the feedback' },
@@ -47,3 +48,9 @@ export const SAMPLE_IMAGES: GalleryItem[] = [1, 2, 3, 4].map((n) => ({
   alt: `Sample placeholder image ${n}`, caption: `Sample caption ${n}`, date: 'c. 1900', credit: 'Sample credit line', sourceHref: '#',
 }));
 export const placeholderImage = ph;
+
+/** Passage search results as the search page passes them (excerpts from Pagefind carry <mark>). */
+export const SAMPLE_RESULTS = [
+  { title: 'Sample section', href: '#ps_1', excerpt: 'the damage was aggravated by a <mark>cyclone</mark> in the', page: '21', source: 'Sample source' },
+  { title: 'Sample entry', href: '#ps_2', excerpt: 'a <mark>cyclone</mark> swept the coast', page: '164', source: 'Sample source' },
+];

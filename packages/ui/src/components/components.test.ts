@@ -5,7 +5,7 @@ import { describe, expect, it, vi } from 'vitest';
 import type { Component } from 'svelte';
 import * as C from './index';
 import { expectNoA11yViolations } from '../test/a11y';
-import { L, SAMPLE_CENSUS, SAMPLE_IMAGES, SAMPLE_PASSAGE, searchSample } from '../stories/fixtures';
+import { L, SAMPLE_CENSUS, SAMPLE_IMAGES, SAMPLE_PASSAGE, SAMPLE_RESULTS, searchSample } from '../stories/fixtures';
 
 const cases: [string, Component<any>, Record<string, unknown>][] = [
   ['Badge', C.Badge, { text: 'Reviewed', tone: 'reviewed', icon: 'reviewed' }],
@@ -44,6 +44,7 @@ const cases: [string, Component<any>, Record<string, unknown>][] = [
   ['MapListView', C.MapListView, { label: 'Places', emptyText: 'None', items: [{ name: 'Puri', type: 'town', icon: 'admin', href: '#' }] }],
   ['Gallery', C.Gallery, { label: 'Images', items: SAMPLE_IMAGES, labels: L.gallery }],
   ['Icon', C.Icon, { name: 'temple', label: 'Temple' }],
+  ['SearchResults', C.SearchResults, { label: 'Passages', query: 'cyclone', state: 'done', results: SAMPLE_RESULTS, labels: L.results }],
 ];
 
 describe('every component renders accessibly', () => {
@@ -159,5 +160,27 @@ describe('behaviour', () => {
     expect(screen.getByText('Not recorded')).toBeInTheDocument();
     await fireEvent.click(screen.getByRole('button', { name: /B/ }));
     expect(screen.getByRole('columnheader', { name: /B/ })).toHaveAttribute('aria-sort', 'ascending');
+  });
+});
+
+describe('SearchResults (FR-SRCH-04, AC-SRCH-04)', () => {
+  it('shows each result with its page, source and highlighted match', () => {
+    render(C.SearchResults, { label: 'Passages', query: 'cyclone', state: 'done', results: SAMPLE_RESULTS, labels: L.results });
+    const items = screen.getAllByRole('listitem');
+    expect(items).toHaveLength(SAMPLE_RESULTS.length);
+    expect(within(items[0]).getByText('cyclone', { selector: 'mark' })).toBeInTheDocument();
+    expect(items[0]).toHaveTextContent('Page 21');
+    expect(items[0]).toHaveTextContent('Sample source');
+    expect(within(items[0]).getByRole('link')).toHaveAttribute('href', SAMPLE_RESULTS[0].href);
+  });
+  it('keeps only <mark> from an excerpt and escapes everything else', () => {
+    const { container } = render(C.SearchResults, { label: 'P', query: 'x', state: 'done', labels: L.results,
+      results: [{ title: 'T', href: '#', excerpt: '<img src=x onerror=alert(1)><mark>x</mark>', page: '1', source: 'S' }] });
+    expect(container.querySelector('img')).toBeNull();
+    expect(container.querySelector('mark')).toHaveTextContent('x');
+  });
+  it('says when nothing matched', () => {
+    render(C.SearchResults, { label: 'P', query: 'zzz', state: 'done', results: [], labels: L.results });
+    expect(screen.getByRole('status')).toHaveTextContent('No passages match');
   });
 });
