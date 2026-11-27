@@ -1,0 +1,617 @@
+[
+ {
+  "as_of_year": 1901,
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 329,
+    "char_start": 315,
+    "passage_id": "ps_omalley_50fd6c3bf3_00",
+    "quote": "49,334 in 1901"
+   }
+  ],
+  "fact_id": "ft_09abbaa8853c",
+  "method": "rule",
+  "page": "286",
+  "place_id": "pl_puri-0741",
+  "review": {
+   "status": "unreviewed"
+  },
+  "type": "population",
+  "value": {
+   "number": 49334,
+   "unit": "persons"
+  }
+ },
+ {
+  "as_of_year": 1901,
+  "confidence": 0.85,
+  "evidence": [
+   {
+    "char_end": 41,
+    "char_start": 22,
+    "passage_id": "ps_omalley_c700cd352a_03",
+    "quote": "population of 3,424"
+   }
+  ],
+  "fact_id": "ft_0c2c487a6194",
+  "method": "rule",
+  "page": "269",
+  "place_id": "pl_khurda-75c6",
+  "review": {
+   "status": "unreviewed"
+  },
+  "type": "population",
+  "value": {
+   "number": 3424,
+   "unit": "persons"
+  }
+ },
+ {
+  "as_of_year": 1901,
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 53,
+    "char_start": 38,
+    "passage_id": "ps_omalley_5ab93a89d9_02",
+    "quote": "359,236 in 1901"
+   }
+  ],
+  "fact_id": "ft_13f7c4648a43",
+  "method": "rule",
+  "page": "270",
+  "place_id": "pl_khurda-subdivision-40c0",
+  "review": {
+   "status": "unreviewed"
+  },
+  "type": "population",
+  "value": {
+   "number": 359236,
+   "unit": "persons"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 415,
+    "char_start": 397,
+    "passage_id": "ps_omalley_50fd6c3bf3_23",
+    "quote": "area of 8°11 acres"
+   }
+  ],
+  "fact_id": "ft_1f9b7666817a",
+  "method": "rule",
+  "page": "295",
+  "place_id": "pl_puri-0741",
+  "review": {
+   "status": "unreviewed"
+  },
+  "type": "area",
+  "value": {
+   "number": 8.11,
+   "unit": "acres"
+  }
+ },
+ {
+  "as_of_year": 1891,
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 81,
+    "char_start": 66,
+    "passage_id": "ps_omalley_e2be75b04d_02",
+    "quote": "613,575 in 1891"
+   }
+  ],
+  "fact_id": "ft_3aeb71588cd3",
+  "method": "rule",
+  "page": "298",
+  "place_id": "pl_puri-subdivision-1dce",
+  "review": {
+   "status": "unreviewed"
+  },
+  "type": "population",
+  "value": {
+   "number": 613575,
+   "unit": "persons"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 82,
+    "char_start": 58,
+    "passage_id": "ps_omalley_406c0d453b_00",
+    "quote": "area of 138 square miles"
+   }
+  ],
+  "fact_id": "ft_3f6a4d4776cc",
+  "method": "rule",
+  "page": "284",
+  "place_id": "pl_kotdesh-ab99",
+  "review": {
+   "status": "unreviewed"
+  },
+  "type": "area",
+  "value": {
+   "number": 138,
+   "unit": "sq_miles"
+  }
+ },
+ {
+  "confidence": 0.8,
+  "evidence": [
+   {
+    "char_end": 196,
+    "char_start": 179,
+    "passage_id": "ps_omalley_e2be75b04d_02",
+    "quote": "population 49,334"
+   }
+  ],
+  "fact_id": "ft_4f4503c3a64d",
+  "method": "rule",
+  "page": "298",
+  "place_id": "pl_puri-subdivision-1dce",
+  "review": {
+   "status": "unreviewed"
+  },
+  "type": "population",
+  "value": {
+   "number": 49334,
+   "unit": "persons"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 153,
+    "char_start": 127,
+    "passage_id": "ps_omalley_e2be75b04d_00",
+    "quote": "area of 1,528 square miles"
+   }
+  ],
+  "fact_id": "ft_593e0cbafe5a",
+  "method": "rule",
+  "page": "298",
+  "place_id": "pl_puri-subdivision-1dce",
+  "review": {
+   "status": "unreviewed"
+  },
+  "type": "area",
+  "value": {
+   "number": 1528,
+   "unit": "sq_miles"
+  }
+ },
+ {
+  "as_of_year": 1891,
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 311,
+    "char_start": 297,
+    "passage_id": "ps_omalley_50fd6c3bf3_00",
+    "quote": "28,794 in 1891"
+   }
+  ],
+  "fact_id": "ft_75f8c5a14228",
+  "method": "rule",
+  "page": "286",
+  "place_id": "pl_puri-0741",
+  "review": {
+   "status": "unreviewed"
+  },
+  "type": "population",
+  "value": {
+   "number": 28794,
+   "unit": "persons"
+  }
+ },
+ {
+  "as_of_year": 1901,
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 53,
+    "char_start": 38,
+    "passage_id": "ps_omalley_e2be75b04d_02",
+    "quote": "658,048 in 1901"
+   }
+  ],
+  "fact_id": "ft_7605ce82a728",
+  "method": "rule",
+  "page": "298",
+  "place_id": "pl_puri-subdivision-1dce",
+  "review": {
+   "status": "unreviewed"
+  },
+  "type": "population",
+  "value": {
+   "number": 658048,
+   "unit": "persons"
+  }
+ },
+ {
+  "as_of_year": 1901,
+  "confidence": 0.85,
+  "evidence": [
+   {
+    "char_end": 1072,
+    "char_start": 1053,
+    "passage_id": "ps_omalley_f0236c7787_00",
+    "quote": "population is 3,053"
+   }
+  ],
+  "fact_id": "ft_7c697fc4f6c1",
+  "method": "rule",
+  "page": "234",
+  "place_id": "pl_bhubaneswar-800a",
+  "review": {
+   "status": "unreviewed"
+  },
+  "type": "population",
+  "value": {
+   "number": 3053,
+   "unit": "persons"
+  }
+ },
+ {
+  "as_of_year": 1891,
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 81,
+    "char_start": 66,
+    "passage_id": "ps_omalley_5ab93a89d9_02",
+    "quote": "331,423 in 1891"
+   }
+  ],
+  "fact_id": "ft_7f5d473680c5",
+  "method": "rule",
+  "page": "270",
+  "place_id": "pl_khurda-subdivision-40c0",
+  "review": {
+   "status": "unreviewed"
+  },
+  "type": "population",
+  "value": {
+   "number": 331423,
+   "unit": "persons"
+  }
+ },
+ {
+  "as_of_year": 1872,
+  "confidence": 0.85,
+  "evidence": [
+   {
+    "char_end": 173,
+    "char_start": 152,
+    "passage_id": "ps_omalley_565e266500_06",
+    "quote": "population of 769,779"
+   }
+  ],
+  "fact_id": "ft_84fddc39788f",
+  "method": "rule",
+  "page": "59",
+  "place_id": "pl_puri-district-080c",
+  "review": {
+   "status": "unreviewed"
+  },
+  "type": "population",
+  "value": {
+   "number": 769779,
+   "unit": "persons"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 274,
+    "char_start": 248,
+    "passage_id": "ps_omalley_92682d2845_01",
+    "quote": "area of 2,499 square miles"
+   }
+  ],
+  "fact_id": "ft_88eb74a9dd22",
+  "method": "rule",
+  "page": "1",
+  "place_id": "pl_puri-district-080c",
+  "review": {
+   "status": "unreviewed"
+  },
+  "type": "area",
+  "value": {
+   "number": 2499,
+   "unit": "sq_miles"
+  }
+ },
+ {
+  "as_of_year": 1901,
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 81,
+    "char_start": 63,
+    "passage_id": "ps_omalley_6a6dcaa28d_00",
+    "quote": "in 1901 was 49,334"
+   }
+  ],
+  "fact_id": "ft_91cfb2a7fa3e",
+  "method": "rule",
+  "page": "61",
+  "place_id": "pl_puri-0741",
+  "review": {
+   "status": "unreviewed"
+  },
+  "type": "population",
+  "value": {
+   "number": 49334,
+   "unit": "persons"
+  }
+ },
+ {
+  "confidence": 0.7,
+  "evidence": [
+   {
+    "char_end": 157,
+    "char_start": 141,
+    "passage_id": "ps_omalley_5ab93a89d9_00",
+    "quote": "971 square miles"
+   }
+  ],
+  "fact_id": "ft_9d0a92e63342",
+  "method": "rule",
+  "page": "269",
+  "place_id": "pl_khurda-subdivision-40c0",
+  "review": {
+   "status": "unreviewed"
+  },
+  "type": "area",
+  "value": {
+   "number": 971,
+   "unit": "sq_miles"
+  }
+ },
+ {
+  "as_of_year": 1901,
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 348,
+    "char_start": 320,
+    "passage_id": "ps_omalley_92682d2845_01",
+    "quote": "census of 1901, of 1,017,284"
+   }
+  ],
+  "fact_id": "ft_b78e4e8891e3",
+  "method": "rule",
+  "page": "1",
+  "place_id": "pl_puri-district-080c",
+  "review": {
+   "status": "unreviewed"
+  },
+  "type": "population",
+  "value": {
+   "number": 1017284,
+   "unit": "persons"
+  }
+ },
+ {
+  "as_of_year": 1891,
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 335,
+    "char_start": 321,
+    "passage_id": "ps_omalley_6a6dcaa28d_00",
+    "quote": "28,794 in 1891"
+   }
+  ],
+  "fact_id": "ft_c03e93ad4945",
+  "method": "rule",
+  "page": "62",
+  "place_id": "pl_puri-0741",
+  "review": {
+   "status": "unreviewed"
+  },
+  "type": "population",
+  "value": {
+   "number": 28794,
+   "unit": "persons"
+  }
+ },
+ {
+  "as_of_year": 1901,
+  "confidence": 0.85,
+  "evidence": [
+   {
+    "char_end": 1668,
+    "char_start": 1635,
+    "passage_id": "ps_omalley_565e266500_06",
+    "quote": "population had risen to 1,017,284"
+   }
+  ],
+  "fact_id": "ft_c4cbed5cdabd",
+  "method": "rule",
+  "page": "59",
+  "place_id": "pl_puri-district-080c",
+  "review": {
+   "status": "unreviewed"
+  },
+  "type": "population",
+  "value": {
+   "number": 1017284,
+   "unit": "persons"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 658,
+    "char_start": 640,
+    "passage_id": "ps_omalley_50fd6c3bf3_22",
+    "quote": "area of 4°52 acres"
+   }
+  ],
+  "fact_id": "ft_c5ac06e262fd",
+  "method": "rule",
+  "page": "295",
+  "place_id": "pl_puri-0741",
+  "review": {
+   "status": "unreviewed"
+  },
+  "type": "area",
+  "value": {
+   "number": 4.52,
+   "unit": "acres"
+  }
+ },
+ {
+  "confidence": 0.7,
+  "evidence": [
+   {
+    "char_end": 801,
+    "char_start": 787,
+    "passage_id": "ps_omalley_50fd6c3bf3_00",
+    "quote": "4 square miles"
+   }
+  ],
+  "fact_id": "ft_d460a324085a",
+  "method": "rule",
+  "page": "287",
+  "place_id": "pl_puri-0741",
+  "review": {
+   "status": "unreviewed"
+  },
+  "type": "area",
+  "value": {
+   "number": 4,
+   "unit": "sq_miles"
+  }
+ },
+ {
+  "as_of_year": 1891,
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 633,
+    "char_start": 602,
+    "passage_id": "ps_omalley_565e266500_06",
+    "quote": "in 1891 was returned at 944,998"
+   }
+  ],
+  "fact_id": "ft_d8e9c0a8b1e3",
+  "method": "rule",
+  "page": "59",
+  "place_id": "pl_puri-district-080c",
+  "review": {
+   "status": "unreviewed"
+  },
+  "type": "population",
+  "value": {
+   "number": 944998,
+   "unit": "persons"
+  }
+ },
+ {
+  "as_of_year": 1901,
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 353,
+    "char_start": 339,
+    "passage_id": "ps_omalley_6a6dcaa28d_00",
+    "quote": "49,334 in 1901"
+   }
+  ],
+  "fact_id": "ft_db71009d2ffb",
+  "method": "rule",
+  "page": "62",
+  "place_id": "pl_puri-0741",
+  "review": {
+   "status": "unreviewed"
+  },
+  "type": "population",
+  "value": {
+   "number": 49334,
+   "unit": "persons"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 60,
+    "char_start": 43,
+    "passage_id": "ps_omalley_64666f4087_00",
+    "quote": "area of 575 acres"
+   }
+  ],
+  "fact_id": "ft_eb71a61c5309",
+  "method": "rule",
+  "page": "233",
+  "place_id": "pl_balukhand-913a",
+  "review": {
+   "status": "unreviewed"
+  },
+  "type": "area",
+  "value": {
+   "number": 575,
+   "unit": "acres"
+  }
+ },
+ {
+  "as_of_year": 1901,
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 213,
+    "char_start": 189,
+    "passage_id": "ps_omalley_68649050ee_00",
+    "quote": "census of 1901, of 1,547"
+   }
+  ],
+  "fact_id": "ft_ef073a1d0096",
+  "method": "rule",
+  "page": "298",
+  "place_id": "pl_satyabadi-9ab9",
+  "review": {
+   "status": "unreviewed"
+  },
+  "type": "population",
+  "value": {
+   "number": 1547,
+   "unit": "persons"
+  }
+ },
+ {
+  "as_of_year": 1881,
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 298,
+    "char_start": 280,
+    "passage_id": "ps_omalley_565e266500_06",
+    "quote": "in 1881 at 888,592"
+   }
+  ],
+  "fact_id": "ft_f49b65ba6f57",
+  "method": "rule",
+  "page": "59",
+  "place_id": "pl_puri-district-080c",
+  "review": {
+   "status": "unreviewed"
+  },
+  "type": "population",
+  "value": {
+   "number": 888592,
+   "unit": "persons"
+  }
+ }
+]

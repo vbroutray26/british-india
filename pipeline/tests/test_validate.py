@@ -64,3 +64,22 @@ def test_unclear_rights_requires_acceptance(tmp_path):
 
 def test_duplicate_source_ids_fail(tmp_path):
     assert main(["--data-dir", str(_write(tmp_path, [GOOD_SOURCE, GOOD_SOURCE], []))]) == 1
+
+
+def test_repo_curated_bundles_are_valid():
+    from pipeline.validate import check_curated
+    assert check_curated(DATA_DIR / "curated") == []
+
+
+def test_curated_bundle_with_a_broken_quote_fails(tmp_path):
+    import json
+    import shutil
+
+    from pipeline.validate import check_curated
+    src = DATA_DIR / "curated" / "omalley-puri-1908"
+    dst = tmp_path / "omalley-puri-1908"
+    shutil.copytree(src, dst)
+    facts = json.loads((dst / "facts.json").read_text())
+    facts[0]["evidence"][0]["char_start"] += 1
+    (dst / "facts.json").write_text(json.dumps(facts))
+    assert any("quote" in e for e in check_curated(tmp_path))

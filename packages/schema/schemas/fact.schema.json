@@ -3,36 +3,151 @@
   "$id": "https://british-india/schemas/fact.schema.json",
   "title": "Fact (spec §7.3). No quote, no fact.",
   "type": "object",
-  "required": ["fact_id", "place_id", "type", "value", "evidence", "method", "confidence", "review"],
+  "required": [
+    "fact_id",
+    "place_id",
+    "type",
+    "value",
+    "evidence",
+    "method",
+    "confidence",
+    "review"
+  ],
   "properties": {
-    "fact_id": { "type": "string", "pattern": "^ft_[a-z0-9_-]+$" },
-    "place_id": { "type": "string", "pattern": "^pl_" },
-    "type": { "enum": ["population", "households", "area", "density", "revenue", "rainfall", "crop", "industry", "trade_item", "market_or_fair", "port", "railway", "canal", "road", "flood", "famine", "cyclone", "epidemic", "temple", "monument", "festival", "school", "hospital", "admin_change", "notable_person", "language", "religion_counts", "caste_tribe_counts", "price", "wage", "quote_of_interest"] },
-    "value": { "type": "object" },
-    "as_of_year": { "type": "integer" },
-    "year_range": { "type": "array", "items": { "type": "integer" }, "minItems": 2, "maxItems": 2 },
-    "evidence": {
-      "type": "array", "minItems": 1,
+    "fact_id": {
+      "type": "string",
+      "pattern": "^ft_[a-z0-9_-]+$"
+    },
+    "place_id": {
+      "type": "string",
+      "pattern": "^pl_"
+    },
+    "type": {
+      "enum": [
+        "population",
+        "households",
+        "area",
+        "density",
+        "revenue",
+        "rainfall",
+        "crop",
+        "industry",
+        "trade_item",
+        "market_or_fair",
+        "port",
+        "railway",
+        "canal",
+        "road",
+        "flood",
+        "famine",
+        "cyclone",
+        "epidemic",
+        "temple",
+        "monument",
+        "festival",
+        "school",
+        "hospital",
+        "admin_change",
+        "notable_person",
+        "language",
+        "religion_counts",
+        "caste_tribe_counts",
+        "price",
+        "wage",
+        "quote_of_interest"
+      ]
+    },
+    "value": {
+      "type": "object"
+    },
+    "as_of_year": {
+      "type": "integer"
+    },
+    "year_range": {
+      "type": "array",
       "items": {
-        "type": "object", "required": ["passage_id", "quote", "char_start", "char_end"],
+        "type": "integer"
+      },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "passage_id",
+          "quote",
+          "char_start",
+          "char_end"
+        ],
         "properties": {
-          "passage_id": { "type": "string", "pattern": "^ps_" },
-          "quote": { "type": "string", "minLength": 1 },
-          "char_start": { "type": "integer", "minimum": 0 },
-          "char_end": { "type": "integer", "minimum": 0 }
+          "passage_id": {
+            "type": "string",
+            "pattern": "^ps_"
+          },
+          "quote": {
+            "type": "string",
+            "minLength": 1
+          },
+          "char_start": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "char_end": {
+            "type": "integer",
+            "minimum": 0
+          }
         },
         "additionalProperties": false
       }
     },
-    "method": { "enum": ["rule", "llm", "manual"] },
-    "model": { "type": "string" },
-    "prompt_version": { "type": "string" },
-    "run_id": { "type": "string" },
-    "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
-    "review": { "$ref": "common.schema.json#/$defs/review" },
-    "notes": { "type": "string" }
+    "method": {
+      "enum": [
+        "rule",
+        "llm",
+        "manual"
+      ]
+    },
+    "model": {
+      "type": "string"
+    },
+    "prompt_version": {
+      "type": "string"
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "review": {
+      "$ref": "common.schema.json#/$defs/review"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "page": {
+      "type": "string",
+      "description": "Printed page the figure is on (D-26); may differ from the passage's first page."
+    }
   },
-  "if": { "properties": { "method": { "const": "llm" } } },
-  "then": { "required": ["model", "prompt_version", "run_id"] },
+  "if": {
+    "properties": {
+      "method": {
+        "const": "llm"
+      }
+    }
+  },
+  "then": {
+    "required": [
+      "model",
+      "prompt_version",
+      "run_id"
+    ]
+  },
   "additionalProperties": false
 }

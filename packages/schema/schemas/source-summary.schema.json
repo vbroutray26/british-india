@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://british-india/schemas/source-summary.schema.json",
+  "title": "The citation fields of a source, published with its curated bundle.",
+  "type": "object",
+  "required": [
+    "source_id",
+    "title",
+    "author",
+    "year",
+    "credit_line",
+    "rights_basis"
+  ],
+  "properties": {
+    "source_id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "author": {
+      "type": "string"
+    },
+    "year": {
+      "type": "integer"
+    },
+    "credit_line": {
+      "type": "string"
+    },
+    "scan_ref": {
+      "type": "string"
+    },
+    "acquired_from": {
+      "type": "string"
+    },
+    "rights_basis": {
+      "$ref": "common.schema.json#/$defs/rightsBasis"
+    }
+  },
+  "additionalProperties": false
+}

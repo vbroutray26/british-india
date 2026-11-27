@@ -1,0 +1,565 @@
+[
+ {
+  "names": [
+   {
+    "kind": "primary",
+    "lang": "en",
+    "script": "Latn",
+    "source_id": "omalley-puri-1908",
+    "text": "Atri"
+   }
+  ],
+  "parent_ids": [
+   "pl_puri-district-080c"
+  ],
+  "place_id": "pl_atri-e0fb",
+  "review": {
+   "status": "unreviewed"
+  },
+  "status": "existing",
+  "type": "village"
+ },
+ {
+  "names": [
+   {
+    "kind": "primary",
+    "lang": "en",
+    "script": "Latn",
+    "source_id": "omalley-puri-1908",
+    "text": "Balukhand"
+   }
+  ],
+  "parent_ids": [
+   "pl_puri-district-080c"
+  ],
+  "place_id": "pl_balukhand-913a",
+  "review": {
+   "status": "unreviewed"
+  },
+  "status": "existing",
+  "type": "estate"
+ },
+ {
+  "names": [
+   {
+    "kind": "primary",
+    "lang": "en",
+    "script": "Latn",
+    "source_id": "omalley-puri-1908",
+    "text": "Bānpur"
+   }
+  ],
+  "parent_ids": [
+   "pl_puri-district-080c"
+  ],
+  "place_id": "pl_banpur-9b6f",
+  "review": {
+   "status": "unreviewed"
+  },
+  "status": "existing",
+  "type": "village"
+ },
+ {
+  "names": [
+   {
+    "kind": "primary",
+    "lang": "en",
+    "script": "Latn",
+    "source_id": "omalley-puri-1908",
+    "text": "Barāl"
+   }
+  ],
+  "parent_ids": [
+   "pl_puri-district-080c"
+  ],
+  "place_id": "pl_baral-d05c",
+  "review": {
+   "status": "unreviewed"
+  },
+  "status": "existing",
+  "type": "village"
+ },
+ {
+  "names": [
+   {
+    "kind": "primary",
+    "lang": "en",
+    "script": "Latn",
+    "source_id": "omalley-puri-1908",
+    "text": "Bārunai Hill"
+   }
+  ],
+  "parent_ids": [
+   "pl_puri-district-080c"
+  ],
+  "place_id": "pl_barunai-hill-2714",
+  "review": {
+   "status": "unreviewed"
+  },
+  "status": "existing",
+  "type": "hill"
+ },
+ {
+  "names": [
+   {
+    "kind": "primary",
+    "lang": "en",
+    "script": "Latn",
+    "source_id": "omalley-puri-1908",
+    "text": "Bhubaneswar"
+   }
+  ],
+  "parent_ids": [
+   "pl_khurda-subdivision-40c0"
+  ],
+  "place_id": "pl_bhubaneswar-800a",
+  "review": {
+   "status": "unreviewed"
+  },
+  "status": "existing",
+  "type": "village"
+ },
+ {
+  "names": [
+   {
+    "kind": "primary",
+    "lang": "en",
+    "script": "Latn",
+    "source_id": "omalley-puri-1908",
+    "text": "Biswanāth Hill"
+   }
+  ],
+  "parent_ids": [
+   "pl_puri-district-080c"
+  ],
+  "place_id": "pl_biswanath-hill-dd53",
+  "review": {
+   "status": "unreviewed"
+  },
+  "status": "existing",
+  "type": "hill"
+ },
+ {
+  "names": [
+   {
+    "kind": "primary",
+    "lang": "en",
+    "script": "Latn",
+    "source_id": "omalley-puri-1908",
+    "text": "Chitrakot Hill"
+   }
+  ],
+  "parent_ids": [
+   "pl_puri-district-080c"
+  ],
+  "place_id": "pl_chitrakot-hill-69bf",
+  "review": {
+   "status": "unreviewed"
+  },
+  "status": "existing",
+  "type": "hill"
+ },
+ {
+  "names": [
+   {
+    "kind": "primary",
+    "lang": "en",
+    "script": "Latn",
+    "source_id": "omalley-puri-1908",
+    "text": "Dhauli"
+   }
+  ],
+  "parent_ids": [
+   "pl_puri-district-080c"
+  ],
+  "place_id": "pl_dhauli-73fe",
+  "review": {
+   "status": "unreviewed"
+  },
+  "status": "existing",
+  "type": "village"
+ },
+ {
+  "names": [
+   {
+    "kind": "primary",
+    "lang": "en",
+    "script": "Latn",
+    "source_id": "omalley-puri-1908",
+    "text": "Jatnī"
+   }
+  ],
+  "parent_ids": [
+   "pl_puri-district-080c"
+  ],
+  "place_id": "pl_jatni-545a",
+  "review": {
+   "status": "unreviewed"
+  },
+  "status": "existing",
+  "type": "village"
+ },
+ {
+  "names": [
+   {
+    "kind": "primary",
+    "lang": "en",
+    "script": "Latn",
+    "source_id": "omalley-puri-1908",
+    "text": "Kaipadar"
+   }
+  ],
+  "parent_ids": [
+   "pl_puri-district-080c"
+  ],
+  "place_id": "pl_kaipadar-1431",
+  "review": {
+   "status": "unreviewed"
+  },
+  "status": "existing",
+  "type": "village"
+ },
+ {
+  "names": [
+   {
+    "kind": "primary",
+    "lang": "en",
+    "script": "Latn",
+    "source_id": "omalley-puri-1908",
+    "text": "Kākatpur"
+   }
+  ],
+  "parent_ids": [
+   "pl_puri-district-080c"
+  ],
+  "place_id": "pl_kakatpur-d5eb",
+  "review": {
+   "status": "unreviewed"
+  },
+  "status": "existing",
+  "type": "village"
+ },
+ {
+  "names": [
+   {
+    "kind": "primary",
+    "lang": "en",
+    "script": "Latn",
+    "source_id": "omalley-puri-1908",
+    "text": "Kālupārā Ghāt"
+   }
+  ],
+  "parent_ids": [
+   "pl_puri-district-080c"
+  ],
+  "place_id": "pl_kalupara-ghat-34c0",
+  "review": {
+   "status": "unreviewed"
+  },
+  "status": "existing",
+  "type": "village"
+ },
+ {
+  "geometry": {
+   "coordinates": [
+    85.7833,
+    20.2667
+   ],
+   "kind": "point",
+   "quality": "heading",
+   "source": "ft_9b5bf277fefb"
+  },
+  "names": [
+   {
+    "kind": "primary",
+    "lang": "en",
+    "script": "Latn",
+    "source_id": "omalley-puri-1908",
+    "text": "Khandagiri"
+   }
+  ],
+  "parent_ids": [
+   "pl_puri-district-080c"
+  ],
+  "place_id": "pl_khandagiri-525b",
+  "review": {
+   "status": "unreviewed"
+  },
+  "status": "existing",
+  "type": "hill"
+ },
+ {
+  "geometry": {
+   "coordinates": [
+    85.6333,
+    20.1833
+   ],
+   "kind": "point",
+   "quality": "heading",
+   "source": "ft_3f0a899d5aad"
+  },
+  "names": [
+   {
+    "kind": "primary",
+    "lang": "en",
+    "script": "Latn",
+    "source_id": "omalley-puri-1908",
+    "text": "Khurdā"
+   }
+  ],
+  "parent_ids": [
+   "pl_puri-district-080c"
+  ],
+  "place_id": "pl_khurda-75c6",
+  "review": {
+   "status": "unreviewed"
+  },
+  "status": "existing",
+  "type": "town"
+ },
+ {
+  "child_ids": [
+   "pl_bhubaneswar-800a"
+  ],
+  "names": [
+   {
+    "kind": "primary",
+    "lang": "en",
+    "script": "Latn",
+    "source_id": "omalley-puri-1908",
+    "text": "Khurdā subdivision"
+   }
+  ],
+  "parent_ids": [
+   "pl_puri-district-080c"
+  ],
+  "place_id": "pl_khurda-subdivision-40c0",
+  "review": {
+   "status": "unreviewed"
+  },
+  "status": "existing",
+  "type": "subdivision"
+ },
+ {
+  "names": [
+   {
+    "kind": "primary",
+    "lang": "en",
+    "script": "Latn",
+    "source_id": "omalley-puri-1908",
+    "text": "Kodhār"
+   }
+  ],
+  "parent_ids": [
+   "pl_puri-district-080c"
+  ],
+  "place_id": "pl_kodhar-be95",
+  "review": {
+   "status": "unreviewed"
+  },
+  "status": "existing",
+  "type": "estate"
+ },
+ {
+  "geometry": {
+   "coordinates": [
+    86.1,
+    19.8833
+   ],
+   "kind": "point",
+   "quality": "heading",
+   "source": "ft_9e148656fd7a"
+  },
+  "names": [
+   {
+    "kind": "primary",
+    "lang": "en",
+    "script": "Latn",
+    "source_id": "omalley-puri-1908",
+    "text": "Konārak"
+   }
+  ],
+  "parent_ids": [
+   "pl_puri-subdivision-1dce"
+  ],
+  "place_id": "pl_konarak-65bb",
+  "review": {
+   "status": "unreviewed"
+  },
+  "status": "existing",
+  "type": "temple"
+ },
+ {
+  "names": [
+   {
+    "kind": "primary",
+    "lang": "en",
+    "script": "Latn",
+    "source_id": "omalley-puri-1908",
+    "text": "Kotdesh"
+   }
+  ],
+  "parent_ids": [
+   "pl_puri-district-080c"
+  ],
+  "place_id": "pl_kotdesh-ab99",
+  "review": {
+   "status": "unreviewed"
+  },
+  "status": "existing",
+  "type": "estate"
+ },
+ {
+  "names": [
+   {
+    "kind": "primary",
+    "lang": "en",
+    "script": "Latn",
+    "source_id": "omalley-puri-1908",
+    "text": "Pārikud"
+   }
+  ],
+  "parent_ids": [
+   "pl_puri-district-080c"
+  ],
+  "place_id": "pl_parikud-f23d",
+  "review": {
+   "status": "unreviewed"
+  },
+  "status": "existing",
+  "type": "estate"
+ },
+ {
+  "names": [
+   {
+    "kind": "primary",
+    "lang": "en",
+    "script": "Latn",
+    "source_id": "omalley-puri-1908",
+    "text": "Pipli"
+   }
+  ],
+  "parent_ids": [
+   "pl_puri-district-080c"
+  ],
+  "place_id": "pl_pipli-8c8e",
+  "review": {
+   "status": "unreviewed"
+  },
+  "status": "existing",
+  "type": "village"
+ },
+ {
+  "geometry": {
+   "coordinates": [
+    85.8167,
+    19.8
+   ],
+   "kind": "point",
+   "quality": "heading",
+   "source": "ft_b7639f48bb77"
+  },
+  "names": [
+   {
+    "kind": "primary",
+    "lang": "en",
+    "script": "Latn",
+    "source_id": "omalley-puri-1908",
+    "text": "Purī"
+   }
+  ],
+  "parent_ids": [
+   "pl_puri-district-080c"
+  ],
+  "place_id": "pl_puri-0741",
+  "review": {
+   "status": "unreviewed"
+  },
+  "status": "existing",
+  "type": "town"
+ },
+ {
+  "child_ids": [
+   "pl_atri-e0fb",
+   "pl_balukhand-913a",
+   "pl_banpur-9b6f",
+   "pl_baral-d05c",
+   "pl_barunai-hill-2714",
+   "pl_biswanath-hill-dd53",
+   "pl_chitrakot-hill-69bf",
+   "pl_dhauli-73fe",
+   "pl_jatni-545a",
+   "pl_kaipadar-1431",
+   "pl_kakatpur-d5eb",
+   "pl_kalupara-ghat-34c0",
+   "pl_khandagiri-525b",
+   "pl_khurda-75c6",
+   "pl_khurda-subdivision-40c0",
+   "pl_kodhar-be95",
+   "pl_kotdesh-ab99",
+   "pl_parikud-f23d",
+   "pl_pipli-8c8e",
+   "pl_puri-0741",
+   "pl_puri-subdivision-1dce"
+  ],
+  "names": [
+   {
+    "kind": "primary",
+    "lang": "en",
+    "script": "Latn",
+    "source_id": "omalley-puri-1908",
+    "text": "Purī"
+   }
+  ],
+  "place_id": "pl_puri-district-080c",
+  "review": {
+   "status": "unreviewed"
+  },
+  "status": "existing",
+  "type": "district"
+ },
+ {
+  "child_ids": [
+   "pl_konarak-65bb",
+   "pl_satyabadi-9ab9"
+  ],
+  "names": [
+   {
+    "kind": "primary",
+    "lang": "en",
+    "script": "Latn",
+    "source_id": "omalley-puri-1908",
+    "text": "Purī subdivision"
+   }
+  ],
+  "parent_ids": [
+   "pl_puri-district-080c"
+  ],
+  "place_id": "pl_puri-subdivision-1dce",
+  "review": {
+   "status": "unreviewed"
+  },
+  "status": "existing",
+  "type": "subdivision"
+ },
+ {
+  "names": [
+   {
+    "kind": "primary",
+    "lang": "en",
+    "script": "Latn",
+    "source_id": "omalley-puri-1908",
+    "text": "Satyabādī"
+   }
+  ],
+  "parent_ids": [
+   "pl_puri-subdivision-1dce"
+  ],
+  "place_id": "pl_satyabadi-9ab9",
+  "review": {
+   "status": "unreviewed"
+  },
+  "status": "existing",
+  "type": "village"
+ }
+]

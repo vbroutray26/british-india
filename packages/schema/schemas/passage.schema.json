@@ -3,16 +3,54 @@
   "$id": "https://british-india/schemas/passage.schema.json",
   "title": "Passage (spec §7.3). IDs are stable across rebuilds (FR-TEXT-06).",
   "type": "object",
-  "required": ["passage_id", "entry_id", "char_start", "char_end", "text", "page", "lang"],
+  "required": [
+    "passage_id",
+    "entry_id",
+    "char_start",
+    "char_end",
+    "text",
+    "page",
+    "lang"
+  ],
   "properties": {
-    "passage_id": { "type": "string", "pattern": "^ps_[a-z0-9_-]+$" },
-    "entry_id": { "type": "string", "pattern": "^en_" },
-    "char_start": { "type": "integer", "minimum": 0 },
-    "char_end": { "type": "integer", "minimum": 0 },
-    "text": { "type": "string", "minLength": 1 },
-    "page": { "type": ["integer", "string"] },
-    "lang": { "type": "string" },
-    "embedding_ref": { "type": "string" }
+    "passage_id": {
+      "type": "string",
+      "pattern": "^ps_[a-z0-9_-]+$"
+    },
+    "entry_id": {
+      "type": "string",
+      "pattern": "^en_"
+    },
+    "char_start": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "char_end": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "text": {
+      "type": "string",
+      "minLength": 1
+    },
+    "page": {
+      "type": [
+        "integer",
+        "string"
+      ]
+    },
+    "lang": {
+      "type": "string"
+    },
+    "embedding_ref": {
+      "type": "string"
+    },
+    "page_end": {
+      "type": [
+        "integer",
+        "string"
+      ]
+    }
   },
   "additionalProperties": false
 }

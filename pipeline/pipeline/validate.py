@@ -1,4 +1,4 @@
-"""Validate the source and media registers against JSON Schema (DP-15, TS-DATA-10, FR-MEDIA-07).
+"""Validate the source and media registers and the curated bundles (DP-15, TS-DATA-05/09/10, FR-MEDIA-07).
 
 Usage: python -m pipeline.validate [--data-dir PATH]
 Exit code 1 on any error, so CI blocks the build.
@@ -68,6 +68,19 @@ def check_media_language(path: Path) -> list[str]:
     return warnings
 
 
+def check_curated(curated: Path) -> list[str]:
+    """Every curated bundle (data/curated/<source>/) passes DP-15's gate: schemas, references, quotes."""
+    from pipeline.assemble import check
+
+    errors = []
+    for d in sorted(p for p in curated.glob("*") if p.is_dir()):
+        b = {"source": json.loads((d / "source.json").read_text())}
+        for key in ("places", "facts", "entries", "passages"):
+            b[key] = json.loads((d / f"{key}.json").read_text())
+        errors += [f"curated/{d.name}: {e}" for e in check(b)]
+    return errors
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--data-dir", type=Path, default=DATA_DIR)
@@ -75,6 +88,7 @@ def main(argv: list[str] | None = None) -> int:
     d: Path = args.data_dir
     errors = check_register(d / "sources.yaml", "sources.schema.json", "sources", "source_id")
     errors += check_register(d / "media.yaml", "media.schema.json", "media", "media_id")
+    errors += check_curated(d / "curated")
     warnings = check_media_language(d / "media.yaml") if (d / "media.yaml").exists() else []
     for w in warnings:
         print(f"warning: {w}")

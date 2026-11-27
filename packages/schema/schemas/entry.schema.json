@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://british-india/schemas/entry.schema.json",
+  "title": "Entry: one gazetteer entry or chapter section (DP-02), the unit passages belong to.",
+  "type": "object",
+  "required": [
+    "entry_id",
+    "source_id",
+    "kind",
+    "heading",
+    "page_start",
+    "page_end"
+  ],
+  "properties": {
+    "entry_id": {
+      "type": "string",
+      "pattern": "^en_[a-z0-9_-]+$"
+    },
+    "source_id": {
+      "type": "string"
+    },
+    "kind": {
+      "enum": [
+        "gazetteer",
+        "section"
+      ]
+    },
+    "heading": {
+      "type": "string",
+      "minLength": 1
+    },
+    "chapter": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "page_start": {
+      "type": [
+        "integer",
+        "string"
+      ]
+    },
+    "page_end": {
+      "type": [
+        "integer",
+        "string"
+      ]
+    },
+    "place_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^pl_"
+    }
+  },
+  "additionalProperties": false
+}
