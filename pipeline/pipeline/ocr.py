@@ -10,6 +10,7 @@ maps scan leaves to printed page numbers, separates running heads, and writes on
   reading before a fix or merge from the second read, D-29, D-31), corrected (an audited correction was
   applied), col (1 = right column of a two-column page such as the index), table (a row of an inset
   table, read from the second read's cells; also recovered, D-32).
+  A leaf the scan repeats keeps its record with page null and the flag duplicate-leaf-of:<leaf> (D-37).
 
 Layout (O'Malley district gazetteers): one text column; section headings printed as side-notes in the
 outer margin; new paragraphs indented; footnotes in smaller type at the foot. Lines are re-sorted by
@@ -167,6 +168,44 @@ def load_page_map(folder: Path) -> dict[int, str]:
     if not p:
         return {}
     return {int(x["leafNum"]): x["pageNumber"] for x in json.loads(p.read_text())["pages"] if x.get("pageNumber")}
+
+
+def load_page_confidence(folder: Path) -> dict[int, int]:
+    """leafNum → the host's confidence in its page number: 0 where it guessed the number from the
+    sequence instead of reading it off the leaf."""
+    p = next(folder.glob("*_page_numbers.json"), None)
+    if not p:
+        return {}
+    return {int(x["leafNum"]): int(x.get("confidence") or 0) for x in json.loads(p.read_text())["pages"]}
+
+
+DUP_WINDOW = 4      # a repeated leaf follows its first copy within this many leaves
+DUP_MIN_WORDS = 40  # blank leaves, plates and title pages are not compared
+DUP_SIMILAR = 90    # text similarity (0-100): copies score 97-99, neighbouring pages under 50 (O'Malley)
+
+
+def duplicate_leaves(texts: dict[int, str], page_map: dict[int, str], page_conf: dict[int, int]) -> dict[int, int]:
+    """Leaves the scan repeats (D-37): later leaf → the earlier leaf it copies.
+
+    A leaf is a copy when its text matches a leaf shortly before it (two OCR runs over the same print
+    differ only by misreadings) and the host's page map backs this: both carry the same page number
+    (or neither has one), or the host guessed the number of one of them (confidence 0). Leaves that only share a page number
+    are kept. A copy of a copy points to the first leaf."""
+    from rapidfuzz import fuzz
+
+    folded = {leaf: " ".join(fold(t).split()) for leaf, t in texts.items()}
+    out: dict[int, int] = {}
+    for b in sorted(folded):
+        if len(folded[b].split()) < DUP_MIN_WORDS:
+            continue
+        for a in range(b - DUP_WINDOW, b):
+            if a not in folded or len(folded[a].split()) < DUP_MIN_WORDS:
+                continue
+            backed = page_map.get(a) == page_map.get(b) or page_conf.get(a) == 0 or page_conf.get(b) == 0
+            if backed and fuzz.ratio(folded[a], folded[b]) >= DUP_SIMILAR:
+                out[b] = out.get(a, a)
+                break
+    return out
 
 
 def detect_leaf_offset(pages: list[Page], page_map: dict[int, str]) -> int:
@@ -551,6 +590,11 @@ def run(source_id: str, raw_dir: Path = RAW_DIR, out_dir: Path = INTERIM_DIR / "
     pages = parser.pages
     page_map = load_page_map(folder)
     offset = detect_leaf_offset(pages, page_map)
+    # A leaf the scan repeats keeps its row, flagged, but leaves the page sequence (D-37).
+    dups = duplicate_leaves({p.index + offset: " ".join(ln.text for ln in p.lines) for p in pages},
+                            page_map, load_page_confidence(folder))
+    if dups:
+        LG.info("repeated leaves: %s", ", ".join(f"{b} (copy of {a})" for b, a in sorted(dups.items())))
 
     # Hyphenated forms attested mid-line anywhere in the book (used to decide line-end hyphen repair).
     hyphen_words: set[str] = set()
@@ -564,7 +608,7 @@ def run(source_id: str, raw_dir: Path = RAW_DIR, out_dir: Path = INTERIM_DIR / "
     rows = []
     for p in pages:
         leaf = p.index + offset
-        printed = page_map.get(leaf)
+        printed = None if leaf in dups else page_map.get(leaf)
         lay = layout(p.lines, p.width, p.height)
         sorted_page = Page(index=p.index, width=p.width, height=p.height, lines=lay["body"])
         head, body = split_running_head(sorted_page, printed)
@@ -617,6 +661,8 @@ def run(source_id: str, raw_dir: Path = RAW_DIR, out_dir: Path = INTERIM_DIR / "
             flags.insert(0, "page-low-confidence")
         if not words:
             flags.insert(0, "blank-or-plate")
+        if leaf in dups:
+            flags.insert(0, f"duplicate-leaf-of:{dups[leaf]}")
         margin = merge_margin(lay["margin"])
         footnotes = [normalise_chars(ln.text) for ln in lay["footnotes"]]
         applied = apply_corrections(corrections, printed, line_recs, margin, footnotes)
@@ -644,7 +690,8 @@ def run(source_id: str, raw_dir: Path = RAW_DIR, out_dir: Path = INTERIM_DIR / "
             "low_conf_words": low,
             "flags": flags,
         })
-    merge_reads(rows, folder / "ocr_vision", hyphen_words)
+    # A repeated leaf is not merged: its words would count twice towards the agreed vocabulary (D-37).
+    merge_reads([r for r in rows if r["leaf"] not in dups], folder / "ocr_vision", hyphen_words)
     out = out_dir / source_id
     write_jsonl(out / "pages.jsonl", rows)
     stats = summary(rows)

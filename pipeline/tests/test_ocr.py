@@ -214,3 +214,129 @@ def test_empty_replacement_deletes_a_junk_line():
     margin = [{"t": "es 2) eee", "y": 20}]
     apply_corrections([_corr("es 2) eee", "")], "12", lines, margin, [])
     assert [ln["t"] for ln in lines] == ["real text"] and margin == []
+
+
+# ---- a leaf the scan repeats (D-37)
+
+def _page_text(seed, n=60):
+    import random
+    vocab = ["the", "of", "and", "to", "in", "revenue", "district", "Khurda", "Puri", "rebels", "troops", "estates", "temple", "Collector", "Rs.", "lakhs", "pilgrims", "road", "river", "village", "Raja", "tank", "sea", "salt", "excise", "land", "police", "Cuttack", "miles"]
+    rnd = random.Random(seed)
+    return " ".join(rnd.choice(vocab) for _ in range(n))
+
+
+def _misread(text):
+    """The same page read again: a few words come out differently."""
+    w = text.split()
+    for k in (3, 17, 40):
+        w[k] = w[k][:-1] + "e"
+    return " ".join(w)
+
+
+def test_a_rescanned_leaf_is_a_duplicate_of_its_earlier_copy():
+    """O'Malley leaves 68-72: pp. 52, 53, 52 again, 53 again, 54. The host guessed numbers for 68-70."""
+    from pipeline.ocr import duplicate_leaves
+    p52, p53, p54 = _page_text(52), _page_text(53), _page_text(54)
+    texts = {68: p52, 69: p53, 70: _misread(p52), 71: _misread(p53), 72: p54}
+    page_map = {68: "52", 69: "53", 70: "54", 71: "53", 72: "54"}
+    conf = {68: 0, 69: 0, 70: 0, 71: 100, 72: 100}
+    assert duplicate_leaves(texts, page_map, conf) == {70: 68, 71: 69}
+
+
+def test_a_leaf_that_only_shares_a_page_number_is_kept():
+    from pipeline.ocr import duplicate_leaves
+    texts = {10: _page_text(1), 11: _page_text(2)}
+    assert duplicate_leaves(texts, {10: "8", 11: "8"}, {10: 0, 11: 100}) == {}
+
+
+def test_like_text_is_kept_when_the_host_read_two_different_page_numbers():
+    """The page map must back the text: two leaves whose printed numbers the host read are two pages."""
+    from pipeline.ocr import duplicate_leaves
+    texts = {10: _page_text(1), 12: _misread(_page_text(1))}
+    assert duplicate_leaves(texts, {10: "8", 12: "10"}, {10: 100, 12: 100}) == {}
+
+
+def test_a_copy_of_a_copy_points_to_the_first_leaf():
+    from pipeline.ocr import duplicate_leaves
+    t = _page_text(7)
+    texts = {20: t, 21: _page_text(8), 22: _misread(t), 23: t}
+    assert duplicate_leaves(texts, {20: "7", 21: "8", 22: "7", 23: "7"}, {20: 100, 21: 100, 22: 0, 23: 0}) == {22: 20, 23: 20}
+
+
+def test_blank_and_plate_leaves_are_never_duplicates():
+    from pipeline.ocr import duplicate_leaves
+    texts = {1: "", 2: "PLATE I.", 3: "", 4: "PLATE I."}
+    assert duplicate_leaves(texts, {}, {1: 0, 2: 0, 3: 0, 4: 0}) == {}
+
+
+def test_leaves_far_apart_are_not_compared():
+    from pipeline.ocr import duplicate_leaves
+    t = _page_text(9)
+    assert duplicate_leaves({30: t, 60: t}, {30: "30", 60: "30"}, {30: 0, 60: 0}) == {}
+
+
+def _hocr(pages):
+    """Minimal hOCR: each page is a list of lines, each line a string of words set across the page."""
+    out = ["<html><body>"]
+    for lines in pages:
+        out.append('<div class="ocr_page" title="bbox 0 0 2000 3000">')
+        for i, text in enumerate(lines):
+            y = 300 + i * 60
+            out.append(f'<span class="ocr_line" title="bbox 200 {y} 1800 {y + 40}">')
+            for k, w in enumerate(text.split()):
+                x = 200 + k * 200
+                out.append(f'<span class="ocrx_word" title="bbox {x} {y} {x + 150} {y + 40}; x_wconf 95">{w}</span>')
+            out.append("</span>")
+        out.append("</div>")
+    return "\n".join(out + ["</body></html>"])
+
+
+def _source(tmp_path, texts, numbers):
+    import json
+    folder = tmp_path / "raw" / "dup-src"
+    folder.mkdir(parents=True)
+    pages = [[" ".join(t.split()[k:k + 8]) for k in range(0, len(t.split()), 8)] for t in texts]
+    (folder / "x_hocr.html").write_text(_hocr(pages))
+    (folder / "x_page_numbers.json").write_text(json.dumps({"pages": [
+        {"leafNum": i, "pageNumber": n, "confidence": c} for i, (n, c) in enumerate(numbers)]}))
+    return tmp_path / "raw", tmp_path / "out"
+
+
+def test_run_keeps_one_leaf_per_printed_page_and_flags_the_copy(tmp_path):
+    from pipeline.ocr import run
+    p1, p2 = _page_text(1), _page_text(2)
+    raw, out = _source(tmp_path, [p1, p2, _misread(p1), _page_text(3)],
+                       [("1", 100), ("2", 0), ("3", 0), ("3", 100)])
+    rows = run("dup-src", raw_dir=raw, out_dir=out)
+    assert [(r["leaf"], r["page"]) for r in rows] == [(0, "1"), (1, "2"), (2, None), (3, "3")]
+    assert "duplicate-leaf-of:0" in rows[2]["flags"] and rows[2]["text_clean"]  # kept for the record, off the page sequence
+    assert not any(f.startswith("duplicate") for r in rows if r["leaf"] != 2 for f in r["flags"])
+
+
+def test_run_with_a_repeated_leaf_is_idempotent(tmp_path):
+    from pipeline.ocr import run
+    p1 = _page_text(1)
+    raw, out = _source(tmp_path, [p1, _page_text(2), _misread(p1)], [("1", 100), ("2", 0), ("3", 0)])
+    run("dup-src", raw_dir=raw, out_dir=out)
+    first = (out / "dup-src" / "pages.jsonl").read_bytes()
+    run("dup-src", raw_dir=raw, out_dir=out)
+    assert (out / "dup-src" / "pages.jsonl").read_bytes() == first
+
+
+def test_a_repeated_leaf_is_left_out_of_the_second_read_merge(tmp_path):
+    """Its words would count twice towards the words both engines agree on, and its lines are not used."""
+    import json
+
+    from pipeline.ocr import run
+    p1 = _page_text(1)
+    copy = _misread(p1)
+    raw, out = _source(tmp_path, [p1, _page_text(2), copy], [("1", 100), ("2", 0), ("3", 0)])
+    vision = raw / "dup-src" / "ocr_vision"
+    vision.mkdir()
+    for leaf, text in ((0, p1), (2, p1)):  # the second read gets the copy's words right
+        lines = [" ".join(text.split()[k:k + 8]) for k in range(0, len(text.split()), 8)]
+        (vision / f"leaf_{leaf:04d}.json").write_text(json.dumps({"w": 2000, "h": 3000, "lines": [
+            {"conf": 1, "t": t, "x0": 200, "x1": 1750, "y0": 300 + i * 60, "y1": 340 + i * 60} for i, t in enumerate(lines)]}))
+    rows = run("dup-src", raw_dir=raw, out_dir=out)
+    assert not any(f.startswith("merged-lines") for f in rows[2]["flags"])
+    assert not any("first_read" in ln for ln in rows[2]["lines"])
