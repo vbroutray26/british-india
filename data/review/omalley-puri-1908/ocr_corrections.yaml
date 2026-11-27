@@ -40,3 +40,18 @@ corrections:
     by: claude
     date: "2026-11-27"
     review: pending
+  # Lines the archive OCR dropped and DP-01 recovered from the second read (D-27); Vision misread the figure.
+  - page: "138"
+    find: "aren of 480 square"
+    replace: "area of 485 square"
+    evidence: "page image, leaf 156 (2400 px): the figure reads 485; found by GS-NUMERIC gsn-omalley-027"
+    by: claude
+    date: "2026-11-27"
+    review: pending
+  - page: "294"
+    find: "area of 3-83 acres"
+    replace: "area of 3·83 acres"
+    evidence: "page image, leaf 314 (2400 px): a raised decimal point, read by Vision as a hyphen; found by GS-NUMERIC gsn-omalley-062"
+    by: claude
+    date: "2026-11-27"
+    review: pending

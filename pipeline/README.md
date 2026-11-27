@@ -71,8 +71,10 @@ full-resolution archive.org JP2), `pipeline.gold` (contact sheets for labelling;
   **TS-DATA-03 fails: 66/69 exact (95.7%); 60/63 (95.2%) on labels independent of OCR corrections**,
   target ≥ 98% (was 31/69). *Update (D-28): the p. 60 table rows are now audited OCR corrections and a
   census-table rule reads them; the 6 table labels depend on that transcription.* *Update (D-29): **67/69
-  (97.1%); 61/63 (96.8%) independent.** p. 59 fixed. Still failing: p. 138 (recovered line reads 480 for
-  485) and p. 294 ("3-83").* Half the misses were figures
+  (97.1%); 61/63 (96.8%) independent.** p. 59 fixed. Then p. 138 (recovered line read 480 for
+  485) and p. 294 ("3-83" for 3·83).* *Update: those two were Vision misreadings on recovered lines,
+  checked against the scans and added as audited OCR corrections. **TS-DATA-03 passes on Puri: 69/69;
+  63/63 independent.** Both facts stay queued by DP-07 (one engine only), so the owner still reviews them.* Half the misses were figures
   extracted but credited to the page their paragraph starts on; DP-04 now takes the page from the
   entry's page map at the figure itself. New patterns: "in 1891 was returned at", census year elsewhere
   in the clause (only when the clause names exactly one year), yearless counts ("its population 10,000
