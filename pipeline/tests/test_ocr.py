@@ -39,6 +39,28 @@ def test_running_head_with_misread_page_number():
     assert head == "PHYSICAL ASPECTS, o" and [l.text for l in body] == ["In the deltaic tract"]
 
 
+def test_garbled_running_head_is_told_by_the_gap_below_it():
+    body = [_ln(f"body line {i} of the running text", 300, 700 + i * 102) for i in range(3)]
+    p = Page(index=0, width=3300, height=5300, lines=[_ln("D4 Punt, ;", 500, 500, 1400), *body])
+    head, rest = split_running_head(p, "24")
+    assert head == "D4 Punt, ;" and len(rest) == 3
+
+
+def test_junk_above_the_running_head_is_dropped_with_it():
+    body = [_ln(f"body line {i} of the running text", 300, 700 + i * 102) for i in range(3)]
+    p = Page(index=0, width=3600, height=5500, lines=[_ln('Vek" geet', 900, 0, 1300), _ln("128 PuRt.", 900, 533, 1500), *body])
+    head, rest = split_running_head(p, "128")
+    assert [l.text for l in rest] == [l.text for l in body] and "128 PuRt." in head
+
+
+def test_a_short_first_line_with_ordinary_spacing_is_not_a_running_head():
+    body = [_ln(f"body line {i} of the running text", 300, 602 + i * 102) for i in range(3)]
+    p = Page(index=0, width=3300, height=5300, lines=[_ln("of the country.", 300, 500, 1000), *body])
+    assert split_running_head(p, "77") == (None, p.lines)
+    p = Page(index=0, width=3300, height=5300, lines=[_ln("B.", 1500, 500, 1600), *[_ln(f"Entry {i}, 12.", 300, 512 + i * 102) for i in range(3)]])
+    assert split_running_head(p, "301")[0] is None
+
+
 def test_recover_lines_inserts_a_dropped_line_in_reading_order(tmp_path):
     import json
 
@@ -74,3 +96,31 @@ def test_recover_lines_restores_a_cut_first_word_and_the_true_indent(tmp_path):
     recs[2] = {"t": "pulation of 769,779 persons. During the next 10 years the", "y": 840, "indent": True}
     recover_lines(recs, vis, 5400, [])
     assert recs[2]["t"] == text[2] and recs[2]["first_word"] == "pulation" and not recs[2]["indent"]
+
+
+def _words(*cols, y=0):
+    """A line from (x0, text) fragments; each word 100 px wide with 20 px spaces."""
+    words, xs = [], []
+    for x, text in cols:
+        for w in text.split():
+            words.append((w, 95))
+            xs.append((x, x + 100))
+            x += 120
+    return Line(words=words, bbox=(xs[0][0], y, xs[-1][1], y + 80), fsize=100.0, xs=xs)
+
+
+def test_a_two_column_index_page_is_read_left_column_then_right():
+    rows = [_words((300, f"Left entry {i}, 1{i}."), (1800, f"Right entry {i}, 2{i}."), y=500 + i * 100) for i in range(6)]
+    rows.append(_words((300, "revenue, 201-204."), y=1100))  # a turnover line in the left column only
+    rows[2] = _words((300, "Left entry 2, 12."), (1400, "Right entry 2, 22."), y=700)  # the gap read narrower
+    out = layout(rows, 3300, 5300)
+    assert len(out["right"]) == 6
+    assert [l.text for l in out["body"]] == [f"Left entry {i}, 1{i}." for i in range(6)] + ["revenue, 201-204."] + [
+        f"Right entry {i}, 2{i}." for i in range(6)]
+
+
+def test_running_text_with_wide_word_spacing_is_not_split_into_columns():
+    rows = [_words((300, "The quick brown fox jumps over"), (1300 + (i % 3) * 400, "the lazy dog and runs"), y=500 + i * 100)
+            for i in range(6)]
+    out = layout(rows, 3300, 5300)
+    assert len(out["body"]) == 6

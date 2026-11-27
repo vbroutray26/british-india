@@ -5,7 +5,10 @@ maps scan leaves to printed page numbers, separates running heads, and writes on
 
   data/interim/ocr/<source_id>/pages.jsonl
     {source_id, leaf, page, running_head, lines:[{t, y, indent}], margin:[{t, y}], footnotes:[t],
-     text_raw, text_clean, confidence, low_conf_words, words, flags}
+     text_raw, text_clean, recovered, confidence, low_conf_words, words, flags}
+  A line may also carry: recovered (from the second read, D-27), first_word / first_read (the hOCR's
+  reading before a fix or merge from the second read, D-29, D-31), corrected (an audited correction was
+  applied), col (1 = right column of a two-column page such as the index).
 
 Layout (O'Malley district gazetteers): one text column; section headings printed as side-notes in the
 outer margin; new paragraphs indented; footnotes in smaller type at the foot. Lines are re-sorted by
@@ -40,6 +43,7 @@ class Line:
     words: list[tuple[str, int]] = field(default_factory=list)  # (text, confidence)
     bbox: tuple[int, int, int, int] = (0, 0, 0, 0)
     fsize: float = 0.0
+    xs: list[tuple[int, int]] = field(default_factory=list)  # each word's left and right edge
 
     @property
     def text(self) -> str:
@@ -73,6 +77,7 @@ class HocrParser(HTMLParser):
         self._line: Line | None = None
         self._word_conf: int | None = None
         self._word_fsize: float = 0.0
+        self._word_x: tuple[int, int] = (0, 0)
         self._buf: list[str] = []
 
     def handle_starttag(self, tag, attrs):
@@ -88,6 +93,8 @@ class HocrParser(HTMLParser):
             self.pages[-1].lines.append(self._line)
         elif cls == "ocrx_word":
             self._word_conf = int(t.get("x_wconf", "0"))
+            wb = [int(x) for x in t.get("bbox", "0 0 0 0").split()]
+            self._word_x = (wb[0], wb[2])
             self._word_fsize = float(t.get("x_fsize", "0") or 0)
             self._buf = []
 
@@ -100,6 +107,7 @@ class HocrParser(HTMLParser):
             w = html.unescape("".join(self._buf)).strip()
             if w:
                 self._line.words.append((w, self._word_conf))
+                self._line.xs.append(self._word_x)
                 self._line.fsize = max(self._line.fsize, self._word_fsize)
             self._word_conf = None
 
@@ -185,7 +193,23 @@ def split_running_head(p: Page, printed: str | None) -> tuple[str | None, list[L
     caps = sum(c.isupper() for c in letters) / max(1, len(letters))
     if near_top and len(first) <= 70 and (has_num or (caps > 0.7 and RUNNING_HEAD.match(first))):
         return first, p.lines[1:]
+    # A head the OCR garbled ("D4 Punt, ;"), sometimes under a speck read as text: short lines at the top of
+    # the page set off from the text below by a wider gap than the line spacing.
+    k = 0
+    while k < 2 and _set_off(p, k):
+        k += 1
+    if k:
+        return " ".join(ln.text for ln in p.lines[:k]), p.lines[k:]
     return None, p.lines
+
+
+def _set_off(p: Page, i: int) -> bool:
+    if len(p.lines) < i + 3 or not p.height:
+        return False
+    a, b, c = (ln.bbox[1] for ln in p.lines[i:i + 3])
+    t = p.lines[i].text.strip()
+    return (a < p.height * 0.12 and len(t) <= 35 and not t.upper().startswith("CHAPTER")
+            and c > b and b - a >= 1.4 * (c - b))
 
 
 # ---------------------------------------------------------------- numeric safety
@@ -220,6 +244,9 @@ def layout(lines: list[Line], page_w: int, page_h: int) -> dict:
     lines = [ln for ln in lines if not (len(ln.text.strip()) <= 2 and ln.fsize < med_all * 0.6)]
     if not lines:
         return {"body": [], "margin": [], "footnotes": []}
+    cols = split_columns(lines, page_w)
+    if cols:  # the index: the OCR runs each printed line across both columns
+        return {"body": cols[0] + cols[1], "margin": [], "footnotes": [], "x0": None, "right": cols[1]}
     wide = [ln for ln in lines if (ln.bbox[2] - ln.bbox[0]) > page_w * 0.45]
     if not wide:  # plate, table or title page: keep everything as body, in reading order
         return {"body": sorted(lines, key=lambda l: (l.bbox[1], l.bbox[0])), "margin": [], "footnotes": [],
@@ -243,6 +270,51 @@ def layout(lines: list[Line], page_w: int, page_h: int) -> dict:
     while body and med and 0 < body[-1].fsize < med * 0.78 and body[-1].bbox[1] > page_h * 0.66:
         foot.insert(0, body.pop())
     return {"body": body, "margin": margin, "footnotes": foot, "x0": col_x0}
+
+
+def _gutter(ln: Line, page_w: int) -> tuple[int, float] | None:
+    """The widest gap between words of a line, as (index of the first word after it, gap centre), when wide
+    enough to be a column gutter and near the middle of the page."""
+    if len(ln.xs) != len(ln.words) or len(ln.xs) < 2:
+        return None
+    k = max(range(1, len(ln.xs)), key=lambda i: ln.xs[i][0] - ln.xs[i - 1][1])
+    gap, mid = ln.xs[k][0] - ln.xs[k - 1][1], (ln.xs[k][0] + ln.xs[k - 1][1]) / 2
+    return (k, mid) if gap >= 0.04 * page_w and 0.35 * page_w < mid < 0.65 * page_w else None
+
+
+def _across(ln: Line, centre: float, page_w: int) -> int | None:
+    """Index of the first word right of the gutter, for a line with a narrower gap where the gutter is."""
+    if len(ln.xs) != len(ln.words):
+        return None
+    for k in range(1, len(ln.xs)):
+        lo, hi = ln.xs[k - 1][1], ln.xs[k][0]
+        if hi - lo >= 0.015 * page_w and lo - 0.01 * page_w <= centre <= hi + 0.01 * page_w:
+            return k
+    return None
+
+
+def split_columns(lines: list[Line], page_w: int) -> tuple[list[Line], list[Line]] | None:
+    """A two-column page (the index) whose lines the OCR joined across the gutter: (left column, right
+    column), each in y order. None unless most lines show a gap at the same place near the middle of the page."""
+    gut = {id(ln): g for ln in lines if (g := _gutter(ln, page_w))}
+    many = [ln for ln in lines if len(ln.words) >= 2]
+    if len(gut) < 5 or len(gut) < 0.4 * len(many):
+        return None
+    mids = sorted(m for _, m in gut.values())
+    centre = mids[len(mids) // 2]
+    if sum(abs(m - centre) <= 0.04 * page_w for m in mids) < 0.7 * len(mids):
+        return None
+    left: list[Line] = []
+    right: list[Line] = []
+    for ln in lines:
+        g = gut.get(id(ln))
+        k = g[0] if g and abs(g[1] - centre) <= 0.04 * page_w else _across(ln, centre, page_w)
+        if k:
+            for side, ws, xs in ((left, ln.words[:k], ln.xs[:k]), (right, ln.words[k:], ln.xs[k:])):
+                side.append(Line(words=ws, bbox=(xs[0][0], ln.bbox[1], xs[-1][1], ln.bbox[3]), fsize=ln.fsize, xs=xs))
+        else:
+            (left if ln.bbox[0] < centre else right).append(ln)
+    return sorted(left, key=lambda l: l.bbox[1]), sorted(right, key=lambda l: l.bbox[1])
 
 
 def merge_margin(notes: list[Line]) -> list[dict]:
@@ -272,13 +344,14 @@ def paragraphs(lines: list[dict], hyphen_words: set[str]) -> str:
 
 def recover_lines(line_recs: list[dict], vision: Path, height: int, other: list[str]) -> list[str]:
     """Repair `line_recs` in place from the cached second read (DP-01b): restore first words the archive.org
-    OCR cut short at the left edge (D-29), and insert body lines it dropped (D-27). Returns the recovered texts. `other` is the page's text outside the body
+    OCR cut short at the left edge (D-29), and insert body lines it dropped (D-27), in place of any fragments it
+    kept of them. Returns the recovered texts. `other` is the page's text outside the body
     (footnotes, side-notes, running head), which is never recovered into it."""
     if not line_recs or not vision.exists():
         return []
     from pipeline.second_read import body_rows, first_word_fixes, geometry, missing_lines
 
-    first = [ln["t"] for ln in line_recs]
+    first, orig = [ln["t"] for ln in line_recs], list(line_recs)
     rows = body_rows(json.loads(vision.read_text()))
     for i, (w, _indent) in first_word_fixes(first, rows).items():
         line_recs[i]["t"] = w + line_recs[i]["t"][len(first[i].split()[0]):]
@@ -292,8 +365,45 @@ def recover_lines(line_recs: list[dict], vision: Path, height: int, other: list[
     found = missing_lines(first, rows, " ".join(first + other))
     for i, r in reversed(found):
         line_recs.insert(i + 1, {"t": r["t"], "y": int(r["y_frac"] * height), "indent": r["indent"], "recovered": True})
-    line_recs.sort(key=lambda ln: ln["y"])  # stable: lines without a match keep their place among equals
+    # Fragments the first OCR kept of the lines it dropped give way to the recovered lines (text_raw keeps them).
+    gone = {id(orig[i]) for _, r in found for i in r.get("replaces", [])}
+    line_recs[:] = [ln for ln in line_recs if id(ln) not in gone]
+    line_recs.sort(key=lambda ln: (ln.get("col", 0), ln["y"]))  # stable: lines without a match keep their place among equals
     return [r["t"] for _, r in found]
+
+
+def merge_reads(rows: list[dict], vision_dir: Path, hyphen_words: set[str]) -> int:
+    """Merge the second read into each page's lines (D-31), judged by the words both engines agree on across
+    the whole book. Figures are never taken from the second read. Lines recovered from it, lines with an
+    audited correction and two-column pages are left alone. A merged line keeps the first OCR's reading in
+    "first_read"; text_raw is unchanged. Returns the number of lines changed."""
+    from pipeline.second_read import _align, _fold, agreed_words, body_rows, merge_line
+
+    work = []
+    for r in rows:
+        f = vision_dir / f"leaf_{r['leaf']:04d}.json"
+        if not r["lines"] or not f.exists() or any("col" in ln for ln in r["lines"]):
+            continue
+        vrows = body_rows(json.loads(f.read_text()))
+        pairs = _align([_fold(ln["t"]) for ln in r["lines"]], [_fold(v["t"]) for v in vrows], 60) if vrows else []
+        work.append((r, [(r["lines"][i], vrows[j]["t"]) for i, j in pairs]))
+    vocab = agreed_words([(ln["t"], v) for _, pairs in work for ln, v in pairs])
+    total = 0
+    for r, pairs in work:
+        n = 0
+        for ln, v in pairs:
+            if ln.get("recovered") or ln.get("corrected"):
+                continue
+            new = merge_line(ln["t"], v, vocab)
+            if new != ln["t"]:
+                ln["first_read"], ln["t"] = ln["t"], new
+                n += 1
+        if n:
+            r["flags"].append(f"merged-lines:{n}")
+            r["text_clean"] = paragraphs(r["lines"], hyphen_words)
+            total += n
+    LG.info("second read merged into %d lines (vocabulary of %d agreed words)", total, len(vocab))
+    return total
 
 
 # ---------------------------------------------------------------- stage
@@ -330,7 +440,9 @@ def run(source_id: str, raw_dir: Path = RAW_DIR, out_dir: Path = INTERIM_DIR / "
             near = [b.bbox[0] for b in body[max(0, i - 2):i + 3] if b is not ln] or [x0 or ln.bbox[0]]
             line_recs.append({"t": normalise_chars(ln.text), "y": ln.bbox[1],
                               "indent": bool(x0 is not None and ln.bbox[0] - min(near) > INDENT_MIN)})
-        recovered = recover_lines(line_recs, folder / "ocr_vision" / f"leaf_{leaf:04d}.json", p.height,
+            if any(ln is r for r in lay.get("right", [])):
+                line_recs[-1]["col"] = 1  # right column of a two-column page: read after the left
+        recovered = [] if "right" in lay else recover_lines(line_recs, folder / "ocr_vision" / f"leaf_{leaf:04d}.json", p.height,
                                   [normalise_chars(ln.text) for ln in lay["footnotes"] + lay["margin"]] + [head or ""])
         words = [c for ln in body for _, c in ln.words]
         conf = round(sum(words) / len(words), 1) if words else 0.0
@@ -346,6 +458,7 @@ def run(source_id: str, raw_dir: Path = RAW_DIR, out_dir: Path = INTERIM_DIR / "
                 for ln in line_recs:
                     if c["find"] in ln["t"]:
                         ln["t"] = ln["t"].replace(c["find"], c["replace"])
+                        ln["corrected"] = True  # checked against the scan: the merge below leaves it alone
                         applied.append(c["find"])
         missed = [c["find"] for c in corrections if str(c["page"]) == str(printed) and c["find"] not in applied]
         if missed:
@@ -371,6 +484,7 @@ def run(source_id: str, raw_dir: Path = RAW_DIR, out_dir: Path = INTERIM_DIR / "
             "low_conf_words": low,
             "flags": flags,
         })
+    merge_reads(rows, folder / "ocr_vision", hyphen_words)
     out = out_dir / source_id
     write_jsonl(out / "pages.jsonl", rows)
     stats = summary(rows)

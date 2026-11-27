@@ -26,6 +26,7 @@ import subprocess
 from pathlib import Path
 
 from rapidfuzz import fuzz
+from rapidfuzz.distance import Levenshtein
 
 from pipeline.util import INTERIM_DIR, RAW_DIR, log, read_jsonl, write_jsonl
 from pipeline.verify import numbers_in
@@ -224,9 +225,10 @@ def missing_lines(first: list[str], rows: list[dict], page_text: str | None = No
                   thr: float = 60, min_len: int = 12) -> list[tuple[int, dict]]:
     """Body lines the second read has and the first OCR dropped, as (index of the first-OCR line to insert
     after, -1 for before the first, row). Lines are aligned by text; a second-read line counts as dropped only
-    where the first OCR has nothing at all between the two matched lines around it (a line it read badly is
-    left alone), and only if its text is nowhere else on the first OCR's page. Footnotes (smaller type) are
-    not recovered into the body."""
+    where the first OCR has nothing between the two matched lines around it but fragments (each under 60% of
+    its median line; a line it read badly is left alone), and only if its text is nowhere else on the first
+    OCR's page. The fragments are then replaced: each row lists them in "replaces". Footnotes (smaller type)
+    are not recovered into the body."""
     if not first or not rows:
         return []
     h_med = statistics.median(r["h_frac"] for r in rows)
@@ -235,6 +237,7 @@ def missing_lines(first: list[str], rows: list[dict], page_text: str | None = No
     if not pairs:
         return []
     page = _fold(page_text if page_text is not None else " ".join(first))
+    short = 0.6 * statistics.median(len(t) for t in first)
     steps = [b["y_frac"] - a["y_frac"] for a, b in itertools.pairwise(rows)]
     step = statistics.median(steps) if steps else 1.0
 
@@ -244,7 +247,8 @@ def missing_lines(first: list[str], rows: list[dict], page_text: str | None = No
 
     out = []
     for (i0, j0), (i1, j1) in zip([(-1, -1), *pairs], [*pairs, (len(first), len(rows))]):
-        if i1 != i0 + 1:
+        gap = list(range(i0 + 1, i1))
+        if any(len(first[i]) >= short for i in gap) or (gap and j1 - j0 - 1 <= len(gap)):
             continue
         prev = rows[j0] if j0 >= 0 else None
         for r in rows[j0 + 1:j1]:
@@ -252,8 +256,78 @@ def missing_lines(first: list[str], rows: list[dict], page_text: str | None = No
                 break  # below a gap after the last matched line: footnotes
             prev = r
             if len(r["t"]) >= min_len and not FOOTNOTE.match(r["t"]) and not present(r["t"]):
-                out.append((i0, r))
+                out.append((i0, r | {"replaces": gap} if gap else r))
     return out
+
+
+# ---- merging the two reads (D-31)
+
+_WORD = re.compile(r"[^\W\d_]+")
+_JUNK = set("|©\\@£{}[]<>~_¢®§«»")
+_MARKS = set("āīūēōĀĪŪĒŌṅñṇṭḍṛṣśṃḥ")
+_DIGITS = re.compile(r"\d+")
+
+
+def _key(tok: str) -> str:
+    return "".join(_WORD.findall(_fold(tok)))
+
+
+def agreed_words(pairs: list[tuple[str, str]]) -> set[str]:
+    """Words (folded) that both engines read on the same printed line: a garbled reading is rarely shared."""
+    out: set[str] = set()
+    for a, b in pairs:
+        out |= {_key(w) for w in a.split()} & {_key(w) for w in b.split()}
+    out.discard("")
+    return out
+
+
+def _bad(tok: str, vocab: set[str]) -> int:
+    k = _key(tok)
+    return (1 if k and k not in vocab else 0) + sum(c in _JUNK for c in tok)
+
+
+def _pick(a: str, b: str, vocab: set[str]) -> str:
+    if any(c.isdigit() for c in a + b):
+        return a  # figures are never taken from the second read: they must stay two independent readings
+    if _key(a) == _key(b):
+        return b if sum(c in _MARKS for c in b) > sum(c in _MARKS for c in a) else a
+    like = Levenshtein.normalized_similarity(_key(a), _key(b)) >= 0.5  # a misreading, not another word
+    return b if like and _bad(b, vocab) < _bad(a, vocab) else a
+
+
+def merge_line(h: str, v: str, vocab: set[str]) -> str:
+    """One printed line from the first OCR (`h`) and the second read (`v`), judged by `vocab` (agreed_words
+    over the whole book). Word by word: where the two differ, the word in the vocabulary, and
+    macrons from whichever engine saw them; short junk only the first OCR has is dropped. Words only the
+    second read has are not added (it glues side-notes onto lines). The whole second-read line is taken
+    instead only when it has fewer unknown words and junk marks than that merge and the same figures (the
+    first OCR split or ran words together). Figures always stay as the first OCR read them."""
+    def bad(t: str) -> int:
+        return sum(_bad(w, vocab) for w in t.split())
+
+    m = _merge_words(h, v, vocab)
+    if (bad(v) + 1 <= bad(m) and len(_fold(v)) >= 0.8 * len(_fold(h))
+            and sorted(_DIGITS.findall(h)) == sorted(_DIGITS.findall(v))):
+        return v
+    return m
+
+
+def _merge_words(h: str, v: str, vocab: set[str]) -> str:
+    def bad(t: str) -> int:
+        return sum(_bad(w, vocab) for w in t.split())
+
+    a, b = h.split(), v.split()
+    out: list[str] = []
+    for tag, i1, i2, j1, j2 in Levenshtein.opcodes([_key(x) or x for x in a], [_key(x) or x for x in b]):
+        sa, sb = a[i1:i2], b[j1:j2]
+        if tag in ("equal", "replace") and len(sa) == len(sb):
+            out += [_pick(x, y, vocab) for x, y in zip(sa, sb, strict=True)]
+        elif tag == "delete" and all(_bad(x, vocab) and len(x) <= 4 and not any(c.isdigit() for c in x) for x in sa):
+            continue
+        elif tag in ("replace", "delete"):
+            take_b = sb and bad(" ".join(sb)) < bad(" ".join(sa)) and not any(c.isdigit() for c in " ".join(sa + sb))
+            out += sb if take_b else sa
+    return " ".join(out)
 
 
 def assemble(rec: dict) -> str:

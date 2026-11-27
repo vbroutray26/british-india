@@ -119,4 +119,23 @@ full-resolution archive.org JP2), `pipeline.gold` (contact sheets for labelling;
   6.46%; Vision alone 7.53% → 5.55%. Still merged: p. 79, where the text wraps around a castes table
   set into the column (wrapped lines look indented) and Vision read only "CASTES." of the side-note.
   Spurious splits unchanged: 31 of 214 section headings are OCR junk (specks read as side-notes).
+- **Merging the two reads (D-31).** GS-OCR CER 6.46% → **3.90%** (diacritics folded 3.46%; numerals
+  36.9% → 21.7%), step by step: garbled running heads ("D4 Punt, ;") are told by the gap below them, so
+  the lines under them can be recovered (5.87%); the index's two columns, which the hOCR runs across the
+  gutter, are split at the gutter by word boxes and read left then right (5.09%); fragments the hOCR kept
+  of lines it dropped give way to the recovered lines (4.53%; p. 24 got 13 lines back); index lines with a
+  narrower gutter gap (4.46%); then every other line is merged with its Vision line, word by word, judged
+  by the 10,000 words both engines read on the same line somewhere in the book, and only for a word that looks like a misreading of the other (3.90%; without that check
+  Vision's "—A" replaced "Bhubaneswar.—A" where it missed the bold heading). Figures are never
+  taken from Vision, so DP-07's two-reading check still means two engines; corrected and recovered lines
+  are left alone; a merged line keeps the hOCR's reading in `first_read`. Taking the whole Vision line
+  when it looks better scored lower (3.80%) but broke punctuation DP-04 relies on (a census year lost on
+  p. 59) and brought in glued side-notes, so it is used only when the word merge is still worse. Macrons
+  restored from the book's Vision spellings gained only 0.06 points and were left out.
+  **TS-DATA-01 still fails.** What is left: three tables set into the text column (pp. 33, 127, 223:
+  the hOCR runs table cells into the wrapped text, 80% of the remaining numeral errors), a creased page
+  (p. 130), the index (p. 310), missing macrons (0.6 points) and ordinary letter misreads. Without the
+  five worst pages CER is 2.7% and numerals 8.7%, so two free engines will not reach 2% / 0.5%: that needs
+  a third reader (D-24's open question) or owner review of the text, which the spec's "after review"
+  allows for numerals. GS-NUMERIC 69/69 and GS-SEG 49/50 unchanged.
 - GS-EXTRACT: not started.

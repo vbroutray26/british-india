@@ -207,3 +207,80 @@ def test_geometry_rematches_a_misplaced_line_merged_with_the_next_by_its_opening
     rows = rows_of([BOOK[0], BOOK[1], BOOK[2], stirling, "all India was manufactured in the wild inhospitable tract along"])
     first = [BOOK[0], stirling + " Salt manu all India was manufactured in the wild inhospitable", BOOK[1], BOOK[2]]
     assert geometry(first, rows)[1] == (rows[3]["y_frac"], False)
+
+
+def test_missing_lines_replaces_a_fragment_the_first_ocr_kept_of_lines_it_dropped():
+    from pipeline.second_read import missing_lines
+    tess = [BOOK[0], "ending over an area", BOOK[4]]
+    got = missing_lines(tess, rows_of(BOOK))
+    assert [(i, r["t"]) for i, r in got] == [(0, BOOK[1]), (0, BOOK[2]), (0, BOOK[3])]
+    assert all(r["replaces"] == [1] for _, r in got)
+
+
+def test_recover_lines_drops_the_fragment_it_replaces(tmp_path):
+    import json
+
+    from pipeline.ocr import recover_lines
+    lines = [{"t": BOOK[0], "y": 1000, "indent": False}, {"t": "ending over an area", "y": 1100, "indent": False},
+             {"t": BOOK[4], "y": 1400, "indent": False}]
+    vis = tmp_path / "v.json"
+    W2, H2 = 2400, 3600
+    vis.write_text(json.dumps({"w": W2, "h": H2, "lines": [
+        {"t": t, "conf": 1.0, "x0": 300, "y0": int(1000 * H2 / 5000) + k * 72, "x1": 2100, "y1": int(1000 * H2 / 5000) + k * 72 + 50}
+        for k, t in enumerate(BOOK)]}))
+    recover_lines(lines, vis, 5000, [])
+    assert [ln["t"] for ln in lines] == BOOK
+
+
+# ---- merging the two reads line by line (D-31)
+
+VOCAB = {"the", "inscription", "on", "hatigumpha", "or", "elephant", "cave", "which", "an", "historical", "record",
+         "for", "it", "shows", "that", "in", "was", "persons"}
+
+
+def test_merge_takes_the_word_both_engines_attest_elsewhere_and_the_macrons_either_saw():
+    from pipeline.second_read import merge_line
+    h = "the inseription on the Hatigumpha or elephant cave, which"
+    v = "the inscription on the Hātīgumphā or elephant cave, which"
+    assert merge_line(h, v, VOCAB) == v
+
+
+def test_merge_never_takes_a_figure_from_the_second_read():
+    from pipeline.second_read import merge_line
+    assert merge_line("in 1901 was 49,364 persons", "in 1901 was 49,334 persons", VOCAB) == "in 1901 was 49,364 persons"
+
+
+def test_merge_drops_short_junk_only_the_first_ocr_has_and_keeps_its_words_when_unsure():
+    from pipeline.second_read import merge_line
+    assert merge_line("Sete an historical | record, for it shows", "an historical record, for it shows", VOCAB) == (
+        "an historical record, for it shows")
+    assert merge_line("the Kalinganagari cave", "the Kalinganagarl cave", VOCAB) == "the Kalinganagari cave"
+
+
+def test_merge_takes_the_whole_line_when_the_first_read_is_garbled_and_the_figures_agree():
+    from pipeline.second_read import merge_line
+    h = "\\ whu hac| dicdfrorn chol era, floatimgin"
+    v = "who had died from cholera, floating in"
+    vocab = VOCAB | {"who", "had", "died", "from", "cholera", "floating"}
+    assert merge_line(h, v, vocab) == v
+
+
+def test_agreed_words_are_the_words_both_engines_read_on_the_same_line():
+    from pipeline.second_read import agreed_words
+    assert agreed_words([("the inseription on", "the inscription on")]) == {"the", "on"}
+
+
+def test_merge_keeps_the_first_reads_punctuation_and_leaves_out_a_glued_side_note():
+    from pipeline.second_read import merge_line
+    vocab = {"first", "census", "of", "the", "district", "was", "taken", "in", "year", "and", "persons", "during"}
+    h = "Tux firet consus of the district was taken in the year 1872, and Growrm"
+    v = "THs frst census of the distriet was taken in the year 1872, and Gaowrz"
+    assert merge_line(h, v, vocab) == "Tux firet census of the district was taken in the year 1872, and Growrm"
+
+
+def test_merge_never_swaps_a_word_for_an_unlike_one():
+    from pipeline.second_read import merge_line
+    h = "Bhubaneswar.—A village in the Khurda subdivision, situated"
+    v = "—A village in the Khurdā subdivision, situated"
+    assert merge_line(h, v, {"a", "village", "in", "the", "khurda", "subdivision", "situated"}) == (
+        "Bhubaneswar.—A village in the Khurdā subdivision, situated")

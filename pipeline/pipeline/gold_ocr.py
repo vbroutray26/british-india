@@ -96,8 +96,8 @@ def ocr_text(rec: dict, reviewed: bool) -> str:
     lines = rec["lines"] if reviewed else [ln for ln in rec["lines"] if not ln.get("recovered")]
     raw = rec["text_raw"].split("\n")
     texts = [ln["t"] for ln in lines] if reviewed or len(raw) != len(lines) else raw
-    items = [(ln["y"], t) for ln, t in zip(lines, texts, strict=True)]
-    items += [(m["y"], m["t"]) for m in rec.get("margin", [])]
+    items = [((ln.get("col", 0), ln["y"]), t) for ln, t in zip(lines, texts, strict=True)]  # index: by column
+    items += [((0, m["y"]), m["t"]) for m in rec.get("margin", [])]
     return "\n".join([t for _, t in sorted(items, key=lambda x: x[0])] + list(rec.get("footnotes", [])))
 
 
