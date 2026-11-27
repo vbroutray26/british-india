@@ -9,6 +9,7 @@ pipeline. Per D-16, Claude drafts every label and the owner reviews it. Each row
 | GS-NUMERIC | `GS-NUMERIC.jsonl` | TS-DATA-03: rule extraction of coordinates, area and population (`python -m pipeline.gold score`). Rows with `depends_on` rest on an OCR correction by the same labeller and are also scored apart (D-28) |
 | GS-OCR | `GS-OCR.jsonl` + `GS-OCR/<source>/p<page>.txt` | TS-DATA-01: OCR character error rate (`python -m pipeline.gold_ocr score`) |
 | GS-SEG | `GS-SEG.jsonl` | TS-DATA-02: entry and section boundary accuracy (`python -m pipeline.gold_seg score`) |
+| GS-EXTRACT | `GS-EXTRACT.jsonl` | TS-DATA-04: DP-06 extraction, precision and recall per fact type and unsupported-fact rate (`python -m pipeline.gold_extract check` / `score`) |
 
 ## GS-OCR transcription conventions
 
@@ -66,3 +67,28 @@ depend on DP-01 or DP-02. A drawn note that turns out to be a smudge is replaced
 on that page whose first 200 characters contain the opening words (fuzzy, diacritics folded, the
 heading itself may be garbled), merged when the words sit inside another record, missed otherwise.
 This measures recall only: a spurious split (a speck read as a side-note) is not counted.
+
+## GS-EXTRACT
+
+One row per gazetteer entry, read from the full-resolution scan. The row lists every fact of a DP-06
+type (spec Appendix B: crop, industry, trade_item, market_or_fair, port, railway, canal, road, flood,
+famine, cyclone, epidemic, temple, monument, festival, school, hospital, admin_change, notable_person,
+language) that the entry states about its own place. An entry with no such fact is still a row, with
+an empty `facts` list, so that invented facts count against precision. Areas, populations and
+coordinates are rule facts and belong to GS-NUMERIC, not here.
+
+- **Quote.** Copied as printed, in Unicode NFC with diacritics. A hyphen at a line end is dropped when
+  it only splits a word. Scoring folds diacritics and whitespace.
+- **Value.** `value.label` is a short name for the fact in the book's words: the deity, festival, road
+  or item. It adds nothing the quote does not say. Any number in it must be in the quote.
+- **Year.** Given only when the quote prints it. Years are never inferred.
+- **Page.** The page the quote is printed on.
+- **Judgement calls** carry a `notes` field. For example, a railway station a few miles away is
+  labelled `railway`, since the book gives it as the place's link to the line.
+- **Not labelled.** Distances and directions. Natural features that have no DP-06 type (hot springs,
+  caves, teak plantations). Police stations and tahsil offices, which are not changes.
+
+First sample (2026-11-27): the 11 entries of under 200 words in O'Malley's gazetteer chapter (pp. 233–
+250), 19 facts. Long entries (Bhubaneswar, Purī, Konārak, Khandagiri, Dhauli) are extracted section
+by section by DP-06 and will be labelled the same way. The spec's 150 entries are for the Puri release
+across all its sources; O'Malley has 25.

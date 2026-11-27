@@ -178,4 +178,4 @@ full-resolution archive.org JP2), `pipeline.gold` (contact sheets for labelling;
   the page's `recovered`, so DP-07 queues their figures as read by one engine. Pp. 34, 63, 69, 139 and
   200 also gain a little. Left on p. 130: the first line's opening ("4 ot Govern ent,") and Vision's own
   misreadings of the words it supplies ("Cnnal").
-- GS-EXTRACT: not started.
+- GS-EXTRACT (D-35): 11 entries, 19 facts, drafted from the scans, owner review pending. `pipeline.gold_extract check` validates the labels (DP-06 types, years printed in the quote, numbers in the value present in the quote) and warns where a quote is not in DP-02's OCR text of its entry; `score` reports TS-DATA-04 once DP-06 writes `candidate_facts.jsonl` (M3).
