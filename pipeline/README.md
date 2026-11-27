@@ -70,8 +70,9 @@ full-resolution archive.org JP2), `pipeline.gold` (contact sheets for labelling;
   the spec's 100 should come from the 1905 Statistics volume (`puri-statistics-1905`), which is tables.
   **TS-DATA-03 fails: 66/69 exact (95.7%); 60/63 (95.2%) on labels independent of OCR corrections**,
   target ≥ 98% (was 31/69). *Update (D-28): the p. 60 table rows are now audited OCR corrections and a
-  census-table rule reads them; the 6 table labels depend on that transcription. Still failing: p. 59
-  (paragraph split), p. 138 (recovered line reads 480 for 485), p. 294 ("3-83").* Half the misses were figures
+  census-table rule reads them; the 6 table labels depend on that transcription.* *Update (D-29): **67/69
+  (97.1%); 61/63 (96.8%) independent.** p. 59 fixed. Still failing: p. 138 (recovered line reads 480 for
+  485) and p. 294 ("3-83").* Half the misses were figures
   extracted but credited to the page their paragraph starts on; DP-04 now takes the page from the
   entry's page map at the figure itself. New patterns: "in 1891 was returned at", census year elsewhere
   in the clause (only when the clause names exactly one year), yearless counts ("its population 10,000
@@ -97,4 +98,11 @@ full-resolution archive.org JP2), `pipeline.gold` (contact sheets for labelling;
   DP-07 queues any figure on them ("one engine only"). GS-OCR CER 7.91% → 7.29% (numerals 37.1% →
   36.9%); the raw column is the hOCR alone. One gold page reads worse (p. 181, +35 edits): the recovered
   line is right but lands out of order in the hOCR's already scrambled page.
+- **Cut-off first words (D-29).** Where the hOCR lost the first letters of a line ("pulation" for
+  "population", 33 lines), DP-01 restores the word from the matching second-read line (letters only, 1–3
+  lost) and takes that line's indent from the second read: the lost letters had shifted the line right,
+  which looked like a paragraph start (p. 59 split the 1872 census sentence in two). A blanket "lowercase
+  line is never a paragraph start" rule was tried and rejected: it hid real entry starts whose heading
+  OCR garbled (Kālupārā Ghāt) and cost 1 GS-SEG boundary. The side-note words glued onto p. 59's lines
+  ("Growrm", "Tivo.") are still in the text; trimming them is not yet safe (it would also cut real words).
 - GS-EXTRACT: not started.

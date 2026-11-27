@@ -60,7 +60,7 @@ TABLE_ROW = re.compile(r"\b([A-Z][A-Za-z]+(?:\s+[a-z]+)?)(?:\s+\.{2,})*\s+" + NU
 CENSUS_YEAR = re.compile(r"census\s+of\s+" + YEAR, re.IGNORECASE)
 # Clauses end at ";" or at a full stop before a capital ("15·4 per cent., being" does not end one).
 CLAUSE = re.compile(r"(?:[^.;]|\.(?!\s+[A-Z\"'(]|\s*$))+")
-POP_WORDS = re.compile(r"\b(?:population|souls|inhabitants|census)\b", re.IGNORECASE)
+POP_WORDS = re.compile(r"\b(?:population|souls|inhabitants|c[eo]nsus)\b", re.IGNORECASE)  # OCR: "consus"
 DISTANCE = re.compile(r"\b(\d{1,3}|one|two|three|four|five|six|seven|eight|nine|ten)\s+miles?\s+"
                       r"((?:north|south|east|west)(?:-(?:north|south|east|west))?\s+of|from|distant from)\s+"
                       r"([A-Z][\w’']+(?:\s(?:town|Road|station))?)", re.IGNORECASE)
@@ -149,7 +149,7 @@ def extract(p: dict, place_id: str | None, spans: list[dict] | None = None, befo
                     taken.add(m.start(gn))
                     out.append(mk(place_id, "population", {"number": n, "unit": "persons"}, p, _Shift(m, cm.start()), 0.9, year))
         years = set(re.findall(r"\b" + YEAR + r"\b", clause))
-        census_year = int(years.pop()) if len(years) == 1 and re.search(r"\bcensus\b", clause, re.IGNORECASE) else None
+        census_year = int(years.pop()) if len(years) == 1 and re.search(r"\bc[eo]nsus\b", clause, re.IGNORECASE) else None
         for rx in POP_COUNTS:
             for m in rx.finditer(clause):
                 n = num(m.group(1))

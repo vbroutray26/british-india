@@ -154,3 +154,8 @@ def test_census_table_needs_a_census_year():
 
 def test_census_table_rows_are_different_places_not_conflicts():
     assert consistency(extract(P(TABLE), "pl_unlinked", before="census of 1901")) == []
+
+
+def test_census_year_tolerates_ocr_consus_across_a_long_clause():
+    assert pops("Tux firet consus of the district was taken in the year 1872, and the result was to show for the "
+                "district, as now constituted, a population of 769,779 persons.") == [(1872, 769779)]

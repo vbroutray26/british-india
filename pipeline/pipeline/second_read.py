@@ -158,6 +158,20 @@ def _align(a: list[str], b: list[str], thr: float) -> list[tuple[int, int]]:
     return pairs
 
 
+def first_word_fixes(first: list[str], rows: list[dict], thr: float = 60) -> dict[int, tuple[str, bool]]:
+    """First words the first OCR cut short at the left edge ("pulation" for "population"), restored from the
+    second read's matching line: {index of first-OCR line: (word, second read's indent)}. Only letters, and only when the second
+    read's word ends with the first OCR's (1-3 letters lost)."""
+    out = {}
+    for i, j in _align([_fold(t) for t in first], [_fold(r["t"]) for r in rows], thr):
+        a, b = (first[i].split() or [""])[0], (rows[j]["t"].split() or [""])[0]
+        ka, kb = re.sub(r"\W+$", "", a), re.sub(r"\W+$", "", b)
+        if (ka.isalpha() and kb.isalpha() and ka[:1].islower() and len(ka) >= 3
+                and 1 <= len(kb) - len(ka) <= 3 and _fold(kb).endswith(_fold(ka))):
+            out[i] = (kb + a[len(ka):], rows[j]["indent"])
+    return out
+
+
 FOOTNOTE = re.compile(r"\s*[•*†‡§¶]")  # footnotes start with a reference mark
 
 

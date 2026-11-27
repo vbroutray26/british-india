@@ -56,3 +56,21 @@ def test_recover_lines_inserts_a_dropped_line_in_reading_order(tmp_path):
     assert recover_lines(recs, vis, 5400, []) == [text[2]]
     assert [r["t"] for r in recs] == text and recs[2]["recovered"]
     assert recover_lines([{"t": text[0], "y": 600, "indent": False}], tmp_path / "none.json", 5400, []) == []
+
+
+def test_recover_lines_restores_a_cut_first_word_and_the_true_indent(tmp_path):
+    import json
+
+    from pipeline.ocr import recover_lines
+    text = ["The first census of the district was taken in the year 1872, and",
+            "the result was to show for the district, as now constituted, a",
+            "population of 769,779 persons. During the next 10 years the",
+            "population increased by no less than 15·4 per cent., being",
+            "returned in 1881 at 888,592 souls, but it is probable that a"]
+    vis = tmp_path / "leaf_0001.json"
+    vis.write_text(json.dumps({"w": 2400, "h": 3600, "lines": [
+        {"t": t, "conf": 1, "x0": 300, "y0": 400 + i * 80, "x1": 2100, "y1": 460 + i * 80} for i, t in enumerate(text)]}))
+    recs = [{"t": t, "y": 600 + i * 120, "indent": False} for i, t in enumerate(text)]
+    recs[2] = {"t": "pulation of 769,779 persons. During the next 10 years the", "y": 840, "indent": True}
+    recover_lines(recs, vis, 5400, [])
+    assert recs[2]["t"] == text[2] and recs[2]["first_word"] == "pulation" and not recs[2]["indent"]

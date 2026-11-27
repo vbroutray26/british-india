@@ -271,15 +271,21 @@ def paragraphs(lines: list[dict], hyphen_words: set[str]) -> str:
 
 
 def recover_lines(line_recs: list[dict], vision: Path, height: int, other: list[str]) -> list[str]:
-    """Insert body lines the archive.org OCR dropped, from the cached second read (DP-01b, D-27), into
-    `line_recs` in place. Returns the recovered texts. `other` is the page's text outside the body
+    """Repair `line_recs` in place from the cached second read (DP-01b): restore first words the archive.org
+    OCR cut short at the left edge (D-29), and insert body lines it dropped (D-27). Returns the recovered texts. `other` is the page's text outside the body
     (footnotes, side-notes, running head), which is never recovered into it."""
     if not line_recs or not vision.exists():
         return []
-    from pipeline.second_read import body_rows, missing_lines
+    from pipeline.second_read import body_rows, first_word_fixes, missing_lines
 
     first = [ln["t"] for ln in line_recs]
-    found = missing_lines(first, body_rows(json.loads(vision.read_text())), " ".join(first + other))
+    rows = body_rows(json.loads(vision.read_text()))
+    for i, (w, indent) in first_word_fixes(first, rows).items():
+        line_recs[i]["t"] = w + line_recs[i]["t"][len(first[i].split()[0]):]
+        line_recs[i]["first_word"] = first[i].split()[0]  # as the first OCR read it
+        # lost letters move the line's left edge, which looks like an indent: the second read saw the real edge
+        line_recs[i]["indent"] = indent
+    found = missing_lines(first, rows, " ".join(first + other))
     for i, r in reversed(found):
         line_recs.insert(i + 1, {"t": r["t"], "y": int(r["y_frac"] * height), "indent": r["indent"], "recovered": True})
     return [r["t"] for _, r in found]

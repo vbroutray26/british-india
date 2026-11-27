@@ -149,3 +149,14 @@ def test_missing_lines_ignores_a_present_line_with_a_side_note_glued_on():
     rows = rows_of(BOOK[:2] + [BOOK[3] + " Fisheries."] + BOOK[3:])
     rows[2]["t"] = "Fishing is at present one of the most important occupations Fishericn."
     assert missing_lines(tess, rows) == []
+
+
+def test_first_word_fixes_restore_letters_the_first_ocr_lost_at_a_line_start():
+    from pipeline.second_read import first_word_fixes
+    first = ["the result was to show for the district, as now constituted, a",
+             "pulation of 769,779 persons. During the next 10 years the",
+             "evidently the work of a later hand, and the carving is poor"]
+    rows = rows_of(["the result was to show for the district, as now constituted, a",
+                    "population of 769,779 persons, During the next 10 years the",
+                    "-evidently the work of a later hand, and the carving is poor"])
+    assert first_word_fixes(first, rows) == {1: ("population", False)}
