@@ -61,13 +61,19 @@ def _item(rec: dict, kind: str, text: str, find: str, y, reasons: list[str], col
             "text": text, "find": find, "y": y, "col": col, "reasons": reasons}
 
 
-def page_items(rec: dict, rows: list[str] | tuple[list[str], list[str]] | None, index: bool = False) -> list[dict]:
-    """Queue items for one page. rows: the second read's lines in reading order, or (left, right) columns
-    for a two-column page, or None when the page has no second read. index: the page is in the source's
+def _text(row) -> str:
+    return row["t"] if isinstance(row, dict) else row
+
+
+def page_items(rec: dict, rows: list | tuple[list, list] | None, index: bool = False) -> list[dict]:
+    """Queue items for one page. rows: the second read's lines in reading order (text, or {t, y_frac}, whose
+    position then places the mark on the crop), or (left, right) columns for a two-column page, or None
+    when the page has no second read. index: the page is in the source's
     index (config/segment.yaml); a page DP-01 split into columns counts as index too."""
     lines = rec["lines"]
     index = index or any(ln.get("col") for ln in lines)
     reasons: dict[int, list[str]] = {i: [] for i, ln in enumerate(lines) if DIGIT.search(ln["t"])}
+    marks: dict[int, float] = {}
     for i, why in reasons.items():
         if lines[i].get("recovered"):
             why.append("one engine only")
@@ -80,24 +86,37 @@ def page_items(rec: dict, rows: list[str] | tuple[list[str], list[str]] | None, 
                     why.append("no second read")
         else:
             assert isinstance(rows, list)
-            pairs = dict(_align([_fold(ln["t"]) for ln in lines], [_fold(r) for r in rows], 60)) if rows else {}
+            texts = [_text(r) for r in rows]
+            pairs = dict(_align([_fold(ln["t"]) for ln in lines], [_fold(r) for r in texts], 60)) if rows else {}
             for i, why in reasons.items():
                 if lines[i].get("recovered"):
                     continue
                 if i not in pairs:
                     why.append("no second-read line")
-                elif _figures(lines[i]["t"]) != _figures(rows[pairs[i]]):
+                elif _figures(lines[i]["t"]) != _figures(texts[pairs[i]]):
                     why.append("engines differ")
+                if i in pairs and isinstance(rows[pairs[i]], dict):
+                    marks[i] = rows[pairs[i]]["y_frac"]  # the hOCR box can reach into the line above
     for i, why in reasons.items():
         if SUSPECT.search(lines[i]["t"]):
             why.append("suspect characters")
     items = [_item(rec, "line", lines[i]["t"], lines[i].get("first_read", lines[i]["t"]), lines[i]["y"], r,
                    lines[i].get("col", 0))
              for i, r in reasons.items() if r and not lines[i].get("corrected")]
+    for it, i in zip(items, [i for i, r in reasons.items() if r and not lines[i].get("corrected")], strict=True):
+        if i in marks:
+            it["mark_frac"] = marks[i]
     items += [_item(rec, "margin", m["t"], m["t"], m["y"], ["margin note"])
               for m in rec.get("margin", []) if DIGIT.search(m["t"]) and not m.get("corrected")]
     items += [_item(rec, "footnote", f, f, None, ["footnote"]) for f in rec.get("footnotes", []) if DIGIT.search(f)]
     return items
+
+
+def unreviewed(items: list[dict], corrections: list[dict], done: set[str]) -> list[dict]:
+    """Items still to review: not answered before (done ids from numeral_review.jsonl) and not already the
+    text of an audited correction on that page (a corrected footnote or note comes back with new text)."""
+    fixed = {(str(c["page"]), c["replace"]) for c in corrections}
+    return [it for it in items if it["id"] not in done and (it["page"], it["text"]) not in fixed]
 
 
 def crop_box(y, pitch: float, ocr_size: tuple[int, int], img_size: tuple[int, int]) -> tuple[int, int, int, int]:
@@ -123,7 +142,7 @@ def _rows(rec: dict, vision: Path):
     if any(ln.get("col") for ln in rec["lines"]):
         cols = column_rows(v)
         return ([r["t"] for r in cols[0]], [r["t"] for r in cols[1]]) if cols else None
-    return [r["t"] for r in body_rows(v)]
+    return [{"t": r["t"], "y_frac": r["y_frac"]} for r in body_rows(v)]
 
 
 def build(source_id: str) -> dict:
@@ -151,7 +170,8 @@ def build(source_id: str) -> dict:
                     band = img.crop(box).convert("RGB")
                     if it["y"] is not None:  # a mark in the left margin at the line under review
                         sy = img.size[1] / rec["size"][1]
-                        mid = (it["y"] + 0.45 * pitch) * sy - box[1]
+                        top = it["mark_frac"] * img.size[1] if "mark_frac" in it else it["y"] * sy
+                        mid = top + 0.45 * pitch * sy - box[1]
                         h = 0.35 * pitch * sy
                         ImageDraw.Draw(band).polygon([(0, mid - h), (1.4 * h, mid), (0, mid + h)], fill=(200, 30, 30))
                     if band.width > CROP_WIDTH:
@@ -159,6 +179,10 @@ def build(source_id: str) -> dict:
                     band.save(path, quality=70)
                 it["crop"] = f"crops/{path.name}"
         items += page_items_
+    review = DATA_DIR / "review" / source_id
+    log = review / "numeral_review.jsonl"
+    corrections = (read_yaml(review / "ocr_corrections.yaml") or {}).get("corrections", [])
+    items = unreviewed(items, corrections, {r["id"] for r in read_jsonl(log)} if log.exists() else set())
     write_jsonl(out / "items.jsonl", items)
     (out / "items.js").write_text("window.REVIEW = " + json.dumps(
         {"source": source_id, "items": items}, ensure_ascii=False) + ";\n")

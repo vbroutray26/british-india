@@ -1,0 +1,368 @@
+{"by": "owner", "date": "2026-11-27", "id": "4bb6c95b88b6", "kind": "line", "page": "1", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "7d89871720fe", "kind": "line", "page": "1", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "d6e8163c33e1", "kind": "line", "page": "2", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "de8ca46cb620", "kind": "line", "page": "3", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "b71ea6815349", "kind": "line", "page": "3", "reasons": ["no second-read line"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "c57f036231be", "kind": "line", "page": "4", "reasons": ["engines differ"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "ede452674968", "kind": "line", "page": "6", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "eec3763260e7", "kind": "line", "page": "6", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "880b94a51cd7", "kind": "line", "page": "8", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "ac79633a600f", "kind": "line", "page": "9", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "8d4a5f4f49be", "kind": "line", "page": "9", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "14ff06ad96c8", "kind": "line", "page": "9", "reasons": ["no second-read line"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "1204821dc75a", "kind": "line", "page": "10", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "0bb73ad034b1", "kind": "line", "page": "11", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "91fd65bf3915", "kind": "line", "page": "11", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "1211fff0f0f9", "kind": "line", "page": "12", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "ab242329b067", "kind": "line", "page": "12", "reasons": ["one engine only"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "88928e314b9c", "kind": "line", "page": "13", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "cb20345b3140", "kind": "line", "page": "14", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "61767adb0159", "kind": "line", "page": "15", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "05a4b01d1e3a", "kind": "line", "page": "15", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "8417a5bce1dd", "kind": "line", "page": "15", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "a5bf85448682", "kind": "line", "page": "17", "reasons": ["no second-read line"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "a32a266f75f0", "kind": "line", "page": "19", "reasons": ["no second-read line", "suspect characters"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "a13ad49d1179", "kind": "line", "page": "20", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "09d8d115a28a", "kind": "line", "page": "20", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "fd02b00acdfb", "kind": "line", "page": "20", "reasons": ["engines differ", "suspect characters"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "27ef79fe4e53", "kind": "line", "page": "20", "reasons": ["no second-read line"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "fae47a3a44e4", "kind": "line", "page": "20", "reasons": ["no second-read line"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "8a646cfa7ebc", "kind": "line", "page": "20", "reasons": ["no second-read line"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "427cd1881f99", "kind": "line", "page": "20", "reasons": ["no second-read line"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "ddf72bbd2252", "kind": "line", "page": "20", "reasons": ["no second-read line"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "fd898b1f1c8e", "kind": "line", "page": "20", "reasons": ["no second-read line"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "8614100a39d4", "kind": "line", "page": "21", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "51bdcfaf7fd5", "kind": "line", "page": "21", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "38b926f36a6c", "kind": "line", "page": "22", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "d80c6929bbce", "kind": "line", "page": "22", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "2648924d1a51", "kind": "line", "page": "22", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "108f3f368495", "kind": "line", "page": "22", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "c4a3c13246eb", "kind": "line", "page": "22", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "69aba34fce07", "kind": "footnote", "page": "22", "reasons": ["footnote"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "2ab1832dd967", "kind": "footnote", "page": "22", "reasons": ["footnote"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "14059b157f71", "kind": "line", "page": "23", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "415c66175b11", "kind": "line", "page": "23", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "7af37aa3c730", "kind": "footnote", "page": "23", "reasons": ["footnote"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "b2cc4a07addf", "kind": "footnote", "page": "23", "reasons": ["footnote"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "e711d54c102e", "kind": "line", "page": "25", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "ad74ff4740bf", "kind": "line", "page": "25", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "4a52d00423df", "kind": "line", "page": "25", "reasons": ["suspect characters"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "b631945d508f", "kind": "line", "page": "26", "reasons": ["no second-read line"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "32ec3f36219c", "kind": "line", "page": "26", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "9ece540a68c5", "kind": "line", "page": "26", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "e1b60b9514b7", "kind": "line", "page": "27", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "e3b412855c3e", "kind": "line", "page": "27", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "1c5ec1fb2b44", "kind": "line", "page": "27", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "f55bba7e9d0a", "kind": "line", "page": "27", "reasons": ["suspect characters"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "ee546f5832ed", "kind": "line", "page": "28", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "ea90bfc4167b", "kind": "footnote", "page": "28", "reasons": ["footnote"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "aaab324dbade", "kind": "line", "page": "29", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "b1a8da113301", "kind": "line", "page": "29", "reasons": ["no second-read line"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "e03237fa87ef", "kind": "line", "page": "30", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "55bfe51cd0fe", "kind": "line", "page": "30", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "5df1ba03328e", "kind": "footnote", "page": "30", "reasons": ["footnote"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "45b16d04b147", "kind": "line", "page": "31", "reasons": ["one engine only"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "0fc35a031c26", "kind": "line", "page": "31", "reasons": ["engines differ"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "ceaf9944d326", "kind": "line", "page": "32", "reasons": ["engines differ"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "ad45c242d793", "kind": "line", "page": "32", "reasons": ["engines differ"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "caa4642757fc", "kind": "line", "page": "32", "reasons": ["one engine only"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "d772ef7cbd61", "kind": "margin", "page": "32", "reasons": ["margin note"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "f9dee9820721", "kind": "margin", "page": "32", "reasons": ["margin note"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "d37c719de089", "kind": "line", "page": "33", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "f9b9acd1791d", "kind": "line", "page": "33", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "8e816ad9591c", "kind": "line", "page": "33", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "426c7c0d256d", "kind": "line", "page": "34", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "c6aa76eda166", "kind": "line", "page": "35", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "2bf5f7c10191", "kind": "line", "page": "35", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "e3f0a2add040", "kind": "line", "page": "35", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "c979006d3cc2", "kind": "line", "page": "35", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "be600aaca2e5", "kind": "line", "page": "36", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "bf6b1e1fe0ac", "kind": "line", "page": "36", "reasons": ["engines differ"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "c10409f9bc6b", "kind": "footnote", "page": "36", "reasons": ["footnote"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "8855922d063d", "kind": "line", "page": "37", "reasons": ["no second-read line"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "c7bea595c1e1", "kind": "line", "page": "37", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "d62386153ae1", "kind": "line", "page": "37", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "be7a3bb218f7", "kind": "line", "page": "37", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "f780072e85f8", "kind": "line", "page": "38", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "5dd2a6bba0b5", "kind": "line", "page": "38", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "cadb6dadce96", "kind": "line", "page": "38", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "e155c4d9ed11", "kind": "line", "page": "38", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "d1b5ac2daf74", "kind": "line", "page": "38", "reasons": ["engines differ"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "189301e3719c", "kind": "line", "page": "38", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "9072233938d6", "kind": "line", "page": "38", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "8b95ddd9e8be", "kind": "line", "page": "38", "reasons": ["one engine only"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "c69dd4e6d2ff", "kind": "line", "page": "39", "reasons": ["engines differ"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "f1bbec458c7b", "kind": "line", "page": "39", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "e42226677cf5", "kind": "line", "page": "39", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "18e346ffc0e0", "kind": "line", "page": "39", "reasons": ["engines differ", "suspect characters"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "44a6001ef0a1", "kind": "footnote", "page": "39", "reasons": ["footnote"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "02ccb209a062", "kind": "footnote", "page": "39", "reasons": ["footnote"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "3b0502974a40", "kind": "line", "page": "42", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "35617062423e", "kind": "line", "page": "42", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "91bcaf162808", "kind": "line", "page": "42", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "8c0e0ad39215", "kind": "line", "page": "42", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "72d8bb557c27", "kind": "line", "page": "42", "reasons": ["no second-read line"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "07b7ec4bcca2", "kind": "line", "page": "42", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "17243e88ec1f", "kind": "line", "page": "42", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "8ccce24bf461", "kind": "line", "page": "42", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "1fd31332b6c3", "kind": "line", "page": "42", "reasons": ["no second-read line"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "4a387c462eba", "kind": "line", "page": "42", "reasons": ["no second-read line"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "92ac123d210b", "kind": "line", "page": "42", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "5d7f87f86eaf", "kind": "line", "page": "42", "reasons": ["one engine only"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "420fe4fc9d25", "kind": "footnote", "page": "42", "reasons": ["footnote"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "8708709395ab", "kind": "line", "page": "43", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "6ea781f5c1c0", "kind": "line", "page": "43", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "ea873c0d0f78", "kind": "line", "page": "43", "reasons": ["no second-read line"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "a8f7f97bc173", "kind": "line", "page": "43", "reasons": ["no second-read line"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "aedcb9cda02e", "kind": "line", "page": "43", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "cee02c09a1bc", "kind": "line", "page": "44", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "9360c1f63c7f", "kind": "line", "page": "44", "reasons": ["no second-read line"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "f4edea27a05e", "kind": "line", "page": "45", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "659a8ef774d9", "kind": "line", "page": "46", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "a98ce575d7f1", "kind": "line", "page": "46", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "13a65da17132", "kind": "line", "page": "46", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "3fae3c6ea432", "kind": "footnote", "page": "46", "reasons": ["footnote"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "9cfaec3832a3", "kind": "footnote", "page": "46", "reasons": ["footnote"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "3058613b5b95", "kind": "footnote", "page": "46", "reasons": ["footnote"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "0345d1f9f09b", "kind": "footnote", "page": "46", "reasons": ["footnote"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "815c4de7cf53", "kind": "line", "page": "47", "reasons": ["engines differ"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "158652a4d149", "kind": "line", "page": "47", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "a88abe6f711c", "kind": "line", "page": "47", "reasons": ["engines differ"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "3e41585829ed", "kind": "line", "page": "49", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "daaea1a23453", "kind": "line", "page": "49", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "aed6148a2640", "kind": "line", "page": "49", "reasons": ["no second-read line"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "1a156b38df23", "kind": "line", "page": "50", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "33a5e7ca1a06", "kind": "margin", "page": "50", "reasons": ["margin note"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "f472dfb2a774", "kind": "line", "page": "51", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "0bce7b7bce1e", "kind": "line", "page": "52", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "daa0881fd65a", "kind": "line", "page": "52", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "797cb4e97cd5", "kind": "line", "page": "53", "reasons": ["no second-read line"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "4d60dfdc33a8", "kind": "line", "page": "54", "reasons": ["one engine only"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "755f6ec904d5", "kind": "line", "page": "55", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "819a4cf091a3", "kind": "line", "page": "55", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "73539704108b", "kind": "line", "page": "57", "reasons": ["no second-read line"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "923f363a9dd8", "kind": "line", "page": "57", "reasons": ["no second-read line"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "f6983f6be6c2", "kind": "line", "page": "57", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "06521eb38e9a", "kind": "line", "page": "59", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "db08d72ef433", "kind": "line", "page": "59", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "2bd8c5398205", "kind": "line", "page": "59", "reasons": ["no second-read line"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "5cae99fe1013", "kind": "line", "page": "59", "reasons": ["no second-read line"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "5129d83a82db", "kind": "line", "page": "60", "reasons": ["no second-read line"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "0f57aaf665b1", "kind": "line", "page": "62", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "329121d79932", "kind": "line", "page": "63", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "61ec1c2a2a51", "kind": "line", "page": "65", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "5be1e473fcc8", "kind": "line", "page": "67", "reasons": ["no second-read line"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "9d7f4c828c7f", "kind": "line", "page": "67", "reasons": ["no second-read line"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "c554801b195f", "kind": "line", "page": "68", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "a557d07b4b82", "kind": "line", "page": "69", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "4ad9b612864c", "kind": "line", "page": "69", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "35a0eb11323a", "kind": "line", "page": "70", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "7ee73dd2bc56", "kind": "line", "page": "70", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "ccf08e2759c0", "kind": "line", "page": "71", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "e363e2405270", "kind": "line", "page": "71", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "512972a64612", "kind": "line", "page": "72", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "075c3b463fec", "kind": "line", "page": "73", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "ec5f9857f002", "kind": "line", "page": "74", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "795947ce7926", "kind": "line", "page": "74", "reasons": ["one engine only"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "a82d4f305df6", "kind": "line", "page": "75", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "fd80dc89823a", "kind": "line", "page": "75", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "a66db7174beb", "kind": "line", "page": "75", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "f50e8b9f3c39", "kind": "line", "page": "76", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "25eaf1e1f289", "kind": "line", "page": "76", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "d29c1947dcbb", "kind": "line", "page": "76", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "62482ea24edf", "kind": "line", "page": "78", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "487317a3023b", "kind": "line", "page": "78", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "66e82f5b6617", "kind": "line", "page": "78", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "fc60495a5b59", "kind": "line", "page": "79", "reasons": ["one engine only"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "a3679acb8bf3", "kind": "line", "page": "79", "reasons": ["one engine only"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "0b61666c9e03", "kind": "line", "page": "79", "reasons": ["one engine only"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "c68168dc6f70", "kind": "line", "page": "79", "reasons": ["one engine only"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "61e263838469", "kind": "line", "page": "79", "reasons": ["one engine only"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "92ca8eb977a0", "kind": "line", "page": "79", "reasons": ["one engine only"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "d935f2d63748", "kind": "line", "page": "79", "reasons": ["one engine only"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "9b50ec3bbd8d", "kind": "line", "page": "79", "reasons": ["one engine only"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "5a24e8c056c4", "kind": "line", "page": "79", "reasons": ["one engine only"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "f3497fb1cdcf", "kind": "line", "page": "79", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "1b27ab39a688", "kind": "line", "page": "79", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "69b9b7b3c6cf", "kind": "line", "page": "81", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "f4bd1f46b1c9", "kind": "line", "page": "82", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "848630f1bbcd", "kind": "line", "page": "82", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "2c09e7c93b9d", "kind": "line", "page": "82", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "471bf436a62e", "kind": "line", "page": "82", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "acdfb3ae6afc", "kind": "line", "page": "82", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "d73d5f318e18", "kind": "line", "page": "83", "reasons": ["no second-read line"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "0a05e2253b35", "kind": "line", "page": "84", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "8d8a353d6cb3", "kind": "margin", "page": "84", "reasons": ["margin note"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "274e6047ce26", "kind": "line", "page": "85", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "347598ea1a93", "kind": "line", "page": "85", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "7f7b6c540042", "kind": "line", "page": "86", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "c959ac1b4e08", "kind": "line", "page": "86", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "955b87103011", "kind": "line", "page": "87", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "478fede45ca0", "kind": "line", "page": "91", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "2c4d61a9836b", "kind": "line", "page": "91", "reasons": ["engines differ"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "c2798ee88656", "kind": "line", "page": "91", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "110af1eacdff", "kind": "line", "page": "92", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "b26da2d65cc6", "kind": "line", "page": "92", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "37607d589f94", "kind": "line", "page": "95", "reasons": ["engines differ"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "8b39e9f5c3e2", "kind": "line", "page": "95", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "330686695a6a", "kind": "line", "page": "96", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "f1fa95ae8600", "kind": "line", "page": "97", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "464d17fa20bc", "kind": "line", "page": "98", "reasons": ["no second-read line"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "86aec4bb57a4", "kind": "line", "page": "98", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "73f0cf92dfe2", "kind": "line", "page": "98", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "08e944a84547", "kind": "line", "page": "98", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "b141aa43d128", "kind": "line", "page": "98", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "cfee2c229c4c", "kind": "line", "page": "101", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "f47d4216bd96", "kind": "line", "page": "102", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "2daa77a2003a", "kind": "line", "page": "102", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "e201ed1c5c7c", "kind": "line", "page": "105", "reasons": ["engines differ"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "55e6bbbb9b6d", "kind": "line", "page": "105", "reasons": ["no second-read line"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "caed16629a6e", "kind": "line", "page": "106", "reasons": ["no second-read line"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "a5f4f683a534", "kind": "line", "page": "106", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "e78882c92adb", "kind": "line", "page": "108", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "2e5543a2e58b", "kind": "line", "page": "109", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "343f1a75ca34", "kind": "line", "page": "112", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "259bb6710586", "kind": "line", "page": "113", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "42ceb5eecdec", "kind": "line", "page": "113", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "a25bdf2ee03a", "kind": "line", "page": "113", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "4beeffefb865", "kind": "line", "page": "114", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "782cc4b4ac48", "kind": "line", "page": "116", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "ab35846c953c", "kind": "line", "page": "120", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "4ae840074c29", "kind": "line", "page": "121", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "542f7f746a23", "kind": "line", "page": "121", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "c8a385408587", "kind": "line", "page": "121", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "9164f0158c10", "kind": "line", "page": "121", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "42b561c3383f", "kind": "line", "page": "121", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "c03d3f97c70e", "kind": "line", "page": "122", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "486f1919f059", "kind": "line", "page": "122", "reasons": ["engines differ"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "d02c83777a79", "kind": "line", "page": "122", "reasons": ["engines differ"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "8965f7b4973d", "kind": "line", "page": "123", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "ef7a4c974fe2", "kind": "line", "page": "123", "reasons": ["engines differ"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "1cc7057174c5", "kind": "line", "page": "123", "reasons": ["engines differ"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "a7b4af2d476b", "kind": "line", "page": "124", "reasons": ["engines differ"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "5f8184abdd0d", "kind": "line", "page": "124", "reasons": ["engines differ"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "bf0fb9aab8d8", "kind": "line", "page": "125", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "aa3278563780", "kind": "line", "page": "126", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "a76c21436ad7", "kind": "line", "page": "126", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "7495f42a6e9a", "kind": "line", "page": "126", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "3f96906babd4", "kind": "line", "page": "126", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "bca8cec20b6c", "kind": "line", "page": "127", "reasons": ["one engine only"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "3bc5272ed5dc", "kind": "line", "page": "127", "reasons": ["one engine only"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "023f50f22d08", "kind": "line", "page": "127", "reasons": ["one engine only"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "4e4264e664f4", "kind": "line", "page": "127", "reasons": ["one engine only"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "5c32cd2340e7", "kind": "line", "page": "127", "reasons": ["one engine only"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "379b2096ad95", "kind": "line", "page": "127", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "5d71cb2aebe7", "kind": "line", "page": "128", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "38786cbc1415", "kind": "line", "page": "129", "reasons": ["no second-read line"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "b8198cd28cb3", "kind": "line", "page": "130", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "7a94d2039aed", "kind": "line", "page": "130", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "5bd46098df81", "kind": "line", "page": "130", "reasons": ["one engine only"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "765a82023db0", "kind": "line", "page": "130", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "82ea578d9972", "kind": "line", "page": "131", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "5453f8c05656", "kind": "line", "page": "131", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "7bfd91ad23ea", "kind": "line", "page": "131", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "b885cbc907a2", "kind": "line", "page": "133", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "e50a0c123fb9", "kind": "line", "page": "134", "reasons": ["no second-read line"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "8b6f3462cccb", "kind": "line", "page": "135", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "42a31d40c4bc", "kind": "line", "page": "135", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "ccf9dfb3082d", "kind": "line", "page": "135", "reasons": ["one engine only"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "bdb47bb86f88", "kind": "line", "page": "135", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "29cabf7be3d1", "kind": "line", "page": "136", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "6bbc59efed79", "kind": "line", "page": "136", "reasons": ["engines differ"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "fa30cc0dec21", "kind": "line", "page": "136", "reasons": ["engines differ"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "904134ea8175", "kind": "line", "page": "137", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "333de8491847", "kind": "line", "page": "138", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "8b5b63f2f040", "kind": "line", "page": "138", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "5b2f86cd12e6", "kind": "line", "page": "139", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "d2226b63e20f", "kind": "line", "page": "139", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "9f86bd22c94c", "kind": "line", "page": "139", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "5c072aedf626", "kind": "line", "page": "140", "reasons": ["no second-read line"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "bb518b170c8e", "kind": "line", "page": "140", "reasons": ["no second-read line"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "4e5f252da376", "kind": "line", "page": "140", "reasons": ["no second-read line"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "735a4ee5015c", "kind": "line", "page": "140", "reasons": ["engines differ"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "5b3507578ffb", "kind": "line", "page": "140", "reasons": ["suspect characters"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "be219a12b4b6", "kind": "line", "page": "141", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "e7344cffc6b0", "kind": "line", "page": "141", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "5a386f9cbc62", "kind": "line", "page": "142", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "8ca36569334f", "kind": "line", "page": "142", "reasons": ["one engine only"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "6ca5f19d4b20", "kind": "line", "page": "143", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "511c6dc8fa0b", "kind": "line", "page": "143", "reasons": ["no second-read line"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "63d2560b119a", "kind": "line", "page": "143", "reasons": ["no second-read line"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "41507442aee7", "kind": "line", "page": "143", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "e2c1c9a81c09", "kind": "line", "page": "143", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "0366c3a28b65", "kind": "line", "page": "144", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "accff17bc4d8", "kind": "line", "page": "144", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "120508eacf8c", "kind": "line", "page": "148", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "f346928e47c8", "kind": "line", "page": "148", "reasons": ["no second-read line"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "bcebbcf5d8cb", "kind": "line", "page": "148", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "22dae19f3a2d", "kind": "line", "page": "149", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "3a7ecc25a8b1", "kind": "line", "page": "151", "reasons": ["one engine only"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "6153ebb952a5", "kind": "line", "page": "151", "reasons": ["one engine only"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "31b5377fd38b", "kind": "line", "page": "151", "reasons": ["one engine only"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "a1e4013b38f8", "kind": "line", "page": "151", "reasons": ["one engine only"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "e29b2991cbea", "kind": "line", "page": "151", "reasons": ["one engine only"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "19e2a5872368", "kind": "line", "page": "151", "reasons": ["one engine only"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "34d8b295953c", "kind": "line", "page": "151", "reasons": ["one engine only"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "fe02938da849", "kind": "line", "page": "151", "reasons": ["one engine only"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "facdceeb6e88", "kind": "line", "page": "151", "reasons": ["one engine only"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "5cb6f34eac06", "kind": "line", "page": "151", "reasons": ["one engine only"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "b6b72f2d0f9d", "kind": "line", "page": "151", "reasons": ["one engine only"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "7a56a29d47ac", "kind": "line", "page": "151", "reasons": ["one engine only"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "fc8c43643045", "kind": "line", "page": "151", "reasons": ["one engine only"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "6d8c59856212", "kind": "line", "page": "151", "reasons": ["one engine only"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "1c2c15330c42", "kind": "line", "page": "151", "reasons": ["one engine only"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "92da64a20a5c", "kind": "line", "page": "151", "reasons": ["one engine only"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "e97bfb544fcc", "kind": "line", "page": "151", "reasons": ["one engine only"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "301b7f6bd3f0", "kind": "line", "page": "152", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "15c6d3afe429", "kind": "line", "page": "153", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "3a182499f1e9", "kind": "line", "page": "153", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "fd5573ca18f2", "kind": "line", "page": "154", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "15bc7c2184a1", "kind": "line", "page": "155", "reasons": ["engines differ"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "c33d68635e43", "kind": "line", "page": "155", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "de25715f8a4d", "kind": "line", "page": "156", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "5b2b8767cbbb", "kind": "line", "page": "160", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "d23235a7c576", "kind": "line", "page": "160", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "76bf07589512", "kind": "line", "page": "160", "reasons": ["suspect characters"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "71ff36219249", "kind": "line", "page": "162", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "64a0d17b2542", "kind": "line", "page": "162", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "c33239e67eff", "kind": "line", "page": "162", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "e3db2c8ae486", "kind": "line", "page": "162", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "daaad85911cd", "kind": "line", "page": "163", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "eb58269eff98", "kind": "line", "page": "163", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "8e72e3a3d3c2", "kind": "line", "page": "163", "reasons": ["engines differ"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "6019b89d6b29", "kind": "line", "page": "164", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "435b4226370f", "kind": "line", "page": "164", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "7c90a9a7ad4a", "kind": "line", "page": "164", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "21249ae51c26", "kind": "line", "page": "165", "reasons": ["no second-read line"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "f2d1724f1376", "kind": "line", "page": "166", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "5ff3d9129089", "kind": "line", "page": "166", "reasons": ["no second-read line"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "67a801661a7a", "kind": "line", "page": "167", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "a133b2fd0919", "kind": "line", "page": "167", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "3dc4843d116e", "kind": "line", "page": "167", "reasons": ["engines differ"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "6fca89a0c462", "kind": "margin", "page": "167", "reasons": ["margin note"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "957a09582bf7", "kind": "line", "page": "168", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "27a59dfa954c", "kind": "line", "page": "172", "reasons": ["engines differ"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "b0ca3941438b", "kind": "line", "page": "172", "reasons": ["one engine only"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "f8d9a049db3c", "kind": "line", "page": "173", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "b0df7cdc3719", "kind": "line", "page": "173", "reasons": ["no second-read line"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "d042495ba9da", "kind": "line", "page": "174", "reasons": ["no second-read line"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "a3daa8ff5795", "kind": "line", "page": "175", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "5e78f7bb1766", "kind": "line", "page": "175", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "aa134d989dca", "kind": "line", "page": "175", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "50609361f771", "kind": "line", "page": "175", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "04e645006c04", "kind": "line", "page": "175", "reasons": ["one engine only"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "f0a12cfeffae", "kind": "line", "page": "175", "reasons": ["one engine only"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "cafcd222bd27", "kind": "line", "page": "175", "reasons": ["one engine only"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "968526e0b34d", "kind": "line", "page": "175", "reasons": ["one engine only"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "fd3a902a66c8", "kind": "line", "page": "175", "reasons": ["one engine only"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "3fe2720007e4", "kind": "line", "page": "177", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "c6a31c75104b", "kind": "line", "page": "180", "reasons": ["no second-read line", "suspect characters"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "2810873cb75c", "kind": "line", "page": "180", "reasons": ["no second-read line"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "9451731e0f65", "kind": "line", "page": "180", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "72bb0560375b", "kind": "line", "page": "180", "reasons": ["engines differ"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "87d12ac2418e", "kind": "margin", "page": "181", "reasons": ["margin note"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "3cf4a1672056", "kind": "line", "page": "183", "reasons": ["no second-read line"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "be6299f622d7", "kind": "line", "page": "184", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "99bb4e053195", "kind": "line", "page": "187", "reasons": ["engines differ"], "status": "corrected"}
+{"by": "owner", "date": "2026-11-27", "id": "5ce0d54cd6f0", "kind": "line", "page": "189", "reasons": ["no second-read line"], "status": "confirmed"}
+{"by": "owner", "date": "2026-11-27", "id": "e753bbe94717", "kind": "line", "page": "191", "reasons": ["engines differ"], "status": "corrected"}

@@ -135,3 +135,20 @@ def test_corrections_are_appended_as_valid_yaml(tmp_path):
     assert text.startswith("# header comment")
     data = yaml.safe_load(text)
     assert [c["find"] for c in data["corrections"]] == ["a", 'Seko, 196. "x"']
+
+
+def test_paired_line_takes_the_second_reads_position_for_the_mark():
+    # the hOCR's line box can reach up into the line above (p. 1), so the mark uses the second read's row
+    rec = _rec([{"t": "Statistics of rainfall, 20; vital, 195-127;", "y": 100}])
+    rows = [{"t": "Statistics of rainfall, 20; vital, 125-127;", "y_frac": 0.07}]
+    assert rn.page_items(rec, rows)[0]["mark_frac"] == 0.07
+    assert "mark_frac" not in rn.page_items(rec, _vis("Statistics of rainfall, 20; vital, 125-127;"))[0]
+
+
+def test_reviewed_items_leave_the_queue():
+    items = [{"id": "a", "page": "6", "text": "x 1", "kind": "line"},
+             {"id": "b", "page": "22", "text": "ch. ccxv, 10.", "kind": "footnote"},  # corrected: its text is new
+             {"id": "c", "page": "22", "text": "ch. ccxv, 10.", "kind": "footnote"},
+             {"id": "d", "page": "23", "text": "y 2", "kind": "line"}]
+    corrections = [{"page": "22", "find": "ch. cexy, 10,", "replace": "ch. ccxv, 10."}]
+    assert [i["id"] for i in rn.unreviewed(items, corrections, done={"a"})] == ["d"]
