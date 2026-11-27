@@ -1,0 +1,79 @@
+# Subjects of chapter figures (D-39). A district gazetteer's chapters give figures for the district and
+# for forests, famine tracts, estates and holdings inside it, so DP-04 links a chapter figure to a place
+# only through this file. Each row is read from the sentence around the figure (quoted in `evidence`).
+# A row links the one unlinked fact with this page, type and quote (as DP-04 extracts it).
+# Figures not listed stay unlinked: they are in the passages and search, never on a place's fact cards.
+version: 1
+subjects:
+  - page: "1"
+    type: area
+    quote: "area of 2,499 square miles"
+    place_id: pl_puri-district-080c
+    evidence: "p. 1: \"The district of Puri ... is situated between ... It extends over an area of 2,499 square miles\""
+    by: claude
+    date: "2026-11-27"
+    review: pending
+  - page: "1"
+    type: population
+    quote: "census of 1901, of 1,017,284"
+    place_id: pl_puri-district-080c
+    evidence: "p. 1: \"It [the district] ... contains a population, according to the census of 1901, of 1,017,284 souls\""
+    by: claude
+    date: "2026-11-27"
+    review: pending
+  - page: "59"
+    type: population
+    quote: "population of 769,779"
+    place_id: pl_puri-district-080c
+    evidence: "p. 59: \"The first census of the district was taken in the year 1872, and the result was to show for the district, as now constituted, a population of 769,779 persons\""
+    by: claude
+    date: "2026-11-27"
+    review: pending
+  - page: "59"
+    type: population
+    quote: "in 1881 at 888,592"
+    place_id: pl_puri-district-080c
+    evidence: "p. 59, same paragraph: \"the population increased ... being returned in 1881 at 888,592 souls\""
+    by: claude
+    date: "2026-11-27"
+    review: pending
+  - page: "59"
+    type: population
+    quote: "in 1891 was returned at 944,998"
+    place_id: pl_puri-district-080c
+    evidence: "p. 59, same paragraph: \"the number of inhabitants in 1891 was returned at 944,998\""
+    by: claude
+    date: "2026-11-27"
+    review: pending
+  - page: "59"
+    type: population
+    quote: "population had risen to 1,017,284"
+    place_id: pl_puri-district-080c
+    evidence: "p. 59, same paragraph: \"the census of 1901 showed that the population had risen to 1,017,284\" (the district total on p. 1)"
+    by: claude
+    date: "2026-11-27"
+    review: pending
+  - page: "61"
+    type: population
+    quote: "in 1901 was 49,334"
+    place_id: pl_puri-0741
+    evidence: "p. 61: \"The only town in the district is Puri, the population of which in 1901 was 49,334\""
+    by: claude
+    date: "2026-11-27"
+    review: pending
+  - page: "62"
+    type: population
+    quote: "28,794 in 1891"
+    place_id: pl_puri-0741
+    evidence: "pp. 61–62: \"The number of inhabitants of Puri ... the increase in the population from 28,794 in 1891 to 49,334 in 1901\""
+    by: claude
+    date: "2026-11-27"
+    review: pending
+  - page: "62"
+    type: population
+    quote: "49,334 in 1901"
+    place_id: pl_puri-0741
+    evidence: "p. 62, same sentence: \"from 28,794 in 1891 to 49,334 in 1901\""
+    by: claude
+    date: "2026-11-27"
+    review: pending

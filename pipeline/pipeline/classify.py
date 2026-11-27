@@ -15,7 +15,16 @@ import unicodedata
 
 from pipeline.ocr import fold
 from pipeline.passages import passages
-from pipeline.util import DATA_DIR, INTERIM_DIR, log, read_jsonl, sha256_text, write_jsonl
+from pipeline.util import (
+    CONFIG_DIR,
+    DATA_DIR,
+    INTERIM_DIR,
+    log,
+    read_jsonl,
+    read_yaml,
+    sha256_text,
+    write_jsonl,
+)
 
 LG = log("DP-03")
 
@@ -46,6 +55,21 @@ def place_id(heading: str, ptype: str) -> str:
     """Immutable ID: slug + short hash of (slug, type). Merges in DP-09 redirect, never reuse (§7.5)."""
     s = slug(heading)
     return f"pl_{s}-{sha256_text(s, ptype)[:4]}"
+
+
+def district_place(name: str, source_id: str) -> dict:
+    """The district a district gazetteer describes (config/segment.yaml `district`, from the book's title page).
+    Its chapters describe the district, but also forests, tracts and estates inside it, so no chapter is
+    tied to it wholesale: its facts are linked one by one in data/review/<source>/fact_subjects.yaml (D-39)."""
+    return {
+        "place_id": place_id(f"{name} district", "district"),
+        "type": "district",
+        "names": [{"text": name, "lang": "en", "script": "Latn", "kind": "primary", "source_id": source_id}],
+        "status": "existing",
+        "entry_ids": [],
+        "classify": {"rule": "source config: district", "confidence": 1.0},
+        "review": {"status": "unreviewed"},
+    }
 
 
 def classify_entry(e: dict) -> tuple[str, float, str]:
@@ -84,6 +108,9 @@ def run(source_id: str) -> list[dict]:
                           "confidence": conf, "heading_match": e.get("heading_match"),
                           "reason": "low classification confidence" if conf < 0.8 else "heading OCR garbled; anchor inferred",
                           "page": e["page_start"], "opening": e["text"][:160]})
+    district = (read_yaml(CONFIG_DIR / "segment.yaml")["sources"].get(source_id) or {}).get("district")
+    if district:
+        places.insert(0, district_place(district, source_id))
     out = INTERIM_DIR / "classify" / source_id
     write_jsonl(out / "places.jsonl", places)
     write_jsonl(out / "passages.jsonl", all_passages)

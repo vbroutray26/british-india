@@ -21,3 +21,12 @@ def test_classify_descriptors():
 def test_place_ids_are_stable_and_ascii():
     assert place_id("Purī", "town") == place_id("Purī", "town")
     assert place_id("Purī", "town").startswith("pl_puri-")
+
+
+def test_district_place_comes_from_the_source_config():
+    from pipeline.classify import district_place
+    d = district_place("Purī", "omalley-puri-1908")
+    assert d["type"] == "district" and d["names"][0]["text"] == "Purī"
+    assert d["place_id"].startswith("pl_puri-district-")
+    assert d["entry_ids"] == []  # its facts are linked one by one (fact_subjects.yaml), never a whole chapter
+    assert d["place_id"] == district_place("Purī", "omalley-puri-1908")["place_id"]

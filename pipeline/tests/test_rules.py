@@ -167,3 +167,44 @@ def test_a_tables_census_year_is_looked_for_back_through_the_chapter_but_not_acr
                         {"entry_id": "c", "kind": "section", "chapter": "IV"}, {"entry_id": "d", "kind": "gazetteer", "chapter": None},
                         {"entry_id": "e", "kind": "gazetteer", "chapter": None}])
     assert s["a"] == s["b"] != s["c"] and s["d"] != s["e"]
+
+
+# --- fact subjects: a reviewed file links chapter figures to the place they describe (D-39)
+
+def _f(fid, ftype, quote, page, place="pl_unlinked"):
+    return {"fact_id": fid, "type": ftype, "place_id": place, "notes": f"page {page}; entry offset 1",
+            "evidence": [{"passage_id": "ps_x", "quote": quote, "char_start": 0, "char_end": len(quote)}]}
+
+
+def test_subject_links_a_matching_fact():
+    from pipeline.rules import link_subjects
+    facts = [_f("a", "area", "area of 2,499 square miles", "1"), _f("b", "area", "area of 10 square miles", "14")]
+    subj = [{"page": "1", "type": "area", "quote": "area of 2,499 square miles", "place_id": "pl_puri-district-x",
+             "by": "claude", "review": "pending"}]
+    assert link_subjects(facts, subj) == []
+    assert facts[0]["place_id"] == "pl_puri-district-x" and "subject:" in facts[0]["notes"]
+    assert facts[1]["place_id"] == "pl_unlinked"
+
+
+def test_subject_needs_page_and_type_to_match():
+    from pipeline.rules import link_subjects
+    facts = [_f("a", "population", "area of 2,499 square miles", "1"), _f("b", "area", "area of 2,499 square miles", "2")]
+    subj = [{"page": "1", "type": "area", "quote": "area of 2,499 square miles", "place_id": "pl_d", "by": "c", "review": "p"}]
+    assert link_subjects(facts, subj) == [{**subj[0], "reason": "no fact matches"}]
+    assert {f["place_id"] for f in facts} == {"pl_unlinked"}
+
+
+def test_ambiguous_subject_links_nothing():
+    from pipeline.rules import link_subjects
+    facts = [_f("a", "area", "58 square miles", "164"), _f("b", "area", "58 square miles", "164")]
+    subj = [{"page": "164", "type": "area", "quote": "58 square miles", "place_id": "pl_d", "by": "c", "review": "p"}]
+    assert link_subjects(facts, subj)[0]["reason"] == "2 facts match"
+    assert {f["place_id"] for f in facts} == {"pl_unlinked"}
+
+
+def test_subject_never_moves_a_fact_already_linked():
+    from pipeline.rules import link_subjects
+    facts = [_f("a", "area", "area of 575 acres", "233", place="pl_balukhand-913a")]
+    subj = [{"page": "233", "type": "area", "quote": "area of 575 acres", "place_id": "pl_d", "by": "c", "review": "p"}]
+    assert link_subjects(facts, subj)[0]["reason"] == "no fact matches"
+    assert facts[0]["place_id"] == "pl_balukhand-913a"

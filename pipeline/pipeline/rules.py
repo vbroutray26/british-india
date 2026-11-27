@@ -14,7 +14,7 @@ import re
 from collections import Counter
 
 from pipeline.passages import page_at
-from pipeline.util import INTERIM_DIR, log, read_jsonl, sha256_text, write_jsonl
+from pipeline.util import DATA_DIR, INTERIM_DIR, log, read_jsonl, read_yaml, sha256_text, write_jsonl
 
 LG = log("DP-04")
 
@@ -198,6 +198,29 @@ def consistency(facts: list[dict]) -> list[dict]:
             for k, v in by.items() if len({x["value"]["number"] for x in v}) > 1]
 
 
+def _page(f: dict) -> str | None:
+    m = re.match(r"page (\S+);", f.get("notes") or "")
+    return m.group(1) if m else None
+
+
+def link_subjects(facts: list[dict], subjects: list[dict]) -> list[dict]:
+    """Link chapter figures to the place they describe, from data/review/<source>/fact_subjects.yaml (D-39).
+
+    A chapter names forests, famine tracts, estates and holdings beside the district, so no rule guesses
+    the subject: each link is read from the sentence and reviewed. A row links the one unlinked fact with
+    its page, type and quote; a row matching none or several links nothing and is returned with the reason."""
+    unapplied = []
+    for s in subjects:
+        hits = [f for f in facts if f["place_id"] == "pl_unlinked" and f["type"] == s["type"]
+                and _page(f) == str(s["page"]) and f["evidence"][0]["quote"] == s["quote"]]
+        if len(hits) != 1:
+            unapplied.append({**s, "reason": f"{len(hits)} facts match" if hits else "no fact matches"})
+            continue
+        hits[0]["place_id"] = s["place_id"]
+        hits[0]["notes"] = f"{hits[0]['notes']}; subject: fact_subjects.yaml ({s['by']}, {s['review']})"
+    return unapplied
+
+
 def lookback_scope(entries: list[dict]) -> dict[str, object]:
     """What the text before a passage runs back through: a table's census year is stated above it, sometimes
     in the section before (a side-note heading can fall between), so for a section it is the whole chapter;
@@ -218,6 +241,14 @@ def run(source_id: str) -> list[dict]:
         k = scope.get(e, e)
         facts += extract(p, by_entry.get(e), spans.get(e), before.get(k, "")[-2000:])
         before[k] = before.get(k, "") + "\n\n" + p["text"]
+    subjects = (read_yaml(DATA_DIR / "review" / source_id / "fact_subjects.yaml") or {}).get("subjects", []) \
+        if (DATA_DIR / "review" / source_id / "fact_subjects.yaml").exists() else []
+    known = {p["place_id"] for p in read_jsonl(d / "places.jsonl")}
+    for s in subjects:
+        if s["place_id"] not in known:
+            raise ValueError(f"fact_subjects.yaml: unknown place {s['place_id']}")
+    for s in link_subjects(facts, subjects):
+        LG.warning("subject not applied (%s): p. %s %s %r", s["reason"], s["page"], s["type"], s["quote"])
     write_jsonl(INTERIM_DIR / "rules" / source_id / "facts.jsonl", facts)
     conflicts = consistency(facts)
     write_jsonl(INTERIM_DIR / "rules" / source_id / "conflicts.jsonl", conflicts)
