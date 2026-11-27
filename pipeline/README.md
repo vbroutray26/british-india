@@ -68,10 +68,14 @@ full-resolution archive.org JP2), `pipeline.gold` (contact sheets for labelling;
   tracts) and place coordinates, including the 1901 census table on p. 60; not crop acreages, tenure
   holdings, density, revenue or religious counts. The book has fewer than 100 such figures; the rest of
   the spec's 100 should come from the 1905 Statistics volume (`puri-statistics-1905`), which is tables.
-  **TS-DATA-03 fails: 31/69 exact (44.9%)**, target ≥ 98%. DP-04 decimal bug fixed (Tesseract reads
-  the raised point as "°": "4°03 square miles" was extracted as 3). Remaining gaps: 31 figures not
-  extracted (phrasings such as "it measured 14 square miles", "containing 102,000 souls", years not
-  adjacent to the figure, and the table), and 7 where another figure on the page was taken instead.
+  **TS-DATA-03 fails: 60/69 exact (87%)**, target ≥ 98% (was 31/69). Half the misses were figures
+  extracted but credited to the page their paragraph starts on; DP-04 now takes the page from the
+  entry's page map at the figure itself. New patterns: "in 1891 was returned at", census year elsewhere
+  in the clause (only when the clause names exactly one year), yearless counts ("its population 10,000
+  souls", "contained 3,000 souls", kept with no year), land-unit acres ("extending over 68,000 acres"),
+  OCR's "squsre miles"; percentages and "24 million" are not counts (D-26). The 9 still failing are not
+  reachable by rules on this OCR: the p. 60 census table (6; both engines garble it, e.g. 1,528 read as
+  1,698 and 1,588), two lines Tesseract dropped (pp. 138, 294) and a paragraph split mid-word on p. 59.
 - **GS-SEG (2026-11-27): 50 boundaries; TS-DATA-02 at 44/50 (88%)**, target ≥ 98%. Gazetteer entries
   24/25 (Udayagiri's line is absent from the first OCR). Chapter sections were 3/25: DP-02 gave all of
   a page's side-notes to its first paragraph, and Tesseract's hOCR drops many side-notes. Fixed by

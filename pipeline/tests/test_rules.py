@@ -61,3 +61,68 @@ def test_area_reads_the_raised_decimal_point_as_printed_or_misread():
     assert facts("The area within municipal limits is 4°03 square miles.", "area")[0]["value"] == {"number": 4.03, "unit": "sq_miles"}
     assert facts("an estate with an area of 5·8 square miles.", "area")[0]["value"] == {"number": 5.8, "unit": "sq_miles"}
     assert facts("covering an area of 8:11 acres.", "area")[0]["value"] == {"number": 8.11, "unit": "acres"}
+
+
+def pops(text):
+    return sorted((x.get("as_of_year"), x["value"]["number"]) for x in facts(text, "population"))
+
+
+def test_fact_page_is_the_page_the_figure_is_printed_on_not_where_the_paragraph_starts():
+    text = "The town lies on the coast. " * 3 + "Its area is 4 square miles."
+    spans = [{"page": "286", "start": 0, "end": 40}, {"page": "287", "start": 40, "end": 200}]
+    f = next(x for x in extract(P(text), "pl_x-0000", spans) if x["type"] == "area")
+    assert f["notes"].startswith("page 287;")
+
+
+def test_population_returned_at_and_inhabitants_phrasings():
+    assert pops("During the next 10 years the population increased by 15·4 per cent., being returned "
+                "in 1881 at 888,592 souls, but it is probable") == [(1881, 888592)]
+    assert pops("the number of inhabitants in 1891 was returned at 944,998, representing an increase") == [(1891, 944998)]
+
+
+def test_population_with_the_census_year_elsewhere_in_the_clause():
+    assert pops("and the census of 1901 showed that the population had risen to 1,017,284, i.e. by 7·6 per cent.") == [(1901, 1017284)]
+    assert pops("According to the census of 1901, the population is 3,053: it is almost exclusively Hindu") == [(1901, 3053)]
+    assert pops("The town, which has a population of 3,424 according to the census of 1901, contains") == [(1901, 3424)]
+
+
+def test_population_without_a_year_is_kept_without_one():
+    assert pops("its area was 20 square miles, and its population 10,000 souls.") == [(None, 10000)]
+    assert pops("it measured 14 square miles, and Contained 3,000 souls.") == [(None, 3000)]
+    assert pops("The seventh tract measured 23 square miles with 7,000 souls, and lay") == [(None, 7000)]
+    assert pops("Relief measures were necessary in 365 square miles, contain: ing 102,000 souls, the area") == [(None, 102000)]
+    assert pops("with an area of 10 square miles and a population of 4,000 souls.") == [(None, 4000)]
+
+
+def test_population_does_not_take_a_year_when_the_clause_has_two():
+    assert pops("The population of 49,334 in the census of 1901 compares with the census of 1891.") == [(None, 49334)]
+    assert pops("a population of 5,000, against 4,000 at the census of 1891 and 3,000 at the census of 1881") == [(None, 5000)]
+
+
+def test_population_ignores_density_and_other_counts():
+    assert pops("the population, which falls to 254 persons to the square mile") == []
+    assert pops("only 351 being Musalmans and 110 Christians, the population being Hindu") == []
+
+
+def test_area_in_acres_for_land_units():
+    a = lambda s: [x["value"] for x in facts(s, "area")]
+    assert a("has an area, according to the latest survey, of 618,154 acres, of") == [{"number": 618154, "unit": "acres"}]
+    assert a("the Ekhrajat Mahals, extending over 68,000 acres of land") == [{"number": 68000, "unit": "acres"}]
+    assert a("The area held under the direct management of Government in this estate is 565,356 acres comprised") == \
+        [{"number": 565356, "unit": "acres"}]
+    assert a("1,309 villages containing 540,376 acres lie in the Khurda subdivision") == [{"number": 540376, "unit": "acres"}]
+    assert a("the outturn was 4,500 maunds from 900 acres under sugarcane") == []
+
+
+def test_area_tolerates_ocr_misreads_of_square():
+    assert [x["value"] for x in facts("having an area of 113 squsre miles, while", "area")] == [{"number": 113, "unit": "sq_miles"}]
+
+
+def test_population_ignores_percentages_and_millions():
+    assert pops("according to the statistics obtained at the census of 1901, 60 per cent. of the population are") == []
+    assert pops("the Province, with its population of 24 million of souls, all was darkness") == []
+
+
+def test_counts_without_a_year_are_not_numeric_conflicts():
+    text = "its population 10,000 souls; and its population 2,000 souls."
+    assert consistency(extract(P(text), "pl_x-0000")) == []

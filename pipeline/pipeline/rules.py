@@ -13,6 +13,7 @@ import argparse
 import re
 from collections import Counter
 
+from pipeline.passages import page_at
 from pipeline.util import INTERIM_DIR, log, read_jsonl, sha256_text, write_jsonl
 
 LG = log("DP-04")
@@ -24,18 +25,35 @@ NUMBER = r"(\d{1,3}(?:,\d{3})+|\d+)"
 # The book prints decimals with a raised point (4·03); Tesseract reads it as "°" or ":". Before a unit it
 # can only be a decimal point (degrees carry a ′ and are never followed by "acres").
 DECIMAL = r"(\d{1,3}(?:,\d{3})+|\d+(?:[·°:]\d+)?)"
-AREA = re.compile(r"\barea\s+of\s+(?:about\s+)?" + DECIMAL + r"\s+(square\s+miles|acres)", re.IGNORECASE)
-AREA2 = re.compile(DECIMAL + r"\s+(square\s+miles)\b", re.IGNORECASE)
+SQ = r"sq[a-z]{3,4}\s+miles"  # "square", and OCR's "squsre", "sqnare"
+AREA = re.compile(r"\barea\s+of\s+(?:about\s+)?" + DECIMAL + r"\s+(" + SQ + r"|acres)", re.IGNORECASE)
+AREA2 = re.compile(DECIMAL + r"\s+(" + SQ + r")\b", re.IGNORECASE)
+# Acres are also crop and holding sizes; only a land unit's extent is an area: "has an area, according to
+# the latest survey, of 618,154 acres", "extending over 68,000 acres", "villages containing 540,376 acres".
+AREA_ACRES = re.compile(r"(?:\barea\b[^.;\d]{0,80}?\b(?:of|is|was)|\bextending\s+over|\bcontaining|\bcover(?:s|ing)|"
+                        r"\bcomprising)\s+(?:about\s+)?" + DECIMAL + r"\s+(acres)\b", re.IGNORECASE)
 # Population: a number is paired with a year ONLY when they are adjacent, never across "as against",
 # "from … to …" or other comparisons (the year of the second figure is often implicit). Sentence must
 # mention population. (number group, year group) per pattern.
 YEAR = r"(1[89]\d\d)"
+POPN = NUMBER + r"(?![\d,]*\s+(?:per\b|million|lakhs?|crores?))"  # "60 per cent.", "24 million" are not counts
 POP_PAIRS = [
-    (re.compile(NUMBER + r"\s+(?:persons\s+|souls\s+)?in\s+" + YEAR + r"\b"), 1, 2),               # 359,236 in 1901
-    (re.compile(r"census\s+of\s+" + YEAR + r",?\s+(?:of\s+|was\s+)?" + NUMBER, re.IGNORECASE), 2, 1),       # census of 1901, of 1,017,284
-    (re.compile(r"\bin\s+" + YEAR + r"\s+(?:was|numbered|amounted to)\s+" + NUMBER, re.IGNORECASE), 2, 1),  # in 1901 was 49,364
+    (re.compile(POPN + r"\s+(?:persons\s+|souls\s+)?in\s+" + YEAR + r"\b"), 1, 2),               # 359,236 in 1901
+    (re.compile(r"census\s+of\s+" + YEAR + r",?\s+(?:of\s+|was\s+)?" + POPN, re.IGNORECASE), 2, 1),       # census of 1901, of 1,017,284
+    (re.compile(r"\bin\s+" + YEAR + r"\s+(?:was\s+returned\s+at|was|numbered|amounted\s+to|at)\s+" + POPN,
+                re.IGNORECASE), 2, 1),                                                   # in 1891 was returned at 944,998
 ]
-SENTENCE = re.compile(r"[^.;]*?\bpopulation\b[^.;]*", re.IGNORECASE)
+# A count with no year beside it: "the population had risen to 1,017,284", "its population 10,000 souls",
+# "contained 3,000 souls". It takes the clause's census year only when the clause names one year and
+# mentions the census; otherwise it carries no year (never a guess).
+POP_COUNTS = [
+    re.compile(r"\bpopulation(?:\s+(?:is|was|of|had\s+risen\s+to|rose\s+to|amounted\s+to|numbered))?\s+" + POPN
+               + r"(?!\s+(?:persons\s+)?(?:to|per)\s+(?:the\s+)?square)", re.IGNORECASE),
+    re.compile(r"\b(?:contain\W{0,3}ing|contained|with)\s+" + POPN + r"\s+souls\b", re.IGNORECASE),
+]
+# Clauses end at ";" or at a full stop before a capital ("15·4 per cent., being" does not end one).
+CLAUSE = re.compile(r"(?:[^.;]|\.(?!\s+[A-Z\"'(]|\s*$))+")
+POP_WORDS = re.compile(r"\b(?:population|souls|inhabitants|census)\b", re.IGNORECASE)
 DISTANCE = re.compile(r"\b(\d{1,3}|one|two|three|four|five|six|seven|eight|nine|ten)\s+miles?\s+"
                       r"((?:north|south|east|west)(?:-(?:north|south|east|west))?\s+of|from|distant from)\s+"
                       r"([A-Z][\w’']+(?:\s(?:town|Road|station))?)", re.IGNORECASE)
@@ -67,9 +85,12 @@ def num(s: str) -> int | float:
     return float(s) if "." in s else int(s)
 
 
-def fact(place_id: str | None, ftype: str, value: dict, p: dict, m: re.Match, conf: float, year: int | None = None) -> dict:
+def fact(place_id: str | None, ftype: str, value: dict, p: dict, m: re.Match, conf: float, year: int | None = None,
+         spans: list[dict] | None = None) -> dict:
     quote = m.group(0)
     start = p["char_start"] + m.start()
+    # the page the figure is printed on, which differs from the passage's first page when it runs over a page
+    page = (page_at(spans, start) if spans else None) or p["page"]
     fid = "ft_" + sha256_text(p["passage_id"], ftype, str(m.start()), quote)[:12]
     f = {
         "fact_id": fid,
@@ -80,41 +101,61 @@ def fact(place_id: str | None, ftype: str, value: dict, p: dict, m: re.Match, co
         "method": "rule",
         "confidence": conf,
         "review": {"status": "unreviewed"},
-        "notes": f"page {p['page']}; entry offset {start}",
+        "notes": f"page {page}; entry offset {start}",
     }
     if year:
         f["as_of_year"] = year
     return f
 
 
-def extract(p: dict, place_id: str | None) -> list[dict]:
+def extract(p: dict, place_id: str | None, spans: list[dict] | None = None) -> list[dict]:
+    """Rule facts in a passage. `spans` is the entry's page map (DP-02), for the page of each figure."""
     t, out = p["text"], []
+
+    def mk(*a, **k):
+        return fact(*a, **k, spans=spans)
+
     for m in COORD.finditer(t):
         lat = int(m.group(1)) + int(m.group(2)) / 60
         lon = int(m.group(3)) + int(m.group(4)) / 60
         if 5 <= lat <= 38 and 60 <= lon <= 100:  # sanity: inside the subcontinent
-            out.append(fact(place_id, "area" if False else "admin_change", {}, p, m, 0, None) | {
-                "type": "coordinates", "value": {"lat": round(lat, 4), "lon": round(lon, 4), "quality": "heading"}, "confidence": 0.95})
-    for rx in (AREA, AREA2):
+            out.append(mk(place_id, "coordinates", {"lat": round(lat, 4), "lon": round(lon, 4), "quality": "heading"},
+                          p, m, 0.95))
+    taken: set[int] = set()  # start offsets of figures already used, so two patterns never give one figure twice
+    for rx, conf in ((AREA, 0.9), (AREA_ACRES, 0.8), (AREA2, 0.7)):
         for m in rx.finditer(t):
-            if rx is AREA2 and any(f["type"] == "area" and f["evidence"][0]["char_start"] <= m.start() < f["evidence"][0]["char_end"] for f in out):
+            if m.start(1) in taken:
                 continue
-            unit = "sq_miles" if "square" in m.group(2).lower() else "acres"
-            out.append(fact(place_id, "area", {"number": num(m.group(1)), "unit": unit}, p, m, 0.9 if rx is AREA else 0.7))
-    for sm in SENTENCE.finditer(t):
-        sent = sm.group(0)
+            taken.add(m.start(1))
+            unit = "sq_miles" if m.group(2).lower().startswith("sq") else "acres"
+            out.append(mk(place_id, "area", {"number": num(m.group(1)), "unit": unit}, p, m, conf))
+    taken = set()
+    for cm in CLAUSE.finditer(t):
+        clause = cm.group(0)
+        if not POP_WORDS.search(clause):
+            continue
         for rx, gn, gy in POP_PAIRS:
-            for m in rx.finditer(sent):
+            for m in rx.finditer(clause):
                 n, year = num(m.group(gn)), int(m.group(gy))
-                if n >= 10 and not (1800 <= n <= 1950 and "," not in m.group(gn)):  # a bare year is not a count
-                    mm = _Shift(m, sm.start())
-                    out.append(fact(place_id, "population", {"number": n, "unit": "persons"}, p, mm, 0.9, year))
+                if n >= 10 and not (1800 <= n <= 1950 and "," not in m.group(gn)) and m.start(gn) not in taken:
+                    taken.add(m.start(gn))
+                    out.append(mk(place_id, "population", {"number": n, "unit": "persons"}, p, _Shift(m, cm.start()), 0.9, year))
+        years = set(re.findall(r"\b" + YEAR + r"\b", clause))
+        census_year = int(years.pop()) if len(years) == 1 and re.search(r"\bcensus\b", clause, re.IGNORECASE) else None
+        for rx in POP_COUNTS:
+            for m in rx.finditer(clause):
+                n = num(m.group(1))
+                if n < 10 or (1800 <= n <= 1950 and "," not in m.group(1)) or m.start(1) in taken:
+                    continue
+                taken.add(m.start(1))
+                out.append(mk(place_id, "population", {"number": n, "unit": "persons"}, p, _Shift(m, cm.start()),
+                              0.85 if census_year else 0.8, census_year))
     for m in DISTANCE.finditer(t):
-        out.append(fact(place_id, "distance", {"miles": num(m.group(1)), "relation": m.group(2).lower(), "to": m.group(3)}, p, m, 0.85))
+        out.append(mk(place_id, "distance", {"miles": num(m.group(1)), "relation": m.group(2).lower(), "to": m.group(3)}, p, m, 0.85))
     for m in HEIGHT.finditer(t):
-        out.append(fact(place_id, "height", {"number": num(m.group(1)), "unit": "feet"}, p, m, 0.9))
+        out.append(mk(place_id, "height", {"number": num(m.group(1)), "unit": "feet"}, p, m, 0.9))
     for m in ADMIN.finditer(t):
-        out.append(fact(place_id, "admin_link", {"subdivision": m.group(1)}, p, m, 0.85))
+        out.append(mk(place_id, "admin_link", {"subdivision": m.group(1)}, p, m, 0.85))
     # de-duplicate identical spans (two patterns matching the same text)
     seen, uniq = set(), []
     for f in out:
@@ -130,7 +171,7 @@ def consistency(facts: list[dict]) -> list[dict]:
     different population figures. Returns conflicts for the review queue; nothing is overwritten."""
     by: dict[tuple, list[dict]] = {}
     for f in facts:
-        if f["type"] == "population":
+        if f["type"] == "population" and f.get("as_of_year"):  # yearless counts describe different tracts
             scope = f["place_id"] if f["place_id"] != "pl_unlinked" else f["evidence"][0]["passage_id"]
             by.setdefault((scope, f.get("as_of_year")), []).append(f)
     return [{"place_id": k[0], "year": k[1], "values": sorted({x["value"]["number"] for x in v}),
@@ -142,7 +183,8 @@ def run(source_id: str) -> list[dict]:
     d = INTERIM_DIR / "classify" / source_id
     passages = read_jsonl(d / "passages.jsonl")
     by_entry = {e: p["place_id"] for p in read_jsonl(d / "places.jsonl") for e in p["entry_ids"]}
-    facts = [f for p in passages for f in extract(p, by_entry.get(p["entry_id"]))]
+    spans = {e["entry_id"]: e["page_spans"] for e in read_jsonl(INTERIM_DIR / "segment" / source_id / "entries.jsonl")}
+    facts = [f for p in passages for f in extract(p, by_entry.get(p["entry_id"]), spans.get(p["entry_id"]))]
     write_jsonl(INTERIM_DIR / "rules" / source_id / "facts.jsonl", facts)
     conflicts = consistency(facts)
     write_jsonl(INTERIM_DIR / "rules" / source_id / "conflicts.jsonl", conflicts)
