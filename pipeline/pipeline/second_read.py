@@ -88,7 +88,12 @@ def _layout(rec: dict) -> dict | None:
             groups[-1][1].append(ln)
         else:
             groups.append((side, [ln]))
-    return {"body": body, "groups": groups, "lh": lh}
+    # Line pitch (distance between consecutive line centres). Vision's boxes are often taller than the pitch,
+    # so fragments of one printed line are grouped by the pitch, not by the box height.
+    cs = sorted((ln["y0"] + ln["y1"]) / 2 for ln in longs)
+    gaps = [b - a for a, b in itertools.pairwise(cs) if b - a > 0.2 * lh]
+    pitch = statistics.median(gaps) if gaps else lh
+    return {"body": body, "groups": groups, "lh": lh, "pitch": min(lh, pitch)}
 
 
 def margin_notes(rec: dict) -> list[dict]:
@@ -106,7 +111,7 @@ def _rows(lay: dict) -> list[dict]:
     rows: list[dict] = []
     for ln in sorted(lay["body"], key=lambda ln: ln["y0"] + ln["y1"]):
         c = (ln["y0"] + ln["y1"]) / 2
-        if rows and abs(c - rows[-1]["c"]) < 0.5 * lay["lh"]:
+        if rows and abs(c - rows[-1]["c"]) < 0.4 * lay["pitch"]:
             rows[-1]["f"].append(ln)
         else:
             rows.append({"c": c, "f": [ln], "L": "", "R": ""})
@@ -122,11 +127,20 @@ def body_rows(rec: dict) -> list[dict]:
     if not lay:
         return []
     rows = _rows(lay)
-    x_med = statistics.median(r["f"][0]["x0"] for r in rows)
+    xs = [r["f"][0]["x0"] for r in rows]
+    full = [r["f"][-1]["x1"] - r["f"][0]["x0"] > 0.45 * rec["w"] for r in rows]  # table rows and short lines are not
+    page_x = statistics.median([x for x, f in zip(xs, full, strict=True) if f] or xs)
+
+    def indented(k: int) -> bool:
+        # against the neighbouring full-width lines (page skew drifts the margin; a table's rows start
+        # anywhere); paragraph indents measure 3-4.5% of the page width and ordinary lines stay within 2%
+        near = [xs[i] for i in [*range(max(0, k - 4), k), *range(k + 1, min(len(xs), k + 5))] if full[i]]
+        return xs[k] - (statistics.median(near) if near else page_x) > 0.025 * rec["w"]
+
     return [{"t": fix_chars(" ".join(f["t"] for f in r["f"])),
              "y_frac": round(min(f["y0"] for f in r["f"]) / rec["h"], 4),
              "h_frac": round(max(f["y1"] - f["y0"] for f in r["f"]) / rec["h"], 4),
-             "indent": r["f"][0]["x0"] - x_med > 0.035 * rec["w"]} for r in rows]
+             "indent": indented(k)} for k, r in enumerate(rows)]
 
 
 def _fold(s: str) -> str:
@@ -156,6 +170,37 @@ def _align(a: list[str], b: list[str], thr: float) -> list[tuple[int, int]]:
         else:
             j += 1
     return pairs
+
+
+def geometry(first: list[str], rows: list[dict], thr: float = 60, rematch: float = 75) -> dict[int, tuple[float | None, bool]]:
+    """Corrections to first-OCR line geometry from the second read: {index: (y_frac or None, indent)}.
+    The hOCR's boxes are unreliable where a side-note is glued onto a line (its left edge moves out,
+    faking or hiding an indent), and it stores some lines out of order; the second read separates
+    side-notes by position. But its own rows sometimes merge a short line with the start of the next (the
+    row's first fragment, and so its indent, is still the matched line's), so it is trusted narrowly: the
+    indent of every line matched in order, and both position and indent of a line the hOCR stored out of
+    order (left over by the in-order match and closely like a left-over second-read line). y_frac is None
+    where the hOCR position stands."""
+    a, b = [_fold(t) for t in first], [_fold(r["t"]) for r in rows]
+    pairs = _align(a, b, thr)
+    free = set(range(len(rows))) - {j for _, j in pairs}
+
+    def start_row(i: int, j: int) -> int:
+        # where the hOCR merged two printed lines, the indent is the one of the row its start matches
+        if j - 1 in free and fuzz.ratio(a[i][:30], b[j - 1][:30]) > fuzz.ratio(a[i][:30], b[j][:30]) + 20:
+            return j - 1
+        return j
+
+    out: dict[int, tuple[float | None, bool]] = {i: (None, rows[start_row(i, j)]["indent"]) for i, j in pairs}
+    def like(i: int, j: int) -> float:  # whole line, or its opening (the hOCR may have merged it with the next)
+        return max(fuzz.ratio(a[i], b[j]), fuzz.ratio(a[i][:40], b[j][:40]) - 15 if len(b[j]) >= 40 else 0)
+
+    for i in sorted(set(range(len(first))) - {i for i, _ in pairs}):
+        best = max(free, key=lambda j: like(i, j), default=None)
+        if best is not None and like(i, best) >= rematch:
+            out[i] = (rows[best]["y_frac"], rows[best]["indent"])
+            free.discard(best)
+    return out
 
 
 def first_word_fixes(first: list[str], rows: list[dict], thr: float = 60) -> dict[int, tuple[str, bool]]:

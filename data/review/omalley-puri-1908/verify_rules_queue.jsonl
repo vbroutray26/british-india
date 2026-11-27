@@ -5,7 +5,7 @@
 {"fact_id": "ft_417b3cffac2d", "quote": "District total 2,499 1 3,101 1,017,284 407", "reasons": ["second read disagrees: 2499", "second read disagrees: 1017284"], "type": "area"}
 {"fact_id": "ft_c2762897536e", "quote": "District total 2,499 1 3,101 1,017,284 407", "reasons": ["second read disagrees: 2499", "second read disagrees: 1017284"], "type": "population"}
 {"fact_id": "ft_1eb4df6707a2", "quote": "480 square miles", "reasons": ["one engine only: line missing from the first OCR (p. 138)"], "type": "area"}
-{"fact_id": "ft_38dc97e7ccab", "quote": "9 square miles", "reasons": ["second read disagrees: 9"], "type": "area"}
+{"fact_id": "ft_29dfa71444bf", "quote": "9 square miles", "reasons": ["second read disagrees: 9"], "type": "area"}
 {"fact_id": "ft_9e86d89bdd35", "quote": "area of 674 square miles", "reasons": ["second read disagrees: 674"], "type": "area"}
 {"fact_id": "ft_70bdb51af50f", "quote": "4°03 square miles", "reasons": ["second read disagrees: 4.03"], "type": "area"}
 {"fact_id": "ft_8b74a866aacf", "quote": "20° 15 N. and 85° 50' E.", "reasons": ["second read disagrees: 85"], "type": "coordinates"}

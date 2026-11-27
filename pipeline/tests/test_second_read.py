@@ -160,3 +160,50 @@ def test_first_word_fixes_restore_letters_the_first_ocr_lost_at_a_line_start():
                     "population of 769,779 persons, During the next 10 years the",
                     "-evidently the work of a later hand, and the carving is poor"])
     assert first_word_fixes(first, rows) == {1: ("population", False)}
+
+
+def test_geometry_takes_position_and_indent_from_the_second_read_even_for_a_misplaced_line():
+    from pipeline.second_read import geometry
+    book = BOOK + ["Nearly a century ago Stirling said that the finest salt of all India"]
+    rows = rows_of(book)
+    rows[5]["indent"] = True
+    first = [book[5], BOOK[0], BOOK[1], BOOK[2], BOOK[3], "Disrarct " + BOOK[4]]  # stored first; note glued on
+    g = geometry(first, rows)
+    assert g[0] == (rows[5]["y_frac"], True)   # the misplaced line goes back to its printed place
+    assert g[1] == (None, False)               # in order: only the indent is taken
+    assert g[5] == (None, False)               # a glued side-note does not fake an indent
+
+
+def test_body_rows_see_a_shallow_indent_on_a_skewed_page():
+    from pipeline.second_read import body_rows
+    lines = [ln(f"body line {i} of the running text here", 300 + i * 6, 400 + i * 80, 2100) for i in range(8)]
+    lines[5] = ln("A new paragraph with a shallow indent here", 300 + 5 * 6 + 70, 800, 2100)  # 2.9% of 2400
+    assert [r["indent"] for r in body_rows({"w": W, "h": H, "lines": lines})] == [False] * 5 + [True] + [False] * 2
+
+
+def test_rows_do_not_merge_a_short_line_with_the_next_when_vision_boxes_are_taller_than_the_spacing():
+    from pipeline.second_read import body_rows
+    lines = [ln(f"body line {i} of the running text here", 300, 400 + i * 55, 2100, h=115) for i in range(8)]
+    lines[3] = ln("Gazetteer was published.", 300, 400 + 3 * 55, 900, h=90)
+    lines[4] = ln("Regarding other fevers, Major Waters, writes as follows", 390, 400 + 4 * 55 + 10, 2100, h=113)
+    rows = body_rows({"w": W, "h": H, "lines": lines})
+    assert len(rows) == 8 and rows[4]["t"].startswith("Regarding") and rows[4]["indent"]
+
+
+def test_geometry_takes_the_indent_of_the_row_that_matches_the_start_of_a_merged_line():
+    from pipeline.second_read import geometry
+    rows = rows_of(["below :-", "The average density of population, which is only 407 persons",
+                    "Statistics. per square mile, is lower than it would otherwise be owing to the",
+                    "inclusion of the area of the Chilka lake. Density of popula-"])
+    rows[1]["indent"] = True
+    first = ["below :-", ("The average density of population, which is only 407 persons per square mile, is lower "
+                          "than it would otherwise be owing to the"), "inclusion of the area of the Chilka lake. Density of popula-"]
+    assert geometry(first, rows)[1] == (None, True)
+
+
+def test_geometry_rematches_a_misplaced_line_merged_with_the_next_by_its_opening():
+    from pipeline.second_read import geometry
+    stirling = "Nearly a century ago Stirling said that the finest salt of"
+    rows = rows_of([BOOK[0], BOOK[1], BOOK[2], stirling, "all India was manufactured in the wild inhospitable tract along"])
+    first = [BOOK[0], stirling + " Salt manu all India was manufactured in the wild inhospitable", BOOK[1], BOOK[2]]
+    assert geometry(first, rows)[1] == (rows[3]["y_frac"], False)

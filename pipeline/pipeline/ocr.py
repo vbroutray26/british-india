@@ -276,18 +276,23 @@ def recover_lines(line_recs: list[dict], vision: Path, height: int, other: list[
     (footnotes, side-notes, running head), which is never recovered into it."""
     if not line_recs or not vision.exists():
         return []
-    from pipeline.second_read import body_rows, first_word_fixes, missing_lines
+    from pipeline.second_read import body_rows, first_word_fixes, geometry, missing_lines
 
     first = [ln["t"] for ln in line_recs]
     rows = body_rows(json.loads(vision.read_text()))
-    for i, (w, indent) in first_word_fixes(first, rows).items():
+    for i, (w, _indent) in first_word_fixes(first, rows).items():
         line_recs[i]["t"] = w + line_recs[i]["t"][len(first[i].split()[0]):]
         line_recs[i]["first_word"] = first[i].split()[0]  # as the first OCR read it
-        # lost letters move the line's left edge, which looks like an indent: the second read saw the real edge
+    # Position and indent from the second read (D-30): lost letters or a glued side-note move the hOCR's left
+    # edge, which fakes or hides a paragraph start, and the hOCR stores some lines out of order.
+    for i, (y_frac, indent) in geometry(first, rows).items():
         line_recs[i]["indent"] = indent
+        if y_frac is not None:
+            line_recs[i]["y"] = int(y_frac * height)
     found = missing_lines(first, rows, " ".join(first + other))
     for i, r in reversed(found):
         line_recs.insert(i + 1, {"t": r["t"], "y": int(r["y_frac"] * height), "indent": r["indent"], "recovered": True})
+    line_recs.sort(key=lambda ln: ln["y"])  # stable: lines without a match keep their place among equals
     return [r["t"] for _, r in found]
 
 

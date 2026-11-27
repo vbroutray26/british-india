@@ -83,7 +83,7 @@ full-resolution archive.org JP2), `pipeline.gold` (contact sheets for labelling;
   (pp. 138, 294) and a paragraph split mid-word on p. 59. Since D-27 both dropped lines are recovered, but
   only as Vision read them: "an aren of 480 square miles" (printed 485; extracted, wrong, and queued as
   one-engine) and "3-83 acres" (a hyphen for the raised point; not read as a decimal).
-- **GS-SEG (2026-11-27): 50 boundaries; TS-DATA-02 at 45/50 (90%)**, target ≥ 98%. Gazetteer entries
+- **GS-SEG (2026-11-27): 50 boundaries; TS-DATA-02 at 45/50 (90%)**, target ≥ 98%. *Now 49/50 (D-30).* Gazetteer entries
   25/25 (Udayagiri's line was absent from the first OCR; recovered since D-27). Chapter sections were 3/25: DP-02 gave all of
   a page's side-notes to its first paragraph, and Tesseract's hOCR drops many side-notes. Fixed by
   placing each note beside its paragraph and adding the second read's notes; sections now 20/25
@@ -105,4 +105,16 @@ full-resolution archive.org JP2), `pipeline.gold` (contact sheets for labelling;
   line is never a paragraph start" rule was tried and rejected: it hid real entry starts whose heading
   OCR garbled (Kālupārā Ghāt) and cost 1 GS-SEG boundary. The side-note words glued onto p. 59's lines
   ("Growrm", "Tivo.") are still in the text; trimming them is not yet safe (it would also cut real words).
+- **Line geometry from the second read (D-30).** The five merged GS-SEG boundaries all came from the
+  hOCR's line boxes: side-notes glued onto a line's start (pp. 218, 226) move its left edge and fake or
+  hide indents (p. 218 had 25 false paragraph starts); some lines are stored out of order (pp. 181,
+  215). DP-01 now takes every line's indent from the matching Vision line (by in-order text alignment;
+  where the hOCR merged two printed lines, from the row its opening matches), and position as well
+  for lines the hOCR stored out of order. Two Vision bugs fixed on the way: fragments were grouped by
+  box height, but Vision's boxes are taller than the line pitch, so a paragraph's short last line was
+  merged with the start of the next (that hid most paragraph starts); and its indent threshold (3.5% of
+  page width) was above the book's 3–4.5% indents. **TS-DATA-02: 49/50 (98%)**; GS-OCR CER 7.28% →
+  6.46%; Vision alone 7.53% → 5.55%. Still merged: p. 79, where the text wraps around a castes table
+  set into the column (wrapped lines look indented) and Vision read only "CASTES." of the side-note.
+  Spurious splits unchanged: 31 of 214 section headings are OCR junk (specks read as side-notes).
 - GS-EXTRACT: not started.
