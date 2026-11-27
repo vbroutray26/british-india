@@ -21,8 +21,11 @@ DEG = r"(\d{1,3})\s?[°º*o]\s?(\d{1,2})\s?['’′]?"
 COORD = re.compile(
     DEG + r"\s?(?:N\b\.?|north(?:\s+latitude)?),?\s*(?:and|,)\s*" + DEG + r"\s?(?:E\b\.?|east(?:\s+longitude)?)", re.IGNORECASE)
 NUMBER = r"(\d{1,3}(?:,\d{3})+|\d+)"
-AREA = re.compile(r"\barea\s+of\s+(?:about\s+)?" + NUMBER + r"\s+(square\s+miles|acres)", re.IGNORECASE)
-AREA2 = re.compile(NUMBER + r"\s+(square\s+miles)\b", re.IGNORECASE)
+# The book prints decimals with a raised point (4·03); Tesseract reads it as "°" or ":". Before a unit it
+# can only be a decimal point (degrees carry a ′ and are never followed by "acres").
+DECIMAL = r"(\d{1,3}(?:,\d{3})+|\d+(?:[·°:]\d+)?)"
+AREA = re.compile(r"\barea\s+of\s+(?:about\s+)?" + DECIMAL + r"\s+(square\s+miles|acres)", re.IGNORECASE)
+AREA2 = re.compile(DECIMAL + r"\s+(square\s+miles)\b", re.IGNORECASE)
 # Population: a number is paired with a year ONLY when they are adjacent, never across "as against",
 # "from … to …" or other comparisons (the year of the second figure is often implicit). Sentence must
 # mention population. (number group, year group) per pattern.
@@ -57,8 +60,11 @@ class _Shift:
         return self._m.end() + self._o
 
 
-def num(s: str) -> int:
-    return WORDS.get(s.lower()) if s.lower() in WORDS else int(s.replace(",", ""))
+def num(s: str) -> int | float:
+    if s.lower() in WORDS:
+        return WORDS[s.lower()]
+    s = re.sub(r"[·°:]", ".", s.replace(",", ""))
+    return float(s) if "." in s else int(s)
 
 
 def fact(place_id: str | None, ftype: str, value: dict, p: dict, m: re.Match, conf: float, year: int | None = None) -> dict:

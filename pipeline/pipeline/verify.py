@@ -38,7 +38,11 @@ def norm(s: str) -> str:
     return re.sub(r"\s+", " ", fold(s)).strip()
 
 
+_RAISED_POINT = re.compile(r"(?<=\d)[·°:](?=\d+(?![\d′'’]))")  # 4°03 is 4·03; 20°11′ stays a coordinate
+
+
 def numbers_in(s: str, words: bool = False) -> list[str]:
+    s = _RAISED_POINT.sub(".", s)
     nums = [n.replace(",", "") for n in re.findall(r"\d[\d,]*(?:\.\d+)?", s)]
     if words:
         nums += [NUMBER_WORDS[w] for w in re.findall(r"[a-z]+", s.lower()) if w in NUMBER_WORDS]

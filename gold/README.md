@@ -48,3 +48,9 @@ edit that touches a digit, divided by the digits in the gold text.
 Each row records the printed figure (`as_printed`), the normalised value, year, page, and how it was
 read. It is matched against extracted facts by page, type and year, so corrected OCR does not break
 the link.
+
+Scope: coordinates of places, and areas and populations of named land units (district, subdivisions,
+estates, forests, tanks, famine tracts), in running text or tables. Not in scope: crop acreages, tenure
+holdings, densities, revenue, religious or occupational counts. A figure printed twice (text and
+table, or two pages) is labelled at each place it is printed. Candidates come from searching both OCR
+engines' text, never from the extraction output, and every value is read from the full-resolution scan.

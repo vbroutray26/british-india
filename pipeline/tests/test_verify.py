@@ -37,3 +37,9 @@ def test_llm_fact_needs_model_and_prompt_version():
 def test_offsets_must_point_at_quote():
     r = check(fact("in 1901 was 49,334", {"number": 49334, "unit": "persons"}, start=0), {"ps_t_00": PASSAGE}, validator("fact.schema.json"))
     assert "offsets do not point at the quote" in r
+
+
+def test_numbers_in_reads_raised_decimal_points_but_not_coordinates():
+    from pipeline.verify import numbers_in
+    assert numbers_in("limits is 4°03 square miles") == ["4.03"]
+    assert numbers_in("in 20°11′ N. and 85° 38′ E.") == ["20", "11", "85", "38"]

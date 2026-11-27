@@ -55,3 +55,9 @@ def test_consistency_flags_two_figures_for_same_year():
     text = "The population of the town in 1901 was 49,364. The population rose from 28,794 in 1891 to 49,334 in 1901."
     c = consistency(extract(P(text), "pl_x-0000"))
     assert len(c) == 1 and c[0]["values"] == [49334, 49364]
+
+
+def test_area_reads_the_raised_decimal_point_as_printed_or_misread():
+    assert facts("The area within municipal limits is 4°03 square miles.", "area")[0]["value"] == {"number": 4.03, "unit": "sq_miles"}
+    assert facts("an estate with an area of 5·8 square miles.", "area")[0]["value"] == {"number": 5.8, "unit": "sq_miles"}
+    assert facts("covering an area of 8:11 acres.", "area")[0]["value"] == {"number": 8.11, "unit": "acres"}

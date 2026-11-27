@@ -56,9 +56,20 @@ full-resolution archive.org JP2), `pipeline.gold` (contact sheets for labelling;
   the text. On the GS-OCR pages a figure read the same by both engines is right 96.2% of the time,
   against 79.4% (Tesseract) and 81.4% (Vision) alone. The figures both get wrong are fractions (4¼ →
   "44", 67⅓ → "674") and broken type.
-  In DP-07 the check moved 5 facts to review: 4 were wrong figures that had previously been accepted
-  or would have been (365 → "9", 67⅓ → "674" twice, 4·03 → "03") and 1 is a false alarm (Vision read
-  85° 50′ as 80°). Now 53 facts + 89 place attributes accepted, 5 queued.
-  TS-DATA-01 still fails as a CER measure; what this changes is that a figure from one misreading engine
-  no longer reaches the build unseen.
+  In DP-07 (after the decimal fix below) the check queues 6 facts: 2 are real misreads (67⅓ printed,
+  Tesseract "674", twice) and 4 are false alarms — Vision skipped the line (p. 165 "9 square miles"),
+  dropped a decimal point (4·03 → "403") or misread a degree (85° → "80°"). *Correction (2026-11-27):
+  an earlier note here counted "9" and "03" as caught misreads; "9" is correct as printed and "03" was
+  a DP-04 decimal bug.* Agreement is therefore a review filter with a high false-alarm rate, not proof.
+- **GS-NUMERIC (2026-11-27): 69 labels** (12 earlier + 57 new), every figure read from the
+  full-resolution scan; owner review pending. Candidates were found by searching both engines' text
+  for coordinates, areas and populations, so the set measures recall as well as precision. Scope:
+  areas and populations of named land units (district, subdivisions, estates, forests, tanks, famine
+  tracts) and place coordinates, including the 1901 census table on p. 60; not crop acreages, tenure
+  holdings, density, revenue or religious counts. The book has fewer than 100 such figures; the rest of
+  the spec's 100 should come from the 1905 Statistics volume (`puri-statistics-1905`), which is tables.
+  **TS-DATA-03 fails: 31/69 exact (44.9%)**, target ≥ 98%. DP-04 decimal bug fixed (Tesseract reads
+  the raised point as "°": "4°03 square miles" was extracted as 3). Remaining gaps: 31 figures not
+  extracted (phrasings such as "it measured 14 square miles", "containing 102,000 souls", years not
+  adjacent to the figure, and the table), and 7 where another figure on the page was taken instead.
 - GS-EXTRACT: not started.
