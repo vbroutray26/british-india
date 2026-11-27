@@ -161,8 +161,12 @@ def view(source_id: str, page: str, out_dir: Path, parts: int = 2) -> list[Path]
     return out
 
 
-def score(source_id: str) -> dict:
+def score(source_id: str, engine: str = "tesseract") -> dict:
+    """CER against the gold pages. engine="vision" scores the second read (DP-01b) in place of DP-01;
+    it has no separate reviewed text, so both columns are the same."""
     pages = _pages(source_id)
+    if engine == "vision":
+        second = {r["page"]: r["text"] for r in read_jsonl(INTERIM_DIR / "ocr2" / source_id / "pages.jsonl")}
     rows = [r for r in read_jsonl(MANIFEST) if r["source_id"] == source_id and r["status"] == "transcribed"]
     res: dict = {"pages": len(rows), "per_page": []}
     totals = {k: {"chars": 0, "edits": 0, "digits": 0, "digit_edits": 0, "edits_folded": 0} for k in ("raw", "reviewed")}
@@ -171,7 +175,7 @@ def score(source_id: str) -> dict:
         gold = g["body"] + "\n" + g["footnotes"]
         line = {"page": r["page"]}
         for k, tot in totals.items():
-            o = ocr_text(pages[r["page"]], reviewed=k == "reviewed")
+            o = second[r["page"]] if engine == "vision" else ocr_text(pages[r["page"]], reviewed=k == "reviewed")
             c, f = cer(gold, o), cer(gold, o, fold_diacritics=True)
             for m in ("chars", "edits", "digits", "digit_edits"):
                 tot[m] += c[m]
@@ -220,6 +224,7 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--page", action="append", default=[])
     ap.add_argument("--out", type=Path, default=Path("gso_view"))
     ap.add_argument("--reason", default="")
+    ap.add_argument("--engine", default="tesseract", choices=["tesseract", "vision"])
     a = ap.parse_args(argv)
     if a.cmd == "sample":
         print("\n".join(r["page"] for r in sample(a.source, a.n) if r["source_id"] == a.source))
@@ -234,7 +239,7 @@ def main(argv: list[str] | None = None) -> int:
     elif a.cmd == "done":
         mark_transcribed(a.source, a.page)
     else:
-        print(json.dumps(score(a.source), indent=2, ensure_ascii=False))
+        print(json.dumps(score(a.source, a.engine), indent=2, ensure_ascii=False))
     return 0
 
 

@@ -7,9 +7,9 @@ from __future__ import annotations
 
 import argparse
 
-from pipeline import acquire, classify, ocr, rules, segment, verify, vocab
+from pipeline import acquire, classify, ocr, rules, second_read, segment, verify, vocab
 
-STAGES = [("DP-01 ocr", ocr.run), ("DP-02 segment", segment.segment), ("DP-03 classify", classify.run),
+STAGES = [("DP-01 ocr", ocr.run), ("DP-01b second read", second_read.run), ("DP-02 segment", segment.segment), ("DP-03 classify", classify.run),
           ("DP-04 rules", rules.run), ("DP-05 vocab", vocab.run), ("DP-07 verify", verify.run)]
 
 

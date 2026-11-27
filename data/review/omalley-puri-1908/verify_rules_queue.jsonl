@@ -1,1 +1,5 @@
-{"fact_id": "ft_e0d3e3bdc6ca", "quote": "03 square miles", "reasons": ["number 3 not in quote"], "type": "area"}
+{"fact_id": "ft_b4cb2264e14c", "quote": "9 square miles", "reasons": ["second read disagrees: 9"], "type": "area"}
+{"fact_id": "ft_549a50ed1e1d", "quote": "area of 674 square miles", "reasons": ["second read disagrees: 674"], "type": "area"}
+{"fact_id": "ft_e0d3e3bdc6ca", "quote": "03 square miles", "reasons": ["second read disagrees: 03", "number 3 not in quote"], "type": "area"}
+{"fact_id": "ft_29f7ffdb72bc", "quote": "20° 15 N. and 85° 50' E.", "reasons": ["second read disagrees: 85"], "type": "coordinates"}
+{"fact_id": "ft_e7e16d3bf77c", "quote": "area of 674 square miles", "reasons": ["second read disagrees: 674"], "type": "area"}

@@ -6,7 +6,9 @@ Checks every candidate fact:
   2. schema: valid against packages/schema/schemas/fact.schema.json;
   3. numbers: every number in the value appears in the quote;
   4. rule agreement: a DP-06 (llm) value that disagrees with a DP-04 (rule) value on the same field → conflict;
-  5. vocabulary: list items map to the controlled vocabulary or are marked new-term.
+  5. vocabulary: list items map to the controlled vocabulary or are marked new-term;
+  6. second read: every figure in the quote was also read by the second OCR engine on the passage's
+     pages (DP-01b, D-24), so a figure misread by one engine does not pass unseen.
 Failures are rejected or queued for review, with the reason.
 
 Usage: python -m pipeline.verify --source omalley-puri-1908 [--input rules|llm]
@@ -64,8 +66,29 @@ def value_numbers(value: dict) -> list[str]:
     return out
 
 
-def check(f: dict, passages: dict[str, dict], schema) -> list[str]:
+def _page_span(p: dict) -> list[str]:
+    a, b = p.get("page"), p.get("page_end") or p.get("page")
+    if a and b and a.isdigit() and b.isdigit():
+        return [str(n) for n in range(int(a), int(b) + 1)]
+    return [x for x in dict.fromkeys((a, b)) if x]
+
+
+def second_read_reasons(f: dict, passages: dict[str, dict], second: dict[str, set[str]]) -> list[str]:
     reasons = []
+    for ev in f["evidence"]:
+        p = passages.get(ev["passage_id"])
+        nums = numbers_in(ev["quote"])
+        if not p or not nums:
+            continue
+        span = _page_span(p)
+        seen = set().union(*(second[pg] for pg in span if pg in second))
+        reasons += [f"no second read for page {pg}" for pg in span if pg not in second]
+        reasons += [f"second read disagrees: {n}" for n in nums if n not in seen and seen]
+    return list(dict.fromkeys(reasons))
+
+
+def check(f: dict, passages: dict[str, dict], schema, second: dict[str, set[str]] | None = None) -> list[str]:
+    reasons = [] if second is None else second_read_reasons(f, passages, second)
     for ev in f["evidence"]:
         p = passages.get(ev["passage_id"])
         if not p:
@@ -90,9 +113,14 @@ def run(source_id: str, which: str = "rules") -> dict:
     passages = {p["passage_id"]: p for p in read_jsonl(INTERIM_DIR / "classify" / source_id / "passages.jsonl")}
     facts = read_jsonl(INTERIM_DIR / which / source_id / "facts.jsonl")
     schema = validator("fact.schema.json")
+    from pipeline.second_read import load
+
+    second = load(source_id)
+    if not second:
+        LG.warning("no second read for %s: every fact with a figure is queued (run DP-01b)", source_id)
     accepted, attributes, rejected = [], [], []
     for f in facts:
-        reasons = check(f, passages, schema)
+        reasons = check(f, passages, schema, second)
         if reasons:
             rejected.append(f | {"verify": {"reasons": reasons}})
         else:
