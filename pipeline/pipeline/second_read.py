@@ -99,6 +99,26 @@ def _layout(rec: dict) -> dict | None:
     return {"body": body, "groups": groups, "lh": lh, "pitch": min(lh, pitch)}
 
 
+def column_rows(rec: dict) -> tuple[list[dict], list[dict]] | None:
+    """Rows of a two-column page (the index), (left column, right column), each top to bottom, in the form
+    of body_rows; the running head and page number are left out. None for a single-column page (D-34)."""
+    if _layout(rec):
+        return None
+    lines = [ln for ln in rec["lines"] if ln["t"].strip()]
+    if not lines:
+        return None
+    top = statistics.median(sorted(ln["y0"] for ln in lines)[:3])
+    lines = [ln for ln in lines if ln["y0"] > top + 5 or not re.fullmatch(r"[\dA-Z .,]+", ln["t"])]
+    if not lines:
+        return None
+    centre = (min(ln["x0"] for ln in lines) + max(ln["x1"] for ln in lines)) / 2
+    out: tuple[list[dict], list[dict]] = ([], [])
+    for ln in sorted(lines, key=lambda ln: ln["y0"]):
+        out[(ln["x0"] + ln["x1"]) / 2 >= centre].append({"t": fix_chars(ln["t"]), "y_frac": round(ln["y0"] / rec["h"], 4),
+                                                         "h_frac": round((ln["y1"] - ln["y0"]) / rec["h"], 4), "indent": False})
+    return out
+
+
 def margin_notes(rec: dict) -> list[dict]:
     """Side-notes (O'Malley's margin headings) with their top as a fraction of the page height, for DP-02."""
     lay = _layout(rec)
@@ -373,30 +393,44 @@ def _pick(a: str, b: str, vocab: set[str]) -> str:
     return b if like and _bad(b, vocab) < _bad(a, vocab) else a
 
 
-def merge_line(h: str, v: str, vocab: set[str]) -> str:
+def merge_line(h: str, v: str, vocab: set[str], cut: bool = False) -> str:
     """One printed line from the first OCR (`h`) and the second read (`v`), judged by `vocab` (agreed_words
     over the whole book). Word by word: where the two differ, the word in the vocabulary, and
     macrons from whichever engine saw them; short junk only the first OCR has is dropped. Words only the
     second read has are not added (it glues side-notes onto lines). The whole second-read line is taken
     instead only when it has fewer unknown words and junk marks than that merge and the same figures (the
-    first OCR split or ran words together). Figures always stay as the first OCR read them."""
+    first OCR split or ran words together). Figures always stay as the first OCR read them, except on a line
+    the first OCR cut short (`cut`: it ends well before the column edge, mid-paragraph, as across a crease):
+    there the words the second read has at the end are taken, figures too, and the caller marks the line
+    as read by one engine (D-34)."""
     def bad(t: str) -> int:
         return sum(_bad(w, vocab) for w in t.split())
 
-    m = _merge_words(h, v, vocab)
+    m = _merge_words(h, v, vocab, cut)
     if (bad(v) + 1 <= bad(m) and len(_fold(v)) >= 0.8 * len(_fold(h))
             and sorted(_DIGITS.findall(h)) == sorted(_DIGITS.findall(v))):
         return v
     return m
 
 
-def _merge_words(h: str, v: str, vocab: set[str]) -> str:
+def _merge_words(h: str, v: str, vocab: set[str], cut: bool = False) -> str:
     def bad(t: str) -> int:
         return sum(_bad(w, vocab) for w in t.split())
 
     a, b = h.split(), v.split()
     out: list[str] = []
-    for tag, i1, i2, j1, j2 in Levenshtein.opcodes([_key(x) or x for x in a], [_key(x) or x for x in b]):
+    ops = Levenshtein.opcodes([_key(x) or x for x in a], [_key(x) or x for x in b])
+    if cut:  # after the last word both read alike, the second read's words: the first OCR lost the line's end
+        last = max((k for k, op in enumerate(ops) if op[0] == "equal"), default=None)
+        if last is not None and ops[last][4] < len(b):
+            ta, tb = a[ops[last][2]:], b[ops[last][4]:]
+            k = 0
+            while k < min(len(ta), len(tb)) and Levenshtein.normalized_similarity(_key(ta[k]), _key(tb[k])) >= 0.5:
+                k += 1
+            if bad(" ".join(tb[k:])) <= len(tb[k:]) // 2:
+                head = _merge_words(" ".join(a[:ops[last][2]]), " ".join(b[:ops[last][4]]), vocab)
+                return " ".join([head] * bool(head) + [_pick(x, y, vocab) for x, y in zip(ta[:k], tb[:k], strict=True)] + tb[k:])
+    for tag, i1, i2, j1, j2 in ops:
         sa, sb = a[i1:i2], b[j1:j2]
         if tag in ("equal", "replace") and len(sa) == len(sb):
             out += [_pick(x, y, vocab) for x, y in zip(sa, sb, strict=True)]

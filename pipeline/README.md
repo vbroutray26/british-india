@@ -165,4 +165,17 @@ full-resolution archive.org JP2), `pipeline.gold` (contact sheets for labelling;
   of the lines both read alike; beside a table, indents are measured from the wrapped text's own edge, in
   both reads, and the wrapped lines are not used as the full-width neighbours other lines are measured
   against. Pp. 127 and 223 also gain (195 → 104 and 225 → 134 edits).
+- **The index and the creased page (D-34).** GS-OCR CER 3.30% → **3.02%** (folded 2.57%; numerals
+  11.4% → **9.2%**). The index (p. 310, 444 → 194 edits) had no help from the second read: Vision's
+  layout step handles single-column pages only, so merging and recovery were off for it. Now Vision's
+  index is read as two columns split at the page's centre, without the running head and page number,
+  and each column is recovered and merged against the hOCR's same column, figures still from the hOCR.
+  On the creased page (p. 130, 372 → 284) the hOCR reads some printed lines as two pieces side by side;
+  pieces at the same height that do not overlap are joined. It also cuts lines short at the crease: a line
+  ending more than 5% of the page short of the column edge, with no paragraph start after it, takes the
+  second read's words after the last word both read alike (the words that still pair up keep the
+  hOCR's reading). Only there may figures come from Vision; the 3 such lines in the book are listed in
+  the page's `recovered`, so DP-07 queues their figures as read by one engine. Pp. 34, 63, 69, 139 and
+  200 also gain a little. Left on p. 130: the first line's opening ("4 ot Govern ent,") and Vision's own
+  misreadings of the words it supplies ("Cnnal").
 - GS-EXTRACT: not started.

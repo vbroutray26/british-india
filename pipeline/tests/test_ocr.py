@@ -165,3 +165,12 @@ def test_inset_regions_move_into_the_first_ocrs_page_coordinates():
     rows = [{"t": t, "y_frac": 0.18 + i * 0.02} for i, t in enumerate(texts)]  # the second read has them 0.02 higher
     (t,) = shift_insets([{"y0_frac": 0.5, "y1_frac": 0.6, "first_frac": 0.51, "x_frac": 0.3}], body, rows, 5000)
     assert round(t["y0_frac"], 4) == 0.52 and round(t["first_frac"], 4) == 0.53 and t["x_frac"] == 0.3
+
+
+def test_pieces_of_one_printed_line_are_joined():
+    rows = [_words((300, f"body line {i} of the running text set full across the page width here"), y=500 + i * 100)
+            for i in range(5)]
+    a, b = _words((300, "4 ot Govern"), y=1000), _words((1100, "ent, travelling on the Orissa"), y=1030)
+    out = layout(rows + [b, a], 3300, 5300)
+    assert [l.text for l in out["body"]][-1] == "4 ot Govern ent, travelling on the Orissa"
+    assert len(out["body"]) == 6

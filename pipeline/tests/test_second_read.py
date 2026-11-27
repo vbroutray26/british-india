@@ -353,3 +353,33 @@ def test_a_wide_cell_among_the_wrapped_lines_does_not_cut_the_table_short():
     page["lines"].append(ln("Expenditure.", 790, 810, 1040, 40))  # a heading cell wide enough to look like text
     (t,) = inset_tables(page)
     assert abs(t["first_frac"] - 720 / H) < 0.001
+
+
+def test_column_rows_read_a_two_column_page_left_then_right_without_head_or_page_number():
+    from pipeline.second_read import column_rows
+    lines = [ln("310", 400, 330, 510), ln("INDEX.", 1150, 360, 1420)]
+    lines += [ln(f"Left {i}, 1{i}.", 400, 470 + i * 60, 1000, 40) for i in range(6)]
+    lines += [ln(f"Right {i}, 2{i}.", 1340, 480 + i * 60, 2000, 40) for i in range(6)]
+    left, right = column_rows({"w": W, "h": 3700, "lines": lines})
+    assert [r["t"] for r in left] == [f"Left {i}, 1{i}." for i in range(6)]
+    assert [r["t"] for r in right] == [f"Right {i}, 2{i}." for i in range(6)]
+    assert column_rows({"w": W, "h": H, "lines": body(8)}) is None
+
+
+def test_a_line_cut_short_takes_the_words_the_second_read_has_at_its_end():
+    from pipeline.second_read import merge_line
+    vocab = {"of", "government", "travelling", "on", "the", "orissa", "coast", "canal", "after"}
+    h, v = "of Government, travelling on the Orissa", "of Government, travelling on the Orissa Coast Canal after the"
+    assert merge_line(h, v, vocab) == h  # a full line: extra words at the end are a glued side-note
+    assert merge_line(h, v, vocab, cut=True) == v
+    assert merge_line("in the last", "in the last 30 years, the", vocab | {"years"}, cut=True) == "in the last 30 years, the"
+
+
+def test_a_cut_line_keeps_its_own_reading_of_the_words_both_have_and_takes_the_rest():
+    from pipeline.second_read import merge_line
+    vocab = {"who", "had", "died", "from", "cholera", "floating", "in", "the", "canals", "into", "with", "improvement",
+             "of", "sanitation", "and", "drainage"}
+    assert merge_line("who had died from cholera, floating 1", "who had died from cholera, flosting in the canals, into",
+                      vocab, cut=True) == "who had died from cholera, floating in the canals, into"
+    assert merge_line("With the improvement of the sanitation", "With the improvement of the ssnitation and drainage of the",
+                      vocab, cut=True) == "With the improvement of the sanitation and drainage of the"

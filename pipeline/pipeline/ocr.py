@@ -268,7 +268,7 @@ def layout(lines: list[Line], page_w: int, page_h: int) -> dict:
             margin.append(ln)
         else:
             body.append(ln)
-    body.sort(key=lambda l: (l.bbox[1], l.bbox[0]))
+    body = join_pieces(sorted(body, key=lambda l: (l.bbox[1], l.bbox[0])))
     margin.sort(key=lambda l: l.bbox[1])
     # Footnotes: trailing lines in clearly smaller type in the bottom third, below a gap.
     sizes = sorted(ln.fsize for ln in body if ln.fsize)
@@ -276,7 +276,25 @@ def layout(lines: list[Line], page_w: int, page_h: int) -> dict:
     foot: list[Line] = []
     while body and med and 0 < body[-1].fsize < med * 0.78 and body[-1].bbox[1] > page_h * 0.66:
         foot.insert(0, body.pop())
-    return {"body": body, "margin": margin, "footnotes": foot, "x0": col_x0}
+    return {"body": body, "margin": margin, "footnotes": foot, "x0": col_x0, "x1": col_x1}
+
+
+def join_pieces(lines: list[Line]) -> list[Line]:
+    """Lines in reading order with the pieces of one printed line joined (D-34): across a crease the OCR
+    reads a line as two, side by side at the same height. Pieces are lines whose tops are within 0.4 of a
+    line height of each other and which do not overlap across the page."""
+    hs = sorted(ln.bbox[3] - ln.bbox[1] for ln in lines)
+    h = hs[len(hs) // 2] if hs else 0
+    out: list[Line] = []
+    for ln in lines:
+        prev = out[-1] if out else None
+        if prev and abs(ln.bbox[1] - prev.bbox[1]) < 0.4 * h and (ln.bbox[0] >= prev.bbox[2] or ln.bbox[2] <= prev.bbox[0]):
+            a, b = sorted((prev, ln), key=lambda l: l.bbox[0])
+            out[-1] = Line(words=a.words + b.words, bbox=(a.bbox[0], min(a.bbox[1], b.bbox[1]), b.bbox[2], max(a.bbox[3], b.bbox[3])),
+                           fsize=max(a.fsize, b.fsize), xs=a.xs + b.xs, ys=a.ys + b.ys)
+        else:
+            out.append(ln)
+    return out
 
 
 def split_jumps(ln: Line, page_w: int) -> list[Line]:
@@ -409,17 +427,20 @@ def paragraphs(lines: list[dict], hyphen_words: set[str]) -> str:
     return "\n\n".join(join_lines(p, hyphen_words) for p in paras)
 
 
-def recover_lines(line_recs: list[dict], vision: Path, height: int, other: list[str]) -> list[str]:
+def recover_lines(line_recs: list[dict], vision: Path, height: int, other: list[str],
+                  rows: list[dict] | None = None) -> list[str]:
     """Repair `line_recs` in place from the cached second read (DP-01b): restore first words the archive.org
     OCR cut short at the left edge (D-29), and insert body lines it dropped (D-27), in place of any fragments it
     kept of them. Returns the recovered texts. `other` is the page's text outside the body
-    (footnotes, side-notes, running head), which is never recovered into it."""
-    if not line_recs or not vision.exists():
-        return []
+    (footnotes, side-notes, running head), which is never recovered into it. `rows` are the second read's
+    lines to use (one column of a two-column page); by default its body lines."""
     from pipeline.second_read import body_rows, first_word_fixes, geometry, missing_lines
 
+    if not line_recs or (rows is None and not vision.exists()):
+        return []
     first, orig = [ln["t"] for ln in line_recs], list(line_recs)
-    rows = body_rows(json.loads(vision.read_text()))
+    if rows is None:
+        rows = body_rows(json.loads(vision.read_text()))
     for i, (w, _indent) in first_word_fixes(first, rows).items():
         line_recs[i]["t"] = w + line_recs[i]["t"][len(first[i].split()[0]):]
         line_recs[i]["first_word"] = first[i].split()[0]  # as the first OCR read it
@@ -441,28 +462,44 @@ def recover_lines(line_recs: list[dict], vision: Path, height: int, other: list[
 
 def merge_reads(rows: list[dict], vision_dir: Path, hyphen_words: set[str]) -> int:
     """Merge the second read into each page's lines (D-31), judged by the words both engines agree on across
-    the whole book. Figures are never taken from the second read. Lines recovered from it, lines with an
-    audited correction and two-column pages are left alone. A merged line keeps the first OCR's reading in
-    "first_read"; text_raw is unchanged. Returns the number of lines changed."""
-    from pipeline.second_read import _align, _fold, agreed_words, body_rows, merge_line
+    the whole book; a two-column page column by column (D-34). Figures are never taken from the second
+    read, except at the end of a line the first OCR cut short mid-paragraph (D-34): such a line is listed
+    in the page's "recovered", so DP-07 treats its figures as read by one engine. Lines recovered from the
+    second read and lines with an audited correction are left alone. A merged line keeps the first OCR's
+    reading in "first_read"; text_raw is unchanged. Returns the number of lines changed."""
+    from pipeline.second_read import _DIGITS, _align, _fold, agreed_words, body_rows, column_rows, merge_line
 
     work = []
     for r in rows:
+        short = {id(ln) for ln in r["lines"] if ln.pop("_short", False)}
         f = vision_dir / f"leaf_{r['leaf']:04d}.json"
-        if not r["lines"] or not f.exists() or any("col" in ln for ln in r["lines"]):
+        if not r["lines"] or not f.exists():
             continue
-        vrows = body_rows(json.loads(f.read_text()))
-        pairs = _align([_fold(ln["t"]) for ln in r["lines"]], [_fold(v["t"]) for v in vrows], 60) if vrows else []
-        work.append((r, [(r["lines"][i], vrows[j]["t"]) for i, j in pairs]))
-    vocab = agreed_words([(ln["t"], v) for _, pairs in work for ln, v in pairs])
+        rec = json.loads(f.read_text())
+        if any("col" in ln for ln in r["lines"]):
+            cols = column_rows(rec)
+            groups = [([ln for ln in r["lines"] if ln.get("col", 0) == c], cols[c]) for c in (0, 1)] if cols else []
+        else:
+            groups = [(r["lines"], body_rows(rec))]
+        pairs = []
+        for lines, vrows in groups:
+            nxt = {id(a): b for a, b in itertools.pairwise(lines)}
+            for i, j in (_align([_fold(ln["t"]) for ln in lines], [_fold(v["t"]) for v in vrows], 60) if vrows else []):
+                ln = lines[i]
+                cut = id(ln) in short and id(ln) in nxt and not nxt[id(ln)]["indent"]  # cut short, not a paragraph end
+                pairs.append((ln, vrows[j]["t"], cut))
+        work.append((r, pairs))
+    vocab = agreed_words([(ln["t"], v) for _, pairs in work for ln, v, _ in pairs])
     total = 0
     for r, pairs in work:
         n = 0
-        for ln, v in pairs:
+        for ln, v, cut in pairs:
             if ln.get("recovered") or ln.get("corrected"):
                 continue
-            new = merge_line(ln["t"], v, vocab)
+            new = merge_line(ln["t"], v, vocab, cut)
             if new != ln["t"]:
+                if sorted(_DIGITS.findall(new)) != sorted(_DIGITS.findall(ln["t"])):
+                    r["recovered"].append(new)  # figures from the second read only
                 ln["first_read"], ln["t"] = ln["t"], new
                 n += 1
         if n:
@@ -476,7 +513,7 @@ def merge_reads(rows: list[dict], vision_dir: Path, hyphen_words: set[str]) -> i
 # ---------------------------------------------------------------- stage
 
 def run(source_id: str, raw_dir: Path = RAW_DIR, out_dir: Path = INTERIM_DIR / "ocr") -> list[dict]:
-    from pipeline.second_read import body_rows, inset_tables
+    from pipeline.second_read import body_rows, column_rows, inset_tables
 
     folder = raw_dir / source_id
     hocr = next(folder.glob("*_hocr.html"))
@@ -516,10 +553,23 @@ def run(source_id: str, raw_dir: Path = RAW_DIR, out_dir: Path = INTERIM_DIR / "
             line_recs.append({"t": normalise_chars(ln.text), "y": ln.bbox[1],
                               "indent": bool(x0 is not None and ln.bbox[0] - min(near) > INDENT_MIN)})
             lefts[id(line_recs[-1])] = ln.bbox[0]
+            if lay.get("x1") and ln.bbox[2] < lay["x1"] - 0.05 * p.width:
+                line_recs[-1]["_short"] = True  # ends well before the column edge; merge_reads decides (D-34)
             if any(ln is r for r in lay.get("right", [])):
                 line_recs[-1]["col"] = 1  # right column of a two-column page: read after the left
-        recovered = [] if "right" in lay else recover_lines(line_recs, vision, p.height,
-                                  [normalise_chars(ln.text) for ln in lay["footnotes"] + lay["margin"]] + [head or ""])
+        other = [normalise_chars(ln.text) for ln in lay["footnotes"] + lay["margin"]] + [head or ""]
+        if "right" in lay:  # two columns: each is recovered from the second read's same column (D-34)
+            cols = column_rows(json.loads(vision.read_text())) if vision.exists() else None
+            recovered = []
+            if cols:
+                parts = [[ln for ln in line_recs if ln.get("col", 0) == c] for c in (0, 1)]
+                for c in (0, 1):
+                    recovered += recover_lines(parts[c], vision, p.height, other, rows=cols[c])
+                for ln in parts[1]:
+                    ln["col"] = 1
+                line_recs = parts[0] + parts[1]
+        else:
+            recovered = recover_lines(line_recs, vision, p.height, other)
         for t in insets:  # D-32: the table's rows, read before the text wrapped beside it
             beside = [ln for ln in line_recs if (t["first_frac"] - 0.006) * p.height <= ln["y"] <= t["y1_frac"] * p.height]
             for ln in beside:  # measured from the wrapped text's own edge, not the column's
