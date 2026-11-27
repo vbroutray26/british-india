@@ -58,18 +58,14 @@ def _columns(lines: list[dict], w: int) -> str:
     return "\n".join(out)
 
 
-def assemble(rec: dict) -> str:
-    """Page text from Vision's line boxes, in the reading order of the GS-OCR conventions: running head and
-    signature marks dropped, fragments of one printed line joined left to right, margin notes joined and
-    placed at the start (left margin) or end (right margin) of the line they begin beside; a page without
-    full-width lines (the index) is read as two columns."""
+def _layout(rec: dict) -> dict | None:
+    """Body lines, margin-note groups and line height of a single-column page; None for a page without
+    full-width lines (the index), which is read as two columns."""
     w = rec["w"]
     lines = [ln for ln in rec["lines"] if ln["t"].strip()]
-    if not lines:
-        return ""
     longs = [ln for ln in lines if ln["x1"] - ln["x0"] > 0.45 * w]
     if len(longs) < 5:
-        return fix_chars(_columns(lines, w))
+        return None
     bx0, bx1 = statistics.median(ln["x0"] for ln in longs), statistics.median(ln["x1"] for ln in longs)
     top, bottom = min(ln["y0"] for ln in longs), max(ln["y1"] for ln in longs)
     lh = statistics.median(ln["y1"] - ln["y0"] for ln in longs)
@@ -83,20 +79,44 @@ def assemble(rec: dict) -> str:
             notes.append(("R", ln))
         else:
             body.append(ln)
-    rows: list[dict] = []
-    for ln in sorted(body, key=lambda ln: ln["y0"] + ln["y1"]):
-        c = (ln["y0"] + ln["y1"]) / 2
-        if rows and abs(c - rows[-1]["c"]) < 0.5 * lh:
-            rows[-1]["f"].append(ln)
-        else:
-            rows.append({"c": c, "f": [ln], "L": "", "R": ""})
     groups: list[tuple[str, list[dict]]] = []
     for side, ln in sorted(notes, key=lambda n: (n[0], n[1]["y0"])):
         if groups and groups[-1][0] == side and ln["y0"] - groups[-1][1][-1]["y1"] < 0.8 * lh:
             groups[-1][1].append(ln)
         else:
             groups.append((side, [ln]))
-    for side, ls in groups:
+    return {"body": body, "groups": groups, "lh": lh}
+
+
+def margin_notes(rec: dict) -> list[dict]:
+    """Side-notes (O'Malley's margin headings) with their top as a fraction of the page height, for DP-02."""
+    lay = _layout(rec)
+    if not lay:
+        return []
+    out = [{"t": fix_chars(" ".join(x["t"] for x in ls)), "y_frac": round(ls[0]["y0"] / rec["h"], 4)}
+           for _, ls in lay["groups"]]
+    return sorted((n for n in out if len(n["t"]) >= 3), key=lambda n: n["y_frac"])
+
+
+def assemble(rec: dict) -> str:
+    """Page text from Vision's line boxes, in the reading order of the GS-OCR conventions: running head and
+    signature marks dropped, fragments of one printed line joined left to right, margin notes joined and
+    placed at the start (left margin) or end (right margin) of the line they begin beside; a page without
+    full-width lines (the index) is read as two columns."""
+    if not any(ln["t"].strip() for ln in rec["lines"]):
+        return ""
+    lay = _layout(rec)
+    if lay is None:
+        return fix_chars(_columns([ln for ln in rec["lines"] if ln["t"].strip()], rec["w"]))
+    lh = lay["lh"]
+    rows: list[dict] = []
+    for ln in sorted(lay["body"], key=lambda ln: ln["y0"] + ln["y1"]):
+        c = (ln["y0"] + ln["y1"]) / 2
+        if rows and abs(c - rows[-1]["c"]) < 0.5 * lh:
+            rows[-1]["f"].append(ln)
+        else:
+            rows.append({"c": c, "f": [ln], "L": "", "R": ""})
+    for side, ls in lay["groups"]:
         c = (ls[0]["y0"] + ls[0]["y1"]) / 2
         row = min(rows, key=lambda r: abs(r["c"] - c))
         row[side] = (row[side] + " " + " ".join(x["t"] for x in ls)).strip()
@@ -150,9 +170,10 @@ def run(source_id: str, raw_dir: Path = RAW_DIR, out_dir: Path = INTERIM_DIR / "
         if not f.exists():
             missing.append(p["leaf"])
             continue
-        text = assemble(json.loads(f.read_text()))
+        rec = json.loads(f.read_text())
+        text = assemble(rec)
         rows.append({"leaf": p["leaf"], "page": p["page"], "engine": ENGINE, "text": text,
-                     "numbers": sorted(page_numbers(text))})
+                     "numbers": sorted(page_numbers(text)), "margin": margin_notes(rec)})
     write_jsonl(out_dir / source_id / "pages.jsonl", rows)
     if missing:
         LG.warning("%d leaves have no second read (no full-resolution image): %s", len(missing), missing[:20])

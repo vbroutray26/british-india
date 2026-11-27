@@ -27,8 +27,8 @@ sources:
     notes: >-
       Acquired 2026-11-26 (DP-00): PDF, hOCR, djvu.txt, page map, scandata; checksums in
       data/manifests/omalley-puri-1908.json. 340 scan leaves; printed pp. 1–299 body, 301–311 index.
-      One leaf appears to be missing (the page carrying the short Udayagiri entry, listed in the contents);
-      check the duplicate upload dli.ministry.19456 (identical PDF size, likely the same scan) or another copy.
+      Udayagiri, listed in the contents, is a one-line cross-reference ("See Khandagiri") at the foot of
+      p. 299 that the archive OCR missed; no leaf is known to be missing (corrected 2026-11-27, GS-SEG).
       Existing OCR: Tesseract 5 (archive.org derivative), mean word confidence 87.3.
 
   - source_id: puri-statistics-1905

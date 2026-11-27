@@ -72,4 +72,11 @@ full-resolution archive.org JP2), `pipeline.gold` (contact sheets for labelling;
   the raised point as "°": "4°03 square miles" was extracted as 3). Remaining gaps: 31 figures not
   extracted (phrasings such as "it measured 14 square miles", "containing 102,000 souls", years not
   adjacent to the figure, and the table), and 7 where another figure on the page was taken instead.
+- **GS-SEG (2026-11-27): 50 boundaries; TS-DATA-02 at 44/50 (88%)**, target ≥ 98%. Gazetteer entries
+  24/25 (Udayagiri's line is absent from the first OCR). Chapter sections were 3/25: DP-02 gave all of
+  a page's side-notes to its first paragraph, and Tesseract's hOCR drops many side-notes. Fixed by
+  placing each note beside its paragraph and adding the second read's notes; sections now 20/25
+  (DP-02 makes 219 sections, up from 83). Still merged: pp. 79, 181, 215, 218, 226. Spurious splits
+  are not measured; 31 section headings contain no real word (e.g. "110%.", ",*") and some of those
+  are likely specks.
 - GS-EXTRACT: not started.

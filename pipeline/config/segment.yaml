@@ -7,9 +7,10 @@ sources:
     # Entry headings as printed in the Table of Contents (p. xiv, scan leaf 16), transcribed from the
     # page image on 2026-11-26. Diacritics as printed. review: owner to confirm against the scan.
     gazetteer_headings_review: pending
-    # Udayagiri is listed in the contents but its page appears to be missing from this scan
-    # (340 leaves vs 339 mapped pages; the Index begins on the leaf after p. 299, printed p. 301).
-    # The caves are described under Khandagiri. Check the duplicate scan dli.ministry.19456 or another copy.
+    # Udayagiri is NOT missing from the scan (corrected 2026-11-27): it is a one-line cross-reference,
+    # "Udayagiri.—See Khandagiri.", at the foot of p. 299 (leaf 319), which Tesseract's hOCR did not
+    # read; the second read (Apple Vision) has it. The caves are described under Khandagiri. It stays in
+    # known_missing only because DP-02 anchors on the first OCR's lines.
     known_missing: [Udayagiri]
     gazetteer_headings:
       - Atri

@@ -78,3 +78,9 @@ def test_verify_flags_a_page_without_a_second_read():
     f = fact("in 1901 was 49,334", {"number": 49334, "unit": "persons"})
     r = check(f, {"ps_t_00": PASSAGE}, validator("fact.schema.json"), second={})
     assert "no second read for page 12" in r
+
+
+def test_margin_notes_are_joined_and_placed_as_a_fraction_of_page_height():
+    from pipeline.second_read import margin_notes
+    lines = body(6) + [ln("Purī as a", 40, 560, 250), ln("health", 40, 610, 200), ln("resort.", 40, 660, 200)]
+    assert margin_notes({"w": W, "h": H, "lines": lines}) == [{"t": "Purī as a health resort.", "y_frac": round(560 / H, 4)}]

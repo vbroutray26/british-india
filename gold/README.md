@@ -54,3 +54,15 @@ estates, forests, tanks, famine tracts), in running text or tables. Not in scope
 holdings, densities, revenue, religious or occupational counts. A figure printed twice (text and
 table, or two pages) is labelled at each place it is printed. Candidates come from searching both OCR
 engines' text, never from the extraction output, and every value is read from the full-resolution scan.
+
+## GS-SEG
+
+Fifty boundaries per source, each read from the full-resolution scan: every gazetteer entry heading
+(25 for O'Malley, Udayagiri's one-line cross-reference included) and 25 chapter side-notes drawn at
+random (seed 1908) from the side-notes the second read (Apple Vision) found, so the sample does not
+depend on DP-01 or DP-02. A drawn note that turns out to be a smudge is replaced by a fresh draw
+(p. 202 → p. 231). Each row has the kind, page, heading as printed and the opening words.
+`python -m pipeline.gold_seg score` counts a boundary as found when DP-02 starts a record of that kind
+on that page whose first 200 characters contain the opening words (fuzzy, diacritics folded, the
+heading itself may be garbled), merged when the words sit inside another record, missed otherwise.
+This measures recall only: a spurious split (a speck read as a side-note) is not counted.

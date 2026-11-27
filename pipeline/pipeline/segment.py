@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import argparse
 import re
+import statistics
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -53,19 +54,47 @@ def load_paragraphs(pages: list[dict]) -> list[Para]:
             continue
         chunks = [c for c in pg["text_clean"].split("\n\n") if c.strip()]
         first_indented = bool(pg["lines"] and pg["lines"][0]["indent"])
-        notes = [m["t"] for m in pg["margin"]]
+        notes = notes_by_paragraph(pg, len(chunks))
         for i, c in enumerate(chunks):
             if i == 0 and paras and not first_indented and not CHAPTER_HEAD.match(c):
                 prev = paras[-1]
                 sep = "" if prev.text.endswith("-") else " "
                 prev.text = prev.text.rstrip("-") + sep + c if prev.text.endswith("-") and c[:1].islower() else prev.text + sep + c
-                prev.margin += notes if i == 0 else []
+                prev.margin += notes[0]
                 # remember that this paragraph also spans this page
                 prev.__dict__.setdefault("more_pages", []).append((pg["page"], pg["leaf"], len(prev.text) - len(c)))
                 continue
-            paras.append(Para(text=c, page=pg["page"], leaf=pg["leaf"], conf=pg["confidence"],
-                              margin=notes if i == 0 else []))
+            paras.append(Para(text=c, page=pg["page"], leaf=pg["leaf"], conf=pg["confidence"], margin=notes[i]))
     return paras
+
+
+def add_second_read_notes(pg: dict, second: dict | None) -> dict:
+    """The page with side-notes the second read (DP-01b) found and the first OCR missed. Tesseract's hOCR
+    drops many side-notes; a Vision note is added unless a Tesseract note starts within ~2 lines of it."""
+    if not second or not second.get("margin"):
+        return pg
+    h = pg["size"][1]
+    have = [m["y"] for m in pg["margin"]]
+    extra = [{"t": n["t"], "y": round(n["y_frac"] * h)} for n in second["margin"]
+             if all(abs(n["y_frac"] * h - y) > 0.02 * h for y in have)]
+    return pg | {"margin": sorted(pg["margin"] + extra, key=lambda m: m["y"])}
+
+
+def notes_by_paragraph(pg: dict, n_chunks: int) -> list[list[str]]:
+    """Side-notes per paragraph of a page: each note goes to the last paragraph whose first line starts at
+    or above it (O'Malley sets a side-note beside the opening line of its paragraph). Paragraphs are the
+    indent groups DP-01 used to build text_clean; if those do not line up with the chunks, every note
+    goes to the first paragraph, as before."""
+    starts = [ln["y"] for k, ln in enumerate(pg["lines"]) if k == 0 or ln["indent"]]
+    out: list[list[str]] = [[] for _ in range(max(1, n_chunks))]
+    if len(starts) != n_chunks:
+        out[0] = [m["t"] for m in pg["margin"]]
+        return out
+    lh = statistics.median([b["y"] - a["y"] for a, b in zip(pg["lines"], pg["lines"][1:], strict=False)] or [40])
+    for m in pg["margin"]:
+        k = max((i for i, y in enumerate(starts) if y <= m["y"] + 0.5 * lh), default=0)
+        out[k].append(m["t"])
+    return out
 
 
 # A line that opens an entry: up to ~45 characters, then a dash, then the descriptor "A …"/"An …"/"The …".
@@ -182,7 +211,11 @@ def segment(source_id: str, in_dir: Path = INTERIM_DIR / "ocr", out_dir: Path = 
     if expected:  # headings come from the checked list; chapters before the gazetteer are split by sections
         gz_pages = [p for p in body if gz_first <= int(p["page"]) <= gz_last]
         body = [p for p in body if int(p["page"]) < gz_first]
-    paras = load_paragraphs(body)
+    second_path = INTERIM_DIR / "ocr2" / source_id / "pages.jsonl"
+    second = {r["leaf"]: r for r in read_jsonl(second_path)} if second_path.exists() else {}
+    if not second:
+        LG.warning("no second read for %s: side-notes come from the first OCR only", source_id)
+    paras = load_paragraphs([add_second_read_notes(p, second.get(p["leaf"])) for p in body])
 
     entries: list[dict] = []
     cur: dict | None = None
