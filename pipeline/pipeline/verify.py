@@ -91,8 +91,29 @@ def second_read_reasons(f: dict, passages: dict[str, dict], second: dict[str, se
     return list(dict.fromkeys(reasons))
 
 
-def check(f: dict, passages: dict[str, dict], schema, second: dict[str, set[str]] | None = None) -> list[str]:
+def recovered_reasons(f: dict, passages: dict[str, dict], recovered: dict[str, list[str]]) -> list[str]:
+    """A figure on a line DP-01 recovered from the second read was read by one engine only, so the
+    second-read agreement check says nothing about it (D-27)."""
+    from rapidfuzz import fuzz
+
+    reasons = []
+    for ev in f["evidence"]:
+        p = passages.get(ev["passage_id"])
+        nums = numbers_in(ev["quote"])
+        if not p or not nums:
+            continue
+        for pg in _page_span(p):
+            for t in recovered.get(pg, []):
+                if fuzz.partial_ratio(ev["quote"], t) >= 90 and all(n in numbers_in(t) for n in nums):
+                    reasons.append(f"one engine only: line missing from the first OCR (p. {pg})")
+    return list(dict.fromkeys(reasons))
+
+
+def check(f: dict, passages: dict[str, dict], schema, second: dict[str, set[str]] | None = None,
+          recovered: dict[str, list[str]] | None = None) -> list[str]:
     reasons = [] if second is None else second_read_reasons(f, passages, second)
+    if recovered:
+        reasons += recovered_reasons(f, passages, recovered)
     for ev in f["evidence"]:
         p = passages.get(ev["passage_id"])
         if not p:
@@ -120,11 +141,13 @@ def run(source_id: str, which: str = "rules") -> dict:
     from pipeline.second_read import load
 
     second = load(source_id)
+    recovered = {r["page"]: r["recovered"] for r in read_jsonl(INTERIM_DIR / "ocr" / source_id / "pages.jsonl")
+                 if r.get("page") and r.get("recovered")}
     if not second:
         LG.warning("no second read for %s: every fact with a figure is queued (run DP-01b)", source_id)
     accepted, attributes, rejected = [], [], []
     for f in facts:
-        reasons = check(f, passages, schema, second)
+        reasons = check(f, passages, schema, second, recovered)
         if reasons:
             rejected.append(f | {"verify": {"reasons": reasons}})
         else:

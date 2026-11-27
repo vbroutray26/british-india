@@ -84,3 +84,68 @@ def test_margin_notes_are_joined_and_placed_as_a_fraction_of_page_height():
     from pipeline.second_read import margin_notes
     lines = body(6) + [ln("Purī as a", 40, 560, 250), ln("health", 40, 610, 200), ln("resort.", 40, 660, 200)]
     assert margin_notes({"w": W, "h": H, "lines": lines}) == [{"t": "Purī as a health resort.", "y_frac": round(560 / H, 4)}]
+
+
+# ---- recovering lines the first OCR dropped (DP-01 uses the second read)
+
+def rows_of(texts, y=0.30, step=0.02, h=0.016):
+    return [{"t": t, "y_frac": round(y + i * step, 4), "h_frac": h, "indent": False} for i, t in enumerate(texts)]
+
+
+BOOK = ["The Puri Forest Division is situated entirely within the Khurda",
+        "subdivision and consists of reserved and protected forests",
+        "extending over an area of 485 square miles. The reserved",
+        "forests contain 20 separate demarcated blocks having an area of",
+        "113 square miles, while the protected forests comprise all"]
+
+
+def test_missing_lines_finds_a_line_dropped_between_two_matched_lines():
+    from pipeline.second_read import missing_lines
+    tess = [BOOK[0].replace("Puri", "Pnri"), BOOK[1], BOOK[3], BOOK[4].replace("square", "squsre")]
+    got = missing_lines(tess, rows_of(BOOK))
+    assert [(i, r["t"]) for i, r in got] == [(1, BOOK[2])]
+
+
+def test_missing_lines_ignores_a_line_the_first_ocr_read_badly():
+    from pipeline.second_read import missing_lines
+    tess = [BOOK[0], BOOK[1], "extcnd1ng ovcr an arca of 4S5 sqn1re mlles. Thc rescrvcd", BOOK[3], BOOK[4]]
+    assert missing_lines(tess, rows_of(BOOK)) == []
+
+
+def test_missing_lines_ignores_a_line_the_first_ocr_has_elsewhere_on_the_page():
+    from pipeline.second_read import missing_lines
+    tess = [BOOK[0], BOOK[1], BOOK[3], BOOK[4]]
+    assert missing_lines(tess, rows_of(BOOK), page_text=" ".join(tess) + " " + BOOK[2]) == []
+
+
+def test_missing_lines_recovers_the_last_lines_of_a_page_but_not_footnotes():
+    from pipeline.second_read import missing_lines
+    rows = rows_of(BOOK) + [{"t": "* Jarrett's translation, II, 127, and Stirling's account.", "y_frac": 0.5,
+                             "h_frac": 0.009, "indent": False}]
+    got = missing_lines(BOOK[:3], rows)
+    assert [(i, r["t"]) for i, r in got] == [(2, BOOK[3]), (2, BOOK[4])]
+
+
+def test_body_rows_mark_an_indented_line_and_leave_out_margin_notes():
+    from pipeline.second_read import body_rows
+    lines = body(6) + [ln("Purī as a", 40, 560, 250)]
+    lines[3] = ln("A new paragraph starts here with an indent", 420, 640, 2100)
+    rows = body_rows({"w": W, "h": H, "lines": lines})
+    assert len(rows) == 6 and rows[3]["indent"] and not rows[2]["indent"] and "Purī" not in rows[2]["t"]
+
+
+def test_missing_lines_never_recovers_a_footnote_into_the_body():
+    from pipeline.second_read import missing_lines
+    rows = rows_of(BOOK) + [{"t": "‡ Later Kings of Khurda, M. M. Chakravarti, J.A.S.B., 1898, p. 388.",
+                             "y_frac": 0.40, "h_frac": 0.016, "indent": False}]
+    assert missing_lines(BOOK, rows) == []
+    rows = rows_of(BOOK) + rows_of(["was entertained in the year of the flood by the Raja"], y=0.60)
+    assert missing_lines(BOOK, rows) == []  # after a gap below the last line: a footnote, not body
+
+
+def test_missing_lines_ignores_a_present_line_with_a_side_note_glued_on():
+    from pipeline.second_read import missing_lines
+    tess = [BOOK[0], BOOK[1], BOOK[3], BOOK[4], "Fishing is at present one of the most important occupations"]
+    rows = rows_of(BOOK[:2] + [BOOK[3] + " Fisheries."] + BOOK[3:])
+    rows[2]["t"] = "Fishing is at present one of the most important occupations Fishericn."
+    assert missing_lines(tess, rows) == []

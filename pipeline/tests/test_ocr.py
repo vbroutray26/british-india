@@ -37,3 +37,22 @@ def test_running_head_with_misread_page_number():
     p = Page(index=0, width=3000, height=5000, lines=[_ln("PHYSICAL ASPECTS, o", 1000, 500, 2600), _ln("In the deltaic tract", 300, 700)])
     head, body = split_running_head(p, "3")
     assert head == "PHYSICAL ASPECTS, o" and [l.text for l in body] == ["In the deltaic tract"]
+
+
+def test_recover_lines_inserts_a_dropped_line_in_reading_order(tmp_path):
+    import json
+
+    from pipeline.ocr import recover_lines
+    text = ["The Puri Forest Division is situated entirely within the Khurda",
+            "subdivision and consists of reserved and protected forests",
+            "extending over an area of 485 square miles. The reserved",
+            "forests contain 20 separate demarcated blocks having an area of",
+            "113 square miles, while the protected forests comprise all"]
+    vis = tmp_path / "leaf_0001.json"
+    vis.write_text(json.dumps({"w": 2400, "h": 3600, "lines": [
+        {"t": t, "conf": 1, "x0": 300, "y0": 400 + i * 80, "x1": 2100, "y1": 460 + i * 80} for i, t in enumerate(text)]}))
+    recs = [{"t": text[0], "y": 600, "indent": False}, {"t": text[1], "y": 720, "indent": False},
+            {"t": text[3], "y": 960, "indent": False}, {"t": text[4], "y": 1080, "indent": False}]
+    assert recover_lines(recs, vis, 5400, []) == [text[2]]
+    assert [r["t"] for r in recs] == text and recs[2]["recovered"]
+    assert recover_lines([{"t": text[0], "y": 600, "indent": False}], tmp_path / "none.json", 5400, []) == []

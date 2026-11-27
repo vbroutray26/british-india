@@ -91,10 +91,12 @@ def replacement_page(pages: list[dict], page: str, taken: list[str], seed: int =
 def ocr_text(rec: dict, reviewed: bool) -> str:
     """The OCR's page text in its own reading order: lines and margin notes by y, then footnotes.
 
-    reviewed=False uses the text as first read (text_raw); True uses lines after audited corrections."""
+    reviewed=False uses the text as first read (text_raw, without lines recovered from the second read);
+    True uses lines after audited corrections and recovery (D-27)."""
+    lines = rec["lines"] if reviewed else [ln for ln in rec["lines"] if not ln.get("recovered")]
     raw = rec["text_raw"].split("\n")
-    texts = [ln["t"] for ln in rec["lines"]] if reviewed or len(raw) != len(rec["lines"]) else raw
-    items = [(ln["y"], t) for ln, t in zip(rec["lines"], texts, strict=True)]
+    texts = [ln["t"] for ln in lines] if reviewed or len(raw) != len(lines) else raw
+    items = [(ln["y"], t) for ln, t in zip(lines, texts, strict=True)]
     items += [(m["y"], m["t"]) for m in rec.get("margin", [])]
     return "\n".join([t for _, t in sorted(items, key=lambda x: x[0])] + list(rec.get("footnotes", [])))
 

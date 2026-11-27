@@ -9,9 +9,9 @@ sources:
     gazetteer_headings_review: pending
     # Udayagiri is NOT missing from the scan (corrected 2026-11-27): it is a one-line cross-reference,
     # "Udayagiri.—See Khandagiri.", at the foot of p. 299 (leaf 319), which Tesseract's hOCR did not
-    # read; the second read (Apple Vision) has it. The caves are described under Khandagiri. It stays in
-    # known_missing only because DP-02 anchors on the first OCR's lines.
-    known_missing: [Udayagiri]
+    # read; the second read (Apple Vision) has it. The caves are described under Khandagiri. Found since
+    # DP-01 recovers lines the hOCR dropped (D-27).
+    known_missing: []
     gazetteer_headings:
       - Atri
       - Balukhand

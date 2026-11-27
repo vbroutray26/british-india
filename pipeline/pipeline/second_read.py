@@ -16,6 +16,7 @@ Usage: python -m pipeline.second_read --source omalley-puri-1908
 from __future__ import annotations
 
 import argparse
+import itertools
 import json
 import platform
 import re
@@ -23,6 +24,8 @@ import shutil
 import statistics
 import subprocess
 from pathlib import Path
+
+from rapidfuzz import fuzz
 
 from pipeline.util import INTERIM_DIR, RAW_DIR, log, read_jsonl, write_jsonl
 from pipeline.verify import numbers_in
@@ -98,6 +101,102 @@ def margin_notes(rec: dict) -> list[dict]:
     return sorted((n for n in out if len(n["t"]) >= 3), key=lambda n: n["y_frac"])
 
 
+def _rows(lay: dict) -> list[dict]:
+    """Body fragments joined into printed lines (same vertical centre within half a line height)."""
+    rows: list[dict] = []
+    for ln in sorted(lay["body"], key=lambda ln: ln["y0"] + ln["y1"]):
+        c = (ln["y0"] + ln["y1"]) / 2
+        if rows and abs(c - rows[-1]["c"]) < 0.5 * lay["lh"]:
+            rows[-1]["f"].append(ln)
+        else:
+            rows.append({"c": c, "f": [ln], "L": "", "R": ""})
+    for r in rows:
+        r["f"].sort(key=lambda f: f["x0"])
+    return rows
+
+
+def body_rows(rec: dict) -> list[dict]:
+    """Printed body lines of a single-column page, margin notes left out: text, top and height as fractions of
+    the page height, and whether the line is indented (a paragraph start)."""
+    lay = _layout(rec)
+    if not lay:
+        return []
+    rows = _rows(lay)
+    x_med = statistics.median(r["f"][0]["x0"] for r in rows)
+    return [{"t": fix_chars(" ".join(f["t"] for f in r["f"])),
+             "y_frac": round(min(f["y0"] for f in r["f"]) / rec["h"], 4),
+             "h_frac": round(max(f["y1"] - f["y0"] for f in r["f"]) / rec["h"], 4),
+             "indent": r["f"][0]["x0"] - x_med > 0.035 * rec["w"]} for r in rows]
+
+
+def _fold(s: str) -> str:
+    from pipeline.ocr import fold
+
+    return " ".join(fold(s).split())
+
+
+def _align(a: list[str], b: list[str], thr: float) -> list[tuple[int, int]]:
+    """Order-preserving best match of lines a to lines b (each pair at least `thr` similar)."""
+    n, m = len(a), len(b)
+    sc = [[fuzz.ratio(x, y) for y in b] for x in a]
+    best = [[0.0] * (m + 1) for _ in range(n + 1)]
+    for i in range(n - 1, -1, -1):
+        for j in range(m - 1, -1, -1):
+            v = max(best[i + 1][j], best[i][j + 1])
+            if sc[i][j] >= thr:
+                v = max(v, best[i + 1][j + 1] + sc[i][j])
+            best[i][j] = v
+    pairs, i, j = [], 0, 0
+    while i < n and j < m:
+        if sc[i][j] >= thr and best[i][j] == best[i + 1][j + 1] + sc[i][j]:
+            pairs.append((i, j))
+            i, j = i + 1, j + 1
+        elif best[i + 1][j] >= best[i][j + 1]:
+            i += 1
+        else:
+            j += 1
+    return pairs
+
+
+FOOTNOTE = re.compile(r"\s*[•*†‡§¶]")  # footnotes start with a reference mark
+
+
+def missing_lines(first: list[str], rows: list[dict], page_text: str | None = None,
+                  thr: float = 60, min_len: int = 12) -> list[tuple[int, dict]]:
+    """Body lines the second read has and the first OCR dropped, as (index of the first-OCR line to insert
+    after, -1 for before the first, row). Lines are aligned by text; a second-read line counts as dropped only
+    where the first OCR has nothing at all between the two matched lines around it (a line it read badly is
+    left alone), and only if its text is nowhere else on the first OCR's page. Footnotes (smaller type) are
+    not recovered into the body."""
+    if not first or not rows:
+        return []
+    h_med = statistics.median(r["h_frac"] for r in rows)
+    rows = [r for r in rows if r["h_frac"] >= 0.8 * h_med]
+    pairs = _align([_fold(t) for t in first], [_fold(r["t"]) for r in rows], thr)
+    if not pairs:
+        return []
+    page = _fold(page_text if page_text is not None else " ".join(first))
+    steps = [b["y_frac"] - a["y_frac"] for a, b in itertools.pairwise(rows)]
+    step = statistics.median(steps) if steps else 1.0
+
+    def present(t: str) -> bool:  # also with the end cut off: Vision may glue a side-note onto the line
+        f = _fold(t)
+        return fuzz.partial_ratio(f, page) >= 85 or fuzz.partial_ratio(f[:int(len(f) * 0.75)], page) >= 85
+
+    out = []
+    for (i0, j0), (i1, j1) in zip([(-1, -1), *pairs], [*pairs, (len(first), len(rows))]):
+        if i1 != i0 + 1:
+            continue
+        prev = rows[j0] if j0 >= 0 else None
+        for r in rows[j0 + 1:j1]:
+            if prev and j1 == len(rows) and r["y_frac"] - prev["y_frac"] > 1.6 * step:
+                break  # below a gap after the last matched line: footnotes
+            prev = r
+            if len(r["t"]) >= min_len and not FOOTNOTE.match(r["t"]) and not present(r["t"]):
+                out.append((i0, r))
+    return out
+
+
 def assemble(rec: dict) -> str:
     """Page text from Vision's line boxes, in the reading order of the GS-OCR conventions: running head and
     signature marks dropped, fragments of one printed line joined left to right, margin notes joined and
@@ -108,21 +207,14 @@ def assemble(rec: dict) -> str:
     lay = _layout(rec)
     if lay is None:
         return fix_chars(_columns([ln for ln in rec["lines"] if ln["t"].strip()], rec["w"]))
-    lh = lay["lh"]
-    rows: list[dict] = []
-    for ln in sorted(lay["body"], key=lambda ln: ln["y0"] + ln["y1"]):
-        c = (ln["y0"] + ln["y1"]) / 2
-        if rows and abs(c - rows[-1]["c"]) < 0.5 * lh:
-            rows[-1]["f"].append(ln)
-        else:
-            rows.append({"c": c, "f": [ln], "L": "", "R": ""})
+    rows = _rows(lay)
     for side, ls in lay["groups"]:
         c = (ls[0]["y0"] + ls[0]["y1"]) / 2
         row = min(rows, key=lambda r: abs(r["c"] - c))
         row[side] = (row[side] + " " + " ".join(x["t"] for x in ls)).strip()
     out = []
     for r in rows:
-        text = " ".join(f["t"] for f in sorted(r["f"], key=lambda f: f["x0"]))
+        text = " ".join(f["t"] for f in r["f"])
         out.append(" ".join(x for x in (r["L"], text, r["R"]) if x))
     return fix_chars("\n".join(out))
 

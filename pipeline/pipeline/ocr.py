@@ -270,6 +270,21 @@ def paragraphs(lines: list[dict], hyphen_words: set[str]) -> str:
     return "\n\n".join(join_lines(p, hyphen_words) for p in paras)
 
 
+def recover_lines(line_recs: list[dict], vision: Path, height: int, other: list[str]) -> list[str]:
+    """Insert body lines the archive.org OCR dropped, from the cached second read (DP-01b, D-27), into
+    `line_recs` in place. Returns the recovered texts. `other` is the page's text outside the body
+    (footnotes, side-notes, running head), which is never recovered into it."""
+    if not line_recs or not vision.exists():
+        return []
+    from pipeline.second_read import body_rows, missing_lines
+
+    first = [ln["t"] for ln in line_recs]
+    found = missing_lines(first, body_rows(json.loads(vision.read_text())), " ".join(first + other))
+    for i, r in reversed(found):
+        line_recs.insert(i + 1, {"t": r["t"], "y": int(r["y_frac"] * height), "indent": r["indent"], "recovered": True})
+    return [r["t"] for _, r in found]
+
+
 # ---------------------------------------------------------------- stage
 
 def run(source_id: str, raw_dir: Path = RAW_DIR, out_dir: Path = INTERIM_DIR / "ocr") -> list[dict]:
@@ -304,6 +319,8 @@ def run(source_id: str, raw_dir: Path = RAW_DIR, out_dir: Path = INTERIM_DIR / "
             near = [b.bbox[0] for b in body[max(0, i - 2):i + 3] if b is not ln] or [x0 or ln.bbox[0]]
             line_recs.append({"t": normalise_chars(ln.text), "y": ln.bbox[1],
                               "indent": bool(x0 is not None and ln.bbox[0] - min(near) > INDENT_MIN)})
+        recovered = recover_lines(line_recs, folder / "ocr_vision" / f"leaf_{leaf:04d}.json", p.height,
+                                  [normalise_chars(ln.text) for ln in lay["footnotes"] + lay["margin"]] + [head or ""])
         words = [c for ln in body for _, c in ln.words]
         conf = round(sum(words) / len(words), 1) if words else 0.0
         low = sum(1 for c in words if c < LOW_CONF)
@@ -324,6 +341,8 @@ def run(source_id: str, raw_dir: Path = RAW_DIR, out_dir: Path = INTERIM_DIR / "
             flags.append("correction-not-applied:" + "|".join(missed))
         if applied:
             flags.append(f"ocr-corrected:{len(applied)}")
+        if recovered:
+            flags.append(f"recovered-lines:{len(recovered)}")
         rows.append({
             "source_id": source_id,
             "leaf": leaf,
@@ -335,6 +354,7 @@ def run(source_id: str, raw_dir: Path = RAW_DIR, out_dir: Path = INTERIM_DIR / "
             "footnotes": [normalise_chars(ln.text) for ln in lay["footnotes"]],
             "text_raw": "\n".join(ln.text for ln in body),
             "text_clean": paragraphs(line_recs, hyphen_words),
+            "recovered": recovered,  # lines only the second read has (D-27); not in text_raw
             "confidence": conf,
             "words": len(words),
             "low_conf_words": low,

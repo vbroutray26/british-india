@@ -33,7 +33,7 @@ full-resolution archive.org JP2), `pipeline.gold` (contact sheets for labelling;
 ## Status for `omalley-puri-1908` (2026-11-26)
 
 - 340 leaves; mean OCR word confidence 87.3; 31 pages queued for OCR review.
-- 24 of 25 gazetteer entries found (Udayagiri's page is missing from the scan); 83 chapter sections.
+- 25 of 25 gazetteer entries found (Udayagiri since D-27); 219 chapter sections.
 - 56 facts + 90 place attributes pass DP-07; 1 rejected (truncated OCR number).
 - GS-NUMERIC: 12 labels so far (target 100), 12/12 exact after one audited OCR correction (p. 61).
 - GS-OCR (2026-11-27): 50 pages transcribed against full-resolution scans, stratified by OCR
@@ -75,12 +75,23 @@ full-resolution archive.org JP2), `pipeline.gold` (contact sheets for labelling;
   souls", "contained 3,000 souls", kept with no year), land-unit acres ("extending over 68,000 acres"),
   OCR's "squsre miles"; percentages and "24 million" are not counts (D-26). The 9 still failing are not
   reachable by rules on this OCR: the p. 60 census table (6; both engines garble it, e.g. 1,528 read as
-  1,698 and 1,588), two lines Tesseract dropped (pp. 138, 294) and a paragraph split mid-word on p. 59.
-- **GS-SEG (2026-11-27): 50 boundaries; TS-DATA-02 at 44/50 (88%)**, target ≥ 98%. Gazetteer entries
-  24/25 (Udayagiri's line is absent from the first OCR). Chapter sections were 3/25: DP-02 gave all of
+  1,698 and 1,588, and a third read of the enlarged crop gives 1,039…1,698), two lines Tesseract dropped
+  (pp. 138, 294) and a paragraph split mid-word on p. 59. Since D-27 both dropped lines are recovered, but
+  only as Vision read them: "an aren of 480 square miles" (printed 485; extracted, wrong, and queued as
+  one-engine) and "3-83 acres" (a hyphen for the raised point; not read as a decimal).
+- **GS-SEG (2026-11-27): 50 boundaries; TS-DATA-02 at 45/50 (90%)**, target ≥ 98%. Gazetteer entries
+  25/25 (Udayagiri's line was absent from the first OCR; recovered since D-27). Chapter sections were 3/25: DP-02 gave all of
   a page's side-notes to its first paragraph, and Tesseract's hOCR drops many side-notes. Fixed by
   placing each note beside its paragraph and adding the second read's notes; sections now 20/25
   (DP-02 makes 219 sections, up from 83). Still merged: pp. 79, 181, 215, 218, 226. Spurious splits
   are not measured; 31 section headings contain no real word (e.g. "110%.", ",*") and some of those
   are likely specks.
+- **Dropped lines (D-27, 2026-11-27).** The archive.org hOCR silently drops body lines (11 in a row on
+  p. 276). DP-01 aligns its lines with the second read by text and inserts a Vision line only where the
+  hOCR has nothing between the two matched lines around it and the text is nowhere else on its page;
+  footnotes (reference mark, or below a gap at the foot) are never recovered into the body. 110 lines on
+  62 pages. `text_raw` stays as the hOCR read it; recovered lines are listed per page (`recovered`) and
+  DP-07 queues any figure on them ("one engine only"). GS-OCR CER 7.91% → 7.29% (numerals 37.1% →
+  36.9%); the raw column is the hOCR alone. One gold page reads worse (p. 181, +35 edits): the recovered
+  line is right but lands out of order in the hOCR's already scrambled page.
 - GS-EXTRACT: not started.
