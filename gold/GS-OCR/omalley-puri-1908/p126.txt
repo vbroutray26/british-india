@@ -1,0 +1,47 @@
+% GS-OCR omalley-puri-1908 page 126 (leaf 144). Conventions: gold/README.md
+@@ body
+vital occurrences are reported by the chaukīdārs to the police, and
+the latter submit monthly returns to the Civil Surgeon, by whom
+statistics for the whole district are prepared. The statistics thus
+obtained are sufficiently accurate for the purpose of calculating
+the approximate growth of the population and of showing the
+relative healthiness or unhealthiness of different years; but little
+reliance can be placed on the classification of diseases to which
+deaths are attributed, owing to want of medical knowledge on the
+part of the reporting agency, which causes the chaukīdār to
+regard fever as a general cause of death. In the case of Purī,
+moreover, a large number of deaths take place among the
+thousands of pilgrims who visit the shrine of Jagannāth every
+year, and these deaths cannot be distinguished in the returns
+from those occurring among the residents of the district.
+The most noticeable feature of the returns in recent years has
+been the rise in the birth-rate, which has steadily increased from
+29·57 per mille in 1901 to 40·47 per mille in 1906. Only once
+has there been a lower birth-rate than that of 1901, viz., in 1892,
+when it was 29·31 per mille; and only once has there been a higher
+birth-rate than in 1906, viz., in 1899, when it was 43·19 per mille.
+The maximum mortality returned since the present system of
+vital statistics was introduced was in 1901, when the death-rate rose
+to 41·32 per mille, and the lowest death-rate returned was 24·88
+per mille in 1896. Another feature brought out by the returns is
+that the death-rate in Purī town has been steadily diminishing,
+apparently as the result, in part at least, of the Bara Dānda
+drainage scheme, completed in 1895. The average annual death-
+rate in the Purī town during the five years preceding its intro-
+duction was 49·03 per mille, but it has been steadily decreasing,
+falling in 1906 to 25·82, while the mean of the previous 5 years
+was only 34·62 per mille. But although the scheme referred
+to has been valuable, it is by no means complete, and the real
+cause of the diminishing death-rate in Purī must be sought in
+the generally improved sanitary conditions brought about by
+constant and assiduous attention to conservancy on the part of
+the local authorities, and in the advent of the railway, which has
+tended largely to remove the congestion of the population not
+only on the occasion of great festivals, but throughout the year.
+{Principal diseases. Fevers.} The following account of the fevers of Purī has been prepared
+with the help of a note communicated by Major E. E. Waters, M.D.,
+I.M.S., late Civil Surgeon of Purī.
+There are two sources from which information may be drawn
+regarding the prevalence of different diseases, viz., the death
+returns supplied by the police, and the attendance returns furnished
+@@ footnotes

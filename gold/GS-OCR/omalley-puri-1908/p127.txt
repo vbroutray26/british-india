@@ -1,0 +1,58 @@
+% GS-OCR omalley-puri-1908 page 127 (leaf 145). Conventions: gold/README.md
+% Replacement for p315 (map plate), same confidence stratum. Broken type read as intended: "it is" (printed "fs"), Gop 1905 "12·08".
+@@ body
+by the dispensaries. The first of these is unreliable, as the
+diagnosis of the cause of death is made by the village chaukidār,
+and his medical training is not exhaustive. The tendency is to
+Years. 1901-05. 1906.
+Purī 8·59 7·27
+Bengal 21·78 22·41
+exaggerate the number of deaths
+from fever (using the term to
+denote malarial fever), and to
+group under that heading all
+diseases in which the temperature
+is raised; e.g., pneumonia, pul-
+monary phthisis, and inflammatory conditions are all apt to be
+included under the vague heading of fever. Even accepting this
+classification, Purī district is prominent as being the least feverish
+in Bengal. As shown in the marginal statement, the death-rate
+from fever is less than half what it is in the Province as a whole;
+it has never been as high as 10 per mille since the present system
+of mortuary returns was introduced; and it has been known to
+fall as low as 5·31 per mille.
+The second method of estimating the fever rate is by examin-
+ing the attendance of out-patients at the dispensaries. This too
+must be necessarily incomplete, as it depends entirely on the
+number of persons who use the dispensaries; but it is noticeable
+that in the district as a whole the total number of patients in 1905
+was 93,370 and the number of cases of malarial fever was only
+9,610.
+The marginal table giving the death-rate per mille in 1905
+Years. 1900-04. 1905.
+Bānpur 4·13 4·52
+Purī (Sadar) 7·12 6·24
+Khurdā 7·37 6·44
+Piplī 10·09 8·58
+Purī (town) 12·09 8·27
+Gop 12·47 12·08
+and the preceding 5 years will be
+sufficient to show the incidence
+of the death-rate in different
+thānas. With reference to
+these figures it may be observed
+that the incidence of fever
+appears to depend largely on the
+physical conformation of the
+different circles. Purī town lies
+on flat ground, and is yearly surrounded by a large area of
+flood-water during the rainy season; as would be expected, the
+deaths from fever are more numerous when this water begins to
+subside, i.e., in October, November and December. The areas
+of the Piplī, Gop and Purī (rural) circles are also somewhat flat,
+and especially in parts of the Gop circle the land is much flooded.
+Purī (rural), however, includes a large sandy tract in which
+drainage towards the sea and the Chilkā lake is fairly rapid, and
+this reduces the death-rate in that area. The two circles com-
+prised in the Khurdā subdivision, viz., Khurdā and Bānpur, are
+@@ footnotes

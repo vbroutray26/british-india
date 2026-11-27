@@ -1,0 +1,47 @@
+% GS-OCR omalley-puri-1908 page 69 (leaf 87). Conventions: gold/README.md
+@@ body
+built on so regular a model, that its principles are easily impressed
+upon the memory. It is particularly noticeable for the very
+complete set of verbal nouns, present, past, and future. When an
+Oriyā wishes to express the idea embodied in what in Latin would
+be called the infinitive, he simply takes the appropriate verbal
+noun, and declines it in the case which the meaning requires. As
+every infinitive must be some oblique case of a verbal noun, it
+follows that Oriyā grammar does not know the so-called infinitive
+mood at all. In this respect Oriyā is in an older stage of gram-
+matical development than even classical Sanskrit, and, among
+Indo-Aryan languages, can only be compared with the ancient
+Sanskrit spoken in the Vedic times.
+The archaic character, both of form and vocabulary, runs
+through the whole language, and is no doubt accounted for by
+geographical position. Orissa has ever been an isolated country
+bounded on the east by the ocean, and on the west by the hilly
+tracts inhabited by wild aboriginal tribes. On the south the
+language is Dravidian and belongs to an altogether different
+family, while, on the north, it has seldom had political ties with
+Bengal. On the other hand, the Oriyās have been a conquered
+nation. For eight centuries Orissa was subject to the kings of
+Telinganā, and, in modern times, it was for fifty years under the
+sway of the Bhonslās of Nāgpur, both of whom left deep
+impressions of their rule upon the country. On the language
+they imposed a number of Telugu and of Marāthī words and
+idioms, which still survive. These are, so far as we know, the
+only foreign elements which have intruded themselves into
+Oriyā, except the small vocabulary of English court terms and
+a few other English expressions, which English domination and
+education have brought into vogue.
+Oriyā is remarkably free from dialectic variation. The well-
+known saying, which is true all over the north of India, that the
+language changes every 10 kos, does not hold in Orissa. In Orissa
+proper, i.e., in what is known as the Mughalbandi, which consists
+of Cuttack, Purī and the southern half of Balasore, the language
+is one and the same. "Three localities," writes Dr. Grierson,
+"each claim to be the place where Oriyā is spoken in its greatest
+purity, viz., Cuttack, Khurdā in Purī, and Gumsur in the north
+of Ganjām. Probably Khurdā has the greatest claim to being
+considered the well of Oriyā undefiled."
+Oriyā is encumbered with the drawback of an excessively {Written character.}
+awkward and cumbrous written character. This character is, in
+its basis, the same as Devanāgari, but is written by the local scribes
+with a stylus on a talipot palm-leaf. These scratches are, in
+@@ footnotes

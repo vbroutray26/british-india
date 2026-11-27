@@ -1,4 +1,4 @@
-"""Page images for review and gold sets, fetched on demand over IIIF and cached in the private raw repo.
+"""Page images for review and gold sets, cached in the private raw repo.
 
   python -m pipeline.scan --source omalley-puri-1908 --page 61 [--find "49,364"] [--out FILE]
 
@@ -24,8 +24,33 @@ def leaf_for_page(source_id: str, page: str) -> dict:
     raise KeyError(f"page {page} not in page map")
 
 
-def image(source_id: str, leaf: int) -> Path:
-    """Page image for a scan leaf: rendered from the local PDF (fast, offline), else fetched over IIIF."""
+def _stem(source_id: str) -> tuple[str, str]:
+    man = json.loads((MANIFEST_DIR / f"{source_id}.json").read_text())
+    return man["identifier"], next(n for n in man["files"] if n.endswith(".pdf")).removesuffix(".pdf")
+
+
+def image(source_id: str, leaf: int, full: bool = False) -> Path:
+    """Page image for a scan leaf.
+
+    Default: rendered from the local PDF (fast, offline; the PDF's images are ~580 px wide, enough to
+    confirm a figure). full=True: the original scan (~3500 px, stored at 2400 px) fetched as one member of the host's JP2
+    zip and cached as JPEG in the private raw repo; use it for transcription (GS-OCR) and diacritics.
+    """
+    if full:
+        dest = RAW_DIR / source_id / "pages_full" / f"leaf_{leaf:04d}.jpg"
+        if dest.exists():
+            return dest
+        from PIL import Image
+
+        ident, stem = _stem(source_id)
+        member = urllib.parse.quote(f"{stem}_jp2/{stem}_{leaf:04d}.jp2", safe="")
+        jp2 = dest.with_suffix(".jp2")
+        http_get(f"https://archive.org/download/{ident}/{stem}_jp2.zip/{member}", jp2, lg=LG)
+        im = Image.open(jp2).convert("L")  # print is monochrome; greyscale halves the size
+        im.thumbnail((2400, 4000), Image.LANCZOS)  # 2400 px wide keeps macrons and dots legible
+        im.save(dest, quality=78)
+        jp2.unlink()
+        return dest
     dest = RAW_DIR / source_id / "pages" / f"leaf_{leaf:04d}.jpg"
     if dest.exists():
         return dest
@@ -38,9 +63,7 @@ def image(source_id: str, leaf: int) -> Path:
             dest.parent.mkdir(parents=True, exist_ok=True)
             doc[leaf].render(scale=200 / 72).to_pil().convert("RGB").save(dest, quality=85)
             return dest
-    man = json.loads((MANIFEST_DIR / f"{source_id}.json").read_text())
-    ident = man["identifier"]
-    stem = next(n for n in man["files"] if n.endswith(".pdf")).removesuffix(".pdf")
+    ident, stem = _stem(source_id)
     path = f"{ident}/{stem}_jp2.zip/{stem}_jp2/{stem}_{leaf:04d}.jp2"
     url = f"https://iiif.archive.org/image/iiif/3/{urllib.parse.quote(path, safe='')}/full/max/0/default.jpg"
     http_get(url, dest, lg=LG)  # 'full/max' is reliable; scaled requests time out on the host

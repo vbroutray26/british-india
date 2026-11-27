@@ -1,0 +1,47 @@
+% GS-OCR omalley-puri-1908 page 278 (leaf 296). Conventions: gold/README.md
+@@ body
+structure, as they exist at the present time; for the masonry being
+without any mortar, in any particular course, or at any particular
+height, the weight of the superincumbent mass must be borne by
+any stones that are not exactly level. They would of necessity
+get crushed, and in turn distribute the weight to the next stones
+that might be out of level, and this would go on until the
+weight came on to a sufficient number of stones, whose power of
+resistance was greater than the crushing weight. When once this
+point was reached, the structure took up a position of stable
+equilibrium, and all further damage ceased, except that caused by
+the natural disintegration and weakening of the stones through
+the lapse of centuries. In a perfectly constructed building of
+the Konārak design no damage would occur, but if any error crept
+in, or if through carelessness a single unequal course was built,
+the result to such a building would be the same as we see in the
+case of the Black Pagoda.
+"Further, in a corbel-built structure, its equilibrium depends
+on the relative position of the centre of gravity of each individual
+stone, and of the structure taken as a whole; and if constructed
+without centering, the interior must be filled up with sand to
+enable construction to go on. This was experimentally proved by
+constructing a model of the Konārak temple with dry bricks to
+a scale of 1" to the foot. It was found that, to keep the corbelling
+in place after a height of 30 feet from the starting point of the
+corbelling was reached, sand had to be kept below to widen the
+base, so that the weight of the corbelling fell within it, or weights
+placed on the exterior of the stones that were being corbelled;
+otherwise the structure collapsed. There is also another pressure
+tending to render the building stable, and that is the lean-to that
+comes into play from each wall on the other at the point when
+each wall would of itself tend to topple over, this being prevented
+by the support derived from the other two walls against which it
+is abutting. This pressure has two components, one of a compres-
+sive nature with a tendency to shorten the walls due to the
+pressure from the two opposite walls, and the resistance offered by
+the stones, of which the structure is composed, against the action
+of gravity. There is practical proof that the former pressure is no
+mean one in the temple itself; if the roof is studied, the large
+number of stones will be noticed that to all seeming should fall
+down, and which it would never be thought could possibly remain
+in situ; and the only reason that they do is due to this lateral
+pressure. The fact that this lateral pressure does exist goes to
+prove that the walls would fall if they were not supported the one
+by the other.
+@@ footnotes

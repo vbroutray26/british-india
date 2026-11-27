@@ -15,9 +15,10 @@
 | D-20 | Raw data: private repo `british-india-raw` at `data/raw/`, plain git (files < 100 MB; no LFS quota). Page images are rendered from the local PDF; archive.org IIIF is used only as a fallback (it returned 504s for scaled images). | 2026-11-26 |
 | D-21 | OCR fixes are data, not code: `data/review/<source>/ocr_corrections.yaml`, each checked against the page image; DP-01 applies them to `text_clean` and keeps `text_raw` (FR-TEXT-03). | 2026-11-26 |
 | D-22 | Gazetteer entry headings come from the book's own table of contents, transcribed from the page image and owner-reviewed; DP-02 anchors entries to that list (OCR of bold headings is unreliable). | 2026-11-26 |
+| D-23 | **GS-OCR** is transcribed from the full-resolution archive.org JP2 scans (single zip members, downscaled to 2400 px, kept in the private raw repo), because the local PDF's 582×920 images cannot show diacritics or small digits. Pages are sampled by OCR-confidence quartile; a sampled page with no running text (map, plate) is kept in the manifest as `excluded` with its reason and replaced from the same quartile. First result: CER 7.9%, numeral CER 37% (22.7% without the index page) — TS-DATA-01 fails, so OCR numbers need re-OCR or verified correction before publication. | 2026-11-27 |
 | D-18 | Node >= 22.23.4 (Astro 7), pnpm 12, Python 3.12 via uv. | 2026-11-26 |
 
 ## Milestone status
 - **M0 Foundations** — done 2026-11-26. Live: https://british-india.british-india-towns.workers.dev · API: https://british-india-api.british-india-towns.workers.dev. CI green. Deferred to M1: Storybook; CI auto-deploy (needs CLOUDFLARE_API_TOKEN secret + DEPLOY_ENABLED var); no synthetic italics for Odia/Devanagari.
 - **M1 Design system** — done 2026-11-26 except: Map components (M4, MapLibre), PageScanViewer (M3, IIIF), owner's illustrations/textures/motifs (§13). Site header/footer now use the components.
-- **M2 Pipeline core** — in progress. DP-00…DP-05 and DP-07 run on `omalley-puri-1908`; gold sets started (GS-NUMERIC 12/100). See pipeline/README.md for status and gaps.
+- **M2 Pipeline core** — in progress. DP-00…DP-05 and DP-07 run on `omalley-puri-1908`; gold sets started (GS-NUMERIC 12/100; GS-OCR 50/50, TS-DATA-01 fails — D-23). See pipeline/README.md for status and gaps.
