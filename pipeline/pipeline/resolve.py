@@ -16,7 +16,8 @@ low = a weak name match (manual); none = no candidate (the place becomes `uncert
 estates, subdivisions and districts are never matched automatically: their boundaries changed (DP-10).
 
 Historic spellings come only from the source's own text, each with its quote: data/review/<src>/historic_names.yaml.
-Owner decisions on medium/low links: data/review/<src>/place_matches.yaml (accept a candidate, or ghost).
+Owner decisions on medium/low links: data/review/<src>/place_matches.yaml (accept the proposed candidate, reject
+it, or ghost). The source's own distances check every link (`check_distances`, D-47).
 
 Output: data/interim/resolve/<src>/place_links.jsonl; DP-15 applies the links (`apply_link`).
 """
@@ -31,7 +32,7 @@ import unicodedata
 
 from rapidfuzz import fuzz
 
-from pipeline.util import DATA_DIR, INTERIM_DIR, log, read_yaml, write_jsonl
+from pipeline.util import DATA_DIR, INTERIM_DIR, log, read_jsonl, read_yaml, write_jsonl
 
 LG = log("DP-09")
 EXTERNAL = DATA_DIR / "external"
@@ -309,8 +310,49 @@ def apply_historic(place: dict, rows: list[dict], source_id: str) -> dict:
 
 # --- stage ----------------------------------------------------------------------------------------------
 
+def check_distances(links: dict[str, dict], distances: list[dict], places: list[dict]) -> dict[str, dict]:
+    """The source's own distances ("8 miles from Khurda", DP-04) against the candidates' points (D-47). A high
+    link whose point is far from where the text puts it goes to review. Tolerant, because the text gives road
+    distances and a modern point may be a grown town's centre: it disagrees only when the straight-line distance
+    is under 0.4 or over 2 times the printed one and more than 5 km off. References are places of this source
+    with a high link; anything else ("the", "its", places outside the bundle) is not evidence."""
+    out = {k: dict(v) for k, v in links.items()}
+    ref = {}
+    for q in places:
+        lk = links.get(q["place_id"])
+        if lk and lk["tier"] == "high" and (lk.get("candidate") or {}).get("lon") is not None:
+            ref[q["place_id"]] = (q, lk["candidate"])
+    for d in distances:
+        lk = out.get(d["place_id"])
+        if not lk or not (lk.get("candidate") or {}).get("lon"):
+            continue
+        to = re.sub(r"\b(town|village)\b", "", d["value"]["to"]).strip()
+        hit = next((c for pid, (q, c) in ref.items() if pid != d["place_id"] and len(norm(to)) >= 4
+                    and any(norm(n).startswith(norm(to)) or name_score(to, [n]) >= NAME_STRONG for n in _names(q))), None)
+        if hit is None:
+            continue
+        k = round(km(lk["candidate"]["lon"], lk["candidate"]["lat"], hit["lon"], hit["lat"]), 1)
+        printed = d["value"]["miles"] * 1.609
+        agrees = not ((k < 0.4 * printed or k > 2.0 * printed) and abs(k - printed) > 5)
+        sig = dict(lk.get("signals") or {})
+        sig["distances"] = sig.get("distances", []) + [{"to": d["value"]["to"], "miles": d["value"]["miles"], "km": k, "agrees": agrees}]
+        lk["signals"] = sig
+        if not agrees and lk["tier"] == "high" and not lk.get("reviewed"):
+            lk["tier"] = "medium"
+    for lk in out.values():
+        if lk.get("candidate") is not None:
+            lk.setdefault("signals", {}).setdefault("distances", [])
+    return out
+
+
 def _decide(link: dict, decision: dict) -> dict:
     """Owner's decision on a link: accept a candidate (by Wikidata or GeoNames id) or mark a ghost."""
+    c = link.get("candidate") or {}
+    if decision["decision"] == "reject":  # the proposed candidate is wrong: no link, the place keeps its status
+        want = decision.get("wikidata") or decision.get("geonames")
+        if want and want not in (c.get("wikidata"), c.get("geonames")):
+            return link  # a different candidate is proposed now: it needs its own review
+        return {**link, "tier": "rejected", "reviewed": decision.get("reviewer", "owner")}
     if decision["decision"] == "ghost":
         return {**link, "tier": "none", "reviewed": decision.get("reviewer", "owner")}
     if decision["decision"] == "accept":
@@ -339,6 +381,9 @@ def run(source_id: str, places: list[dict] | None = None) -> dict:
     order = sorted(places, key=lambda p: (p["type"] != "town", (p.get("geometry") or {}).get("quality") != "heading"))
     for p in order:
         links[p["place_id"]] = match(p, cands, expected_admin2(p, places, links))
+    distances = [f for f in read_jsonl(INTERIM_DIR / "verify" / source_id / "rules_attributes.jsonl")
+                 + read_jsonl(INTERIM_DIR / "verify" / source_id / "rules_accepted.jsonl") if f["type"] == "distance"]
+    links = check_distances(links, distances, places)
     decisions = DATA_DIR / "review" / source_id / "place_matches.yaml"
     for d in (read_yaml(decisions) or {}).get("decisions", []) if decisions.exists() else []:
         if d["place_id"] in links:

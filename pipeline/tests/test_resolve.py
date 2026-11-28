@@ -167,3 +167,57 @@ def test_owner_decisions_accept_the_proposed_candidate_or_make_a_ghost():
     assert rs._decide(link, {"place_id": "pl_dhauli", "decision": "ghost"})["tier"] == "none"
     with pytest.raises(ValueError):
         rs._decide(link, {"place_id": "pl_dhauli", "decision": "accept", "wikidata": "Q1"})
+
+
+# --- the source's own distances (D-47) -----------------------------------------------------------------
+
+def _dist(pid, miles, to, rel="from"):
+    return {"place_id": pid, "type": "distance", "value": {"miles": miles, "relation": rel, "to": to}}
+
+
+def _link(pid, lon, lat, tier="high"):
+    return {"place_id": pid, "tier": tier, "candidate": {"lon": lon, "lat": lat}, "signals": {}}
+
+
+def test_a_point_far_from_where_the_source_puts_it_is_sent_to_review():
+    places = [{"place_id": "pl_k", "type": "town", "names": [{"text": "Khurdā", "lang": "en", "kind": "primary"}]},
+              {"place_id": "pl_a", "type": "village", "names": [{"text": "Atri", "lang": "en", "kind": "primary"}]}]
+    links = {"pl_k": _link("pl_k", 85.616, 20.183), "pl_a": _link("pl_a", 85.30, 20.15)}  # 33 km; text says 8 miles
+    out = rs.check_distances(links, [_dist("pl_a", 8, "Khurda")], places)
+    assert out["pl_a"]["tier"] == "medium"
+    assert out["pl_a"]["signals"]["distances"][0] == {"to": "Khurda", "miles": 8, "km": 33.2, "agrees": False}
+
+
+def test_road_distances_and_moved_town_centres_are_tolerated():
+    places = [{"place_id": "pl_p", "type": "town", "names": [{"text": "Purī", "lang": "en", "kind": "primary"}]},
+              {"place_id": "pl_s", "type": "village", "names": [{"text": "Satyabādī", "lang": "en", "kind": "primary"}]}]
+    links = {"pl_p": _link("pl_p", 85.825, 19.798), "pl_s": _link("pl_s", 85.814, 19.947)}  # 16.6 km; 12 miles
+    out = rs.check_distances(links, [_dist("pl_s", 12, "Puri town", "north of")], places)
+    assert out["pl_s"]["tier"] == "high" and out["pl_s"]["signals"]["distances"][0]["agrees"]
+
+
+def test_distances_to_unknown_or_unlinked_places_are_not_evidence():
+    places = [{"place_id": "pl_s", "type": "village", "names": [{"text": "S", "lang": "en", "kind": "primary"}]}]
+    links = {"pl_s": _link("pl_s", 85.8, 19.9)}
+    out = rs.check_distances(links, [_dist("pl_s", 12, "the"), _dist("pl_s", 5, "Cuttack")], places)
+    assert out["pl_s"]["tier"] == "high" and out["pl_s"]["signals"].get("distances", []) == []
+
+
+def test_an_owner_can_reject_a_candidate():
+    link = {"place_id": "pl_b", "tier": "low", "candidate": {"geonames": "1"}}
+    assert rs._decide(link, {"place_id": "pl_b", "decision": "reject"})["tier"] == "rejected"
+    assert rs.apply_link({"place_id": "pl_b", "names": [], "status": "existing"}, {"tier": "rejected"})["status"] == "existing"
+
+
+def test_twice_the_printed_distance_is_too_far():
+    places = [{"place_id": "pl_p", "type": "town", "names": [{"text": "Purī", "lang": "en", "kind": "primary"}]},
+              {"place_id": "pl_b", "type": "village", "names": [{"text": "Baral", "lang": "en", "kind": "primary"}]}]
+    links = {"pl_p": _link("pl_p", 85.825, 19.798), "pl_b": _link("pl_b", 86.322, 20.124, "medium")}  # 63 km; 18 miles
+    out = rs.check_distances(links, [_dist("pl_b", 18, "Puri town", "north of")], places)
+    assert out["pl_b"]["signals"]["distances"][0]["agrees"] is False
+
+
+def test_a_rejection_applies_only_to_the_candidate_it_names():
+    link = {"place_id": "pl_b", "tier": "low", "candidate": {"geonames": "1"}}
+    assert rs._decide(link, {"place_id": "pl_b", "decision": "reject", "geonames": "1"})["tier"] == "rejected"
+    assert rs._decide(link, {"place_id": "pl_b", "decision": "reject", "geonames": "2"})["tier"] == "low"

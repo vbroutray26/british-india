@@ -1,0 +1,86 @@
+# Owner decisions on DP-09 place links (D-47). accept: the proposed candidate becomes the link; reject: the
+# named candidate is wrong (a different later proposal comes back for review); ghost: no modern place.
+version: 1
+decisions:
+  - place_id: pl_dhauli-73fe
+    decision: accept
+    wikidata: "Q3498218"
+    geonames: "1272806"
+    candidate: "Dhauli"
+    note: "Wikidata's Dhauli is the hill and archaeological site beside the village; 4 miles south-west of Bhubaneswar agrees"
+    reviewer: owner
+    date: "2026-11-28"
+  - place_id: pl_baral-d05c
+    decision: reject
+    geonames: "9035999"
+    candidate: "Barilo"
+    note: "Barilo is 63 km from Puri; the text puts Baral 18 miles north of Puri town on the Trunk Road"
+    reviewer: owner
+    date: "2026-11-28"
+  - place_id: pl_barunai-hill-2714
+    decision: reject
+    geonames: "11624530"
+    candidate: "Bara Luni"
+    note: "Bara Luni is 79 km from Khurda; the text puts the hill one mile south of Khurda town"
+    reviewer: owner
+    date: "2026-11-28"
+  - place_id: pl_biswanath-hill-dd53
+    decision: reject
+    geonames: "11720940"
+    candidate: "Biswanāthpur"
+    note: "Biswanathpur is in another area; the text puts the hill at Jagadalpur, north of Delang station"
+    reviewer: owner
+    date: "2026-11-28"
+  - place_id: pl_balukhand-913a
+    decision: reject
+    geonames: "1277515"
+    candidate: "Bālugān"
+    note: "Balugan is a different place; Balukhand is a Government estate forming part of the civil station of Puri"
+    reviewer: owner
+    date: "2026-11-28"
+  - place_id: pl_kodhar-be95
+    decision: reject
+    wikidata: "Q2241122"
+    geonames: "1266616"
+    candidate: "Khordha"
+    note: "Khordha town is not the estate; the text puts Kodhar in the extreme north-east of the district"
+    reviewer: owner
+    date: "2026-11-28"
+  - place_id: pl_atri-e0fb
+    decision: reject
+    wikidata: "Q4817538"
+    candidate: "Atri"
+    note: "Wikidata's point (rounded to 0.1 degree) is 33 km from Khurda; the text says 8 miles"
+    reviewer: owner
+    date: "2026-11-28"
+  - place_id: pl_khurda-subdivision-40c0
+    decision: reject
+    wikidata: "Q2241122"
+    geonames: "1266616"
+    candidate: "Khordha"
+    note: "today's town, not the 1908 subdivision; boundaries changed (DP-10 crosswalk)"
+    reviewer: owner
+    date: "2026-11-28"
+  - place_id: pl_puri-subdivision-1dce
+    decision: reject
+    wikidata: "Q207799"
+    geonames: "1259184"
+    candidate: "Puri"
+    note: "today's town, not the 1908 subdivision; boundaries changed (DP-10 crosswalk)"
+    reviewer: owner
+    date: "2026-11-28"
+  - place_id: pl_puri-district-080c
+    decision: reject
+    wikidata: "Q1817158"
+    geonames: "7644928"
+    candidate: "Puri district"
+    note: "today's Puri district is smaller than the 1908 district (Khordha was split off); DP-10 crosswalk"
+    reviewer: owner
+    date: "2026-11-28"
+  - place_id: pl_parikud-f23d
+    decision: reject
+    wikidata: "Q22694493"
+    candidate: "Parikud"
+    note: "Parikud village is the estate's seat, not the 674-square-mile estate"
+    reviewer: owner
+    date: "2026-11-28"

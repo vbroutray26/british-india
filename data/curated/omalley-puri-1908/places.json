@@ -1,17 +1,5 @@
 [
  {
-  "external_ids": {
-   "wikidata": "Q4817538"
-  },
-  "geometry": {
-   "coordinates": [
-    85.3,
-    20.15
-   ],
-   "kind": "point",
-   "quality": "exact",
-   "source": "wikidata:Q4817538"
-  },
   "names": [
    {
     "kind": "primary",
@@ -19,13 +7,6 @@
     "script": "Latn",
     "source_id": "omalley-puri-1908",
     "text": "Atri"
-   },
-   {
-    "kind": "primary",
-    "lang": "hi",
-    "script": "Deva",
-    "source_id": "wikidata",
-    "text": "अट्री"
    }
   ],
   "parent_ids": [
@@ -245,6 +226,19 @@
   "type": "hill"
  },
  {
+  "external_ids": {
+   "geonames": "1272806",
+   "wikidata": "Q3498218"
+  },
+  "geometry": {
+   "coordinates": [
+    85.83333333,
+    20.18333333
+   ],
+   "kind": "point",
+   "quality": "exact",
+   "source": "wikidata:Q3498218"
+  },
   "names": [
    {
     "kind": "primary",
@@ -252,6 +246,13 @@
     "script": "Latn",
     "source_id": "omalley-puri-1908",
     "text": "Dhauli"
+   },
+   {
+    "kind": "primary",
+    "lang": "or",
+    "script": "Orya",
+    "source_id": "wikidata",
+    "text": "ଧଉଳି"
    }
   ],
   "parent_ids": [
