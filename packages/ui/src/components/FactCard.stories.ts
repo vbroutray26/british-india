@@ -16,3 +16,5 @@ export const MachineExtracted: Story = { args: { icon: 'crop', label: 'Crops', v
 export const Approximate: Story = { args: { approximate: true, review: 'edited' } };
 export const NotRecorded: Story = { args: { icon: 'school', label: 'Schools', value: undefined, review: 'unreviewed' } };
 export const LongOdia: Story = { args: { label: 'ଜନସଂଖ୍ୟା', value: 'ନମୁନା ମୂଲ୍ୟ ଯାହା ବହୁତ ଲମ୍ବା ହୋଇପାରେ', source: 'ନମୁନା ସୂତ୍ର' } };
+
+export const TextValues: Story = { args: { icon: 'temple', label: 'Temples', value: 'Lingarāj; Rājarānī; Mukteswar and 12 more', valueKind: 'text', method: 'llm', year: undefined } };

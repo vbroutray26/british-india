@@ -41,7 +41,7 @@ TYPES = ("crop", "industry", "trade_item", "market_or_fair", "port", "railway", 
          "cyclone", "epidemic", "temple", "monument", "festival", "school", "hospital", "admin_change",
          "notable_person", "language")
 QUOTE_MIN = 92.0  # DP-07 quote check
-MAX_CHARS = 6000  # chunk size for long entries
+MAX_CHARS = 3000  # chunk size for long entries (larger chunks took over 4 minutes per call)
 VOCAB_CATEGORY = {"crop": "crop", "trade_item": "trade_item", "industry": "industry", "festival": "festival",
                   "temple": "monument", "monument": "monument", "flood": "calamity", "famine": "calamity",
                   "cyclone": "calamity", "epidemic": "calamity"}
@@ -205,11 +205,12 @@ def verify(c: dict, passages: list[dict], model: str = "", prompt_version: str =
 
 # --- stage ----------------------------------------------------------------------------------------------
 
-def run(source_id: str, prompt_version: str = "extract-v1", limit: int | None = None, runner=None) -> dict:
+def run(source_id: str, prompt_version: str = "extract-v1", limit: int | None = None, runner=None,
+        model: str | None = None) -> dict:
     from pipeline.llm import BudgetExhausted, configured_runner
 
     prompt = load_prompt(prompt_version)
-    runner = runner or configured_runner()
+    runner = runner or configured_runner(model)
     model = runner.client.model
     run_id = f"{prompt_version}:{model}"
     entries = [e for e in read_jsonl(INTERIM_DIR / "segment" / source_id / "entries.jsonl") if e["kind"] == "gazetteer"]
@@ -270,6 +271,7 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--source")
     ap.add_argument("--prompt", default="extract-v1")
     ap.add_argument("--limit", type=int)
+    ap.add_argument("--model", help="override config/llm.yaml's model (to compare models on GS-EXTRACT)")
     a = ap.parse_args(argv)
     if a.cmd == "models":
         print("\n".join(models()))
@@ -279,7 +281,7 @@ def main(argv: list[str] | None = None) -> int:
     from pipeline.llm import MissingKey
 
     try:
-        print(json.dumps(run(a.source, a.prompt, a.limit), indent=2))
+        print(json.dumps(run(a.source, a.prompt, a.limit, model=a.model), indent=2))
     except MissingKey as e:
         print(f"DP-06: {e}. Add it to pipeline/.env as GEMINI_API_KEY=... (that file is gitignored).")
         return 2

@@ -64,7 +64,7 @@ class GeminiClient(LLMClient):
     provider = "gemini"
     URL = "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
 
-    def __init__(self, model: str, env_file: Path | None = REPO_ROOT / "pipeline" / ".env", timeout: float = 120):
+    def __init__(self, model: str, env_file: Path | None = REPO_ROOT / "pipeline" / ".env", timeout: float = 240):
         key = _key_from("GEMINI_API_KEY", env_file)
         if not key:
             raise MissingKey("GEMINI_API_KEY is not set (environment or pipeline/.env)")
@@ -84,9 +84,14 @@ class GeminiClient(LLMClient):
             with urllib.request.urlopen(req, timeout=self.timeout) as r:
                 data = json.loads(r.read())
         except urllib.error.HTTPError as e:
-            if e.code in (429, 500, 503):
+            body = e.read()
+            if e.code == 429 and b"PerDay" in body:  # the day's free quota is spent: retrying cannot help
+                raise BudgetExhausted(f"{self.model}: daily quota spent (HTTP 429); resumes after the reset") from None
+            if e.code in (429, 500, 503, 504):
                 raise RateLimited(f"HTTP {e.code}") from None
-            raise RuntimeError(f"Gemini HTTP {e.code}: {e.read()[:300]!r}") from None
+            raise RuntimeError(f"Gemini HTTP {e.code}: {body[:300]!r}") from None
+        except (TimeoutError, urllib.error.URLError, ConnectionError) as e:  # transient: back off and retry
+            raise RateLimited(f"{type(e).__name__}: {e}") from None
         parts = (data.get("candidates") or [{}])[0].get("content", {}).get("parts", [])
         return "".join(p.get("text", "") for p in parts)
 
@@ -105,7 +110,7 @@ class Budget:
 
     def check(self, provider: str) -> None:
         used = self._load()["used"].get(provider, 0)
-        limit = self.limits.get(provider)
+        limit = self.limits.get(provider, self.limits.get(provider.split(":")[0]))
         if limit is not None and used >= STOP_AT * limit:
             raise BudgetExhausted(f"{provider}: {used} of {limit} requests used today; resumes tomorrow")
 
@@ -126,18 +131,22 @@ class Runner:
     def key(self, system: str, user: str, prompt_version: str) -> str:
         return sha256_text(system, user, prompt_version, self.client.model)
 
+    @property
+    def budget_key(self) -> str:
+        return f"{self.client.provider}:{self.client.model}"
+
     def complete(self, system: str, user: str, prompt_version: str) -> str:
         path = self.cache_dir / f"{self.key(system, user, prompt_version)}.json"
         if path.exists():
             return json.loads(path.read_text())["response"]
         for attempt in range(self.retries + 1):
-            self.budget.check(self.client.provider)
+            self.budget.check(self.budget_key)
             wait = self.min_interval - (time.monotonic() - self._last)
             if wait > 0:
                 self.sleep(wait)
             self._last = time.monotonic()
             try:
-                self.budget.spend(self.client.provider)
+                self.budget.spend(self.budget_key)
                 out = self.client._complete(system, user)
                 break
             except RateLimited as e:
@@ -152,13 +161,15 @@ class Runner:
         return out
 
 
-def configured_runner() -> Runner:
-    """The provider, model and limits in config/llm.yaml."""
+def configured_runner(model: str | None = None) -> Runner:
+    """The provider and model in config/llm.yaml (or `model`), with that model's limits."""
     cfg = read_yaml(CONFIG_DIR / "llm.yaml")
     p = cfg["provider"]
-    client = GeminiClient(model=cfg[p]["model"]) if p == "gemini" else None
-    if client is None:
+    if p != "gemini":
         raise ValueError(f"unknown provider {p}")
+    model = model or cfg[p]["model"]
+    lim = cfg[p]["limits"].get(model, cfg[p]["limits"]["default"])
     d = INTERIM_DIR / "llm"
-    return Runner(client, cache_dir=d / "cache", budget=Budget(d / "quota.json", {p: cfg[p]["requests_per_day"]}),
-                  min_interval=60.0 / cfg[p]["requests_per_minute"])
+    return Runner(GeminiClient(model=model), cache_dir=d / "cache",
+                  budget=Budget(d / "quota.json", {f"{p}:{model}": lim["requests_per_day"]}),
+                  min_interval=60.0 / lim["requests_per_minute"])

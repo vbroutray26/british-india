@@ -165,3 +165,46 @@ def test_page_is_where_the_quote_is_printed_not_where_the_passage_starts():
     ok, _ = ex.verify(_cand(type="festival", value={"label": "Chaitra Sankrānti"}, quote="on Chaitra Sankrānti day in March"),
                       ps, spans=spans)
     assert ok["page"] == "251"
+
+
+def test_a_timeout_is_retried_like_a_rate_limit(monkeypatch):
+    import urllib.request
+
+    monkeypatch.setenv("GEMINI_API_KEY", "test-key-not-real")
+    c = llm.GeminiClient(model="m", env_file=None)
+
+    def slow(*a, **k):
+        raise TimeoutError("The read operation timed out")
+    monkeypatch.setattr(urllib.request, "urlopen", slow)
+    with pytest.raises(llm.RateLimited):
+        c._complete("s", "u")
+
+
+def _http_error(code, body):
+    import io
+    import urllib.error
+    return urllib.error.HTTPError("u", code, "x", {}, io.BytesIO(body))
+
+
+def test_a_daily_quota_429_stops_the_run_instead_of_retrying(monkeypatch):
+    import urllib.request
+
+    monkeypatch.setenv("GEMINI_API_KEY", "test-key-not-real")
+    c = llm.GeminiClient(model="m", env_file=None)
+    body = b'{"error": {"code": 429, "details": [{"violations": [{"quotaId": "GenerateRequestsPerDayPerProjectPerModel-FreeTier"}]}]}}'
+    monkeypatch.setattr(urllib.request, "urlopen", lambda *a, **k: (_ for _ in ()).throw(_http_error(429, body)))
+    with pytest.raises(llm.BudgetExhausted):
+        c._complete("s", "u")
+    body = b'{"error": {"code": 429, "details": [{"violations": [{"quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier"}]}]}}'
+    monkeypatch.setattr(urllib.request, "urlopen", lambda *a, **k: (_ for _ in ()).throw(_http_error(429, body)))
+    with pytest.raises(llm.RateLimited):
+        c._complete("s", "u")
+
+
+def test_budgets_are_counted_per_model(tmp_path):
+    b = llm.Budget(tmp_path / "q.json", {"gemini:big": 10, "gemini": 100})
+    for _ in range(9):
+        b.spend("gemini:big")
+    with pytest.raises(llm.BudgetExhausted):
+        b.check("gemini:big")
+    b.check("gemini:lite")  # another model: its own count, the provider's limit

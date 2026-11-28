@@ -184,3 +184,12 @@ describe('SearchResults (FR-SRCH-04, AC-SRCH-04)', () => {
     expect(screen.getByRole('status')).toHaveTextContent('No passages match');
   });
 });
+
+describe('FactCard text values', () => {
+  it('sets names in reading type, figures in display type', () => {
+    const { container } = render(C.FactCard, { icon: 'temple', label: 'Temples', value: 'Lingarāj; Rājarānī', valueKind: 'text', review: 'unreviewed', labels: L.fact });
+    expect(container.querySelector('.value')).toHaveClass('text');
+    const { container: c2 } = render(C.FactCard, { icon: 'population', label: 'Population', value: '49,334', review: 'unreviewed', labels: L.fact });
+    expect(c2.querySelector('.value')).not.toHaveClass('text');
+  });
+});

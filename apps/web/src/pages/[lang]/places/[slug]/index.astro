@@ -21,7 +21,12 @@ const facts = factsFor(p.place_id);
 const CARD_TYPES = ['population', 'area'];
 const groups = CARD_TYPES.map((type) => ({ type, figures: distinctFigures(facts.filter((f) => f.type === type)) }));
 const lists = LIST_TYPES.map((type) => ({ type, items: facts.filter((f) => f.type === type) })).filter((g) => g.items.length);
-const labelsOf = (fs: Fact[]) => [...new Set(fs.map((f) => f.value.label ?? ''))].filter(Boolean).join('; ');
+const SHOW = 6;
+const labelsOf = (fs: Fact[]) => {
+  const all = [...new Set(fs.map((f) => f.value.label ?? ''))].filter(Boolean);
+  const head = all.slice(0, SHOW).join('; ');
+  return all.length > SHOW ? `${head} ${t('fact.andMore', lang).replace('{n}', String(all.length - SHOW))}` : head;
+};
 const children = (p.child_ids ?? []).map(place).filter((c): c is Place => Boolean(c));
 const own = entriesFor(p.place_id);
 const fig = (f: Fact) => (f.value.number === undefined ? '' : formatNumber(f.value.number, lang));
@@ -97,6 +102,7 @@ const excerpt = (entryId: string) => {
               icon={FACT_ICON[type]}
               label={factTypeLabel(type, lang)}
               value={labelsOf(items)}
+              valueKind="text"
               source={sourceText(items[0])}
               passageHref={`/${lang}/facts/${items[0].fact_id}/`}
               review={items.every((f) => f.review.status === 'accepted' || f.review.status === 'edited') ? 'accepted' : 'unreviewed'}

@@ -1,9 +1,11 @@
 # LLM provider for DP-06 (and later DP-08, DP-11). Owner's choice 2026-11-27: Gemini (spec D-04).
 # The key is never here: set GEMINI_API_KEY in pipeline/.env (gitignored) or the environment.
-# Free-tier limits change often [verify]: check https://ai.google.dev/gemini-api/docs/rate-limits before a run
-# and set the numbers below to the current ones for the model. Runs stop at 90% of requests_per_day.
+# Free-tier limits are per model and change often [verify]: https://ai.google.dev/gemini-api/docs/rate-limits
+# Runs stop at 90% of requests_per_day; a 429 naming a per-day quota also stops the run (resume after the reset).
 provider: gemini
 gemini:
-  model: gemini-2.5-flash        # [verify] current free-tier model; `python -m pipeline.extract models` lists them
-  requests_per_minute: 10        # [verify]
-  requests_per_day: 250          # [verify]
+  model: gemini-3.5-flash-lite   # 2026-11-28: gemini-3.8-flash's free quota ran out after ~20 requests; compare both on GS-EXTRACT
+  limits:
+    gemini-3.8-flash: {requests_per_minute: 5, requests_per_day: 20}   # 429 PerDay after ~20 on 2026-11-28
+    gemini-3.5-flash-lite: {requests_per_minute: 10, requests_per_day: 250}  # [verify]
+    default: {requests_per_minute: 5, requests_per_day: 20}

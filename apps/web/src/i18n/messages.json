@@ -554,5 +554,10 @@
     "en": "Read from the passage by a language model; the quote was checked against the text. Not yet reviewed by a person.",
     "or": "ଏକ ଭାଷା ମଡେଲ ଦ୍ୱାରା ଅନୁଚ୍ଛେଦରୁ ପଢ଼ାଯାଇଛି; ଉଦ୍ଧୃତିଟି ପାଠ ସହ ମିଳାଯାଇଛି। ଏପର୍ଯ୍ୟନ୍ତ କୌଣସି ବ୍ୟକ୍ତି ସମୀକ୍ଷା କରିନାହାଁନ୍ତି।",
     "hi": "एक भाषा मॉडल द्वारा अंश से पढ़ा गया; उद्धरण को पाठ से मिलाया गया। अभी किसी व्यक्ति ने समीक्षा नहीं की।"
+  },
+  "fact.andMore": {
+    "en": "and {n} more",
+    "or": "ଏବଂ ଆଉ {n}ଟି",
+    "hi": "और {n} अन्य"
   }
 }

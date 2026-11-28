@@ -567,5 +567,6809 @@
    "number": 888592,
    "unit": "persons"
   }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 832,
+    "char_start": 781,
+    "passage_id": "ps_omalley_b4d0aabc2c_04",
+    "quote": "the special edicts portion was revised by M. Senart"
+   }
+  ],
+  "fact_id": "ft_011018abfc06",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "247",
+  "place_id": "pl_dhauli-73fe",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "notable_person",
+  "value": {
+   "label": "M. Senart",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 986,
+    "char_start": 971,
+    "passage_id": "ps_omalley_50fd6c3bf3_23",
+    "quote": "Durga Paja days"
+   }
+  ],
+  "fact_id": "ft_018728c602e5",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "295",
+  "place_id": "pl_puri-0741",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "festival",
+  "value": {
+   "label": "Durga Paja days",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 129,
+    "char_start": 106,
+    "passage_id": "ps_omalley_c7303bcb5f_00",
+    "quote": "Balugān railway station"
+   }
+  ],
+  "fact_id": "ft_018d06b70058",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "233",
+  "place_id": "pl_banpur-9b6f",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "railway",
+  "value": {
+   "label": "Balugān railway station",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 408,
+    "char_start": 386,
+    "passage_id": "ps_omalley_f0236c7787_15",
+    "quote": "Varuneswar, Maitreswar"
+   }
+  ],
+  "fact_id": "ft_01eec655ddfe",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "240",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Maitreswar",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 1740,
+    "char_start": 1712,
+    "passage_id": "ps_omalley_229d939fbd_21",
+    "quote": "the case of the Black Pagoda"
+   }
+  ],
+  "fact_id": "ft_020013706c31",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "278",
+  "place_id": "pl_konarak-65bb",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "monument",
+  "value": {
+   "label": "Black Pagoda",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "as_of_year": 1627,
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 415,
+    "char_start": 146,
+    "passage_id": "ps_omalley_229d939fbd_25",
+    "quote": "In 1627 the tower was so dilapidated, and the shrine *, deserted, owing partly to the bigotry of the Muhammadan rulers, that Narasinhadeva, Raja of Khurda, removed the presiding image of the sun-god to the temple of Indra in the inner enclosure of the Jagannath temple."
+   }
+  ],
+  "fact_id": "ft_023006c750d2",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "279",
+  "place_id": "pl_konarak-65bb",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "temple of Indra",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 120,
+    "char_start": 104,
+    "passage_id": "ps_omalley_229d939fbd_21",
+    "quote": "Mr. M. H. Arnott"
+   }
+  ],
+  "fact_id": "ft_06e244d2742a",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "277",
+  "place_id": "pl_konarak-65bb",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "notable_person",
+  "value": {
+   "label": "Mr. M. H. Arnott",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 773,
+    "char_start": 749,
+    "passage_id": "ps_omalley_a5faf75bc3_18",
+    "quote": "One is called Manchapuri"
+   }
+  ],
+  "fact_id": "ft_074fc4557d79",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "257",
+  "place_id": "pl_khandagiri-525b",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "monument",
+  "value": {
+   "label": "Manchapuri",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 743,
+    "char_start": 733,
+    "passage_id": "ps_omalley_f0236c7787_15",
+    "quote": "Brahmeswar"
+   }
+  ],
+  "fact_id": "ft_07ecf40fd801",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "241",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Brahmeswar",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 777,
+    "char_start": 743,
+    "passage_id": "ps_omalley_f0236c7787_07",
+    "quote": "marking the storeys of the temple."
+   }
+  ],
+  "fact_id": "ft_08ace780e6b3",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "237",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "temple",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 789,
+    "char_start": 754,
+    "passage_id": "ps_omalley_a5faf75bc3_01",
+    "quote": "the crest crowned by a Jaina temple"
+   }
+  ],
+  "fact_id": "ft_0b6642b92b4d",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "251",
+  "place_id": "pl_khandagiri-525b",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Jaina temple",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 1551,
+    "char_start": 1543,
+    "passage_id": "ps_omalley_f0236c7787_17",
+    "quote": "Rajarani"
+   }
+  ],
+  "fact_id": "ft_0b9b24282392",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "242",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Rajarani",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 316,
+    "char_start": 279,
+    "passage_id": "ps_omalley_f0236c7787_18",
+    "quote": "except those of Jagannāth and Konārak"
+   }
+  ],
+  "fact_id": "ft_0d82abd968aa",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "242",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Jagannāth",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 345,
+    "char_start": 321,
+    "passage_id": "ps_omalley_f0236c7787_15",
+    "quote": "Kapélini, and Sāri Deula"
+   }
+  ],
+  "fact_id": "ft_0d82b44fb260",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "240",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Sāri Deula",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 502,
+    "char_start": 482,
+    "passage_id": "ps_omalley_f0236c7787_15",
+    "quote": "Siddheswar Mukteswar"
+   }
+  ],
+  "fact_id": "ft_0eccf99fd482",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "240",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Siddheswar Mukteswar",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 1.0,
+  "evidence": [
+   {
+    "char_end": 213,
+    "char_start": 180,
+    "passage_id": "ps_omalley_6431770522_00",
+    "quote": "on Chaitra Sankrānti day in March"
+   }
+  ],
+  "fact_id": "ft_0f4f9199768a",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "250",
+  "place_id": "pl_kakatpur-d5eb",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "festival",
+  "value": {
+   "label": "Chaitra Sankrānti day",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 1563,
+    "char_start": 1553,
+    "passage_id": "ps_omalley_f0236c7787_17",
+    "quote": "Siddheswar"
+   }
+  ],
+  "fact_id": "ft_10222e5a7d98",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "242",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Siddheswar",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 1262,
+    "char_start": 1209,
+    "passage_id": "ps_omalley_f0236c7787_17",
+    "quote": "The other temples mostly resemble the Lingaraj temple"
+   }
+  ],
+  "fact_id": "ft_13af7da07664",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "242",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Lingaraj",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 65,
+    "char_start": 0,
+    "passage_id": "ps_omalley_a5faf75bc3_40",
+    "quote": "Over the Trisūla cave is a white-washed temple of uncertain date."
+   }
+  ],
+  "fact_id": "ft_140a06a445a6",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "263",
+  "place_id": "pl_khandagiri-525b",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "white-washed temple",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 386,
+    "char_start": 365,
+    "passage_id": "ps_omalley_229d939fbd_05",
+    "quote": "repairs to the temple"
+   }
+  ],
+  "fact_id": "ft_1533e2ec6455",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "273",
+  "place_id": "pl_konarak-65bb",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "temple",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 110,
+    "char_start": 78,
+    "passage_id": "ps_omalley_f0236c7787_14",
+    "quote": "worship of Lingarāj or his proxy"
+   }
+  ],
+  "fact_id": "ft_1545d3c876e1",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "240",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Lingarāj or his proxy",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 1356,
+    "char_start": 1321,
+    "passage_id": "ps_omalley_f0236c7787_17",
+    "quote": "the only exceptions being Mukteswar"
+   }
+  ],
+  "fact_id": "ft_15d23e3be328",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "242",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Mukteswar",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 1.0,
+  "evidence": [
+   {
+    "char_end": 280,
+    "char_start": 246,
+    "passage_id": "ps_omalley_971dcfe7e4_00",
+    "quote": "crowned by the temple of Biswanath"
+   }
+  ],
+  "fact_id": "ft_15e0f0d9ea90",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "244",
+  "place_id": "pl_biswanath-hill-dd53",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "temple of Biswanath",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 104,
+    "char_start": 58,
+    "passage_id": "ps_omalley_50fd6c3bf3_15",
+    "quote": "The date of the dancing hall cannot be traced."
+   }
+  ],
+  "fact_id": "ft_1602d065256b",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "292",
+  "place_id": "pl_puri-0741",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "dancing hall",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 270,
+    "char_start": 202,
+    "passage_id": "ps_omalley_f0236c7787_19",
+    "quote": "after comparing the Lingaraj temple with the great pagoda at Tanjore"
+   }
+  ],
+  "fact_id": "ft_163e5356371e",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "243",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Lingaraj temple",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 134,
+    "char_start": 122,
+    "passage_id": "ps_omalley_c700cd352a_03",
+    "quote": "a dispensary"
+   }
+  ],
+  "fact_id": "ft_171b39491d1d",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "269",
+  "place_id": "pl_khurda-75c6",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "hospital",
+  "value": {
+   "label": "dispensary",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 296,
+    "char_start": 130,
+    "passage_id": "ps_omalley_f0236c7787_23",
+    "quote": "viz., Brahmeswar, Rajirini, Mukteswar, Bhaiskareswar, Siddheswar, Parasurāmeswar, Lingarij, Sari Deula, Megheswar, Varuneswar, Chitrakarni and the Sahasralingam tank."
+   }
+  ],
+  "fact_id": "ft_176403ab28ac",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "244",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Bhaiskareswar",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 328,
+    "char_start": 294,
+    "passage_id": "ps_omalley_68649050ee_00",
+    "quote": "local trade in grain and cocoanuts"
+   }
+  ],
+  "fact_id": "ft_17ad0999437d",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "298",
+  "place_id": "pl_satyabadi-9ab9",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "trade_item",
+  "value": {
+   "label": "cocoanuts",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 1061,
+    "char_start": 935,
+    "passage_id": "ps_omalley_50fd6c3bf3_16",
+    "quote": "looted the temple, broke most of the other idols, set fire to the fig tree, and demolished the temple top up to the dome-neck."
+   }
+  ],
+  "fact_id": "ft_17c6fb753542",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "292",
+  "place_id": "pl_puri-0741",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "temple",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 937,
+    "char_start": 897,
+    "passage_id": "ps_omalley_f0236c7787_22",
+    "quote": "said to have been built by Variha Kesari"
+   }
+  ],
+  "fact_id": "ft_181325f6bf32",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "244",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "notable_person",
+  "value": {
+   "label": "Variha Kesari",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 296,
+    "char_start": 130,
+    "passage_id": "ps_omalley_f0236c7787_23",
+    "quote": "viz., Brahmeswar, Rajirini, Mukteswar, Bhaiskareswar, Siddheswar, Parasurāmeswar, Lingarij, Sari Deula, Megheswar, Varuneswar, Chitrakarni and the Sahasralingam tank."
+   }
+  ],
+  "fact_id": "ft_195066d8e7d1",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "244",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Rajirini",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 346,
+    "char_start": 282,
+    "passage_id": "ps_omalley_406c0d453b_05",
+    "quote": "an extensive plain subject to inundation in years of heavy flood"
+   }
+  ],
+  "fact_id": "ft_1a556574dbdf",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "285",
+  "place_id": "pl_kotdesh-ab99",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "flood",
+  "value": {
+   "label": "inundation",
+   "vocab": "calamity:flood"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 404,
+    "char_start": 348,
+    "passage_id": "ps_omalley_406c0d453b_05",
+    "quote": "The north-east grows the lighter varieties of sdrad rice"
+   }
+  ],
+  "fact_id": "ft_1b562863f17c",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "285",
+  "place_id": "pl_kotdesh-ab99",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "crop",
+  "value": {
+   "label": "lighter varieties of sdrad rice",
+   "vocab": "crop:rice"
+  }
+ },
+ {
+  "confidence": 0.8,
+  "evidence": [
+   {
+    "char_end": 56,
+    "char_start": 0,
+    "passage_id": "ps_omalley_229d939fbd_00",
+    "quote": "? maacak—A ruined temple in the headquarters subdivision"
+   }
+  ],
+  "fact_id": "ft_1bc1bec2f463",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "271",
+  "place_id": "pl_konarak-65bb",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "ruined temple",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 57,
+    "char_start": 47,
+    "passage_id": "ps_omalley_f0236c7787_17",
+    "quote": "Sisireswar"
+   }
+  ],
+  "fact_id": "ft_1d955f6d1a1f",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "241",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Sisireswar",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 961,
+    "char_start": 870,
+    "passage_id": "ps_omalley_f0236c7787_18",
+    "quote": "and Brahmeswar, Megheswar, Rajarāni, Mukteswar, Sari Deula and Yameswar of the later groups"
+   }
+  ],
+  "fact_id": "ft_1e5165eff590",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "242",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Yameswar",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 444,
+    "char_start": 263,
+    "passage_id": "ps_omalley_229d939fbd_19",
+    "quote": "At last, in the time of the Mughal rule, the crew of a ship landed at a distance, and stealing down the coast, attacked the temple, scaled the tower, and carried off the lode-stone."
+   }
+  ],
+  "fact_id": "ft_212bf44122b5",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "277",
+  "place_id": "pl_konarak-65bb",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "admin_change",
+  "value": {
+   "label": "Mughal rule",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 90,
+    "char_start": 45,
+    "passage_id": "ps_omalley_50fd6c3bf3_19",
+    "quote": "the temples of Indra (now Siirya) and Lakshmi"
+   }
+  ],
+  "fact_id": "ft_257bd63a9e5f",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "293",
+  "place_id": "pl_puri-0741",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "temples of Indra (now Siirya)",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 296,
+    "char_start": 130,
+    "passage_id": "ps_omalley_f0236c7787_23",
+    "quote": "viz., Brahmeswar, Rajirini, Mukteswar, Bhaiskareswar, Siddheswar, Parasurāmeswar, Lingarij, Sari Deula, Megheswar, Varuneswar, Chitrakarni and the Sahasralingam tank."
+   }
+  ],
+  "fact_id": "ft_2662e5ba0c94",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "244",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Mukteswar",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 783,
+    "char_start": 759,
+    "passage_id": "ps_omalley_f0236c7787_15",
+    "quote": "Bhiskareswar on the east"
+   }
+  ],
+  "fact_id": "ft_26ae55485424",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "241",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Bhiskareswar",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 259,
+    "char_start": 186,
+    "passage_id": "ps_omalley_f0236c7787_17",
+    "quote": "Parasurāmeswar ?!* is evidently the oldest existing temple at Bhubaneswar"
+   }
+  ],
+  "fact_id": "ft_29fbd66830e0",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "241",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Parasurāmeswar",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 295,
+    "char_start": 252,
+    "passage_id": "ps_omalley_f0236c7787_15",
+    "quote": "the Vindusāgar tank group, such as Vasudeva"
+   }
+  ],
+  "fact_id": "ft_2a4a97db9a0c",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "240",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Vasudeva",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 180,
+    "char_start": 87,
+    "passage_id": "ps_omalley_229d939fbd_03",
+    "quote": "Raja Narsing Deo completed this stupendous fabric and left this mighty memorial to posterity."
+   }
+  ],
+  "fact_id": "ft_2a6a7a36ca2c",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "273",
+  "place_id": "pl_konarak-65bb",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "notable_person",
+  "value": {
+   "label": "Raja Narsing Deo",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 226,
+    "char_start": 207,
+    "passage_id": "ps_omalley_50fd6c3bf3_21",
+    "quote": "the Lokenāth temple"
+   }
+  ],
+  "fact_id": "ft_2ad265030871",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "294",
+  "place_id": "pl_puri-0741",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Lokenāth temple",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "as_of_year": 1872,
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 1097,
+    "char_start": 904,
+    "passage_id": "ps_omalley_87123b0f28_00",
+    "quote": "Raja Chandra Sekhar Mānsingh, the predecessor of the present Raja, showed great liberality in the famine of 1866 and was made a C. S. I.; the title of Raja was recognized as hereditary in 1872."
+   }
+  ],
+  "fact_id": "ft_2b131dbc47d8",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "286",
+  "place_id": "pl_parikud-f23d",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "notable_person",
+  "value": {
+   "label": "Raja Chandra Sekhar Mānsingh",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.8,
+  "evidence": [
+   {
+    "char_end": 1220,
+    "char_start": 1080,
+    "passage_id": "ps_omalley_50fd6c3bf3_07",
+    "quote": "As residents in the neighbourhood of a high road extract amusement and interest from the coaches and other equipages daily passing in review"
+   }
+  ],
+  "fact_id": "ft_2c3ca72d02cf",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "289",
+  "place_id": "pl_puri-0741",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "road",
+  "value": {
+   "label": "high road",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 316,
+    "char_start": 279,
+    "passage_id": "ps_omalley_f0236c7787_18",
+    "quote": "except those of Jagannāth and Konārak"
+   }
+  ],
+  "fact_id": "ft_2c6f6f66c810",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "242",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Konārak",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 678,
+    "char_start": 613,
+    "passage_id": "ps_omalley_e2be75b04d_00",
+    "quote": "Jagadalpur close to the Delāng station of the Puri branch railway"
+   }
+  ],
+  "fact_id": "ft_2c9dbc64feaa",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "298",
+  "place_id": "pl_puri-subdivision-1dce",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "railway",
+  "value": {
+   "label": "Puri branch railway",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 177,
+    "char_start": 127,
+    "passage_id": "ps_omalley_50fd6c3bf3_19",
+    "quote": "the temples of Vimala (or Vimalākshi) and Nrisinha"
+   }
+  ],
+  "fact_id": "ft_2e6662a92624",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "293",
+  "place_id": "pl_puri-0741",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "temples of Vimala (or Vimalākshi)",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 396,
+    "char_start": 351,
+    "passage_id": "ps_omalley_f0236c7787_15",
+    "quote": "the Papanasini tank group, such as Varuneswar"
+   }
+  ],
+  "fact_id": "ft_2eff9a66154b",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "240",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Varuneswar",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 603,
+    "char_start": 578,
+    "passage_id": "ps_omalley_229d939fbd_02",
+    "quote": "Ain-i-Akbari of Abul Fazl"
+   }
+  ],
+  "fact_id": "ft_2fb92686981d",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "272",
+  "place_id": "pl_konarak-65bb",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "notable_person",
+  "value": {
+   "label": "Abul Fazl",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 251,
+    "char_start": 197,
+    "passage_id": "ps_omalley_4e56613dfe_00",
+    "quote": "returning home with rice and other exports from Orissa"
+   }
+  ],
+  "fact_id": "ft_2fde2f956d48",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "250",
+  "place_id": "pl_kalupara-ghat-34c0",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "trade_item",
+  "value": {
+   "label": "rice and other exports from Orissa",
+   "vocab": "trade_item:rice"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 124,
+    "char_start": 93,
+    "passage_id": "ps_omalley_f0236c7787_13",
+    "quote": "the bhogas of Jagannāth temple."
+   }
+  ],
+  "fact_id": "ft_300f0b7d76d6",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "240",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Jagannāth temple",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.8,
+  "evidence": [
+   {
+    "char_end": 222,
+    "char_start": 177,
+    "passage_id": "ps_omalley_a5faf75bc3_32",
+    "quote": "the flight of steps from ans the public road."
+   }
+  ],
+  "fact_id": "ft_346893097a94",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "261",
+  "place_id": "pl_khandagiri-525b",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "road",
+  "value": {
+   "label": "public road",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 242,
+    "char_start": 198,
+    "passage_id": "ps_omalley_a5faf75bc3_14",
+    "quote": "a cave with an elephant frieze (Chhota-hāti)"
+   }
+  ],
+  "fact_id": "ft_349841041abc",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "256",
+  "place_id": "pl_khandagiri-525b",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "monument",
+  "value": {
+   "label": "Chhota-hāti",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "as_of_year": 1838,
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 300,
+    "char_start": 170,
+    "passage_id": "ps_omalley_b4d0aabc2c_04",
+    "quote": "they were first deciphered by James Prinsep, who 'published a translation in tho Journal of the Asiatic Society of Bengal in 1838."
+   }
+  ],
+  "fact_id": "ft_34b5fa0f7445",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "246",
+  "place_id": "pl_dhauli-73fe",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "notable_person",
+  "value": {
+   "label": "James Prinsep",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 727,
+    "char_start": 706,
+    "passage_id": "ps_omalley_f0236c7787_15",
+    "quote": "Rameswar on the north"
+   }
+  ],
+  "fact_id": "ft_3597b26a99ea",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "241",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Rameswar",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 128,
+    "char_start": 107,
+    "passage_id": "ps_omalley_229d939fbd_27",
+    "quote": "the time of Abul Fazl"
+   }
+  ],
+  "fact_id": "ft_36cbec0726fa",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "280",
+  "place_id": "pl_konarak-65bb",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "notable_person",
+  "value": {
+   "label": "Abul Fazl",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 378,
+    "char_start": 311,
+    "passage_id": "ps_omalley_229d939fbd_23",
+    "quote": "Corbelled walls, as in the Black Pagoda, have a tendenoy to fall in"
+   }
+  ],
+  "fact_id": "ft_36f2bcedf3c8",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "279",
+  "place_id": "pl_konarak-65bb",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Black Pagoda",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 240,
+    "char_start": 148,
+    "passage_id": "ps_omalley_363aeb85f3_00",
+    "quote": "It contains a police station, post and telegraph office, dispensary, and sub-registry office"
+   }
+  ],
+  "fact_id": "ft_37dae7b7e267",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "286",
+  "place_id": "pl_pipli-8c8e",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "hospital",
+  "value": {
+   "label": "dispensary",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 514,
+    "char_start": 386,
+    "passage_id": "ps_omalley_a5faf75bc3_18",
+    "quote": "In Patālapuri or the hell-house cave, called Manchapura by Mittra, a benched verandah leads to two side rooms and two back rooms"
+   }
+  ],
+  "fact_id": "ft_38de998199d7",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "257",
+  "place_id": "pl_khandagiri-525b",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "monument",
+  "value": {
+   "label": "Patālapuri or the hell-house cave",
+   "vocab": "monument:cave"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 3017,
+    "char_start": 2965,
+    "passage_id": "ps_omalley_50fd6c3bf3_20",
+    "quote": "gundichā pratipada, the stick festival of the Deccan"
+   }
+  ],
+  "fact_id": "ft_3b936ec03df6",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "294",
+  "place_id": "pl_puri-0741",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "festival",
+  "value": {
+   "label": "stick festival",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 298,
+    "char_start": 266,
+    "passage_id": "ps_omalley_50fd6c3bf3_02",
+    "quote": "the Baleswara temple on the east"
+   }
+  ],
+  "fact_id": "ft_3b96041ff901",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "287",
+  "place_id": "pl_puri-0741",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Baleswara temple",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 296,
+    "char_start": 130,
+    "passage_id": "ps_omalley_f0236c7787_23",
+    "quote": "viz., Brahmeswar, Rajirini, Mukteswar, Bhaiskareswar, Siddheswar, Parasurāmeswar, Lingarij, Sari Deula, Megheswar, Varuneswar, Chitrakarni and the Sahasralingam tank."
+   }
+  ],
+  "fact_id": "ft_3ba7956e385e",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "244",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Varuneswar",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 296,
+    "char_start": 130,
+    "passage_id": "ps_omalley_f0236c7787_23",
+    "quote": "viz., Brahmeswar, Rajirini, Mukteswar, Bhaiskareswar, Siddheswar, Parasurāmeswar, Lingarij, Sari Deula, Megheswar, Varuneswar, Chitrakarni and the Sahasralingam tank."
+   }
+  ],
+  "fact_id": "ft_3dc931b4a607",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "244",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Megheswar",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 1614,
+    "char_start": 1535,
+    "passage_id": "ps_omalley_50fd6c3bf3_20",
+    "quote": "The daily rites and the periodical festivals have been described in Chapter IV."
+   }
+  ],
+  "fact_id": "ft_3e17eeee8c02",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "294",
+  "place_id": "pl_puri-0741",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "festival",
+  "value": {
+   "label": "periodical festivals",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 421,
+    "char_start": 398,
+    "passage_id": "ps_omalley_f0236c7787_15",
+    "quote": "Maitreswar, Chitrakarni"
+   }
+  ],
+  "fact_id": "ft_3e41842d9816",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "240",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Chitrakarni",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 868,
+    "char_start": 799,
+    "passage_id": "ps_omalley_f0236c7787_18",
+    "quote": "especially Parasurāmeswar, Sisireswar and Kapélini of the early group"
+   }
+  ],
+  "fact_id": "ft_3e9aa49d3660",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "242",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Kapélini",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 242,
+    "char_start": 220,
+    "passage_id": "ps_omalley_50fd6c3bf3_22",
+    "quote": "Sivardtri festival day"
+   }
+  ],
+  "fact_id": "ft_3feebe762809",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "295",
+  "place_id": "pl_puri-0741",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "festival",
+  "value": {
+   "label": "Sivardtri festival",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 128,
+    "char_start": 0,
+    "passage_id": "ps_omalley_229d939fbd_27",
+    "quote": "This magnificent temple has sunk into a state sadly different from that which still delighted the world in the time of Abul Fazl"
+   }
+  ],
+  "fact_id": "ft_40d97a2027aa",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "280",
+  "place_id": "pl_konarak-65bb",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "temple",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 252,
+    "char_start": 219,
+    "passage_id": "ps_omalley_c700cd352a_00",
+    "quote": "connected by a good metalled road"
+   }
+  ],
+  "fact_id": "ft_413ab08d2065",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "268",
+  "place_id": "pl_khurda-75c6",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "road",
+  "value": {
+   "label": "good metalled road",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 216,
+    "char_start": 181,
+    "passage_id": "ps_omalley_229d939fbd_36",
+    "quote": "it is mentioned as the Black Pagoda"
+   }
+  ],
+  "fact_id": "ft_41c101e0a1bc",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "283",
+  "place_id": "pl_konarak-65bb",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Black Pagoda",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 328,
+    "char_start": 294,
+    "passage_id": "ps_omalley_68649050ee_00",
+    "quote": "local trade in grain and cocoanuts"
+   }
+  ],
+  "fact_id": "ft_43d3f43e0397",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "298",
+  "place_id": "pl_satyabadi-9ab9",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "trade_item",
+  "value": {
+   "label": "grain",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 33,
+    "char_start": 0,
+    "passage_id": "ps_omalley_f0236c7787_02",
+    "quote": "The village contains a dispensary"
+   }
+  ],
+  "fact_id": "ft_4785861ad3ce",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "235",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "hospital",
+  "value": {
+   "label": "dispensary",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 184,
+    "char_start": 159,
+    "passage_id": "ps_omalley_f0236c7787_17",
+    "quote": "earlier than the Lingarāj"
+   }
+  ],
+  "fact_id": "ft_4800302ae4e7",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "241",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Lingarāj",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 1596,
+    "char_start": 1539,
+    "passage_id": "ps_omalley_50fd6c3bf3_05",
+    "quote": "Close by is a monument said to mark the grave of Haridasa"
+   }
+  ],
+  "fact_id": "ft_481df8f5a15b",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "288",
+  "place_id": "pl_puri-0741",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "monument",
+  "value": {
+   "label": "monument said to mark the grave of Haridasa",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 149,
+    "char_start": 139,
+    "passage_id": "ps_omalley_a5faf75bc3_18",
+    "quote": "Patalapuri"
+   }
+  ],
+  "fact_id": "ft_48e1803b5b2e",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "257",
+  "place_id": "pl_khandagiri-525b",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "monument",
+  "value": {
+   "label": "Patalapuri",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 1.0,
+  "evidence": [
+   {
+    "char_end": 89,
+    "char_start": 70,
+    "passage_id": "ps_omalley_971dcfe7e4_00",
+    "quote": "Puri branch railway"
+   }
+  ],
+  "fact_id": "ft_496a7be65475",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "244",
+  "place_id": "pl_biswanath-hill-dd53",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "railway",
+  "value": {
+   "label": "Puri branch railway",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 177,
+    "char_start": 127,
+    "passage_id": "ps_omalley_50fd6c3bf3_19",
+    "quote": "the temples of Vimala (or Vimalākshi) and Nrisinha"
+   }
+  ],
+  "fact_id": "ft_4a0c70338742",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "293",
+  "place_id": "pl_puri-0741",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Nrisinha",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 961,
+    "char_start": 870,
+    "passage_id": "ps_omalley_f0236c7787_18",
+    "quote": "and Brahmeswar, Megheswar, Rajarāni, Mukteswar, Sari Deula and Yameswar of the later groups"
+   }
+  ],
+  "fact_id": "ft_4a92d597efe0",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "242",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Rajarāni",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 397,
+    "char_start": 327,
+    "passage_id": "ps_omalley_229d939fbd_38",
+    "quote": "The road from Puri passes through a long stretch of sand or sand-hills"
+   }
+  ],
+  "fact_id": "ft_4bf970961d72",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "284",
+  "place_id": "pl_konarak-65bb",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "road",
+  "value": {
+   "label": "road from Puri",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 288,
+    "char_start": 267,
+    "passage_id": "ps_omalley_50fd6c3bf3_25",
+    "quote": "Chaitanya's biography"
+   }
+  ],
+  "fact_id": "ft_4d4c1db66217",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "296",
+  "place_id": "pl_puri-0741",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "notable_person",
+  "value": {
+   "label": "Chaitanya",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 104,
+    "char_start": 73,
+    "passage_id": "ps_omalley_a5faf75bc3_18",
+    "quote": "two open caves called Thākurāni"
+   }
+  ],
+  "fact_id": "ft_4d5e5cf29265",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "257",
+  "place_id": "pl_khandagiri-525b",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "monument",
+  "value": {
+   "label": "Thākurāni",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 513,
+    "char_start": 475,
+    "passage_id": "ps_omalley_b4d0aabc2c_14",
+    "quote": "Balkati, still a large centre of trade"
+   }
+  ],
+  "fact_id": "ft_4fa1d1f95d8c",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "250",
+  "place_id": "pl_dhauli-73fe",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "trade_item",
+  "value": {
+   "label": "Balkati",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 374,
+    "char_start": 342,
+    "passage_id": "ps_omalley_e2be75b04d_02",
+    "quote": "the Asoka inscriptions at Dhauli"
+   }
+  ],
+  "fact_id": "ft_51834435ad87",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "298",
+  "place_id": "pl_puri-subdivision-1dce",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "monument",
+  "value": {
+   "label": "Asoka inscriptions at Dhauli",
+   "vocab": "monument:inscription"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 296,
+    "char_start": 130,
+    "passage_id": "ps_omalley_f0236c7787_23",
+    "quote": "viz., Brahmeswar, Rajirini, Mukteswar, Bhaiskareswar, Siddheswar, Parasurāmeswar, Lingarij, Sari Deula, Megheswar, Varuneswar, Chitrakarni and the Sahasralingam tank."
+   }
+  ],
+  "fact_id": "ft_51ba89d3be58",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "244",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Sari Deula",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 961,
+    "char_start": 870,
+    "passage_id": "ps_omalley_f0236c7787_18",
+    "quote": "and Brahmeswar, Megheswar, Rajarāni, Mukteswar, Sari Deula and Yameswar of the later groups"
+   }
+  ],
+  "fact_id": "ft_53a7696b0a72",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "242",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Sari Deula",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 672,
+    "char_start": 648,
+    "passage_id": "ps_omalley_229d939fbd_14",
+    "quote": "the port of Ghe-li-ta-lo"
+   }
+  ],
+  "fact_id": "ft_543eb0c70fe1",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "275",
+  "place_id": "pl_konarak-65bb",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "port",
+  "value": {
+   "label": "port of Ghe-li-ta-lo",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 548,
+    "char_start": 526,
+    "passage_id": "ps_omalley_f0236c7787_15",
+    "quote": "Rajārāni, and Nakeewar"
+   }
+  ],
+  "fact_id": "ft_5499ae1ad30a",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "241",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Nakeewar",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 533,
+    "char_start": 519,
+    "passage_id": "ps_omalley_229d939fbd_00",
+    "quote": "the sun-temple"
+   }
+  ],
+  "fact_id": "ft_54a28fa88cbf",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "271",
+  "place_id": "pl_konarak-65bb",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "sun-temple",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 274,
+    "char_start": 219,
+    "passage_id": "ps_omalley_e2be75b04d_02",
+    "quote": "The famous temple of Jagannath is situated in Puri town"
+   }
+  ],
+  "fact_id": "ft_54b2a0c445f0",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "298",
+  "place_id": "pl_puri-subdivision-1dce",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "temple of Jagannath",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 118,
+    "char_start": 63,
+    "passage_id": "ps_omalley_50fd6c3bf3_17",
+    "quote": "a hurricane once blew down the wheel on the temple top."
+   }
+  ],
+  "fact_id": "ft_557e95f49f98",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "292",
+  "place_id": "pl_puri-0741",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "cyclone",
+  "value": {
+   "label": "hurricane",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 1643,
+    "char_start": 1588,
+    "passage_id": "ps_omalley_50fd6c3bf3_05",
+    "quote": "Haridasa, the well-known Musalmān follower of Chaitanya"
+   }
+  ],
+  "fact_id": "ft_569d1f08ceb7",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "288",
+  "place_id": "pl_puri-0741",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "notable_person",
+  "value": {
+   "label": "Chaitanya",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 296,
+    "char_start": 130,
+    "passage_id": "ps_omalley_f0236c7787_23",
+    "quote": "viz., Brahmeswar, Rajirini, Mukteswar, Bhaiskareswar, Siddheswar, Parasurāmeswar, Lingarij, Sari Deula, Megheswar, Varuneswar, Chitrakarni and the Sahasralingam tank."
+   }
+  ],
+  "fact_id": "ft_56e88ffa5f33",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "244",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Brahmeswar",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "as_of_year": 1899,
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 77,
+    "char_start": 0,
+    "passage_id": "ps_omalley_f0236c7787_23",
+    "quote": "Since 1899 Government has been carrying out repairs to several of the temples"
+   }
+  ],
+  "fact_id": "ft_57e9ac4783d0",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "244",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "admin_change",
+  "value": {
+   "label": "Government has been carrying out repairs to several of the temples",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 273,
+    "char_start": 140,
+    "passage_id": "ps_omalley_a5faf75bc3_00",
+    "quote": "It is approached from that place by a road that, after crossing the railway line, runs through an undulating stretch of arid laterite"
+   }
+  ],
+  "fact_id": "ft_58920b4324b2",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "250",
+  "place_id": "pl_khandagiri-525b",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "railway",
+  "value": {
+   "label": "railway line",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 60,
+    "char_start": 0,
+    "passage_id": "ps_omalley_50fd6c3bf3_18",
+    "quote": "The temple rises over the wide Car Road within double walls."
+   }
+  ],
+  "fact_id": "ft_599ee3d4aa18",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "293",
+  "place_id": "pl_puri-0741",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "road",
+  "value": {
+   "label": "Car Road",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "as_of_year": 1840,
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 753,
+    "char_start": 712,
+    "passage_id": "ps_omalley_363aeb85f3_00",
+    "quote": "an Oriya named Daitāri, to Pipli in 1840."
+   }
+  ],
+  "fact_id": "ft_5a836a182151",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "286",
+  "place_id": "pl_pipli-8c8e",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "notable_person",
+  "value": {
+   "label": "Daitāri",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 299,
+    "char_start": 204,
+    "passage_id": "ps_omalley_229d939fbd_32",
+    "quote": "The image can be still seen in the temple of Indra within the enclosure of the Jagannāth temple"
+   }
+  ],
+  "fact_id": "ft_5ad0f2be0d9e",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "282",
+  "place_id": "pl_konarak-65bb",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "temple of Indra",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 337,
+    "char_start": 282,
+    "passage_id": "ps_omalley_e2be75b04d_02",
+    "quote": "other important remains are the Black Pagoda at Konārak"
+   }
+  ],
+  "fact_id": "ft_5c060e5050e8",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "298",
+  "place_id": "pl_puri-subdivision-1dce",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "monument",
+  "value": {
+   "label": "Black Pagoda at Konārak",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 273,
+    "char_start": 140,
+    "passage_id": "ps_omalley_a5faf75bc3_00",
+    "quote": "It is approached from that place by a road that, after crossing the railway line, runs through an undulating stretch of arid laterite"
+   }
+  ],
+  "fact_id": "ft_5c7a9f744aae",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "250",
+  "place_id": "pl_khandagiri-525b",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "road",
+  "value": {
+   "label": "road",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 1403,
+    "char_start": 1267,
+    "passage_id": "ps_omalley_f0236c7787_10",
+    "quote": "Asokāshtami (colloquially Ostasltaml), the Car Festival of Lingaraj, is held on the Sth tithi of the bright half of the month of Chaitra"
+   }
+  ],
+  "fact_id": "ft_5d52cb85b56c",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "239",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "festival",
+  "value": {
+   "label": "Asokāshtami (colloquially Ostasltaml), the Car Festival of Lingaraj",
+   "vocab": "festival:rath_jatra"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 444,
+    "char_start": 406,
+    "passage_id": "ps_omalley_406c0d453b_05",
+    "quote": "the south-west grows chiefly bara didn"
+   }
+  ],
+  "fact_id": "ft_5dc2a424c60f",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "285",
+  "place_id": "pl_kotdesh-ab99",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "crop",
+  "value": {
+   "label": "bara didn",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 961,
+    "char_start": 870,
+    "passage_id": "ps_omalley_f0236c7787_18",
+    "quote": "and Brahmeswar, Megheswar, Rajarāni, Mukteswar, Sari Deula and Yameswar of the later groups"
+   }
+  ],
+  "fact_id": "ft_5fe1a176d9e4",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "242",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Brahmeswar",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 647,
+    "char_start": 569,
+    "passage_id": "ps_omalley_c700cd352a_02",
+    "quote": "a large fair takes place during the Raja Sankrānti festival in June every year"
+   }
+  ],
+  "fact_id": "ft_61902631d565",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "269",
+  "place_id": "pl_khurda-75c6",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "market_or_fair",
+  "value": {
+   "label": "large fair",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 868,
+    "char_start": 799,
+    "passage_id": "ps_omalley_f0236c7787_18",
+    "quote": "especially Parasurāmeswar, Sisireswar and Kapélini of the early group"
+   }
+  ],
+  "fact_id": "ft_634bd46543df",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "242",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Parasurāmeswar",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 728,
+    "char_start": 684,
+    "passage_id": "ps_omalley_c700cd352a_00",
+    "quote": "The fort was taken, however, by the Marathis"
+   }
+  ],
+  "fact_id": "ft_63e5df0d54ec",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "268",
+  "place_id": "pl_khurda-75c6",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "monument",
+  "value": {
+   "label": "fort",
+   "vocab": "monument:fort"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 436,
+    "char_start": 380,
+    "passage_id": "ps_omalley_b4d0aabc2c_00",
+    "quote": "here some rock-edicts of Piyadasi or Asoka are inscribed"
+   }
+  ],
+  "fact_id": "ft_63faa7bc497f",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "245",
+  "place_id": "pl_dhauli-73fe",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "monument",
+  "value": {
+   "label": "rock-edicts of Piyadasi or Asoka",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 816,
+    "char_start": 775,
+    "passage_id": "ps_omalley_a5faf75bc3_18",
+    "quote": "and the other Swargapuri or Vaikunthapuri"
+   }
+  ],
+  "fact_id": "ft_6403bce95fa7",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "257",
+  "place_id": "pl_khandagiri-525b",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "monument",
+  "value": {
+   "label": "Swargapuri or Vaikunthapuri",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 205,
+    "char_start": 182,
+    "passage_id": "ps_omalley_50fd6c3bf3_21",
+    "quote": "the Markandeswar temple"
+   }
+  ],
+  "fact_id": "ft_640925f8f68d",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "294",
+  "place_id": "pl_puri-0741",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Markandeswar temple",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 296,
+    "char_start": 130,
+    "passage_id": "ps_omalley_f0236c7787_23",
+    "quote": "viz., Brahmeswar, Rajirini, Mukteswar, Bhaiskareswar, Siddheswar, Parasurāmeswar, Lingarij, Sari Deula, Megheswar, Varuneswar, Chitrakarni and the Sahasralingam tank."
+   }
+  ],
+  "fact_id": "ft_64a1aa34cb35",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "244",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Siddheswar",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 242,
+    "char_start": 151,
+    "passage_id": "ps_omalley_a5faf75bc3_18",
+    "quote": "The Panasa or jack-fruit cave, mentioned by Mittra as Gopālapura, is a room with a verandah"
+   }
+  ],
+  "fact_id": "ft_657ca4fd5229",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "257",
+  "place_id": "pl_khandagiri-525b",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "monument",
+  "value": {
+   "label": "Panasa or jack-fruit cave",
+   "vocab": "monument:cave"
+  }
+ },
+ {
+  "confidence": 1.0,
+  "evidence": [
+   {
+    "char_end": 83,
+    "char_start": 41,
+    "passage_id": "ps_omalley_6431770522_00",
+    "quote": "containing the temple of Mangala Thākurāni"
+   }
+  ],
+  "fact_id": "ft_67beac8a25d1",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "250",
+  "place_id": "pl_kakatpur-d5eb",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "temple of Mangala Thākurāni",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 192,
+    "char_start": 155,
+    "passage_id": "ps_omalley_f0236c7787_01",
+    "quote": "on which are grown rice or rabs erops"
+   }
+  ],
+  "fact_id": "ft_67c5efdcf2f3",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "234",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "crop",
+  "value": {
+   "label": "rice",
+   "vocab": "crop:rice"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 647,
+    "char_start": 605,
+    "passage_id": "ps_omalley_c700cd352a_02",
+    "quote": "Raja Sankrānti festival in June every year"
+   }
+  ],
+  "fact_id": "ft_697fc84c301d",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "269",
+  "place_id": "pl_khurda-75c6",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "festival",
+  "value": {
+   "label": "Raja Sankrānti festival",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 485,
+    "char_start": 383,
+    "passage_id": "ps_omalley_50fd6c3bf3_30",
+    "quote": "those of the local hospitals show that the town is singularly free from malaria and from tuberculosis."
+   }
+  ],
+  "fact_id": "ft_69c59826881f",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "297",
+  "place_id": "pl_puri-0741",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "hospital",
+  "value": {
+   "label": "local hospitals",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 267,
+    "char_start": 177,
+    "passage_id": "ps_omalley_a5faf75bc3_34",
+    "quote": "an inscrip tion of about the 10th century A. D., which speaks of a Jaina monk Subhachandra"
+   }
+  ],
+  "fact_id": "ft_69e31abdac66",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "261",
+  "place_id": "pl_khandagiri-525b",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "notable_person",
+  "value": {
+   "label": "Subhachandra",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 439,
+    "char_start": 336,
+    "passage_id": "ps_omalley_f0236c7787_10",
+    "quote": "Prathamdsltomt (colloquially Porhuāshtami), celebrated on the Sth fi/Ai of the dark half of Margasirsha"
+   }
+  ],
+  "fact_id": "ft_6aebe857e956",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "239",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "festival",
+  "value": {
+   "label": "Prathamdsltomt (colloquially Porhuāshtami)",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 95,
+    "char_start": 0,
+    "passage_id": "ps_omalley_50fd6c3bf3_20",
+    "quote": "In the centre of the stone-flagged pavement rises the great temple consisting of four buildings"
+   }
+  ],
+  "fact_id": "ft_6d7d0e7ad15e",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "293",
+  "place_id": "pl_puri-0741",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "great temple",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "as_of_year": 1627,
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 415,
+    "char_start": 146,
+    "passage_id": "ps_omalley_229d939fbd_25",
+    "quote": "In 1627 the tower was so dilapidated, and the shrine *, deserted, owing partly to the bigotry of the Muhammadan rulers, that Narasinhadeva, Raja of Khurda, removed the presiding image of the sun-god to the temple of Indra in the inner enclosure of the Jagannath temple."
+   }
+  ],
+  "fact_id": "ft_6e888a6c5021",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "279",
+  "place_id": "pl_konarak-65bb",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Jagannath temple",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 204,
+    "char_start": 188,
+    "passage_id": "ps_omalley_50fd6c3bf3_00",
+    "quote": "55 miles by rail"
+   }
+  ],
+  "fact_id": "ft_6fb2c7e9038c",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "286",
+  "place_id": "pl_puri-0741",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "railway",
+  "value": {
+   "label": "rail",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "as_of_year": 1238,
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 114,
+    "char_start": 31,
+    "passage_id": "ps_omalley_229d939fbd_02",
+    "quote": "the erection of the temple to king Narasinhadeva, who ruled from A.D, 1238 to 1264,"
+   }
+  ],
+  "fact_id": "ft_6ffb1bfedcfa",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "272",
+  "place_id": "pl_konarak-65bb",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "notable_person",
+  "value": {
+   "label": "king Narasinhadeva",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 1198,
+    "char_start": 1150,
+    "passage_id": "ps_omalley_f0236c7787_22",
+    "quote": "said to be the ruins of Lalita Kesari''s palace;"
+   }
+  ],
+  "fact_id": "ft_70ea4532d458",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "244",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "notable_person",
+  "value": {
+   "label": "Lalita Kesari",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 132,
+    "char_start": 84,
+    "passage_id": "ps_omalley_4e56613dfe_00",
+    "quote": "before the opening of the Bengal- Nagpur Railway"
+   }
+  ],
+  "fact_id": "ft_725c84c63478",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "250",
+  "place_id": "pl_kalupara-ghat-34c0",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "railway",
+  "value": {
+   "label": "Bengal- Nagpur Railway",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "as_of_year": 1898,
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 1217,
+    "char_start": 1098,
+    "passage_id": "ps_omalley_87123b0f28_00",
+    "quote": "The present Raja, Gaur Chandra Mānsingh Hari Chandan Murdrij Bhramarber Rai, received the title of Raja Bahadur in 1898"
+   }
+  ],
+  "fact_id": "ft_72b7cdfd07b4",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "286",
+  "place_id": "pl_parikud-f23d",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "notable_person",
+  "value": {
+   "label": "Gaur Chandra Mānsingh Hari Chandan Murdrij Bhramarber Rai",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 271,
+    "char_start": 204,
+    "passage_id": "ps_omalley_5ab93a89d9_02",
+    "quote": "At Bhubaneswar are situated the Lingaraj and other fine old temples"
+   }
+  ],
+  "fact_id": "ft_7528d7456265",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "270",
+  "place_id": "pl_khurda-subdivision-40c0",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Lingaraj and other fine old temples",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 422,
+    "char_start": 377,
+    "passage_id": "ps_omalley_f0236c7787_20",
+    "quote": "the Kapilahrada outside the Kapileswar temple"
+   }
+  ],
+  "fact_id": "ft_758236ae1a58",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "243",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Kapileswar temple",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 68,
+    "char_start": 42,
+    "passage_id": "ps_omalley_10cf8e2ef2_00",
+    "quote": "situated on the Trunk Road"
+   }
+  ],
+  "fact_id": "ft_758ba534f41d",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "234",
+  "place_id": "pl_baral-d05c",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "road",
+  "value": {
+   "label": "Trunk Road",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 303,
+    "char_start": 278,
+    "passage_id": "ps_omalley_50fd6c3bf3_21",
+    "quote": "the Nilakantheswar temple"
+   }
+  ],
+  "fact_id": "ft_77d6eef17526",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "294",
+  "place_id": "pl_puri-0741",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Nilakantheswar temple",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.8,
+  "evidence": [
+   {
+    "char_end": 280,
+    "char_start": 237,
+    "passage_id": "ps_omalley_f0236c7787_22",
+    "quote": "with a smalltemple in its northeast corner."
+   }
+  ],
+  "fact_id": "ft_78f8fd6dbd54",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "244",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "smalltemple",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 374,
+    "char_start": 252,
+    "passage_id": "ps_omalley_229d939fbd_13",
+    "quote": "There is no monument of Hinduism, I think, that is at once so stupendous and so perfectly proportioned as the Black Pagoda"
+   }
+  ],
+  "fact_id": "ft_793b870c7785",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "275",
+  "place_id": "pl_konarak-65bb",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Black Pagoda",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 409,
+    "char_start": 340,
+    "passage_id": "ps_omalley_a5faf75bc3_14",
+    "quote": "The Chhota-hati cave consists of one room with a doorway and a frieze"
+   }
+  ],
+  "fact_id": "ft_7a748a4135f4",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "256",
+  "place_id": "pl_khandagiri-525b",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "monument",
+  "value": {
+   "label": "Chhota-hati cave",
+   "vocab": "monument:cave"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 1723,
+    "char_start": 1702,
+    "passage_id": "ps_omalley_f0236c7787_17",
+    "quote": "and probably Vasudeva"
+   }
+  ],
+  "fact_id": "ft_7e614102deae",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "242",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Vasudeva",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 55,
+    "char_start": 10,
+    "passage_id": "ps_omalley_0fd7e9232c_00",
+    "quote": "A village situated on the Ganjim-Cuttack road"
+   }
+  ],
+  "fact_id": "ft_7fc7398edcd1",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "250",
+  "place_id": "pl_kaipadar-1431",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "road",
+  "value": {
+   "label": "Ganjim-Cuttack road",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 54,
+    "char_start": 0,
+    "passage_id": "ps_omalley_50fd6c3bf3_12",
+    "quote": "The town is dominated by the great temple of Jagannāth"
+   }
+  ],
+  "fact_id": "ft_80d16239d09f",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "291",
+  "place_id": "pl_puri-0741",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "great temple of Jagannāth",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "as_of_year": 1807,
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 763,
+    "char_start": 744,
+    "passage_id": "ps_omalley_229d939fbd_30",
+    "quote": "'G. Hartwell, 1807."
+   }
+  ],
+  "fact_id": "ft_8192cb94cd2e",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "281",
+  "place_id": "pl_konarak-65bb",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "notable_person",
+  "value": {
+   "label": "G. Hartwell",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 607,
+    "char_start": 576,
+    "passage_id": "ps_omalley_f0236c7787_10",
+    "quote": "close to the present dispensary"
+   }
+  ],
+  "fact_id": "ft_81b68ffc0c8a",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "239",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "hospital",
+  "value": {
+   "label": "dispensary",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 623,
+    "char_start": 555,
+    "passage_id": "ps_omalley_f0236c7787_15",
+    "quote": "the Gosahasreswar tank group with several temples like Gosahasreswar"
+   }
+  ],
+  "fact_id": "ft_824c668d1538",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "241",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Gosahasreswar",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 296,
+    "char_start": 130,
+    "passage_id": "ps_omalley_f0236c7787_23",
+    "quote": "viz., Brahmeswar, Rajirini, Mukteswar, Bhaiskareswar, Siddheswar, Parasurāmeswar, Lingarij, Sari Deula, Megheswar, Varuneswar, Chitrakarni and the Sahasralingam tank."
+   }
+  ],
+  "fact_id": "ft_828d1914cd87",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "244",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Chitrakarni",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 1.0,
+  "evidence": [
+   {
+    "char_end": 189,
+    "char_start": 114,
+    "passage_id": "ps_omalley_404edc2256_00",
+    "quote": "it has risen to importance since it was tapped by the Bengal-Nagpur Railway"
+   }
+  ],
+  "fact_id": "ft_831144d9960f",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "250",
+  "place_id": "pl_jatni-545a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "railway",
+  "value": {
+   "label": "Bengal-Nagpur Railway",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 1701,
+    "char_start": 1675,
+    "passage_id": "ps_omalley_f0236c7787_17",
+    "quote": "would seem to be Megheswar"
+   }
+  ],
+  "fact_id": "ft_83299dfb1442",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "242",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Megheswar",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 1391,
+    "char_start": 1368,
+    "passage_id": "ps_omalley_f0236c7787_17",
+    "quote": "and probably Sari Deula"
+   }
+  ],
+  "fact_id": "ft_832fde5d0b23",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "242",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Sari Deula",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 1004,
+    "char_start": 910,
+    "passage_id": "ps_omalley_a5faf75bc3_43",
+    "quote": "Jaina images in several of the Khandagiri caves, which apparently were looked upon as temples."
+   }
+  ],
+  "fact_id": "ft_83d45c388db4",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "264",
+  "place_id": "pl_khandagiri-525b",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Jaina images in several of the Khandagiri caves",
+   "vocab": "monument:cave"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 1345,
+    "char_start": 1197,
+    "passage_id": "ps_omalley_50fd6c3bf3_26",
+    "quote": "along the very broad road from the temple to the garden, along which the famous car is dragged by the willing hands of devotees or of hired coolies."
+   }
+  ],
+  "fact_id": "ft_8406674773e8",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "297",
+  "place_id": "pl_puri-0741",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "festival",
+  "value": {
+   "label": "famous car is dragged",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 57,
+    "char_start": 0,
+    "passage_id": "ps_omalley_a5faf75bc3_17",
+    "quote": "The Jayabijaya has two rooms with a verandah and terrace."
+   }
+  ],
+  "fact_id": "ft_8432ae5eb286",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "257",
+  "place_id": "pl_khandagiri-525b",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "monument",
+  "value": {
+   "label": "Jayabijaya",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 645,
+    "char_start": 568,
+    "passage_id": "ps_omalley_f0236c7787_11",
+    "quote": "Parasurdmdshtmi is observed on the eighth tithi of the bright half of Ashidha"
+   }
+  ],
+  "fact_id": "ft_850ba1c2873d",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "240",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "festival",
+  "value": {
+   "label": "Parasurdmdshtmi",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 754,
+    "char_start": 745,
+    "passage_id": "ps_omalley_f0236c7787_15",
+    "quote": "Megheswar"
+   }
+  ],
+  "fact_id": "ft_8516976fb182",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "241",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Megheswar",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 258,
+    "char_start": 193,
+    "passage_id": "ps_omalley_f0236c7787_02",
+    "quote": "The Lingarij Temple Committee have a kochadri close to the temple"
+   }
+  ],
+  "fact_id": "ft_86aa02c4ff87",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "235",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Lingarij Temple",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 329,
+    "char_start": 309,
+    "passage_id": "ps_omalley_f0236c7787_15",
+    "quote": "Sisireswar, Kapélini"
+   }
+  ],
+  "fact_id": "ft_8742c1c9c5df",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "240",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Kapélini",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 292,
+    "char_start": 272,
+    "passage_id": "ps_omalley_50fd6c3bf3_04",
+    "quote": "the Jagannāth temple"
+   }
+  ],
+  "fact_id": "ft_88607db1d12e",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "288",
+  "place_id": "pl_puri-0741",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Jagannāth temple",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 1578,
+    "char_start": 1564,
+    "passage_id": "ps_omalley_f0236c7787_17",
+    "quote": "and Kedāreswar"
+   }
+  ],
+  "fact_id": "ft_89fd74f2d7e7",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "242",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Kedāreswar",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "as_of_year": 1896,
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 876,
+    "char_start": 807,
+    "passage_id": "ps_omalley_406c0d453b_04",
+    "quote": "In January 1896 the estate was sold by auction for arrears of revenue"
+   }
+  ],
+  "fact_id": "ft_8a00fc5d9463",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "285",
+  "place_id": "pl_kotdesh-ab99",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "admin_change",
+  "value": {
+   "label": "estate was sold by auction for arrears of revenue",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 868,
+    "char_start": 799,
+    "passage_id": "ps_omalley_f0236c7787_18",
+    "quote": "especially Parasurāmeswar, Sisireswar and Kapélini of the early group"
+   }
+  ],
+  "fact_id": "ft_8a32b96dcbf4",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "242",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Sisireswar",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 455,
+    "char_start": 430,
+    "passage_id": "ps_omalley_50fd6c3bf3_00",
+    "quote": "Govinda: dwidasi festival"
+   }
+  ],
+  "fact_id": "ft_8ae69c5c2a20",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "286",
+  "place_id": "pl_puri-0741",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "festival",
+  "value": {
+   "label": "Govinda: dwidasi festival",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 194,
+    "char_start": 150,
+    "passage_id": "ps_omalley_229d939fbd_02",
+    "quote": "he built a temple to the sun-god at Konakona"
+   }
+  ],
+  "fact_id": "ft_8e7e5a463660",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "272",
+  "place_id": "pl_konarak-65bb",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "temple to the sun-god",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 630,
+    "char_start": 618,
+    "passage_id": "ps_omalley_50fd6c3bf3_24",
+    "quote": "the Car Road"
+   }
+  ],
+  "fact_id": "ft_8f167e246830",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "296",
+  "place_id": "pl_puri-0741",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "road",
+  "value": {
+   "label": "Car Road",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 704,
+    "char_start": 684,
+    "passage_id": "ps_omalley_f0236c7787_15",
+    "quote": "Yameswar on the west"
+   }
+  ],
+  "fact_id": "ft_8f712019a1fd",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "241",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Yameswar",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 279,
+    "char_start": 117,
+    "passage_id": "ps_omalley_50fd6c3bf3_13",
+    "quote": "Most of the side temples, the inner enclosure known as kirmabedha, the present kitchen, the dancing and the refectory halls of the main temple did not then exist."
+   }
+  ],
+  "fact_id": "ft_90f1919ea49e",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "291",
+  "place_id": "pl_puri-0741",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "side temples",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 682,
+    "char_start": 649,
+    "passage_id": "ps_omalley_f0236c7787_15",
+    "quote": "including Kapileswar on the south"
+   }
+  ],
+  "fact_id": "ft_921d10b88123",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "241",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Kapileswar",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 756,
+    "char_start": 719,
+    "passage_id": "ps_omalley_50fd6c3bf3_23",
+    "quote": "Chandana-jatra (sandal-wood festival)"
+   }
+  ],
+  "fact_id": "ft_929a7aaab8a1",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "295",
+  "place_id": "pl_puri-0741",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "festival",
+  "value": {
+   "label": "Chandana-jatra",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 1535,
+    "char_start": 1497,
+    "passage_id": "ps_omalley_f0236c7787_10",
+    "quote": "pulled over the main road (Bara Dānda)"
+   }
+  ],
+  "fact_id": "ft_9330ce46a59c",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "239",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "road",
+  "value": {
+   "label": "Bara Dānda",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 613,
+    "char_start": 488,
+    "passage_id": "ps_omalley_b4d0aabc2c_02",
+    "quote": "Lower down, between the western extremities of the two ridges, is a small plainly built temple of laterite dedicated to Siva."
+   }
+  ],
+  "fact_id": "ft_93dd2aea40ff",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "246",
+  "place_id": "pl_dhauli-73fe",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "temple of laterite dedicated to Siva",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 196,
+    "char_start": 117,
+    "passage_id": "ps_omalley_50fd6c3bf3_09",
+    "quote": "the main road, named Bara Dānda, extending from the temple to the Gundichi-bari"
+   }
+  ],
+  "fact_id": "ft_973b42dd2ea3",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "290",
+  "place_id": "pl_puri-0741",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "road",
+  "value": {
+   "label": "Bara Dānda",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 868,
+    "char_start": 779,
+    "passage_id": "ps_omalley_f0236c7787_11",
+    "quote": "Yama-diitiya is celebrated on the second fifi of the bright half of the month of Karttika"
+   }
+  ],
+  "fact_id": "ft_97d2823dbae2",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "240",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "festival",
+  "value": {
+   "label": "Yama-diitiya",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "as_of_year": 1887,
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 700,
+    "char_start": 577,
+    "passage_id": "ps_omalley_b4d0aabc2c_04",
+    "quote": "the standard reading is that given by Dr. Bubler in the Reports of the Archeological Survey of Southern India, Vol. I, 1887"
+   }
+  ],
+  "fact_id": "ft_98e6d8e1b04c",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "246",
+  "place_id": "pl_dhauli-73fe",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "notable_person",
+  "value": {
+   "label": "Dr. Bubler",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "as_of_year": 1889,
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 574,
+    "char_start": 540,
+    "passage_id": "ps_omalley_afa650f6bf_00",
+    "quote": "It was accordingly resumed in 1889"
+   }
+  ],
+  "fact_id": "ft_9b58d51bc918",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "270",
+  "place_id": "pl_kodhar-be95",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "admin_change",
+  "value": {
+   "label": "It was accordingly resumed in 1889",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 1488,
+    "char_start": 1453,
+    "passage_id": "ps_omalley_87123b0f28_00",
+    "quote": "salt manufacture on the Chilka lake"
+   }
+  ],
+  "fact_id": "ft_9bce8a40d30a",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "286",
+  "place_id": "pl_parikud-f23d",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "industry",
+  "value": {
+   "label": "salt manufacture",
+   "vocab": "industry:salt_manufacture"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 288,
+    "char_start": 250,
+    "passage_id": "ps_omalley_a5faf75bc3_14",
+    "quote": "the Alakapuri cave, or Kubera's palace"
+   }
+  ],
+  "fact_id": "ft_9c021911aa89",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "256",
+  "place_id": "pl_khandagiri-525b",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "monument",
+  "value": {
+   "label": "Alakapuri cave, or Kubera's palace",
+   "vocab": "monument:cave"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 831,
+    "char_start": 817,
+    "passage_id": "ps_omalley_50fd6c3bf3_24",
+    "quote": "the Trunk Road"
+   }
+  ],
+  "fact_id": "ft_9c0d88c713f1",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "296",
+  "place_id": "pl_puri-0741",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "road",
+  "value": {
+   "label": "Trunk Road",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 888,
+    "char_start": 800,
+    "passage_id": "ps_omalley_f0236c7787_10",
+    "quote": "Méayha-saptami, celebrated on the seventh /ithi of the bright half of the month of Magha"
+   }
+  ],
+  "fact_id": "ft_9d9d64efc3bb",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "239",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "festival",
+  "value": {
+   "label": "Méayha-saptami",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 168,
+    "char_start": 107,
+    "passage_id": "ps_omalley_b4d0aabc2c_04",
+    "quote": "Discovered by Lieut. M08 | 7, who took a careful copy of them"
+   }
+  ],
+  "fact_id": "ft_9e409cf7497b",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "246",
+  "place_id": "pl_dhauli-73fe",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "notable_person",
+  "value": {
+   "label": "Lieut. M08 | 7",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 1749,
+    "char_start": 1686,
+    "passage_id": "ps_omalley_f0236c7787_08",
+    "quote": "the temple of Bhagavati was erected along with the main temples"
+   }
+  ],
+  "fact_id": "ft_9ff44d26c244",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "238",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "temple of Bhagavati",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 534,
+    "char_start": 519,
+    "passage_id": "ps_omalley_f0236c7787_15",
+    "quote": "Gauri, Rajārāni"
+   }
+  ],
+  "fact_id": "ft_a1c874c6480a",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "241",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Rajārāni",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 368,
+    "char_start": 280,
+    "passage_id": "ps_omalley_f0236c7787_11",
+    "quote": "Damana-bhanjike, held on the fourteenth tithi of the bright half of the month of Chaitra"
+   }
+  ],
+  "fact_id": "ft_a30b4e048339",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "240",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "festival",
+  "value": {
+   "label": "Damana-bhanjike",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 296,
+    "char_start": 130,
+    "passage_id": "ps_omalley_f0236c7787_23",
+    "quote": "viz., Brahmeswar, Rajirini, Mukteswar, Bhaiskareswar, Siddheswar, Parasurāmeswar, Lingarij, Sari Deula, Megheswar, Varuneswar, Chitrakarni and the Sahasralingam tank."
+   }
+  ],
+  "fact_id": "ft_a36a38e97ce1",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "244",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Lingarij",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 35,
+    "char_start": 0,
+    "passage_id": "ps_omalley_f0236c7787_17",
+    "quote": "Of the minor temples Parasurimeswar"
+   }
+  ],
+  "fact_id": "ft_a46f91b31034",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "241",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Parasurimeswar",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 558,
+    "char_start": 534,
+    "passage_id": "ps_omalley_c700cd352a_02",
+    "quote": "is the temple of Barunai"
+   }
+  ],
+  "fact_id": "ft_a5683b9b14af",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "269",
+  "place_id": "pl_khurda-75c6",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "temple of Barunai",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 75,
+    "char_start": 48,
+    "passage_id": "ps_omalley_a5faf75bc3_14",
+    "quote": "lead to the Jayabijaya cave"
+   }
+  ],
+  "fact_id": "ft_a6f16416a188",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "256",
+  "place_id": "pl_khandagiri-525b",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "monument",
+  "value": {
+   "label": "Jayabijaya cave",
+   "vocab": "monument:cave"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 778,
+    "char_start": 729,
+    "passage_id": "ps_omalley_50fd6c3bf3_09",
+    "quote": "beyond its junction with the Jagannāth Trunk Road"
+   }
+  ],
+  "fact_id": "ft_a7741dcbd1f8",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "290",
+  "place_id": "pl_puri-0741",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "road",
+  "value": {
+   "label": "Jagannāth Trunk Road",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 300,
+    "char_start": 268,
+    "passage_id": "ps_omalley_f0236c7787_13",
+    "quote": "offerings of the Vasudeva temple"
+   }
+  ],
+  "fact_id": "ft_a83619aba6d9",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "240",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Vasudeva temple",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 441,
+    "char_start": 344,
+    "passage_id": "ps_omalley_f0236c7787_01",
+    "quote": "over which once a year the god's car is pulled from the Lingaraj temple to the temple of Rāmeswar"
+   }
+  ],
+  "fact_id": "ft_aa2b2d5cb445",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "235",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "festival",
+  "value": {
+   "label": "god's car is pulled from the Lingaraj temple to the temple of Rāmeswar",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 849,
+    "char_start": 791,
+    "passage_id": "ps_omalley_f0236c7787_16",
+    "quote": "Dr. Rajendra Lala Mittra describes the carvings as follows"
+   }
+  ],
+  "fact_id": "ft_adacd3f16196",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "241",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "notable_person",
+  "value": {
+   "label": "Dr. Rajendra Lala Mittra",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 104,
+    "char_start": 35,
+    "passage_id": "ps_omalley_50fd6c3bf3_21",
+    "quote": "the temples of the eight Sambhus or Sivas guarding the eight quarters"
+   }
+  ],
+  "fact_id": "ft_ae8e1d9693ba",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "294",
+  "place_id": "pl_puri-0741",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "temples of the eight Sambhus or Sivas",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 158,
+    "char_start": 84,
+    "passage_id": "ps_omalley_a5faf75bc3_41",
+    "quote": "In the middle of this terrace stands a Jaina temple with two side temples."
+   }
+  ],
+  "fact_id": "ft_b019f0e5668b",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "264",
+  "place_id": "pl_khandagiri-525b",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Jaina temple with two side temples",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 961,
+    "char_start": 870,
+    "passage_id": "ps_omalley_f0236c7787_18",
+    "quote": "and Brahmeswar, Megheswar, Rajarāni, Mukteswar, Sari Deula and Yameswar of the later groups"
+   }
+  ],
+  "fact_id": "ft_b1b538fd5953",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "242",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Mukteswar",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "as_of_year": 1876,
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 387,
+    "char_start": 161,
+    "passage_id": "ps_omalley_64666f4087_00",
+    "quote": "in 1876 it was decided to extend the area of the land occupied by publio buildings, and a plot of land, measuring 548 acres, was acquired at a cost of Rs, 2,120, in addition to 29 acres already in the possession of Government."
+   }
+  ],
+  "fact_id": "ft_b1ba9b2891e0",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "233",
+  "place_id": "pl_balukhand-913a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "admin_change",
+  "value": {
+   "label": "in 1876 it was decided to extend the area of the land occupied by publio buildings, and a plot of land, measuring 548 acres, was acquired",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 1643,
+    "char_start": 1579,
+    "passage_id": "ps_omalley_50fd6c3bf3_05",
+    "quote": "grave of Haridasa, the well-known Musalmān follower of Chaitanya"
+   }
+  ],
+  "fact_id": "ft_b3e3a1bfb4e6",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "288",
+  "place_id": "pl_puri-0741",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "notable_person",
+  "value": {
+   "label": "Haridasa",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 897,
+    "char_start": 837,
+    "passage_id": "ps_omalley_b4d0aabc2c_04",
+    "quote": "translated by Dr. Grierson im the Indian Antiquary, Vol. XIX"
+   }
+  ],
+  "fact_id": "ft_b48124544904",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "247",
+  "place_id": "pl_dhauli-73fe",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "notable_person",
+  "value": {
+   "label": "Dr. Grierson",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 43,
+    "char_start": 0,
+    "passage_id": "ps_omalley_f0236c7787_05",
+    "quote": "The main temple consists of four structures"
+   }
+  ],
+  "fact_id": "ft_b4c9b0339f94",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "236",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "The main temple",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 524,
+    "char_start": 504,
+    "passage_id": "ps_omalley_f0236c7787_15",
+    "quote": "Kedāreswar and Gauri"
+   }
+  ],
+  "fact_id": "ft_b5de265c0cbf",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "241",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Kedāreswar and Gauri",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 420,
+    "char_start": 355,
+    "passage_id": "ps_omalley_229d939fbd_16",
+    "quote": "bearing melancholy testimony to the past civilization of the land"
+   }
+  ],
+  "fact_id": "ft_b6b542a41d10",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "276",
+  "place_id": "pl_konarak-65bb",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Konirak temple",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 1.0,
+  "evidence": [
+   {
+    "char_end": 77,
+    "char_start": 7,
+    "passage_id": "ps_omalley_404edc2256_00",
+    "quote": "A village containing the railway junction known as Khurda Road Station"
+   }
+  ],
+  "fact_id": "ft_b8df0e244b15",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "250",
+  "place_id": "pl_jatni-545a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "railway",
+  "value": {
+   "label": "railway junction known as Khurda Road Station",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 122,
+    "char_start": 0,
+    "passage_id": "ps_omalley_f0236c7787_04",
+    "quote": "The largest and the most important temple is that of Lingardj, otherwise called Kruttivisa, Bhubaneswar or Tribhubaneswar."
+   }
+  ],
+  "fact_id": "ft_b9fbe8ea2ddd",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "236",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "temple of Lingardj, otherwise called Kruttivisa, Bhubaneswar or Tribhubaneswar",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 365,
+    "char_start": 307,
+    "passage_id": "ps_omalley_363aeb85f3_00",
+    "quote": "It is the centre of a considerable trade in rice and cloth"
+   }
+  ],
+  "fact_id": "ft_ba90275289df",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "286",
+  "place_id": "pl_pipli-8c8e",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "trade_item",
+  "value": {
+   "label": "rice and cloth",
+   "vocab": "trade_item:rice"
+  }
+ },
+ {
+  "confidence": 0.8,
+  "evidence": [
+   {
+    "char_end": 175,
+    "char_start": 120,
+    "passage_id": "ps_omalley_229d939fbd_01",
+    "quote": "Samba, the hand.Sāmbu some son of Krishna and Jimyavati"
+   }
+  ],
+  "fact_id": "ft_bc001d81b90c",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "271",
+  "place_id": "pl_konarak-65bb",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "notable_person",
+  "value": {
+   "label": "Samba",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 266,
+    "char_start": 183,
+    "passage_id": "ps_omalley_c7303bcb5f_00",
+    "quote": "It contains a temple dedicated to Bhagavati, the presiding deity of the Banpur Mals"
+   }
+  ],
+  "fact_id": "ft_bc4d8044d2c5",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "233",
+  "place_id": "pl_banpur-9b6f",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "temple dedicated to Bhagavati",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 562,
+    "char_start": 487,
+    "passage_id": "ps_omalley_a5faf75bc3_14",
+    "quote": "Alakapuri, called Swargapuri by Mittra and Fergusson, is a two-storied cave"
+   }
+  ],
+  "fact_id": "ft_bcaf204d05da",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "256",
+  "place_id": "pl_khandagiri-525b",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "monument",
+  "value": {
+   "label": "Alakapuri",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "as_of_year": 1882,
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 756,
+    "char_start": 702,
+    "passage_id": "ps_omalley_b4d0aabc2c_04",
+    "quote": "prepared from impressions taken by Dr. Burgess in 1882"
+   }
+  ],
+  "fact_id": "ft_bd5a94a4349a",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "247",
+  "place_id": "pl_dhauli-73fe",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "notable_person",
+  "value": {
+   "label": "Dr. Burgess",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 118,
+    "char_start": 99,
+    "passage_id": "ps_omalley_f0236c7787_15",
+    "quote": "the Lingarāj temple"
+   }
+  ],
+  "fact_id": "ft_bd8309361e07",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "240",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Lingarāj temple",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 152,
+    "char_start": 94,
+    "passage_id": "ps_omalley_68649050ee_00",
+    "quote": "within less than a mile of the Sakshigopal railway station"
+   }
+  ],
+  "fact_id": "ft_be8cf24a4501",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "298",
+  "place_id": "pl_satyabadi-9ab9",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "railway",
+  "value": {
+   "label": "Sakshigopal railway station",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 54,
+    "char_start": 8,
+    "passage_id": "ps_omalley_363aeb85f3_00",
+    "quote": "A village situated on the Jagannith Tronk Road"
+   }
+  ],
+  "fact_id": "ft_beee39b9d10d",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "286",
+  "place_id": "pl_pipli-8c8e",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "road",
+  "value": {
+   "label": "Jagannith Tronk Road",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 200,
+    "char_start": 173,
+    "passage_id": "ps_omalley_c700cd352a_00",
+    "quote": "Khurda Road railway station"
+   }
+  ],
+  "fact_id": "ft_c018e2e6d670",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "268",
+  "place_id": "pl_khurda-75c6",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "railway",
+  "value": {
+   "label": "Khurda Road railway station",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 253,
+    "char_start": 190,
+    "passage_id": "ps_omalley_f0236c7787_16",
+    "quote": "close to it stands the temple of Siddheswar, a larger structure"
+   }
+  ],
+  "fact_id": "ft_c0301f20fe72",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "241",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "temple of Siddheswar",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 350,
+    "char_start": 268,
+    "passage_id": "ps_omalley_a5faf75bc3_34",
+    "quote": "in the 18th year of the increasingly victorious reign of Srimad Udyota-Kesari-deva"
+   }
+  ],
+  "fact_id": "ft_c132bb7cc9dd",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "261",
+  "place_id": "pl_khandagiri-525b",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "notable_person",
+  "value": {
+   "label": "Srimad Udyota-Kesari-deva",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 142,
+    "char_start": 96,
+    "passage_id": "ps_omalley_c700cd352a_00",
+    "quote": "the high road from Cuttack to Ganjām in Madras"
+   }
+  ],
+  "fact_id": "ft_c2e98ecf2d30",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "268",
+  "place_id": "pl_khurda-75c6",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "road",
+  "value": {
+   "label": "high road from Cuttack to Ganjām in Madras",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 262,
+    "char_start": 231,
+    "passage_id": "ps_omalley_50fd6c3bf3_02",
+    "quote": "the Lokanāth temple on the west"
+   }
+  ],
+  "fact_id": "ft_c30b6f5ebfbf",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "287",
+  "place_id": "pl_puri-0741",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Lokanāth temple",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 510,
+    "char_start": 409,
+    "passage_id": "ps_omalley_229d939fbd_32",
+    "quote": "there were 12 great festivals, the most important being held in the month of Magh (January- February)"
+   }
+  ],
+  "fact_id": "ft_c6207eb80739",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "282",
+  "place_id": "pl_konarak-65bb",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "festival",
+  "value": {
+   "label": "12 great festivals",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 137,
+    "char_start": 125,
+    "passage_id": "ps_omalley_5301007bce_00",
+    "quote": "paddy fields"
+   }
+  ],
+  "fact_id": "ft_c6712ff5a4ee",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "233",
+  "place_id": "pl_atri-e0fb",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "crop",
+  "value": {
+   "label": "paddy",
+   "vocab": "crop:rice"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 132,
+    "char_start": 57,
+    "passage_id": "ps_omalley_f0236c7787_18",
+    "quote": "the Lingaraj forms, on the whole, the best specimen of Orissan architecture"
+   }
+  ],
+  "fact_id": "ft_c749438bbf19",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "242",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Lingaraj",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 56,
+    "char_start": 35,
+    "passage_id": "ps_omalley_f0236c7787_02",
+    "quote": "Middle English school"
+   }
+  ],
+  "fact_id": "ft_c7b3efe4be8c",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "235",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "school",
+  "value": {
+   "label": "Middle English school",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 488,
+    "char_start": 431,
+    "passage_id": "ps_omalley_b4d0aabc2c_03",
+    "quote": "apparently connected by a canal at the north-west corner."
+   }
+  ],
+  "fact_id": "ft_c819e9e56f46",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "246",
+  "place_id": "pl_dhauli-73fe",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "canal",
+  "value": {
+   "label": "canal",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 181,
+    "char_start": 148,
+    "passage_id": "ps_omalley_c7303bcb5f_00",
+    "quote": "connected by a good metalled road"
+   }
+  ],
+  "fact_id": "ft_c868b2dd3abe",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "233",
+  "place_id": "pl_banpur-9b6f",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "road",
+  "value": {
+   "label": "metalled road",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "as_of_year": 1866,
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 1016,
+    "char_start": 1002,
+    "passage_id": "ps_omalley_87123b0f28_00",
+    "quote": "famine of 1866"
+   }
+  ],
+  "fact_id": "ft_c92d5ed5e408",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "286",
+  "place_id": "pl_parikud-f23d",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "famine",
+  "value": {
+   "label": "famine of 1866",
+   "vocab": "calamity:famine"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 90,
+    "char_start": 45,
+    "passage_id": "ps_omalley_50fd6c3bf3_19",
+    "quote": "the temples of Indra (now Siirya) and Lakshmi"
+   }
+  ],
+  "fact_id": "ft_c9300d935c4f",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "293",
+  "place_id": "pl_puri-0741",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Lakshmi",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 678,
+    "char_start": 591,
+    "passage_id": "ps_omalley_f0236c7787_04",
+    "quote": "The biggest of them is the temple of Bhagavati, wife of Siva, in the north-west corner."
+   }
+  ],
+  "fact_id": "ft_ca5c079d8544",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "236",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "temple of Bhagavati",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 99,
+    "char_start": 89,
+    "passage_id": "ps_omalley_f0236c7787_17",
+    "quote": "Uttareswar"
+   }
+  ],
+  "fact_id": "ft_cb1622c77ecd",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "241",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Uttareswar",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 200,
+    "char_start": 188,
+    "passage_id": "ps_omalley_87123b0f28_00",
+    "quote": "Raja Jaduraj"
+   }
+  ],
+  "fact_id": "ft_cbd7382effbc",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "285",
+  "place_id": "pl_parikud-f23d",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "notable_person",
+  "value": {
+   "label": "Raja Jaduraj",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "as_of_year": 666,
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 647,
+    "char_start": 503,
+    "passage_id": "ps_omalley_f0236c7787_08",
+    "quote": "Yayati Kesari began the construction of the temple, and his great-grandson Lalita Kesari completed and consecrated it in Baka 588 (A. D. 666-7)."
+   }
+  ],
+  "fact_id": "ft_cd1feedf5c4e",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "238",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "temple",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 192,
+    "char_start": 122,
+    "passage_id": "ps_omalley_a5faf75bc3_14",
+    "quote": "two small cells with verandahs, called Bajadāra or the musicians' cave"
+   }
+  ],
+  "fact_id": "ft_ce52492119cc",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "256",
+  "place_id": "pl_khandagiri-525b",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "monument",
+  "value": {
+   "label": "Bajadāra or the musicians' cave",
+   "vocab": "monument:cave"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 139,
+    "char_start": 0,
+    "passage_id": "ps_omalley_a5faf75bc3_02",
+    "quote": "The Ranihansapura or Rāninabara cave, iv., the Queen's ypaya. Palace (also called Ranigumpha) is the biggest and the most 6™ richly carved."
+   }
+  ],
+  "fact_id": "ft_cf328ff7e2c4",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "251",
+  "place_id": "pl_khandagiri-525b",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "monument",
+  "value": {
+   "label": "Ranihansapura or Rāninabara cave",
+   "vocab": "monument:cave"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 296,
+    "char_start": 130,
+    "passage_id": "ps_omalley_f0236c7787_23",
+    "quote": "viz., Brahmeswar, Rajirini, Mukteswar, Bhaiskareswar, Siddheswar, Parasurāmeswar, Lingarij, Sari Deula, Megheswar, Varuneswar, Chitrakarni and the Sahasralingam tank."
+   }
+  ],
+  "fact_id": "ft_cfc4644474e9",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "244",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Parasurāmeswar",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 755,
+    "char_start": 665,
+    "passage_id": "ps_omalley_50fd6c3bf3_05",
+    "quote": "ending on the right (near the sea) in the cemetery and on the left in the railway station."
+   }
+  ],
+  "fact_id": "ft_cfe2e0f3b38e",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "288",
+  "place_id": "pl_puri-0741",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "railway",
+  "value": {
+   "label": "railway station",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "as_of_year": 1633,
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 339,
+    "char_start": 308,
+    "passage_id": "ps_omalley_50fd6c3bf3_25",
+    "quote": "William Bruton's travels (1633)"
+   }
+  ],
+  "fact_id": "ft_d0856b32f8a3",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "296",
+  "place_id": "pl_puri-0741",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "notable_person",
+  "value": {
+   "label": "William Bruton",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 342,
+    "char_start": 263,
+    "passage_id": "ps_omalley_f0236c7787_01",
+    "quote": "In Bhubaneswar itself there is only one road worthy of the name, the Bara Dānda"
+   }
+  ],
+  "fact_id": "ft_d09d61131e05",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "235",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "road",
+  "value": {
+   "label": "Bara Dānda",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 336,
+    "char_start": 271,
+    "passage_id": "ps_omalley_229d939fbd_36",
+    "quote": "the Jagannāth temple, which was sometimes called the White Pagoda"
+   }
+  ],
+  "fact_id": "ft_d36985acec15",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "283",
+  "place_id": "pl_konarak-65bb",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Jagannāth temple",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 939,
+    "char_start": 900,
+    "passage_id": "ps_omalley_b4d0aabc2c_01",
+    "quote": "Brāhmans of the temples in the vicinity"
+   }
+  ],
+  "fact_id": "ft_d392a3d816b1",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "245",
+  "place_id": "pl_dhauli-73fe",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "temples in the vicinity",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "as_of_year": 1885,
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 742,
+    "char_start": 523,
+    "passage_id": "ps_omalley_64666f4087_00",
+    "quote": "In 1885 it was decided that Government should retain direct control of the land; and the purchase-money was therefore refunded to the municipality, and the land became Government property, known as the Balukhand estate."
+   }
+  ],
+  "fact_id": "ft_d42a1f8be9d5",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "233",
+  "place_id": "pl_balukhand-913a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "admin_change",
+  "value": {
+   "label": "In 1885 it was decided that Government should retain direct control of the land",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 1.0,
+  "evidence": [
+   {
+    "char_end": 251,
+    "char_start": 194,
+    "passage_id": "ps_omalley_404edc2256_00",
+    "quote": "made the site of the junction for the Puri branch railway"
+   }
+  ],
+  "fact_id": "ft_d48a84595236",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "250",
+  "place_id": "pl_jatni-545a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "railway",
+  "value": {
+   "label": "Puri branch railway",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 339,
+    "char_start": 265,
+    "passage_id": "ps_omalley_a5faf75bc3_24",
+    "quote": "In the centre is a stone pavement, the remains probably of a small temple."
+   }
+  ],
+  "fact_id": "ft_d4fe21a01785",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "259",
+  "place_id": "pl_khandagiri-525b",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "small temple",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 504,
+    "char_start": 401,
+    "passage_id": "ps_omalley_363aeb85f3_00",
+    "quote": "who prepare bafuds or cloth-begs and sujnis or embroidered quilts, which are much prized by the Oriyãs."
+   }
+  ],
+  "fact_id": "ft_d5e506518bc9",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "286",
+  "place_id": "pl_pipli-8c8e",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "industry",
+  "value": {
+   "label": "bafuds or cloth-begs and sujnis or embroidered quilts",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 157,
+    "char_start": 94,
+    "passage_id": "ps_omalley_0fd7e9232c_00",
+    "quote": "It contains the tomb of a Muhammadan saint called Bakhāri Sāheb"
+   }
+  ],
+  "fact_id": "ft_d633e89f03f2",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "250",
+  "place_id": "pl_kaipadar-1431",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "monument",
+  "value": {
+   "label": "tomb of a Muhammadan saint called Bakhāri Sāheb",
+   "vocab": "monument:tomb"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 1779,
+    "char_start": 1725,
+    "passage_id": "ps_omalley_50fd6c3bf3_01",
+    "quote": "whose temple has made the town famous throughout India"
+   }
+  ],
+  "fact_id": "ft_d69e369704e1",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "287",
+  "place_id": "pl_puri-0741",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "temple",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 401,
+    "char_start": 282,
+    "passage_id": "ps_omalley_229d939fbd_17",
+    "quote": "Raja Narasinhadeva, it is said, ordered his officer Sivii Santri to erect a temple at Konirak in honour of the sun-god."
+   }
+  ],
+  "fact_id": "ft_d72aa1a90f76",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "276",
+  "place_id": "pl_konarak-65bb",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "notable_person",
+  "value": {
+   "label": "Sivii Santri",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 161,
+    "char_start": 99,
+    "passage_id": "ps_omalley_10cf8e2ef2_00",
+    "quote": "It contains a temple which is visited by Hindus of all classes"
+   }
+  ],
+  "fact_id": "ft_d84b80f8ac87",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "234",
+  "place_id": "pl_baral-d05c",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "temple",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 623,
+    "char_start": 598,
+    "passage_id": "ps_omalley_229d939fbd_32",
+    "quote": "a fair is held at Konārak"
+   }
+  ],
+  "fact_id": "ft_d8b34f2c35bd",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "282",
+  "place_id": "pl_konarak-65bb",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "market_or_fair",
+  "value": {
+   "label": "fair",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 1531,
+    "char_start": 1515,
+    "passage_id": "ps_omalley_f0236c7787_17",
+    "quote": "¢.g., Brahmeswar"
+   }
+  ],
+  "fact_id": "ft_d8b5a9836a88",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "242",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Brahmeswar",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 1128,
+    "char_start": 1039,
+    "passage_id": "ps_omalley_f0236c7787_10",
+    "quote": "Kapila-jātrā celebrated on the first Saturday of the bright half of the month of Phalguna"
+   }
+  ],
+  "fact_id": "ft_da0f1bb56269",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "239",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "festival",
+  "value": {
+   "label": "Kapila-jātrā",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 344,
+    "char_start": 332,
+    "passage_id": "ps_omalley_c7303bcb5f_01",
+    "quote": "a dispensary"
+   }
+  ],
+  "fact_id": "ft_dd5a42ad75c8",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "234",
+  "place_id": "pl_banpur-9b6f",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "hospital",
+  "value": {
+   "label": "dispensary",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 117,
+    "char_start": 77,
+    "passage_id": "ps_omalley_a5faf75bc3_14",
+    "quote": "between which and the Queens' Palace lie"
+   }
+  ],
+  "fact_id": "ft_dd5e2546b2c2",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "256",
+  "place_id": "pl_khandagiri-525b",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "monument",
+  "value": {
+   "label": "Queens' Palace",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 401,
+    "char_start": 282,
+    "passage_id": "ps_omalley_229d939fbd_17",
+    "quote": "Raja Narasinhadeva, it is said, ordered his officer Sivii Santri to erect a temple at Konirak in honour of the sun-god."
+   }
+  ],
+  "fact_id": "ft_decbef613931",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "276",
+  "place_id": "pl_konarak-65bb",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "notable_person",
+  "value": {
+   "label": "Raja Narasinhadeva",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 1192,
+    "char_start": 1127,
+    "passage_id": "ps_omalley_50fd6c3bf3_26",
+    "quote": "native town of Puri, built around the square of Jagannath' temple"
+   }
+  ],
+  "fact_id": "ft_ded7153d1c47",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "296",
+  "place_id": "pl_puri-0741",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Jagannath' temple",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.8,
+  "evidence": [
+   {
+    "char_end": 751,
+    "char_start": 411,
+    "passage_id": "ps_omalley_229d939fbd_22",
+    "quote": "It was found that, to keep the corbelling in place after a height of 30 feet from the starting point of the corbelling was reached, sand had to be kept below to widen the base, so that the weight of the corbelling fell within it, or weights placed on the exterior of the stones that were being corbelled ; otherwise the structure collapsed."
+   }
+  ],
+  "fact_id": "ft_e063bc8f9672",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "278",
+  "place_id": "pl_konarak-65bb",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Konārak temple",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 455,
+    "char_start": 393,
+    "passage_id": "ps_omalley_68649050ee_00",
+    "quote": "the temple dedicated to Sakshigopal, an incarnation of Krishna"
+   }
+  ],
+  "fact_id": "ft_e10b684488b2",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "298",
+  "place_id": "pl_satyabadi-9ab9",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "temple dedicated to Sakshigopal",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 125,
+    "char_start": 95,
+    "passage_id": "ps_omalley_a5faf75bc3_08",
+    "quote": "during some religious festival"
+   }
+  ],
+  "fact_id": "ft_e14032dd2ed3",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "254",
+  "place_id": "pl_khandagiri-525b",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "festival",
+  "value": {
+   "label": "religious festival",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 307,
+    "char_start": 287,
+    "passage_id": "ps_omalley_f0236c7787_15",
+    "quote": "Vasudeva, Uttareswar"
+   }
+  ],
+  "fact_id": "ft_e2c1f244070d",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "240",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Uttareswar",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 1457,
+    "char_start": 1377,
+    "passage_id": "ps_omalley_50fd6c3bf3_11",
+    "quote": "practically the only products being a few painted pictures and earthen i images."
+   }
+  ],
+  "fact_id": "ft_e3f8d2ce34c4",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "291",
+  "place_id": "pl_puri-0741",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "industry",
+  "value": {
+   "label": "painted pictures",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 1.0,
+  "evidence": [
+   {
+    "char_end": 417,
+    "char_start": 375,
+    "passage_id": "ps_omalley_971dcfe7e4_00",
+    "quote": "during Raja Sankrānti in the month of June"
+   }
+  ],
+  "fact_id": "ft_e47df2244697",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "244",
+  "place_id": "pl_biswanath-hill-dd53",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "festival",
+  "value": {
+   "label": "Raja Sankrānti",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 692,
+    "char_start": 614,
+    "passage_id": "ps_omalley_a5faf75bc3_49",
+    "quote": "the Jaina Parwirs of Cuttack built the Jaina temple on the crest of Khandagiri"
+   }
+  ],
+  "fact_id": "ft_e71454230486",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "268",
+  "place_id": "pl_khandagiri-525b",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Jaina temple",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 480,
+    "char_start": 456,
+    "passage_id": "ps_omalley_f0236c7787_15",
+    "quote": "including Parasurāmeswar"
+   }
+  ],
+  "fact_id": "ft_e861a23e0931",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "240",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Parasurāmeswar",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 319,
+    "char_start": 297,
+    "passage_id": "ps_omalley_f0236c7787_15",
+    "quote": "Uttareswar, Sisireswar"
+   }
+  ],
+  "fact_id": "ft_e87b0d80ac41",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "240",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Sisireswar",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 961,
+    "char_start": 870,
+    "passage_id": "ps_omalley_f0236c7787_18",
+    "quote": "and Brahmeswar, Megheswar, Rajarāni, Mukteswar, Sari Deula and Yameswar of the later groups"
+   }
+  ],
+  "fact_id": "ft_e901aea1babd",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "242",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Megheswar",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 1869,
+    "char_start": 1770,
+    "passage_id": "ps_omalley_f0236c7787_17",
+    "quote": "Curiously enough, Vasudeva on the Vindusigar tank is the only temple of Vishnu in this city of Siva"
+   }
+  ],
+  "fact_id": "ft_e95d25c84b52",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "242",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Vasudeva on the Vindusigar tank",
+   "vocab": "monument:tank"
+  }
+ },
+ {
+  "confidence": 1.0,
+  "evidence": [
+   {
+    "char_end": 519,
+    "char_start": 473,
+    "passage_id": "ps_omalley_6431770522_00",
+    "quote": "immunity from attaoks of small-pox and cholera"
+   }
+  ],
+  "fact_id": "ft_e99b36e48cf0",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "250",
+  "place_id": "pl_kakatpur-d5eb",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "epidemic",
+  "value": {
+   "label": "small-pox and cholera",
+   "vocab": "calamity:cholera"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 125,
+    "char_start": 110,
+    "passage_id": "ps_omalley_a5faf75bc3_18",
+    "quote": "the Panasa cave"
+   }
+  ],
+  "fact_id": "ft_ed19ae62fcfd",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "257",
+  "place_id": "pl_khandagiri-525b",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "monument",
+  "value": {
+   "label": "Panasa cave",
+   "vocab": "monument:cave"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 136,
+    "char_start": 64,
+    "passage_id": "ps_omalley_f0236c7787_16",
+    "quote": "Mukte- Mukteswar calls for special mention. This beautiful little shrine"
+   }
+  ],
+  "fact_id": "ft_f03fffd15497",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "241",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "Mukte- Mukteswar",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 1457,
+    "char_start": 1377,
+    "passage_id": "ps_omalley_50fd6c3bf3_11",
+    "quote": "practically the only products being a few painted pictures and earthen i images."
+   }
+  ],
+  "fact_id": "ft_f21ad89838d6",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "291",
+  "place_id": "pl_puri-0741",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "industry",
+  "value": {
+   "label": "earthen images",
+   "vocab": "new-term"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 120,
+    "char_start": 0,
+    "passage_id": "ps_omalley_229d939fbd_21",
+    "quote": "The theory that the ruin of the temple was due to fuulty Arebitecconstruction has been substantisted by Mr. M. H. Arnott"
+   }
+  ],
+  "fact_id": "ft_f26b796be05b",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "277",
+  "place_id": "pl_konarak-65bb",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "temple",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 884,
+    "char_start": 798,
+    "passage_id": "ps_omalley_f0236c7787_08",
+    "quote": "Kolivati, queen of Sankalpa alias Vasukalpa Kesari, raised a new temple to Kruttivisa."
+   }
+  ],
+  "fact_id": "ft_f5501e2016d8",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "238",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "temple to Kruttivisa",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 738,
+    "char_start": 690,
+    "passage_id": "ps_omalley_229d939fbd_02",
+    "quote": "Near Jagannath is a temple dedicated to the sun."
+   }
+  ],
+  "fact_id": "ft_f8b72d124ccd",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "272",
+  "place_id": "pl_konarak-65bb",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "temple",
+  "value": {
+   "label": "temple dedicated to the sun",
+   "vocab": "monument:temple"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 436,
+    "char_start": 406,
+    "passage_id": "ps_omalley_5301007bce_00",
+    "quote": "Makar Sankrānti day in January"
+   }
+  ],
+  "fact_id": "ft_f973ef2c8140",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "233",
+  "place_id": "pl_atri-e0fb",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "festival",
+  "value": {
+   "label": "Makar Sankrānti",
+   "vocab": "festival:makar_sankranti"
+  }
+ },
+ {
+  "confidence": 0.9,
+  "evidence": [
+   {
+    "char_end": 601,
+    "char_start": 505,
+    "passage_id": "ps_omalley_363aeb85f3_00",
+    "quote": "The village also contains a colony of Native Christians, a mission bungalow, church and schools."
+   }
+  ],
+  "fact_id": "ft_fbe4b0490ade",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "page": "286",
+  "place_id": "pl_pipli-8c8e",
+  "prompt_version": "extract-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "extract-v1:gemini-3.5-flash-lite",
+  "type": "school",
+  "value": {
+   "label": "schools",
+   "vocab": "new-term"
+  }
  }
 ]
