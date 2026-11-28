@@ -25,3 +25,6 @@ design/specimens/*.svg
 design/specimens/*.webp
 packages/ui/storybook-static/
 pipeline/.build/
+
+# modern gazetteer downloads for DP-09 (GeoNames, Wikidata); only matched records are committed
+data/external/

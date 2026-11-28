@@ -1,5 +1,17 @@
 [
  {
+  "external_ids": {
+   "wikidata": "Q4817538"
+  },
+  "geometry": {
+   "coordinates": [
+    85.3,
+    20.15
+   ],
+   "kind": "point",
+   "quality": "exact",
+   "source": "wikidata:Q4817538"
+  },
   "names": [
    {
     "kind": "primary",
@@ -7,6 +19,13 @@
     "script": "Latn",
     "source_id": "omalley-puri-1908",
     "text": "Atri"
+   },
+   {
+    "kind": "primary",
+    "lang": "hi",
+    "script": "Deva",
+    "source_id": "wikidata",
+    "text": "अट्री"
    }
   ],
   "parent_ids": [
@@ -40,6 +59,19 @@
   "type": "estate"
  },
  {
+  "external_ids": {
+   "geonames": "1277426",
+   "wikidata": "Q632773"
+  },
+  "geometry": {
+   "coordinates": [
+    85.18,
+    19.78
+   ],
+   "kind": "point",
+   "quality": "exact",
+   "source": "wikidata:Q632773"
+  },
   "names": [
    {
     "kind": "primary",
@@ -47,6 +79,26 @@
     "script": "Latn",
     "source_id": "omalley-puri-1908",
     "text": "Bānpur"
+   },
+   {
+    "kind": "primary",
+    "lang": "or",
+    "script": "Orya",
+    "source_id": "wikidata",
+    "text": "ବାଣପୁର"
+   },
+   {
+    "kind": "primary",
+    "lang": "hi",
+    "script": "Deva",
+    "source_id": "wikidata",
+    "text": "बाणपुर"
+   },
+   {
+    "kind": "alias",
+    "lang": "en",
+    "source_id": "wikidata",
+    "text": "Banapur"
    }
   ],
   "parent_ids": [
@@ -100,6 +152,19 @@
   "type": "hill"
  },
  {
+  "external_ids": {
+   "geonames": "1275817",
+   "wikidata": "Q171771"
+  },
+  "geometry": {
+   "coordinates": [
+    85.825,
+    20.295
+   ],
+   "kind": "point",
+   "quality": "exact",
+   "source": "wikidata:Q171771"
+  },
   "names": [
    {
     "kind": "primary",
@@ -107,6 +172,26 @@
     "script": "Latn",
     "source_id": "omalley-puri-1908",
     "text": "Bhubaneswar"
+   },
+   {
+    "kind": "primary",
+    "lang": "or",
+    "script": "Orya",
+    "source_id": "wikidata",
+    "text": "ଭୁବନେଶ୍ୱର"
+   },
+   {
+    "kind": "primary",
+    "lang": "hi",
+    "script": "Deva",
+    "source_id": "wikidata",
+    "text": "भुवनेश्वर"
+   },
+   {
+    "kind": "alias",
+    "lang": "en",
+    "source_id": "wikidata",
+    "text": "Bhubaneshwar"
    }
   ],
   "parent_ids": [
@@ -156,7 +241,7 @@
   "review": {
    "status": "unreviewed"
   },
-  "status": "existing",
+  "status": "uncertain",
   "type": "hill"
  },
  {
@@ -180,6 +265,19 @@
   "type": "village"
  },
  {
+  "external_ids": {
+   "geonames": "1269154",
+   "wikidata": "Q2352196"
+  },
+  "geometry": {
+   "coordinates": [
+    85.7,
+    20.17
+   ],
+   "kind": "point",
+   "quality": "exact",
+   "source": "wikidata:Q2352196"
+  },
   "names": [
    {
     "kind": "primary",
@@ -187,6 +285,26 @@
     "script": "Latn",
     "source_id": "omalley-puri-1908",
     "text": "Jatnī"
+   },
+   {
+    "kind": "primary",
+    "lang": "or",
+    "script": "Orya",
+    "source_id": "wikidata",
+    "text": "ଜଟଣୀ"
+   },
+   {
+    "kind": "primary",
+    "lang": "hi",
+    "script": "Deva",
+    "source_id": "wikidata",
+    "text": "जटनी"
+   },
+   {
+    "kind": "alias",
+    "lang": "en",
+    "source_id": "wikidata",
+    "text": "Jatani"
    }
   ],
   "parent_ids": [
@@ -200,6 +318,18 @@
   "type": "village"
  },
  {
+  "external_ids": {
+   "geonames": "1268606"
+  },
+  "geometry": {
+   "coordinates": [
+    85.55338,
+    20.13478
+   ],
+   "kind": "point",
+   "quality": "exact",
+   "source": "geonames:1268606"
+  },
   "names": [
    {
     "kind": "primary",
@@ -220,6 +350,18 @@
   "type": "village"
  },
  {
+  "external_ids": {
+   "geonames": "1268569"
+  },
+  "geometry": {
+   "coordinates": [
+    86.2015,
+    20.00185
+   ],
+   "kind": "point",
+   "quality": "exact",
+   "source": "geonames:1268569"
+  },
   "names": [
    {
     "kind": "primary",
@@ -289,6 +431,10 @@
   "type": "hill"
  },
  {
+  "external_ids": {
+   "geonames": "1266616",
+   "wikidata": "Q2241122"
+  },
   "geometry": {
    "coordinates": [
     85.6333,
@@ -305,6 +451,26 @@
     "script": "Latn",
     "source_id": "omalley-puri-1908",
     "text": "Khurdā"
+   },
+   {
+    "kind": "primary",
+    "lang": "or",
+    "script": "Orya",
+    "source_id": "wikidata",
+    "text": "ଖୋର୍ଦ୍ଧା"
+   },
+   {
+    "kind": "primary",
+    "lang": "hi",
+    "script": "Deva",
+    "source_id": "wikidata",
+    "text": "खुर्दा"
+   },
+   {
+    "kind": "alias",
+    "lang": "en",
+    "source_id": "wikidata",
+    "text": "Khordha"
    }
   ],
   "parent_ids": [
@@ -361,6 +527,10 @@
   "type": "estate"
  },
  {
+  "external_ids": {
+   "geonames": "12173157",
+   "wikidata": "Q752091"
+  },
   "geometry": {
    "coordinates": [
     86.1,
@@ -377,6 +547,38 @@
     "script": "Latn",
     "source_id": "omalley-puri-1908",
     "text": "Konārak"
+   },
+   {
+    "kind": "primary",
+    "lang": "or",
+    "script": "Orya",
+    "source_id": "wikidata",
+    "text": "କୋଣାର୍କ ସୂର୍ଯ୍ୟ ମନ୍ଦିର"
+   },
+   {
+    "kind": "primary",
+    "lang": "hi",
+    "script": "Deva",
+    "source_id": "wikidata",
+    "text": "कोणार्क सूर्य मंदिर"
+   },
+   {
+    "kind": "alias",
+    "lang": "en",
+    "source_id": "wikidata",
+    "text": "Konarak Temple"
+   },
+   {
+    "kind": "alias",
+    "lang": "en",
+    "source_id": "wikidata",
+    "text": "Konarka Temple"
+   },
+   {
+    "kind": "historic",
+    "lang": "en",
+    "source_id": "omalley-puri-1908",
+    "text": "Black Pagoda"
    }
   ],
   "parent_ids": [
@@ -406,7 +608,7 @@
   "review": {
    "status": "unreviewed"
   },
-  "status": "existing",
+  "status": "uncertain",
   "type": "estate"
  },
  {
@@ -430,6 +632,19 @@
   "type": "estate"
  },
  {
+  "external_ids": {
+   "geonames": "1259592",
+   "wikidata": "Q2471613"
+  },
+  "geometry": {
+   "coordinates": [
+    85.83147,
+    20.11357
+   ],
+   "kind": "point",
+   "quality": "exact",
+   "source": "wikidata:Q2471613"
+  },
   "names": [
    {
     "kind": "primary",
@@ -437,6 +652,26 @@
     "script": "Latn",
     "source_id": "omalley-puri-1908",
     "text": "Pipli"
+   },
+   {
+    "kind": "primary",
+    "lang": "or",
+    "script": "Orya",
+    "source_id": "wikidata",
+    "text": "ପିପିଲି"
+   },
+   {
+    "kind": "primary",
+    "lang": "hi",
+    "script": "Deva",
+    "source_id": "wikidata",
+    "text": "पिपिली"
+   },
+   {
+    "kind": "alias",
+    "lang": "en",
+    "source_id": "wikidata",
+    "text": "Pipili"
    }
   ],
   "parent_ids": [
@@ -450,6 +685,10 @@
   "type": "village"
  },
  {
+  "external_ids": {
+   "geonames": "1259184",
+   "wikidata": "Q207799"
+  },
   "geometry": {
    "coordinates": [
     85.8167,
@@ -466,6 +705,84 @@
     "script": "Latn",
     "source_id": "omalley-puri-1908",
     "text": "Purī"
+   },
+   {
+    "kind": "primary",
+    "lang": "or",
+    "script": "Orya",
+    "source_id": "wikidata",
+    "text": "ପୁରୀ"
+   },
+   {
+    "kind": "primary",
+    "lang": "hi",
+    "script": "Deva",
+    "source_id": "wikidata",
+    "text": "पुरी"
+   },
+   {
+    "kind": "historic",
+    "lang": "en",
+    "source_id": "omalley-puri-1908",
+    "text": "Purushottama"
+   },
+   {
+    "kind": "historic",
+    "lang": "en",
+    "source_id": "omalley-puri-1908",
+    "text": "Purushottama-kshetra"
+   },
+   {
+    "kind": "historic",
+    "lang": "en",
+    "source_id": "omalley-puri-1908",
+    "text": "Srikshetra"
+   },
+   {
+    "kind": "historic",
+    "lang": "en",
+    "source_id": "omalley-puri-1908",
+    "text": "Jagannāth"
+   },
+   {
+    "kind": "historic",
+    "lang": "en",
+    "source_id": "omalley-puri-1908",
+    "text": "Jekanat"
+   },
+   {
+    "kind": "historic",
+    "lang": "en",
+    "source_id": "omalley-puri-1908",
+    "text": "Jaggarnat",
+    "years": "1633"
+   },
+   {
+    "kind": "historic",
+    "lang": "en",
+    "source_id": "omalley-puri-1908",
+    "text": "Jagannath-Pooree"
+   },
+   {
+    "kind": "historic",
+    "lang": "en",
+    "source_id": "omalley-puri-1908",
+    "text": "Juggarnath",
+    "years": "1820"
+   },
+   {
+    "kind": "historic",
+    "lang": "en",
+    "source_id": "omalley-puri-1908",
+    "text": "Juggernathpoor",
+    "years": "1820"
+   },
+   {
+    "kind": "historic",
+    "lang": "en",
+    "source_id": "omalley-puri-1908",
+    "text": "Pooree",
+    "years": "1820"
    }
   ],
   "parent_ids": [
@@ -543,6 +860,18 @@
   "type": "subdivision"
  },
  {
+  "external_ids": {
+   "geonames": "8990142"
+  },
+  "geometry": {
+   "coordinates": [
+    85.81406,
+    19.94671
+   ],
+   "kind": "point",
+   "quality": "exact",
+   "source": "geonames:8990142"
+  },
   "names": [
    {
     "kind": "primary",

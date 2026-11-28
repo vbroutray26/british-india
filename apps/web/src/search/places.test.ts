@@ -34,3 +34,16 @@ describe('place search (FR-SRCH-01/02)', () => {
     expect(matchPlaces('p', items, 1)).toHaveLength(1);
   });
 });
+
+describe('AC-SRCH-01 on the published places', () => {
+  it('"Pooree" finds Purī in the top 3 and shows the spelling that matched', async () => {
+    const { places, nameOf, searchNames } = await import('../data/curated');
+    const items = places.map((p) => ({ id: p.place_id, name: nameOf(p), aliases: searchNames(p).filter((n) => n !== nameOf(p)),
+      type: p.type, href: `/en/places/${p.place_id}/` }));
+    const top = matchPlaces('Pooree', items).slice(0, 3);
+    const puri = top.find((o) => o.id === 'pl_puri-0741');
+    expect(puri?.matched).toBe('Pooree');
+    expect(matchPlaces('ଭୁବନେଶ୍ୱର', items)[0]?.id).toBe('pl_bhubaneswar-800a');
+    expect(matchPlaces('khordha', items)[0]?.id).toBe('pl_khurda-75c6');
+  });
+});

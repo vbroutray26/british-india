@@ -7,7 +7,7 @@ import { LOCALES, t, type Locale } from '../../../../i18n';
 import { FACT_ICON, LIST_TYPES, factLabels, factTypeLabel, heroLabels, summaryLabels, typeLabel, unitLabel } from '../../../../i18n/labels';
 import {
   ancestors, distinctFigures, entriesFor, factsFor, formatCoords, formatNumber, nameOf, oldSpellings,
-  passagesOf, place, places, slugOf, sourceOfFact, summaryFor, type Fact, type Place,
+  otherNames, passagesOf, place, places, slugOf, sourceOfFact, summaryFor, type Fact, type Place,
 } from '../../../../data/curated';
 
 export function getStaticPaths() {
@@ -15,7 +15,7 @@ export function getStaticPaths() {
 }
 const lang = Astro.params.lang as Locale;
 const { p } = Astro.props as { p: Place };
-const name = nameOf(p);
+const name = nameOf(p, lang);
 const up = ancestors(p);
 const district = up.find((a) => a.type === 'district');
 const facts = factsFor(p.place_id);
@@ -45,15 +45,17 @@ const excerpt = (entryId: string) => {
 <Base lang={lang} title={name}>
   <PlaceHero
     name={name}
+    names={otherNames(p, lang).map((n) => ({ text: n.text, lang: n.lang }))}
     oldSpellings={oldSpellings(p)}
+    ghost={p.status === 'uncertain' ? { title: t('place.uncertainTitle', lang), body: t('place.uncertainBody', lang) } : undefined}
     type={typeLabel(p.type, lang)}
-    districtThen={district ? nameOf(district) : undefined}
+    districtThen={district ? nameOf(district, lang) : undefined}
     coords={p.geometry ? formatCoords(p.geometry.coordinates) : undefined}
     breadcrumb={{
       label: t('place.breadcrumb', lang),
       items: [
         { text: t('places.title', lang), href: `/${lang}/places/` },
-        ...up.map((a) => ({ text: nameOf(a), href: `/${lang}/places/${slugOf(a.place_id)}/` })),
+        ...up.map((a) => ({ text: nameOf(a, lang), href: `/${lang}/places/${slugOf(a.place_id)}/` })),
         { text: name },
       ],
     }}
@@ -143,8 +145,19 @@ const excerpt = (entryId: string) => {
     <section class="block" aria-labelledby="within-h">
       <h2 id="within-h">{t('place.contains', lang)}</h2>
       <ul class="inline-list">
-        {children.map((c) => <li><a href={`/${lang}/places/${slugOf(c.place_id)}/`}>{nameOf(c)}</a> <span class="muted">{typeLabel(c.type, lang)}</span></li>)}
+        {children.map((c) => <li><a href={`/${lang}/places/${slugOf(c.place_id)}/`}>{nameOf(c, lang)}</a> <span class="muted">{typeLabel(c.type, lang)}</span></li>)}
       </ul>
+    </section>
+  )}
+
+  {p.external_ids && (
+    <section class="block" aria-labelledby="linked-h">
+      <h2 id="linked-h">{t('place.linked', lang)}</h2>
+      <ul class="inline-list">
+        {p.external_ids.wikidata && <li><a href={`https://www.wikidata.org/wiki/${p.external_ids.wikidata}`}>Wikidata {p.external_ids.wikidata}</a></li>}
+        {p.external_ids.geonames && <li><a href={`https://www.geonames.org/${p.external_ids.geonames}`}>GeoNames {p.external_ids.geonames}</a></li>}
+      </ul>
+      <p class="note">{t('place.linkedCredit', lang)}</p>
     </section>
   )}
 

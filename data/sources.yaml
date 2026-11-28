@@ -243,3 +243,40 @@ sources:
     use: [now-data, village-matching]
     status: candidate
     notes: Locate the exact PDF and the PCA tables on censusindia.gov.in and data.gov.in in M5.
+
+  - source_id: geonames-in
+    title: "GeoNames gazetteer: India (IN.zip, alternatenames/IN.zip)"
+    publisher: "GeoNames"
+    year: 2026
+    language: en
+    acquired_from: https://download.geonames.org/export/dump/
+    ocr_origin: pending
+    licence_stated: "Creative Commons Attribution 4.0 (CC BY 4.0)"
+    rights_basis: open-licence
+    credit_line: "Modern place names and coordinates: GeoNames (geonames.org), CC BY 4.0."
+    use: [now-data, place-matching]
+    status: acquired
+    verified_on: "2026-11-28"
+    notes: >-
+      Downloaded 2026-11-28 for DP-09 with the owner's permission (D-46): IN.zip (15,755,325 bytes, sha256
+      b6c670d896abe85fa2ad1b4f0b0042593d12a6a8263d099859f7d5a482861f99) and alternatenames/IN.zip
+      (1,371,475 bytes, sha256 5060975026dd23a7d9f80f781135ca2a43f9ed39d1eff4442231e0e062d49586), kept in
+      data/external/ (gitignored). Only matched ids, names and points are published, with this credit.
+
+  - source_id: wikidata
+    title: "Wikidata: items with coordinates around the 1908 Puri district (query of 2026-11-28)"
+    publisher: "Wikimedia Foundation"
+    year: 2026
+    language: en
+    acquired_from: https://query.wikidata.org/
+    ocr_origin: pending
+    licence_stated: "CC0 1.0 (structured data)"
+    rights_basis: open-licence
+    credit_line: "Modern place names in Odia and Hindi, and identifiers: Wikidata, CC0."
+    use: [now-data, place-matching, translations-of-names]
+    status: acquired
+    verified_on: "2026-11-28"
+    notes: >-
+      One SPARQL query (pipeline/config/wikidata-box.rq), bounding box 84.8–86.6 E, 19.4–20.6 N; 2,176 items,
+      331,999 bytes, kept in data/external/wikidata/ (gitignored). Crowd-edited: links are matched, never trusted
+      alone (D-46).

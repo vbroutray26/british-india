@@ -1,0 +1,100 @@
+# Historic names and spellings of places, as the source itself records them (DP-09, D-46). Each row's quote is
+# exactly in the passage (DP-15 refuses the bundle otherwise) and contains the name; each was compared with the
+# page scan, and only names the OCR reads correctly are listed. `years` is the year of the work the source
+# cites for that spelling, when it gives one. Search finds a place by these names (AC-SRCH-01).
+version: 1
+names:
+  - place_id: pl_puri-0741
+    name: Purushottama
+    passage_id: ps_omalley_50fd6c3bf3_01
+    quote: "Sanskrit and other old works refer to it as Purushottama, Purushottama-kshetra or Srikshetra"
+    page: "287"
+    by: claude
+    date: "2026-11-28"
+    review: pending
+  - place_id: pl_puri-0741
+    name: Purushottama-kshetra
+    passage_id: ps_omalley_50fd6c3bf3_01
+    quote: "Sanskrit and other old works refer to it as Purushottama, Purushottama-kshetra or Srikshetra"
+    page: "287"
+    by: claude
+    date: "2026-11-28"
+    review: pending
+  - place_id: pl_puri-0741
+    name: Srikshetra
+    passage_id: ps_omalley_50fd6c3bf3_01
+    quote: "Sanskrit and other old works refer to it as Purushottama, Purushottama-kshetra or Srikshetra"
+    page: "287"
+    by: claude
+    date: "2026-11-28"
+    review: pending
+  - place_id: pl_puri-0741
+    name: Jagannāth
+    passage_id: ps_omalley_50fd6c3bf3_01
+    quote: "Among Europeans, the city was known from an early date as Jagannāth"
+    page: "287"
+    by: claude
+    date: "2026-11-28"
+    review: pending
+  - place_id: pl_puri-0741
+    name: Jekanat
+    passage_id: ps_omalley_50fd6c3bf3_01
+    quote: "Sir Thomas Roe, who refers to it as the chief city called Jekanat"
+    page: "287"
+    by: claude
+    date: "2026-11-28"
+    review: pending
+  - place_id: pl_puri-0741
+    name: Jaggarnat
+    years: 1633
+    passage_id: ps_omalley_50fd6c3bf3_01
+    quote: "William Bruton, who came here in 1633, calls it \"the great city of Jaggarnat"
+    page: "287"
+    by: claude
+    date: "2026-11-28"
+    review: pending
+  - place_id: pl_puri-0741
+    name: Jagannath-Pooree
+    passage_id: ps_omalley_50fd6c3bf3_01
+    quote: "after the British conquest, the town was sometimes called Jagannath-Pooree"
+    page: "287"
+    by: claude
+    date: "2026-11-28"
+    review: pending
+  # Hamilton's Description of Hindostan: the scan prints (1820); the OCR reads "182()"
+  - place_id: pl_puri-0741
+    name: Juggarnath
+    years: 1820
+    passage_id: ps_omalley_50fd6c3bf3_01
+    quote: "mentions the city as Juggarnath, Juggernathpoor and Pooree"
+    page: "287"
+    by: claude
+    date: "2026-11-28"
+    review: pending
+  - place_id: pl_puri-0741
+    name: Juggernathpoor
+    years: 1820
+    passage_id: ps_omalley_50fd6c3bf3_01
+    quote: "mentions the city as Juggarnath, Juggernathpoor and Pooree"
+    page: "287"
+    by: claude
+    date: "2026-11-28"
+    review: pending
+  - place_id: pl_puri-0741
+    name: Pooree
+    years: 1820
+    passage_id: ps_omalley_50fd6c3bf3_01
+    quote: "mentions the city as Juggarnath, Juggernathpoor and Pooree"
+    page: "287"
+    note: "Stirling's Account of Orissa (1824) also uses Pooree (same passage)"
+    by: claude
+    date: "2026-11-28"
+    review: pending
+  - place_id: pl_konarak-65bb
+    name: Black Pagoda
+    passage_id: ps_omalley_229d939fbd_00
+    quote: "The temple is also known as the Black Pagoda"
+    page: "271"
+    by: claude
+    date: "2026-11-28"
+    review: pending

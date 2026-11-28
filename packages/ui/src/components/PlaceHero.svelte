@@ -24,7 +24,7 @@
   {#if breadcrumb}<Breadcrumb {...breadcrumb} />{/if}
   {#if ghost}<Callout kind="warning" title={ghost.title} body={ghost.body} />{/if}
   <h1>{name}</h1>
-  {#if names.length}<p class="names">{#each names as n, i (n.lang)}<span lang={n.lang}>{n.text}</span>{#if i < names.length - 1}<span aria-hidden="true"> · </span>{/if}{/each}</p>{/if}
+  {#if names.length}<p class="names">{#each names as n, i (n.lang)}<span lang={n.lang}>{n.text}</span>{#if i < names.length - 1}<span aria-hidden="true">{' · '}</span>{/if}{/each}</p>{/if}
   <p class="facts">
     <span class="type">{type}</span>
     {#if districtThen}<span>{labels.then}: {districtThen}</span>{/if}

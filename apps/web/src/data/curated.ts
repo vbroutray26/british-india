@@ -1,11 +1,12 @@
 // Build-time access to the curated bundles (data/curated/<source>/, written by DP-15, D-40).
 // The site reads nothing else: every fact here passed DP-07 and DP-15's schema, reference and quote gate.
 
-export interface Name { text: string; lang: string; script?: string; kind: string; source_id?: string }
+export interface Name { text: string; lang: string; script?: string; kind: string; source_id?: string; years?: string }
 export interface Place {
   place_id: string; type: string; names: Name[]; status: string;
   parent_ids?: string[]; child_ids?: string[];
   geometry?: { kind: string; coordinates: number[]; quality: string; source?: string };
+  external_ids?: { wikidata?: string; geonames?: string; lgd?: string; census2011?: string; osm?: string };
   review: { status: 'accepted' | 'edited' | 'unreviewed' | 'rejected' };
 }
 export interface Evidence { passage_id: string; quote: string; char_start: number; char_end: number }
@@ -56,8 +57,19 @@ export const passage = (id: string) => passageById.get(id);
 export const source = (id: string) => sourceById.get(id);
 export const fact = (id: string) => facts.find((f) => f.fact_id === id);
 
-export const nameOf = (p: Place) => (p.names.find((n) => n.kind === 'primary') ?? p.names[0]).text;
-export const oldSpellings = (p: Place) => p.names.filter((n) => n.kind === 'historic' || n.kind === 'alias').map((n) => n.text);
+type PlaceNames = Pick<Place, 'names'>;
+const primary = (p: PlaceNames, lang: string) => p.names.find((n) => n.kind === 'primary' && n.lang === lang);
+/** The place's name in the page's language (FR-PLACE-01), else its English (as printed) name. */
+export const nameOf = (p: PlaceNames, lang = 'en') => (primary(p, lang) ?? primary(p, 'en') ?? p.names[0]).text;
+/** Its names in the other languages, for the header. */
+export const otherNames = (p: PlaceNames, lang: string) => {
+  const own = nameOf(p, lang);
+  return p.names.filter((n) => n.kind === 'primary' && n.text !== own);
+};
+/** Spellings the sources record (DP-09 historic names, each quoted in the source). */
+export const oldSpellings = (p: PlaceNames) => p.names.filter((n) => n.kind === 'historic').map((n) => n.text);
+/** Every name search should find the place by: all languages, historic and modern spellings (AC-SRCH-01). */
+export const searchNames = (p: PlaceNames) => [...new Set(p.names.map((n) => n.text))];
 
 /** The district first, then subdivisions, towns and the rest, each by name. */
 const ORDER = ['district', 'subdivision', 'town'];

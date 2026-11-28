@@ -22,7 +22,7 @@ const list = sortPlaces(places);
     {list.map((p) => (
       <li>
         <PlaceCard
-          name={nameOf(p)}
+          name={nameOf(p, lang)}
           type={typeLabel(p.type, lang)}
           districtThen={p.type === 'district' ? undefined : ancestors(p).map(nameOf).join(' › ')}
           href={`/${lang}/places/${slugOf(p.place_id)}/`}

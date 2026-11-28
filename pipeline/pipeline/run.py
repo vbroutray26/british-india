@@ -7,11 +7,11 @@ from __future__ import annotations
 
 import argparse
 
-from pipeline import acquire, assemble, classify, ocr, rules, second_read, segment, verify, vocab
+from pipeline import acquire, assemble, classify, ocr, resolve, rules, second_read, segment, verify, vocab
 
 STAGES = [("DP-01 ocr", ocr.run), ("DP-01b second read", second_read.run), ("DP-02 segment", segment.segment), ("DP-03 classify", classify.run),
           ("DP-04 rules", rules.run), ("DP-05 vocab", vocab.run), ("DP-07 verify", verify.run),
-          ("DP-15 assemble", assemble.run)]
+          ("DP-09 resolve", resolve.run), ("DP-15 assemble", assemble.run)]
 
 
 def main(argv: list[str] | None = None) -> int:

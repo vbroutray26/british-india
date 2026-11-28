@@ -147,15 +147,35 @@ def _dump(path, data) -> None:
     path.write_text(json.dumps(data, ensure_ascii=False, indent=1, sort_keys=True) + "\n")
 
 
-def run(source_id: str) -> dict:
+def build(source_id: str) -> dict:
+    """The bundle from DP-02…DP-07 (and DP-06's verified facts), before DP-09's links are applied."""
     d = INTERIM_DIR
     src = next(s for s in read_yaml(DATA_DIR / "sources.yaml")["sources"] if s["source_id"] == source_id)
-    b = bundle(read_jsonl(d / "classify" / source_id / "places.jsonl"),
-               read_jsonl(d / "verify" / source_id / "rules_accepted.jsonl"),
-               read_jsonl(d / "verify" / source_id / "rules_attributes.jsonl"),
-               read_jsonl(d / "classify" / source_id / "passages.jsonl"),
-               read_jsonl(d / "segment" / source_id / "entries.jsonl"), src,
-               read_jsonl(llm) if (llm := d / "extract" / source_id / "llm_accepted.jsonl").exists() else [])
+    return bundle(read_jsonl(d / "classify" / source_id / "places.jsonl"),
+                  read_jsonl(d / "verify" / source_id / "rules_accepted.jsonl"),
+                  read_jsonl(d / "verify" / source_id / "rules_attributes.jsonl"),
+                  read_jsonl(d / "classify" / source_id / "passages.jsonl"),
+                  read_jsonl(d / "segment" / source_id / "entries.jsonl"), src,
+                  read_jsonl(llm) if (llm := d / "extract" / source_id / "llm_accepted.jsonl").exists() else [])
+
+
+def historic_names(source_id: str) -> list[dict]:
+    path = DATA_DIR / "review" / source_id / "historic_names.yaml"
+    return (read_yaml(path) or {}).get("names", []) if path.exists() else []
+
+
+def run(source_id: str) -> dict:
+    from pipeline.resolve import apply_historic, apply_link, check_historic, load_links
+
+    b = build(source_id)
+    rows = historic_names(source_id)
+    herrs = check_historic(rows, {p["passage_id"]: p for p in b["passages"]}, {p["place_id"] for p in b["places"]})
+    if herrs:
+        for e in herrs:
+            LG.error(e)
+        raise SystemExit(f"DP-15: {len(herrs)} error(s) in historic_names.yaml; nothing written")
+    links = load_links(source_id)  # DP-09
+    b["places"] = [apply_historic(apply_link(p, links.get(p["place_id"])), rows, source_id) for p in b["places"]]
     errs = check(b)
     if errs:
         for e in errs[:50]:

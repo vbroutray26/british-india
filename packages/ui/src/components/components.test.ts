@@ -212,3 +212,10 @@ describe('PlaceSummary', () => {
     expect(screen.getByText('In English')).toBeInTheDocument();
   });
 });
+
+describe('separators keep their spaces', () => {
+  it('PlaceHero other-language names', () => {
+    const { container } = render(C.PlaceHero, { name: 'ପୁରୀ', names: [{ text: 'Purī', lang: 'en' }, { text: 'पुरी', lang: 'hi' }], type: 'town', labels: { oldSpellings: 'Old spellings', then: 'Then', now: 'Now' } });
+    expect(container.querySelector('.names')?.textContent).toBe('Purī · पुरी');
+  });
+});

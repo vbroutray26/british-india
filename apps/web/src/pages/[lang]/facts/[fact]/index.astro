@@ -28,13 +28,13 @@ const twin = distinctFigures(factsFor(f.place_id)).find((g) => g.fact.fact_id ==
 const others = twin ? [twin.fact, ...twin.also].filter((x) => x.fact_id !== f.fact_id) : [];
 const site = Astro.site!;
 ---
-<Base lang={lang} title={`${label}: ${nameOf(pl)}${f.as_of_year ? ` (${f.as_of_year})` : ''}`}>
+<Base lang={lang} title={`${label}: ${nameOf(pl, lang)}${f.as_of_year ? ` (${f.as_of_year})` : ''}`}>
   <div class="crumbs">
     <Breadcrumb
       label={t('place.breadcrumb', lang)}
       items={[
         { text: t('places.title', lang), href: `/${lang}/places/` },
-        { text: nameOf(pl), href: `/${lang}/places/${slugOf(pl.place_id)}/` },
+        { text: nameOf(pl, lang), href: `/${lang}/places/${slugOf(pl.place_id)}/` },
         { text: label },
       ]}
     />
@@ -42,7 +42,7 @@ const site = Astro.site!;
   <header class="fact-head">
     <p class="kicker">{t('fact.title', lang)} · {label}</p>
     <h1 lang={f.method === 'llm' ? 'en' : undefined}><span class="v">{value}</span> {unitLabel(f.value.unit, lang) ?? ''}</h1>
-    <p class="sub"><a href={`/${lang}/places/${slugOf(pl.place_id)}/`}>{nameOf(pl)}</a>{f.as_of_year && <> · <strong>{f.as_of_year}</strong></>}</p>
+    <p class="sub"><a href={`/${lang}/places/${slugOf(pl.place_id)}/`}>{nameOf(pl, lang)}</a>{f.as_of_year && <> · <strong>{f.as_of_year}</strong></>}</p>
     <ReviewBadge status={f.review.status} labels={{ reviewed: t('review.reviewed', lang), unreviewed: t('review.unreviewed', lang) }} />
     {f.method === 'rule' && <p class="method">{t('fact.method.rule', lang)}</p>}
     {f.method === 'llm' && <p class="method"><AIBadge text={t('fact.machine', lang)} detail={`${f.model} · ${f.prompt_version}`} /> {t('fact.method.llm', lang)}</p>}

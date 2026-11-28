@@ -579,5 +579,25 @@
     "en": "This summary is in English; it will be translated after review.",
     "hi": "यह सारांश अंग्रेज़ी में है; समीक्षा के बाद इसका अनुवाद होगा।",
     "or": "ଏହି ସାରାଂଶ ଇଂରାଜୀରେ ଅଛି; ସମୀକ୍ଷା ପରେ ଏହାର ଅନୁବାଦ ହେବ।"
+  },
+  "place.uncertainTitle": {
+    "en": "Not yet matched to a place today",
+    "hi": "आज के किसी स्थान से अभी मिलान नहीं हुआ",
+    "or": "ଆଜିର କୌଣସି ସ୍ଥାନ ସହ ଏପର୍ଯ୍ୟନ୍ତ ମେଳ ହୋଇନାହିଁ"
+  },
+  "place.uncertainBody": {
+    "en": "We have not found this place in today's gazetteers. It may have been renamed, merged or lost. What the old record says is below.",
+    "hi": "हमें यह स्थान आज के गज़ेटियरों में नहीं मिला। हो सकता है इसका नाम बदला हो, यह किसी और में मिल गया हो या लुप्त हो गया हो। पुराने अभिलेख में जो लिखा है, वह नीचे है।",
+    "or": "ଆଜିର ଗେଜେଟିଅରରେ ଏହି ସ୍ଥାନ ମିଳିଲା ନାହିଁ। ଏହାର ନାମ ବଦଳିଥାଇପାରେ, ଅନ୍ୟ ସ୍ଥାନ ସହ ମିଶିଥାଇପାରେ ବା ଲୋପ ପାଇଥାଇପାରେ। ପୁରୁଣା ଅଭିଲେଖରେ ଯାହା ଲେଖାଅଛି, ତାହା ତଳେ ଅଛି।"
+  },
+  "place.linked": {
+    "en": "Linked data",
+    "hi": "लिंक्ड डेटा",
+    "or": "ସଂଯୁକ୍ତ ତଥ୍ୟ"
+  },
+  "place.linkedCredit": {
+    "en": "Names in other languages, modern spellings and locations: Wikidata (CC0) and GeoNames (CC BY 4.0). Matched by machine; not yet reviewed.",
+    "hi": "अन्य भाषाओं में नाम, आधुनिक वर्तनी और स्थान: विकिडेटा (CC0) और जियोनेम्स (CC BY 4.0)। मशीन द्वारा मिलान; अभी समीक्षा नहीं हुई।",
+    "or": "ଅନ୍ୟ ଭାଷାରେ ନାମ, ଆଧୁନିକ ବନାନ ଓ ଅବସ୍ଥାନ: ଉଇକିଡାଟା (CC0) ଓ ଜିଓନେମ୍ସ (CC BY 4.0)। ମେସିନ ଦ୍ୱାରା ମେଳ; ଏପର୍ଯ୍ୟନ୍ତ ସମୀକ୍ଷା ହୋଇନାହିଁ।"
   }
 }

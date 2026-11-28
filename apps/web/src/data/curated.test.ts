@@ -78,3 +78,25 @@ describe('summaries (DP-08)', () => {
     }
   });
 });
+
+describe('names (DP-09)', () => {
+  const p = {
+    place_id: 'pl_x', type: 'town', status: 'existing', review: { status: 'unreviewed' as const },
+    names: [
+      { text: 'Purī', lang: 'en', kind: 'primary' }, { text: 'ପୁରୀ', lang: 'or', kind: 'primary' },
+      { text: 'पुरी', lang: 'hi', kind: 'primary' }, { text: 'Pooree', lang: 'en', kind: 'historic', years: '1820' },
+      { text: 'Khordha', lang: 'en', kind: 'alias' },
+    ],
+  };
+  it('names a place in the page language, falling back to English', async () => {
+    const { nameOf, otherNames } = await import('./curated');
+    expect(nameOf(p, 'or')).toBe('ପୁରୀ');
+    expect(nameOf({ ...p, names: p.names.filter((n) => n.lang === 'en') }, 'hi')).toBe('Purī');
+    expect(otherNames(p, 'or').map((n) => n.text)).toEqual(['Purī', 'पुरी']);
+  });
+  it('shows only historic names as old spellings, but searches every name', async () => {
+    const { oldSpellings, searchNames } = await import('./curated');
+    expect(oldSpellings(p)).toEqual(['Pooree']);
+    expect(searchNames(p)).toEqual(expect.arrayContaining(['Pooree', 'Khordha', 'ପୁରୀ', 'पुरी', 'Purī']));
+  });
+});

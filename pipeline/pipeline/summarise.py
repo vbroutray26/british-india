@@ -89,7 +89,7 @@ class Prompt:
 
     def user(self, place: str, source: str, facts: list[dict]) -> str:
         body = "\n".join(json.dumps(f, ensure_ascii=False) for f in facts)
-        body = re.sub(r"</?\s*facts\b", lambda m: m.group(0).replace("facts", "facts​"), body, flags=re.IGNORECASE)
+        body = re.sub(r"</?\s*facts\b", lambda m: m.group(0).replace("facts", "facts\u200b"), body, flags=re.IGNORECASE)
         return self.template.replace("{place}", place).replace("{source}", source).replace("{facts}", body)
 
 

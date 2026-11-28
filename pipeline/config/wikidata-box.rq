@@ -1,0 +1,14 @@
+SELECT ?item ?coord ?en ?or ?hi (GROUP_CONCAT(DISTINCT ?alias; separator="|") AS ?aliases) (GROUP_CONCAT(DISTINCT STRAFTER(STR(?cls), "entity/"); separator="|") AS ?types) ?lgd ?census WHERE {
+  SERVICE wikibase:box {
+    ?item wdt:P625 ?coord .
+    bd:serviceParam wikibase:cornerSouthWest "Point(84.8 19.4)"^^geo:wktLiteral .
+    bd:serviceParam wikibase:cornerNorthEast "Point(86.6 20.6)"^^geo:wktLiteral .
+  }
+  OPTIONAL { ?item rdfs:label ?en FILTER(LANG(?en) = "en") }
+  OPTIONAL { ?item rdfs:label ?or FILTER(LANG(?or) = "or") }
+  OPTIONAL { ?item rdfs:label ?hi FILTER(LANG(?hi) = "hi") }
+  OPTIONAL { ?item skos:altLabel ?alias FILTER(LANG(?alias) = "en") }
+  OPTIONAL { ?item wdt:P31 ?cls }
+  OPTIONAL { ?item wdt:P6425 ?lgd }
+  OPTIONAL { ?item wdt:P1093 ?census }
+} GROUP BY ?item ?coord ?en ?or ?hi ?lgd ?census

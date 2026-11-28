@@ -65,7 +65,7 @@
       <li id="{id}-opt-{i}" role="option" aria-selected={i === active} onpointerdown={(e) => { e.preventDefault(); choose(o); }} onmousemove={() => (active = i)}>
         <span class="name">{o.name}</span>
         {#if o.matched && o.matched !== o.name}<span class="matched">{labels.matched}: <i>{o.matched}</i></span>{/if}
-        <span class="meta">{o.type}{#if o.district} · {o.district}{/if}</span>
+        <span class="meta">{o.type}{#if o.district}{' · '}{o.district}{/if}</span>
       </li>
     {/each}
   </ul>
