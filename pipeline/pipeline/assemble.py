@@ -6,7 +6,8 @@ Writes data/curated/<source_id>/ (committed; the site reads only these files):
                  reviewed (its entry then names no place); parents from the district and each entry's subdivision
                  link, point geometry from coordinates printed in the entry heading
   facts.json     accepted facts linked to a place (fact.schema.json), with the page the figure is on;
-                 unlinked figures are left out (D-39) but stay in the passages
+                 unlinked figures are left out (D-39) but stay in the passages; verified DP-06 facts
+                 (method llm) go to their entry's place
   entries.json   gazetteer entries and chapter sections (entry.schema.json), each with its place
   passages.json  every passage (passage.schema.json); IDs are stable (FR-TEXT-06)
 
@@ -46,7 +47,7 @@ def _name(p: dict) -> str:
 
 
 def bundle(places: list[dict], facts: list[dict], attrs: list[dict], passages: list[dict], entries: list[dict],
-           source: dict) -> dict:
+           source: dict, llm_facts: list[dict] | None = None) -> dict:
     types = set(validator("place.schema.json").schema["properties"]["type"]["enum"])
     held = sorted(p["place_id"] for p in places if p["type"] not in types)  # e.g. a bare cross-reference
     places = [p for p in places if p["type"] in types]
@@ -91,6 +92,10 @@ def bundle(places: list[dict], facts: list[dict], attrs: list[dict], passages: l
         if page:
             g["page"] = page
         out_facts.append(g)
+    for f in sorted(llm_facts or [], key=lambda f: f["fact_id"]):  # DP-06, verified: to the entry's place
+        pid = place_of.get(f["entry_id"])
+        if pid in out_places:
+            out_facts.append({**{k: v for k, v in f.items() if k != "entry_id"}, "place_id": pid})
     out_entries = [{"entry_id": e["entry_id"], "source_id": e["source_id"], "kind": e["kind"], "heading": e["heading"],
                     "chapter": e.get("chapter"), "page_start": e["page_start"], "page_end": e["page_end"],
                     "place_id": place_of.get(e["entry_id"])} for e in entries]
@@ -149,7 +154,8 @@ def run(source_id: str) -> dict:
                read_jsonl(d / "verify" / source_id / "rules_accepted.jsonl"),
                read_jsonl(d / "verify" / source_id / "rules_attributes.jsonl"),
                read_jsonl(d / "classify" / source_id / "passages.jsonl"),
-               read_jsonl(d / "segment" / source_id / "entries.jsonl"), src)
+               read_jsonl(d / "segment" / source_id / "entries.jsonl"), src,
+               read_jsonl(llm) if (llm := d / "extract" / source_id / "llm_accepted.jsonl").exists() else [])
     errs = check(b)
     if errs:
         for e in errs[:50]:

@@ -3,6 +3,7 @@ import Base from '../../../../layouts/Base.astro';
 import Breadcrumb from '@bi/ui/components/Breadcrumb.svelte';
 import SourceQuote from '@bi/ui/components/SourceQuote.svelte';
 import ReviewBadge from '@bi/ui/components/ReviewBadge.svelte';
+import AIBadge from '@bi/ui/components/AIBadge.svelte';
 import { LOCALES, t, type Locale } from '../../../../i18n';
 import { factTypeLabel, quoteLabels, unitLabel } from '../../../../i18n/labels';
 import {
@@ -22,7 +23,7 @@ const src = sourceOfFact(f)!;
 const page = f.page ?? ps.page;
 const textHref = `/${lang}/text/${en.entry_id}/#${ps.passage_id}`;
 const label = factTypeLabel(f.type, lang);
-const value = f.value.number !== undefined ? formatNumber(f.value.number, lang) : '';
+const value = f.value.number !== undefined ? formatNumber(f.value.number, lang) : (f.value.label ?? '');
 const twin = distinctFigures(factsFor(f.place_id)).find((g) => g.fact.fact_id === f.fact_id || g.also.some((a) => a.fact_id === f.fact_id));
 const others = twin ? [twin.fact, ...twin.also].filter((x) => x.fact_id !== f.fact_id) : [];
 const site = Astro.site!;
@@ -40,10 +41,11 @@ const site = Astro.site!;
   </div>
   <header class="fact-head">
     <p class="kicker">{t('fact.title', lang)} · {label}</p>
-    <h1><span class="v">{value}</span> {unitLabel(f.value.unit, lang) ?? ''}</h1>
+    <h1 lang={f.method === 'llm' ? 'en' : undefined}><span class="v">{value}</span> {unitLabel(f.value.unit, lang) ?? ''}</h1>
     <p class="sub"><a href={`/${lang}/places/${slugOf(pl.place_id)}/`}>{nameOf(pl)}</a>{f.as_of_year && <> · <strong>{f.as_of_year}</strong></>}</p>
     <ReviewBadge status={f.review.status} labels={{ reviewed: t('review.reviewed', lang), unreviewed: t('review.unreviewed', lang) }} />
     {f.method === 'rule' && <p class="method">{t('fact.method.rule', lang)}</p>}
+    {f.method === 'llm' && <p class="method"><AIBadge text={t('fact.machine', lang)} detail={`${f.model} · ${f.prompt_version}`} /> {t('fact.method.llm', lang)}</p>}
   </header>
 
   <section aria-labelledby="from-h" class="from">

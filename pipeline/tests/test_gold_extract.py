@@ -82,3 +82,14 @@ def test_gold_file_rows_pass_checks():
     assert len({r["gold_id"] for r in rows}) == len(rows)
     for r in rows:
         assert ge.check_row(r) == [], r["gold_id"]
+
+
+def test_the_prompts_worked_examples_are_left_out_of_scoring(tmp_path):
+    import json
+
+    cands = tmp_path / "c.jsonl"
+    cands.write_text("")
+    res = ge.score("omalley-puri-1908", cands, prompt_version="extract-v1")
+    assert res["held_out_examples"] == ["gse-omalley-001", "gse-omalley-005", "gse-omalley-009"]
+    assert res["labelled_entries"] == len([r for r in read_jsonl(ge.GOLD) if r["source_id"] == "omalley-puri-1908"]) - 3
+    assert json.dumps(res)  # serialisable

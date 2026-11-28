@@ -37,6 +37,23 @@ export const heroLabels = (lang: Locale) => ({
 export const unitLabel = (unit: string | undefined, lang: Locale) =>
   unit === 'sq_miles' ? t('unit.sq_miles', lang) : unit === 'acres' ? t('unit.acres', lang) : undefined;
 
-export const FACT_ICON: Record<string, 'population' | 'area'> = { population: 'population', area: 'area' };
-export const factTypeLabel = (type: string, lang: Locale) =>
-  type === 'population' ? t('fact.population', lang) : type === 'area' ? t('fact.area', lang) : type;
+export type FactIcon = 'population' | 'area' | 'crop' | 'trade' | 'port' | 'railway' | 'canal' | 'road' | 'flood'
+  | 'famine' | 'cyclone' | 'epidemic' | 'temple' | 'monument' | 'festival' | 'school' | 'hospital' | 'admin'
+  | 'person' | 'language';
+export const FACT_ICON: Record<string, FactIcon> = {
+  population: 'population', area: 'area', crop: 'crop', industry: 'trade', trade_item: 'trade', market_or_fair: 'trade',
+  port: 'port', railway: 'railway', canal: 'canal', road: 'road', flood: 'flood', famine: 'famine', cyclone: 'cyclone',
+  epidemic: 'epidemic', temple: 'temple', monument: 'monument', festival: 'festival', school: 'school',
+  hospital: 'hospital', admin_change: 'admin', notable_person: 'person', language: 'language',
+};
+/** Fact types extracted from the text (DP-06), in the order the place page shows them (FR-PLACE-03). */
+export const LIST_TYPES = ['crop', 'trade_item', 'industry', 'market_or_fair', 'festival', 'temple', 'monument', 'flood',
+  'famine', 'cyclone', 'epidemic', 'railway', 'road', 'canal', 'port', 'school', 'hospital', 'admin_change',
+  'notable_person', 'language'];
+export const factTypeLabel = (type: string, lang: Locale) => {
+  try {
+    return t(`fact.${type}` as MessageKey, lang);
+  } catch {
+    return type;
+  }
+};

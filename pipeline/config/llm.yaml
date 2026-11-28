@@ -1,0 +1,9 @@
+# LLM provider for DP-06 (and later DP-08, DP-11). Owner's choice 2026-11-27: Gemini (spec D-04).
+# The key is never here: set GEMINI_API_KEY in pipeline/.env (gitignored) or the environment.
+# Free-tier limits change often [verify]: check https://ai.google.dev/gemini-api/docs/rate-limits before a run
+# and set the numbers below to the current ones for the model. Runs stop at 90% of requests_per_day.
+provider: gemini
+gemini:
+  model: gemini-2.5-flash        # [verify] current free-tier model; `python -m pipeline.extract models` lists them
+  requests_per_minute: 10        # [verify]
+  requests_per_day: 250          # [verify]

@@ -10,8 +10,8 @@ export interface Place {
 }
 export interface Evidence { passage_id: string; quote: string; char_start: number; char_end: number }
 export interface Fact {
-  fact_id: string; place_id: string; type: string; value: { number?: number; unit?: string; [k: string]: unknown };
-  as_of_year?: number; evidence: Evidence[]; method: 'rule' | 'llm' | 'manual'; confidence: number;
+  fact_id: string; place_id: string; type: string; value: { number?: number; unit?: string; label?: string; vocab?: string; [k: string]: unknown };
+  as_of_year?: number; evidence: Evidence[]; method: 'rule' | 'llm' | 'manual'; confidence: number; model?: string; prompt_version?: string;
   review: Place['review']; page?: string;
 }
 export interface Entry {

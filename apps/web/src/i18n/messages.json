@@ -444,5 +444,115 @@
     "en": "Passage search needs JavaScript. The contents of the gazetteer list every section.",
     "or": "ଅନୁଚ୍ଛେଦ ଖୋଜା ପାଇଁ JavaScript ଆବଶ୍ୟକ। ଗେଜେଟିଅରର ସୂଚୀପତ୍ରରେ ପ୍ରତ୍ୟେକ ବିଭାଗ ଅଛି।",
     "hi": "अंश खोज के लिए JavaScript चाहिए। गज़ेटियर की विषय-सूची में हर खंड है।"
+  },
+  "fact.crop": {
+    "en": "Crops",
+    "or": "ଫସଲ",
+    "hi": "फ़सलें"
+  },
+  "fact.industry": {
+    "en": "Industries",
+    "or": "ଶିଳ୍ପ",
+    "hi": "उद्योग"
+  },
+  "fact.trade_item": {
+    "en": "Trade",
+    "or": "ବାଣିଜ୍ୟ",
+    "hi": "व्यापार"
+  },
+  "fact.market_or_fair": {
+    "en": "Markets and fairs",
+    "or": "ହାଟ ଓ ମେଳା",
+    "hi": "हाट और मेले"
+  },
+  "fact.port": {
+    "en": "Ports and landings",
+    "or": "ବନ୍ଦର ଓ ଘାଟ",
+    "hi": "बंदरगाह और घाट"
+  },
+  "fact.railway": {
+    "en": "Railway",
+    "or": "ରେଳପଥ",
+    "hi": "रेलवे"
+  },
+  "fact.canal": {
+    "en": "Canals",
+    "or": "କେନାଲ",
+    "hi": "नहरें"
+  },
+  "fact.road": {
+    "en": "Roads",
+    "or": "ରାସ୍ତା",
+    "hi": "सड़कें"
+  },
+  "fact.flood": {
+    "en": "Floods",
+    "or": "ବନ୍ୟା",
+    "hi": "बाढ़"
+  },
+  "fact.famine": {
+    "en": "Famines",
+    "or": "ଦୁର୍ଭିକ୍ଷ",
+    "hi": "अकाल"
+  },
+  "fact.cyclone": {
+    "en": "Cyclones",
+    "or": "ବାତ୍ୟା",
+    "hi": "चक्रवात"
+  },
+  "fact.epidemic": {
+    "en": "Epidemics",
+    "or": "ମହାମାରୀ",
+    "hi": "महामारी"
+  },
+  "fact.temple": {
+    "en": "Temples",
+    "or": "ମନ୍ଦିର",
+    "hi": "मंदिर"
+  },
+  "fact.monument": {
+    "en": "Monuments",
+    "or": "ସ୍ମାରକ",
+    "hi": "स्मारक"
+  },
+  "fact.festival": {
+    "en": "Festivals",
+    "or": "ପର୍ବପର୍ବାଣି",
+    "hi": "त्योहार"
+  },
+  "fact.school": {
+    "en": "Schools",
+    "or": "ବିଦ୍ୟାଳୟ",
+    "hi": "विद्यालय"
+  },
+  "fact.hospital": {
+    "en": "Hospitals and dispensaries",
+    "or": "ଡାକ୍ତରଖାନା",
+    "hi": "अस्पताल और औषधालय"
+  },
+  "fact.admin_change": {
+    "en": "Administration",
+    "or": "ପ୍ରଶାସନ",
+    "hi": "प्रशासन"
+  },
+  "fact.notable_person": {
+    "en": "People",
+    "or": "ବ୍ୟକ୍ତି",
+    "hi": "व्यक्ति"
+  },
+  "fact.language": {
+    "en": "Languages",
+    "or": "ଭାଷା",
+    "hi": "भाषाएँ"
+  },
+  "fact.allPassages": {
+    "en": "Each in its passage",
+    "or": "ପ୍ରତ୍ୟେକ ତାହାର ଅନୁଚ୍ଛେଦରେ",
+    "hi": "हर एक अपने अंश में"
+  },
+  "fact.method.llm": {
+    "en": "Read from the passage by a language model; the quote was checked against the text. Not yet reviewed by a person.",
+    "or": "ଏକ ଭାଷା ମଡେଲ ଦ୍ୱାରା ଅନୁଚ୍ଛେଦରୁ ପଢ଼ାଯାଇଛି; ଉଦ୍ଧୃତିଟି ପାଠ ସହ ମିଳାଯାଇଛି। ଏପର୍ଯ୍ୟନ୍ତ କୌଣସି ବ୍ୟକ୍ତି ସମୀକ୍ଷା କରିନାହାଁନ୍ତି।",
+    "hi": "एक भाषा मॉडल द्वारा अंश से पढ़ा गया; उद्धरण को पाठ से मिलाया गया। अभी किसी व्यक्ति ने समीक्षा नहीं की।"
   }
 }

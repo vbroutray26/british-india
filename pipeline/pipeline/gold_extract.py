@@ -151,10 +151,15 @@ def check(source_id: str) -> dict:
     return out
 
 
-def score(source_id: str, candidates: Path | None = None) -> dict:
-    rows = [r for r in read_jsonl(GOLD) if r["source_id"] == source_id]
+def score(source_id: str, candidates: Path | None = None, prompt_version: str = "extract-v1") -> dict:
+    """Rows used as the prompt's worked examples are left out: a prompt is never scored on its own examples."""
+    from pipeline.extract import load_prompt
+
+    held = sorted(load_prompt(prompt_version).example_gold_ids)
+    rows = [r for r in read_jsonl(GOLD) if r["source_id"] == source_id and r["gold_id"] not in held]
     path = candidates or INTERIM_DIR / "extract" / source_id / "candidate_facts.jsonl"
-    head = {"labelled_entries": len(rows), "labelled_facts": sum(len(r["facts"]) for r in rows)}
+    head = {"labelled_entries": len(rows), "labelled_facts": sum(len(r["facts"]) for r in rows),
+            "held_out_examples": held}
     if not path.exists():
         return {**head, "note": f"no DP-06 output at {path.relative_to(REPO_ROOT)} (DP-06 is built in M3)"}
     recs = _entries(source_id)
@@ -174,8 +179,9 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("cmd", choices=["check", "score"])
     ap.add_argument("--source", required=True)
     ap.add_argument("--candidates", type=Path)
+    ap.add_argument("--prompt", default="extract-v1")
     a = ap.parse_args(argv)
-    res = check(a.source) if a.cmd == "check" else score(a.source, a.candidates)
+    res = check(a.source) if a.cmd == "check" else score(a.source, a.candidates, a.prompt)
     print(json.dumps(res, indent=2, ensure_ascii=False))
     return 1 if res.get("errors") else 0
 

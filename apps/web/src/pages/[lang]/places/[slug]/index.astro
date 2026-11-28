@@ -3,7 +3,7 @@ import Base from '../../../../layouts/Base.astro';
 import PlaceHero from '@bi/ui/components/PlaceHero.svelte';
 import FactCard from '@bi/ui/components/FactCard.svelte';
 import { LOCALES, t, type Locale } from '../../../../i18n';
-import { FACT_ICON, factLabels, factTypeLabel, heroLabels, typeLabel, unitLabel } from '../../../../i18n/labels';
+import { FACT_ICON, LIST_TYPES, factLabels, factTypeLabel, heroLabels, typeLabel, unitLabel } from '../../../../i18n/labels';
 import {
   ancestors, distinctFigures, entriesFor, factsFor, formatCoords, formatNumber, nameOf, oldSpellings,
   passagesOf, place, places, slugOf, sourceOfFact, type Fact, type Place,
@@ -20,6 +20,8 @@ const district = up.find((a) => a.type === 'district');
 const facts = factsFor(p.place_id);
 const CARD_TYPES = ['population', 'area'];
 const groups = CARD_TYPES.map((type) => ({ type, figures: distinctFigures(facts.filter((f) => f.type === type)) }));
+const lists = LIST_TYPES.map((type) => ({ type, items: facts.filter((f) => f.type === type) })).filter((g) => g.items.length);
+const labelsOf = (fs: Fact[]) => [...new Set(fs.map((f) => f.value.label ?? ''))].filter(Boolean).join('; ');
 const children = (p.child_ids ?? []).map(place).filter((c): c is Place => Boolean(c));
 const own = entriesFor(p.place_id);
 const fig = (f: Fact) => (f.value.number === undefined ? '' : formatNumber(f.value.number, lang));
@@ -87,6 +89,31 @@ const excerpt = (entryId: string) => {
         </div>
       ))}
     </div>
+    {lists.length > 0 && (
+      <div class="cards lists">
+        {lists.map(({ type, items }) => (
+          <div class="card-col">
+            <FactCard
+              icon={FACT_ICON[type]}
+              label={factTypeLabel(type, lang)}
+              value={labelsOf(items)}
+              source={sourceText(items[0])}
+              passageHref={`/${lang}/facts/${items[0].fact_id}/`}
+              review={items.every((f) => f.review.status === 'accepted' || f.review.status === 'edited') ? 'accepted' : 'unreviewed'}
+              method={items[0].method}
+              correctHref={`/${lang}/corrections/`}
+              labels={factLabels(lang)}
+            />
+            {items.length > 1 && (
+              <details class="earlier">
+                <summary>{t('fact.allPassages', lang)}</summary>
+                <ul>{items.map((f) => <li><a href={`/${lang}/facts/${f.fact_id}/`}>{f.value.label}</a> <span class="muted">{t('quote.page', lang)} {f.page}</span></li>)}</ul>
+              </details>
+            )}
+          </div>
+        ))}
+      </div>
+    )}
     <p class="note">{t('place.factsPending', lang)}</p>
   </section>
 
@@ -119,6 +146,7 @@ const excerpt = (entryId: string) => {
   .block { margin-block: var(--space-10); max-width: var(--layout-wide, 72rem); }
   .block h2 { font-size: var(--step-3); margin: 0 0 var(--space-4); }
   .cards { display: grid; gap: var(--space-4); grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr)); }
+  .lists { margin-top: var(--space-4); }
   .card-col { display: grid; gap: var(--space-2); align-content: start; }
   .earlier { font-size: var(--step--1); }
   .earlier summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; font-weight: 600; }

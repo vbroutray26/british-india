@@ -131,3 +131,16 @@ def test_headquarters_subdivision_resolves_from_the_subdivisions_own_entry():
     attrs[1]["value"] = {"subdivision": "headquarters"}
     b = asm.bundle(places, facts, attrs, passages, entries, SRC)
     assert next(p for p in b["places"] if p["place_id"] == "pl_banpur-1111")["parent_ids"] == ["pl_khurda-subdivision-40c0"]
+
+
+def test_verified_llm_facts_go_to_their_entrys_place():
+    places, facts, attrs, passages, entries = _inputs()
+    i = TEXT.index("3 miles north-west of the station")
+    llm_fact = {"fact_id": "ft_llm1", "entry_id": "en_b", "type": "railway", "value": {"label": "station", "vocab": "new-term"},
+                "evidence": [{"passage_id": "ps_b_00", "quote": "3 miles north-west of the station", "char_start": i, "char_end": i + 33}],
+                "method": "llm", "model": "m", "prompt_version": "extract-v1", "run_id": "extract-v1:m", "confidence": 0.9,
+                "review": {"status": "unreviewed"}, "page": "233"}
+    b = asm.bundle(places, facts, attrs, passages, entries, SRC, llm_facts=[llm_fact])
+    f = next(x for x in b["facts"] if x["fact_id"] == "ft_llm1")
+    assert f["place_id"] == "pl_banpur-1111" and "entry_id" not in f and f["method"] == "llm"
+    assert asm.check(b) == []
