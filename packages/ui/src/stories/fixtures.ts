@@ -6,6 +6,7 @@ export const L = {
   fact: { viewPassage: 'View passage', reviewed: 'Reviewed', unreviewed: 'Not yet reviewed', notRecorded: 'Not recorded in these sources', machineExtracted: 'Machine-extracted', approximate: 'Approximate', correct: 'Suggest a correction' },
   quote: { page: 'p.', copyCitation: 'Copy citation', copied: 'Copied', permalink: 'Permalink', viewScan: 'View scan' },
   review: { reviewed: 'Reviewed', unreviewed: 'Not yet reviewed' },
+  summary: { heading: 'Summary', ai: 'Written by AI from the passages below', longer: 'Read the longer summary', reviewed: 'Reviewed', unreviewed: 'Not yet reviewed' },
   actions: { share: 'Share', cite: 'Cite', correct: 'Correct', listen: 'Listen' },
   results: { page: 'Page', noResults: 'No passages match', count: (n: number) => `${n} passages`, searching: 'Searching…' },
   search: { submit: 'Search', noResults: 'No places found', results: (n: number) => `${n} places found`, matched: 'Matched' },
@@ -54,3 +55,10 @@ export const SAMPLE_RESULTS = [
   { title: 'Sample section', href: '#ps_1', excerpt: 'the damage was aggravated by a <mark>cyclone</mark> in the', page: '21', source: 'Sample source' },
   { title: 'Sample entry', href: '#ps_2', excerpt: 'a <mark>cyclone</mark> swept the coast', page: '164', source: 'Sample source' },
 ];
+
+/** DP-08's summary of Jatnī (omalley-puri-1908), as published. */
+export const SAMPLE_SUMMARY = {
+  oneLine: 'The 1908 gazetteer records that Jatnī became important after being tapped by the Bengal-Nagpur Railway.',
+  short: 'The 1908 gazetteer records that the village of Jatnī contains the railway junction known as Khurda Road Station. It has risen to importance since it was tapped by the Bengal-Nagpur Railway.',
+  long: 'The 1908 gazetteer records that Jatnī is a village containing the railway junction known as Khurda Road Station.\n\nThe place has risen to importance since it was tapped by the Bengal-Nagpur Railway.',
+};

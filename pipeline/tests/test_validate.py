@@ -83,3 +83,22 @@ def test_curated_bundle_with_a_broken_quote_fails(tmp_path):
     facts[0]["evidence"][0]["char_start"] += 1
     (dst / "facts.json").write_text(json.dumps(facts))
     assert any("quote" in e for e in check_curated(tmp_path))
+
+
+def test_curated_summary_with_an_unsupported_name_fails(tmp_path):
+    import json
+    import shutil
+
+    from pipeline.validate import check_curated
+    src = DATA_DIR / "curated" / "omalley-puri-1908"
+    dst = tmp_path / "omalley-puri-1908"
+    shutil.copytree(src, dst)
+    b = {k: json.loads((dst / f"{k}.json").read_text()) for k in ("places", "facts")}
+    pid = b["facts"][0]["place_id"]
+    s = {"summary_id": "sm_0123456789ab", "place_id": pid, "source_id": "omalley-puri-1908", "lang": "en",
+         "one_line": "The 1908 gazetteer records it.", "short": "The 1908 gazetteer records it.",
+         "long": "The 1908 gazetteer records it. Calcutta merchants traded here.",
+         "fact_ids": [b["facts"][0]["fact_id"]], "method": "llm", "model": "m", "prompt_version": "summarise-v1",
+         "review": {"status": "unreviewed"}}
+    (dst / "summaries.json").write_text(json.dumps([s]))
+    assert any("Calcutta" in e for e in check_curated(tmp_path))

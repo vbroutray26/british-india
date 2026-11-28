@@ -559,5 +559,25 @@
     "en": "and {n} more",
     "or": "ଏବଂ ଆଉ {n}ଟି",
     "hi": "और {n} अन्य"
+  },
+  "summary.heading": {
+    "en": "Summary",
+    "hi": "सारांश",
+    "or": "ସାରାଂଶ"
+  },
+  "ai.label": {
+    "en": "Written by AI from the passages below",
+    "hi": "नीचे दिए अंशों से एआई द्वारा लिखा गया",
+    "or": "ତଳ ଅଂଶରୁ AI ଦ୍ୱାରା ଲିଖିତ"
+  },
+  "summary.longer": {
+    "en": "Read the longer summary",
+    "hi": "विस्तृत सारांश पढ़ें",
+    "or": "ଦୀର୍ଘ ସାରାଂଶ ପଢ଼ନ୍ତୁ"
+  },
+  "summary.englishOnly": {
+    "en": "This summary is in English; it will be translated after review.",
+    "hi": "यह सारांश अंग्रेज़ी में है; समीक्षा के बाद इसका अनुवाद होगा।",
+    "or": "ଏହି ସାରାଂଶ ଇଂରାଜୀରେ ଅଛି; ସମୀକ୍ଷା ପରେ ଏହାର ଅନୁବାଦ ହେବ।"
   }
 }

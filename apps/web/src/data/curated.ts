@@ -22,6 +22,10 @@ export interface Passage {
   passage_id: string; entry_id: string; char_start: number; char_end: number; text: string; page: string;
   page_end?: string; lang: string;
 }
+export interface Summary {
+  summary_id: string; place_id: string; source_id: string; lang: string; one_line: string; short: string; long: string;
+  fact_ids: string[]; method: 'llm' | 'manual'; model?: string; prompt_version?: string; review: Place['review'];
+}
 export interface Source {
   source_id: string; title: string; author: string; year: number; credit_line: string; scan_ref?: string;
   acquired_from?: string; rights_basis: string;
@@ -34,6 +38,7 @@ export const places: Place[] = pick(import.meta.glob('../../../../data/curated/*
 export const facts: Fact[] = pick(import.meta.glob('../../../../data/curated/*/facts.json', { eager: true }));
 export const entries: Entry[] = pick(import.meta.glob('../../../../data/curated/*/entries.json', { eager: true }));
 export const passages: Passage[] = pick(import.meta.glob('../../../../data/curated/*/passages.json', { eager: true }));
+export const summaries: Summary[] = pick(import.meta.glob('../../../../data/curated/*/summaries.json', { eager: true }));
 export const sources: Source[] = one(import.meta.glob('../../../../data/curated/*/source.json', { eager: true }));
 
 const byId = <T, K extends keyof T>(xs: T[], k: K) => new Map(xs.map((x) => [x[k] as unknown as string, x]));
@@ -79,6 +84,10 @@ export function distinctFigures(fs: Fact[]): { fact: Fact; also: Fact[] }[] {
   }
   return out;
 }
+
+/** DP-08's summary of a place (FR-PLACE-05); rejected ones are never shown. */
+export const summaryFor = (placeId: string) =>
+  summaries.find((s) => s.place_id === placeId && s.review.status !== 'rejected');
 
 export const entriesFor = (placeId: string) => entries.filter((e) => e.place_id === placeId);
 export const passagesOf = (entryId: string) => passages.filter((p) => p.entry_id === entryId);

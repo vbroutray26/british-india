@@ -28,6 +28,15 @@ export const quoteLabels = (lang: Locale) => ({
   viewScan: t('quote.viewScan', lang),
 });
 
+export const summaryLabels = (lang: Locale, summaryLang: string) => ({
+  heading: t('summary.heading', lang),
+  ai: t('ai.label', lang),
+  longer: t('summary.longer', lang),
+  reviewed: t('review.reviewed', lang),
+  unreviewed: t('review.unreviewed', lang),
+  note: summaryLang !== lang ? t('summary.englishOnly', lang) : undefined,
+});
+
 export const heroLabels = (lang: Locale) => ({
   oldSpellings: t('place.oldSpellings', lang),
   then: t('place.then', lang),

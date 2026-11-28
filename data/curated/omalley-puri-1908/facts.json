@@ -119,29 +119,6 @@
   }
  },
  {
-  "confidence": 0.8,
-  "evidence": [
-   {
-    "char_end": 196,
-    "char_start": 179,
-    "passage_id": "ps_omalley_e2be75b04d_02",
-    "quote": "population 49,334"
-   }
-  ],
-  "fact_id": "ft_4f4503c3a64d",
-  "method": "rule",
-  "page": "298",
-  "place_id": "pl_puri-subdivision-1dce",
-  "review": {
-   "status": "unreviewed"
-  },
-  "type": "population",
-  "value": {
-   "number": 49334,
-   "unit": "persons"
-  }
- },
- {
   "confidence": 0.9,
   "evidence": [
    {

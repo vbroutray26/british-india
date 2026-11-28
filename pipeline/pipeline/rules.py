@@ -156,8 +156,11 @@ def extract(p: dict, place_id: str | None, spans: list[dict] | None = None, befo
                 if n < 10 or (1800 <= n <= 1950 and "," not in m.group(1)) or m.start(1) in taken:
                     continue
                 taken.add(m.start(1))
-                out.append(mk(place_id, "population", {"number": n, "unit": "persons"}, p, _Shift(m, cm.start()),
-                              0.85 if census_year else 0.8, census_year))
+                # "Puri, its headquarters (population 49,334)": a bracketed figure is the place named before it,
+                # so it waits for fact_subjects.yaml instead of going to the entry's place
+                aside = clause[:m.start()].rstrip().endswith("(")
+                out.append(mk(None if aside else place_id, "population", {"number": n, "unit": "persons"}, p,
+                              _Shift(m, cm.start()), 0.85 if census_year else 0.8, census_year))
     for m in TABLE_ROW.finditer(t):
         area, pop, dens = num(m.group(2)), num(m.group(5)), int(m.group(6))
         years = CENSUS_YEAR.findall(before + " " + t[:m.start()])

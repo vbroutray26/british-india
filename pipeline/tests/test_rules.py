@@ -229,3 +229,10 @@ def test_a_late_figure_in_an_entry_can_still_be_linked_through_the_subjects_file
     subj = [{"page": "295", "type": "area", "quote": "covering an area of 4°52 acres", "place_id": "pl_tank",
              "by": "c", "review": "p"}]
     assert link_subjects(facts, subj) == [] and facts[0]["place_id"] == "pl_tank"
+
+
+def test_a_population_in_brackets_after_another_name_is_not_the_entrys_place():
+    # p. 298, Puri subdivision: the bracketed figure is Puri town's
+    text = "It contains one town, Puri, its headquarters (population 49,334), and 1,889 villages."
+    [f] = facts(text, "population")
+    assert f["place_id"] == "pl_unlinked" and f["value"]["number"] == 49334

@@ -78,6 +78,10 @@ def check_curated(curated: Path) -> list[str]:
         for key in ("places", "facts", "entries", "passages"):
             b[key] = json.loads((d / f"{key}.json").read_text())
         errors += [f"curated/{d.name}: {e}" for e in check(b)]
+        if (d / "summaries.json").exists():  # DP-08: re-checked against the committed facts (AC-PLACE-03)
+            from pipeline.summarise import check as check_summaries
+
+            errors += [f"curated/{d.name}: {e}" for e in check_summaries(b, json.loads((d / "summaries.json").read_text()))]
     return errors
 
 

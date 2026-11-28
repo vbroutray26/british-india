@@ -34,6 +34,7 @@ export { default as MapListView } from './MapListView.svelte';
 export { default as PlaceCard } from './PlaceCard.svelte';
 export { default as PlaceHero } from './PlaceHero.svelte';
 export { default as ReviewBadge } from './ReviewBadge.svelte';
+export { default as PlaceSummary } from './PlaceSummary.svelte';
 export { default as SearchResults } from './SearchResults.svelte';
 export { default as SearchCombobox } from './SearchCombobox.svelte';
 export { default as ShareDialog } from './ShareDialog.svelte';

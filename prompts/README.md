@@ -12,3 +12,4 @@ then left out of scoring) and three sections: `## System`, `## Examples` (append
 | File | Used by |
 |---|---|
 | `extract-v1.md` | DP-06 extraction (`pipeline.extract`) |
+| `summarise-v1.md` | DP-08 summaries (`pipeline.summarise`); its `## User` template takes `{place}`, `{source}`, `{facts}` inside `<facts>` delimiters, and `temperature` is in the front matter |

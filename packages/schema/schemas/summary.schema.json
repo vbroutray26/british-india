@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://british-india/schemas/summary.schema.json",
+  "title": "A place summary written by DP-08 from the place's facts (FR-PLACE-05, AC-PLACE-03).",
+  "type": "object",
+  "required": ["summary_id", "place_id", "source_id", "lang", "one_line", "short", "long", "fact_ids", "method", "review"],
+  "additionalProperties": false,
+  "properties": {
+    "summary_id": { "type": "string", "pattern": "^sm_[0-9a-f]{12}$" },
+    "place_id": { "type": "string", "pattern": "^pl_" },
+    "source_id": { "type": "string" },
+    "lang": { "enum": ["en", "or", "hi"] },
+    "one_line": { "type": "string", "minLength": 1, "maxLength": 300 },
+    "short": { "type": "string", "minLength": 1 },
+    "long": { "type": "string", "minLength": 1 },
+    "fact_ids": { "type": "array", "minItems": 1, "items": { "type": "string", "pattern": "^ft_" } },
+    "method": { "enum": ["llm", "manual"] },
+    "model": { "type": "string" },
+    "prompt_version": { "type": "string" },
+    "run_id": { "type": "string" },
+    "review": {
+      "type": "object",
+      "required": ["status"],
+      "properties": { "status": { "enum": ["accepted", "edited", "unreviewed", "rejected"] } }
+    }
+  },
+  "if": { "properties": { "method": { "const": "llm" } } },
+  "then": { "required": ["model", "prompt_version"] }
+}

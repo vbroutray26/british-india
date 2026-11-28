@@ -67,3 +67,14 @@ describe('formatting', () => {
       credit_line: '', rights_basis: 'public-domain' }, '233')).toBe("L. S. S. O'Malley, Bengal District Gazetteers: Puri (1908), p. 233.");
   });
 });
+
+describe('summaries (DP-08)', () => {
+  it('every summary belongs to a published place and cites its facts', async () => {
+    const { summaries, place, fact } = await import('./curated');
+    for (const s of summaries) {
+      expect(place(s.place_id)).toBeTruthy();
+      for (const id of s.fact_ids) expect(fact(id)?.place_id).toBe(s.place_id);
+      if (s.method === 'llm') expect(s.model && s.prompt_version).toBeTruthy();
+    }
+  });
+});

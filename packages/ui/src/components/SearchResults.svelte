@@ -37,10 +37,10 @@
 <style>
   .results { display: grid; gap: var(--space-3); }
   .status { margin: 0; color: var(--color-text-muted); font-size: var(--step--1); min-height: 1.4em; }
-  ol { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-5); }
+  ol { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-6); }
   li { padding-bottom: var(--space-4); border-bottom: 1px solid var(--color-rule); }
   .title { font: 600 var(--step-1) / 1.3 var(--font-sans); }
   .excerpt { margin: var(--space-1) 0; font-family: var(--font-serif); line-height: 1.6; }
-  .excerpt :global(mark) { background: var(--color-highlight, var(--color-accent-soft, var(--color-surface))); color: inherit; padding: 0 0.1em; border-radius: 2px; }
+  .excerpt :global(mark) { background: var(--color-highlight); color: inherit; padding: 0 0.1em; border-radius: 2px; }
   .meta { margin: 0; display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-4); font-size: var(--step--1); color: var(--color-text-muted); }
 </style>

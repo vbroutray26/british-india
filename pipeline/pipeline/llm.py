@@ -2,7 +2,8 @@
 
 - Providers are adapters behind `LLMClient._complete(system, user) -> str`. Gemini first (owner's choice,
   2026-11-27); others can be added without touching callers.
-- `Runner` adds what every call needs: a cache keyed by sha256(system + user + prompt_version + model), so no
+- `Runner` adds what every call needs: a cache keyed by sha256(system + user + prompt_version + model, and the
+  temperature when it is not 0), so no
   call is ever paid for twice; a daily budget per provider that stops at 90% of the known limit; and backoff
   with jitter on 429/503, then resume.
 - Keys come from the environment or pipeline/.env (gitignored). They are never logged or written anywhere.
@@ -43,7 +44,7 @@ class LLMClient:
     provider = "base"
     model = ""
 
-    def _complete(self, system: str, user: str) -> str:  # pragma: no cover - adapters implement it
+    def _complete(self, system: str, user: str, temperature: float = 0.0) -> str:  # pragma: no cover - adapters
         raise NotImplementedError
 
 
@@ -72,11 +73,11 @@ class GeminiClient(LLMClient):
         self.model = model
         self.timeout = timeout
 
-    def _complete(self, system: str, user: str) -> str:
+    def _complete(self, system: str, user: str, temperature: float = 0.0) -> str:
         body = {
             "systemInstruction": {"parts": [{"text": system}]},
             "contents": [{"role": "user", "parts": [{"text": user}]}],
-            "generationConfig": {"temperature": 0, "responseMimeType": "application/json"},
+            "generationConfig": {"temperature": temperature, "responseMimeType": "application/json"},
         }
         req = urllib.request.Request(self.URL.format(model=self.model), data=json.dumps(body).encode(),
                                      headers={"Content-Type": "application/json", "x-goog-api-key": self._key})
@@ -128,15 +129,16 @@ class Runner:
         self.retries, self.sleep, self.min_interval = retries, sleep, min_interval
         self._last = 0.0
 
-    def key(self, system: str, user: str, prompt_version: str) -> str:
-        return sha256_text(system, user, prompt_version, self.client.model)
+    def key(self, system: str, user: str, prompt_version: str, temperature: float = 0.0) -> str:
+        parts = (system, user, prompt_version, self.client.model) + ((f"t={temperature}",) if temperature else ())
+        return sha256_text(*parts)  # temperature 0 keeps the original key, so DP-06's cache stays valid
 
     @property
     def budget_key(self) -> str:
         return f"{self.client.provider}:{self.client.model}"
 
-    def complete(self, system: str, user: str, prompt_version: str) -> str:
-        path = self.cache_dir / f"{self.key(system, user, prompt_version)}.json"
+    def complete(self, system: str, user: str, prompt_version: str, temperature: float = 0.0) -> str:
+        path = self.cache_dir / f"{self.key(system, user, prompt_version, temperature)}.json"
         if path.exists():
             return json.loads(path.read_text())["response"]
         for attempt in range(self.retries + 1):
@@ -147,7 +149,8 @@ class Runner:
             self._last = time.monotonic()
             try:
                 self.budget.spend(self.budget_key)
-                out = self.client._complete(system, user)
+                out = (self.client._complete(system, user, temperature=temperature) if temperature
+                       else self.client._complete(system, user))
                 break
             except RateLimited as e:
                 if attempt == self.retries:

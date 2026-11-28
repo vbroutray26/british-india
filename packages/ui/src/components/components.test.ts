@@ -5,7 +5,7 @@ import { describe, expect, it, vi } from 'vitest';
 import type { Component } from 'svelte';
 import * as C from './index';
 import { expectNoA11yViolations } from '../test/a11y';
-import { L, SAMPLE_CENSUS, SAMPLE_IMAGES, SAMPLE_PASSAGE, SAMPLE_RESULTS, searchSample } from '../stories/fixtures';
+import { L, SAMPLE_CENSUS, SAMPLE_IMAGES, SAMPLE_PASSAGE, SAMPLE_RESULTS, SAMPLE_SUMMARY, searchSample } from '../stories/fixtures';
 
 const cases: [string, Component<any>, Record<string, unknown>][] = [
   ['Badge', C.Badge, { text: 'Reviewed', tone: 'reviewed', icon: 'reviewed' }],
@@ -44,6 +44,7 @@ const cases: [string, Component<any>, Record<string, unknown>][] = [
   ['MapListView', C.MapListView, { label: 'Places', emptyText: 'None', items: [{ name: 'Puri', type: 'town', icon: 'admin', href: '#' }] }],
   ['Gallery', C.Gallery, { label: 'Images', items: SAMPLE_IMAGES, labels: L.gallery }],
   ['Icon', C.Icon, { name: 'temple', label: 'Temple' }],
+  ['PlaceSummary', C.PlaceSummary, { ...SAMPLE_SUMMARY, method: 'llm', review: 'unreviewed', labels: L.summary }],
   ['SearchResults', C.SearchResults, { label: 'Passages', query: 'cyclone', state: 'done', results: SAMPLE_RESULTS, labels: L.results }],
 ];
 
@@ -191,5 +192,23 @@ describe('FactCard text values', () => {
     expect(container.querySelector('.value')).toHaveClass('text');
     const { container: c2 } = render(C.FactCard, { icon: 'population', label: 'Population', value: '49,334', review: 'unreviewed', labels: L.fact });
     expect(c2.querySelector('.value')).not.toHaveClass('text');
+  });
+});
+
+describe('PlaceSummary', () => {
+  it('labels machine-written summaries as AI and unreviewed (AC-PLACE-03)', () => {
+    render(C.PlaceSummary, { ...SAMPLE_SUMMARY, method: 'llm', review: 'unreviewed', labels: L.summary });
+    expect(screen.getByText('Written by AI from the passages below')).toBeInTheDocument();
+    expect(screen.getByText('Not yet reviewed')).toBeInTheDocument();
+  });
+  it('shows no AI label on a summary a person wrote', () => {
+    render(C.PlaceSummary, { ...SAMPLE_SUMMARY, method: 'manual', review: 'accepted', labels: L.summary });
+    expect(screen.queryByText('Written by AI from the passages below')).toBeNull();
+  });
+  it('puts the long summary behind a disclosure, one paragraph each, marked with its own language', () => {
+    const { container } = render(C.PlaceSummary, { ...SAMPLE_SUMMARY, method: 'llm', review: 'unreviewed', lang: 'en', labels: { ...L.summary, note: 'In English' } });
+    expect(container.querySelectorAll('details p')).toHaveLength(2);
+    expect(container.querySelector('[lang="en"]')).toHaveTextContent('Jatnī');
+    expect(screen.getByText('In English')).toBeInTheDocument();
   });
 });

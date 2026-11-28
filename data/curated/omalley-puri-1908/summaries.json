@@ -1,0 +1,539 @@
+[
+ {
+  "fact_ids": [
+   "ft_eb71a61c5309",
+   "ft_b1ba9b2891e0",
+   "ft_d42a1f8be9d5"
+  ],
+  "lang": "en",
+  "long": "The 1908 gazetteer records that in 1876 it was decided to extend the area for public buildings. A plot of land measuring 548 acres was acquired at a cost of Rs, 2,120, alongside 29 acres already possessed by Government.\n\nIn 1885, it was decided that Government should keep direct control of the land. The purchase-money was refunded to the municipality, and the land became Government property known as the Balukhand estate.\n\nThe gazetteer also notes that the estate possesses an area of 575 acres.",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "one_line": "The 1908 gazetteer records that the Balukhand estate covers 575 acres and became Government property.",
+  "place_id": "pl_balukhand-913a",
+  "prompt_version": "summarise-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "summarise-v1:gemini-3.5-flash-lite",
+  "short": "The 1908 gazetteer records that in 1876 a plot of 548 acres was acquired for public buildings alongside 29 acres already held by Government. In 1885, the purchase-money was refunded to the municipality so the land became Government property known as the Balukhand estate. The gazetteer states the estate has an area of 575 acres.",
+  "source_id": "omalley-puri-1908",
+  "summary_id": "sm_7e058cb9c738"
+ },
+ {
+  "fact_ids": [
+   "ft_018d06b70058",
+   "ft_bc4d8044d2c5",
+   "ft_c868b2dd3abe",
+   "ft_dd5a42ad75c8"
+  ],
+  "lang": "en",
+  "long": "The 1908 gazetteer records that Bānpur contains a temple dedicated to Bhagavati, the presiding deity of the Banpur Mals.\n\nThe locality is connected by a good metalled road and features the Balugān railway station.\n\nFurthermore, the gazetteer notes the presence of a dispensary.",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "one_line": "The 1908 gazetteer records that Bānpur features the Balugān railway station, a metalled road, a dispensary, and a temple dedicated to Bhagavati.",
+  "place_id": "pl_banpur-9b6f",
+  "prompt_version": "summarise-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "summarise-v1:gemini-3.5-flash-lite",
+  "short": "The 1908 gazetteer records that Bānpur is connected by a good metalled road and includes the Balugān railway station. It also features a dispensary. Additionally, the location contains a temple dedicated to Bhagavati, who is the presiding deity of the Banpur Mals.",
+  "source_id": "omalley-puri-1908",
+  "summary_id": "sm_e99a12149f43"
+ },
+ {
+  "fact_ids": [
+   "ft_7c697fc4f6c1",
+   "ft_01eec655ddfe",
+   "ft_181325f6bf32",
+   "ft_4785861ad3ce",
+   "ft_57e9ac4783d0",
+   "ft_5d52cb85b56c",
+   "ft_67c5efdcf2f3",
+   "ft_9330ce46a59c",
+   "ft_c7b3efe4be8c",
+   "ft_07ecf40fd801",
+   "ft_70ea4532d458",
+   "ft_81b68ffc0c8a",
+   "ft_6aebe857e956",
+   "ft_d09d61131e05",
+   "ft_08ace780e6b3",
+   "ft_adacd3f16196",
+   "ft_850ba1c2873d",
+   "ft_0b9b24282392",
+   "ft_97d2823dbae2",
+   "ft_0d82abd968aa",
+   "ft_9d9d64efc3bb",
+   "ft_0d82b44fb260",
+   "ft_a30b4e048339",
+   "ft_0eccf99fd482",
+   "ft_aa2b2d5cb445",
+   "ft_10222e5a7d98",
+   "ft_da0f1bb56269",
+   "ft_13af7da07664",
+   "ft_1545d3c876e1",
+   "ft_15d23e3be328",
+   "ft_163e5356371e",
+   "ft_176403ab28ac",
+   "ft_195066d8e7d1",
+   "ft_1d955f6d1a1f",
+   "ft_1e5165eff590",
+   "ft_2662e5ba0c94",
+   "ft_26ae55485424",
+   "ft_29fbd66830e0",
+   "ft_2a4a97db9a0c",
+   "ft_2c6f6f66c810"
+  ],
+  "lang": "en",
+  "long": "The 1908 gazetteer records that Bhubaneswar had a population of 3,053 in 1901, with land used to grow rice. Local infrastructure included a dispensary and a Middle English school, as well as the main road known as Bara Dānda, where an annual car festival takes place. Government temple repairs have been underway since 1899.\n\nThe area is home to numerous notable temples and historical sites, such as Lingaraj, Parasurāmeswar, Brahmeswar, Rajarani, Mukteswar, and the Vindusāgar tank group, with mentions of structures tied to Lalita Kesari and Variha Kesari, and descriptions by Dr. Rajendra Lala Mittra.\n\nSeveral festivals are recorded, including Asokāshtami, Prathamdsltomt, Parasurdmdshtmi, Yama-diitiya, Méayha-saptami, Damana-bhanjike, and Kapila-jātrā, involving ritual processions and temple worship.",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "one_line": "The 1908 gazetteer records that Bhubaneswar had a population of 3,053 in 1901 and contains numerous ancient temples and festivals.",
+  "place_id": "pl_bhubaneswar-800a",
+  "prompt_version": "summarise-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "summarise-v1:gemini-3.5-flash-lite",
+  "short": "The 1908 gazetteer records that Bhubaneswar had a population of 3,053 in 1901, with local lands growing rice. Since 1899, the Government has repaired several of its famous temples.",
+  "source_id": "omalley-puri-1908",
+  "summary_id": "sm_a5cf4d4d991b"
+ },
+ {
+  "fact_ids": [
+   "ft_15e0f0d9ea90",
+   "ft_496a7be65475",
+   "ft_e47df2244697"
+  ],
+  "lang": "en",
+  "long": "The 1908 gazetteer records that Biswanāth Hill is crowned by the temple of Biswanath.\n\nThe text also notes the Puri branch railway.\n\nFinally, a festival is held during Raja Sankrānti in the month of June.",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "one_line": "The 1908 gazetteer records that Biswanāth Hill features the temple of Biswanath, the Puri branch railway, and a festival during Raja Sankrānti.",
+  "place_id": "pl_biswanath-hill-dd53",
+  "prompt_version": "summarise-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "summarise-v1:gemini-3.5-flash-lite",
+  "short": "The 1908 gazetteer records that Biswanāth Hill is crowned by the temple of Biswanath. It mentions the Puri branch railway in connection with the location. Additionally, a festival takes place during Raja Sankrānti in the month of June.",
+  "source_id": "omalley-puri-1908",
+  "summary_id": "sm_fe9ee12c866b"
+ },
+ {
+  "fact_ids": [
+   "ft_011018abfc06",
+   "ft_34b5fa0f7445",
+   "ft_4fa1d1f95d8c",
+   "ft_63faa7bc497f",
+   "ft_93dd2aea40ff",
+   "ft_98e6d8e1b04c",
+   "ft_9e409cf7497b",
+   "ft_b48124544904",
+   "ft_bd5a94a4349a",
+   "ft_c819e9e56f46",
+   "ft_d392a3d816b1"
+  ],
+  "lang": "en",
+  "long": "The 1908 gazetteer records that Dhauli contains rock-edicts of Piyadasi or Asoka. James Prinsep first deciphered them and published a translation in 1838, Dr. Burgess took impressions in 1882, Dr. Bubler gave the standard reading in 1887, M. Senart revised the special edicts portion, and Dr. Grierson translated them.\n\nLower down between the western extremities of the ridges stands a small plainly built laterite temple dedicated to Siva, and Brāhmans are noted for temples in the vicinity. The location is also apparently connected by a canal at the north-west corner.\n\nAdditionally, Balkati is recorded as still being a large centre of trade.",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "one_line": "The 1908 gazetteer records that Dhauli features rock-edicts of Piyadasi or Asoka, a Siva temple, and a trade centre at Balkati.",
+  "place_id": "pl_dhauli-73fe",
+  "prompt_version": "summarise-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "summarise-v1:gemini-3.5-flash-lite",
+  "short": "The 1908 gazetteer records the rock-edicts of Piyadasi or Asoka at Dhauli. The site also features a laterite temple dedicated to Siva and a canal at the north-west corner, while Balkati is noted as a large centre of trade.",
+  "source_id": "omalley-puri-1908",
+  "summary_id": "sm_92e79051d412"
+ },
+ {
+  "fact_ids": [
+   "ft_831144d9960f",
+   "ft_b8df0e244b15",
+   "ft_d48a84595236"
+  ],
+  "lang": "en",
+  "long": "The 1908 gazetteer records that Jatnī is a village containing the railway junction known as Khurda Road Station.\n\nThe place has risen to importance since it was tapped by the Bengal-Nagpur Railway.\n\nAdditionally, the site was made the junction for the Puri branch railway.",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "one_line": "The 1908 gazetteer records that Jatnī became important after being tapped by the Bengal-Nagpur Railway.",
+  "place_id": "pl_jatni-545a",
+  "prompt_version": "summarise-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "summarise-v1:gemini-3.5-flash-lite",
+  "short": "The 1908 gazetteer records that the village of Jatnī contains the railway junction known as Khurda Road Station. It has risen to importance since it was tapped by the Bengal-Nagpur Railway. Furthermore, the site was made the junction for the Puri branch railway.",
+  "source_id": "omalley-puri-1908",
+  "summary_id": "sm_5842b594083c"
+ },
+ {
+  "fact_ids": [
+   "ft_0f4f9199768a",
+   "ft_67beac8a25d1",
+   "ft_e99b36e48cf0"
+  ],
+  "lang": "en",
+  "long": "The 1908 gazetteer records that Kākatpur contains the temple of Mangala Thākurāni.\n\nIt notes that a festival takes place on Chaitra Sankrānti day in March.\n\nFinally, the text mentions immunity from attacks of small-pox and cholera.",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "one_line": "The 1908 gazetteer records that Kākatpur features the temple of Mangala Thākurāni, holds a festival on Chaitra Sankrānti day, and offers immunity from small-pox and cholera.",
+  "place_id": "pl_kakatpur-d5eb",
+  "prompt_version": "summarise-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "summarise-v1:gemini-3.5-flash-lite",
+  "short": "The 1908 gazetteer records that Kākatpur contains the temple of Mangala Thākurāni. It also notes a festival held on Chaitra Sankrānti day in March. Additionally, the place is associated with immunity from attacks of small-pox and cholera.",
+  "source_id": "omalley-puri-1908",
+  "summary_id": "sm_5acdc6779c4c"
+ },
+ {
+  "fact_ids": [
+   "ft_074fc4557d79",
+   "ft_0b6642b92b4d",
+   "ft_140a06a445a6",
+   "ft_346893097a94",
+   "ft_349841041abc",
+   "ft_38de998199d7",
+   "ft_48e1803b5b2e",
+   "ft_4d5e5cf29265",
+   "ft_58920b4324b2",
+   "ft_5c7a9f744aae",
+   "ft_6403bce95fa7",
+   "ft_657ca4fd5229",
+   "ft_69e31abdac66",
+   "ft_7a748a4135f4",
+   "ft_83d45c388db4",
+   "ft_8432ae5eb286",
+   "ft_9c021911aa89",
+   "ft_a6f16416a188",
+   "ft_b019f0e5668b",
+   "ft_bcaf204d05da",
+   "ft_c132bb7cc9dd",
+   "ft_ce52492119cc",
+   "ft_cf328ff7e2c4",
+   "ft_d4fe21a01785",
+   "ft_dd5e2546b2c2",
+   "ft_e14032dd2ed3",
+   "ft_e71454230486",
+   "ft_ed19ae62fcfd"
+  ],
+  "lang": "en",
+  "long": "The 1908 gazetteer records that Khandagiri is reached by a road crossing a railway line through an arid laterite stretch, and features a flight of steps from the public road. It notes a religious festival takes place there.\n\nOther caves mentioned are Manchapuri, Patālapuri (or hell-house cave), two open Thākurāni caves, Swargapuri or Vaikunthapuri, the Panasa (jack-fruit) cave, and Jayabijaya.\n\nSeveral temples and religious sites are recorded, including a Jaina temple built on the crest by the Jaina Parwirs of Cuttack, accompanied by side temples and Jaina images in several caves acting as temples. A white-washed temple stands over the Trisūla cave, and stone pavement remains indicate a small temple. Additionally, the record notes a 10th-century inscription mentioning a Jaina monk named Subhachandra from the 18th year of the reign of Srimad Udyota-Kesari-deva.",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "one_line": "The 1908 gazetteer records various caves, temples, inscriptions, and transport routes at Khandagiri.",
+  "place_id": "pl_khandagiri-525b",
+  "prompt_version": "summarise-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "summarise-v1:gemini-3.5-flash-lite",
+  "short": "The 1908 gazetteer records that Khandagiri is approached by a road crossing a railway line and a public road with steps. It details multiple caves such as Manchapuri, Chhota-hāti, Patālapuri, and the richly carved Ranihansapura or Rāninabara cave (Queen's Palace). It also notes several temples, including a Jaina temple built by the Jaina Parwirs of Cuttack on the crest, and mentions a 10th-century inscription about a Jaina monk named Subhachandra during the reign of Srimad Udyota-Kesari-deva.",
+  "source_id": "omalley-puri-1908",
+  "summary_id": "sm_630c3adc25d2"
+ },
+ {
+  "fact_ids": [
+   "ft_0c2c487a6194",
+   "ft_171b39491d1d",
+   "ft_413ab08d2065",
+   "ft_61902631d565",
+   "ft_63e5df0d54ec",
+   "ft_697fc84c301d",
+   "ft_a5683b9b14af",
+   "ft_c018e2e6d670",
+   "ft_c2e98ecf2d30"
+  ],
+  "lang": "en",
+  "long": "The 1908 gazetteer records that Khurdā had a population of 3,424 persons in 1901. It notes a dispensary and the temple of Barunai. A large fair takes place during the Raja Sankrānti festival in June every year.\n\nThe town features a fort that was taken by the Marathis. For transport, it is connected by a good metalled road to the high road from Cuttack to Ganjām in Madras, and it is served by the Khurda Road railway station.",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "one_line": "The 1908 gazetteer records that Khurdā had 3,424 persons in 1901, a dispensary, a fort, and a railway station.",
+  "place_id": "pl_khurda-75c6",
+  "prompt_version": "summarise-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "summarise-v1:gemini-3.5-flash-lite",
+  "short": "The 1908 gazetteer records that Khurdā had a population of 3,424 in 1901. It notes a dispensary, a fort taken by the Marathis, the temple of Barunai, and a large fair held during the Raja Sankrānti festival in June every year. The place is also linked by a good metalled road to the high road from Cuttack to Ganjām in Madras, and has the Khurda Road railway station.",
+  "source_id": "omalley-puri-1908",
+  "summary_id": "sm_60b970906047"
+ },
+ {
+  "fact_ids": [
+   "ft_13f7c4648a43",
+   "ft_7f5d473680c5",
+   "ft_9d0a92e63342",
+   "ft_7528d7456265"
+  ],
+  "lang": "en",
+  "long": "The 1908 gazetteer records that the Khurdā subdivision had an area of 971 square miles.\n\nPopulation figures for the subdivision were 331,423 persons in 1891 and 359,236 persons in 1901.\n\nAt Bhubaneswar are situated the Lingaraj and other fine old temples.",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "one_line": "The 1908 gazetteer records that the Khurdā subdivision covered 971 square miles and had 359,236 persons in 1901.",
+  "place_id": "pl_khurda-subdivision-40c0",
+  "prompt_version": "summarise-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "summarise-v1:gemini-3.5-flash-lite",
+  "short": "The 1908 gazetteer records that the Khurdā subdivision had an area of 971 square miles. Its population was 331,423 persons in 1891 and rose to 359,236 persons in 1901. Additionally, Bhubaneswar features the Lingaraj and other fine old temples.",
+  "source_id": "omalley-puri-1908",
+  "summary_id": "sm_2f8b7a11e12c"
+ },
+ {
+  "fact_ids": [
+   "ft_020013706c31",
+   "ft_023006c750d2",
+   "ft_06e244d2742a",
+   "ft_1533e2ec6455",
+   "ft_1bc1bec2f463",
+   "ft_212bf44122b5",
+   "ft_2a6a7a36ca2c",
+   "ft_2fb92686981d",
+   "ft_36cbec0726fa",
+   "ft_36f2bcedf3c8",
+   "ft_40d97a2027aa",
+   "ft_41c101e0a1bc",
+   "ft_4bf970961d72",
+   "ft_543eb0c70fe1",
+   "ft_54a28fa88cbf",
+   "ft_5ad0f2be0d9e",
+   "ft_6e888a6c5021",
+   "ft_6ffb1bfedcfa",
+   "ft_793b870c7785",
+   "ft_8192cb94cd2e",
+   "ft_8e7e5a463660",
+   "ft_b6b542a41d10",
+   "ft_bc001d81b90c",
+   "ft_c6207eb80739",
+   "ft_d36985acec15",
+   "ft_d72aa1a90f76",
+   "ft_d8b34f2c35bd",
+   "ft_decbef613931",
+   "ft_e063bc8f9672",
+   "ft_f26b796be05b",
+   "ft_f8b72d124ccd"
+  ],
+  "lang": "en",
+  "long": "The 1908 gazetteer records the sun-temple at Konārak, widely known as the Black Pagoda. Mentioned in the Ain-i-Akbari of Abul Fazl, the temple was built for the sun-god by king Narasinhadeva, who ruled from A.D. 1238 to 1264. Raja Narsing Deo completed the structure, and tradition states he ordered his officer Sivii Santri to erect it.\n\nBy 1627, the tower had grown dilapidated and the shrine deserted due partly to the bigotry of Muhammadan rulers, leading Narasinhadeva, Raja of Khurda, to move the presiding image of the sun-god to the temple of Indra inside the Jagannāth temple enclosure. During Mughal rule, a ship's crew attacked the temple and carried off the lode-stone. Mr. M. H. Arnott later substantiated the theory that the ruin of the temple stemmed from faulty architecture involving corbelled walls.\n\nA road from Puri passing through sand-hills leads to Konārak, where a fair and 12 great festivals are held, the most important in the month of Magh (January-February). Other historical mentions include the port of Ghe-li-ta-lo and a signature from G. Hartwell in 1807.",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "one_line": "The 1908 gazetteer records the history and architecture of the sun-temple at Konārak, also known as the Black Pagoda.",
+  "place_id": "pl_konarak-65bb",
+  "prompt_version": "summarise-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "summarise-v1:gemini-3.5-flash-lite",
+  "short": "The 1908 gazetteer records the sun-temple at Konārak, commonly known as the Black Pagoda, which king Narasinhadeva erected between 1238 and 1264. By 1627, the tower was dilapidated and the shrine deserted, prompting the removal of the sun-god image to the Jagannāth temple. Mr. M. H. Arnott substantiated the theory that the ruin of the temple was due to faulty construction.",
+  "source_id": "omalley-puri-1908",
+  "summary_id": "sm_ab9b9fc67206"
+ },
+ {
+  "fact_ids": [
+   "ft_3f6a4d4776cc",
+   "ft_1a556574dbdf",
+   "ft_1b562863f17c",
+   "ft_5dc2a424c60f",
+   "ft_8a00fc5d9463"
+  ],
+  "lang": "en",
+  "long": "The 1908 gazetteer records that Kotdesh covers an area of 138 square miles. It is an extensive plain that is subject to inundation in years of heavy flood.\n\nAgricultural products vary by location. The north-east grows the lighter varieties of sdrad rice, and the south-west grows chiefly bara didn.\n\nIn administrative history, the estate was sold by auction for arrears of revenue in January 1896.",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "one_line": "The 1908 gazetteer records that Kotdesh covers 138 square miles and is subject to flooding.",
+  "place_id": "pl_kotdesh-ab99",
+  "prompt_version": "summarise-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "summarise-v1:gemini-3.5-flash-lite",
+  "short": "The 1908 gazetteer records that Kotdesh has an area of 138 square miles and features an extensive plain subject to inundation in years of heavy flood. The north-east grows lighter varieties of sdrad rice, while the south-west grows chiefly bara didn. Additionally, the estate was sold by auction for arrears of revenue in January 1896.",
+  "source_id": "omalley-puri-1908",
+  "summary_id": "sm_9c0ed48f927f"
+ },
+ {
+  "fact_ids": [
+   "ft_2b131dbc47d8",
+   "ft_72b7cdfd07b4",
+   "ft_9bce8a40d30a",
+   "ft_c92d5ed5e408",
+   "ft_cbd7382effbc"
+  ],
+  "lang": "en",
+  "long": "The 1908 gazetteer records salt manufacture on the Chilka lake. It also notes the famine of 1866.\n\nRegarding local leadership, the record mentions Raja Jaduraj. It states that Raja Chandra Sekhar Mānsingh, the predecessor of the present Raja, showed great liberality in the famine of 1866 and was made a C. S. I., with his title of Raja recognized as hereditary in 1872.\n\nThe present Raja, Gaur Chandra Mānsingh Hari Chandan Murdrij Bhramarber Rai, received the title of Raja Bahadur in 1898.",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "one_line": "The 1908 gazetteer records details about the rulers, salt manufacture, and the famine of 1866 in Pārikud.",
+  "place_id": "pl_parikud-f23d",
+  "prompt_version": "summarise-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "summarise-v1:gemini-3.5-flash-lite",
+  "short": "The 1908 gazetteer records that salt manufacture took place on the Chilka lake. It notes that Raja Chandra Sekhar Mānsingh showed liberality in the famine of 1866, became a C. S. I., and had his title of Raja recognized as hereditary in 1872. The publication also mentions Raja Jaduraj and states that the present Raja, Gaur Chandra Mānsingh Hari Chandan Murdrij Bhramarber Rai, received the title of Raja Bahadur in 1898.",
+  "source_id": "omalley-puri-1908",
+  "summary_id": "sm_4e874b767f36"
+ },
+ {
+  "fact_ids": [
+   "ft_37dae7b7e267",
+   "ft_5a836a182151",
+   "ft_ba90275289df",
+   "ft_beee39b9d10d",
+   "ft_d5e506518bc9",
+   "ft_fbe4b0490ade"
+  ],
+  "lang": "en",
+  "long": "The 1908 gazetteer records that Pipli is a village situated on the Jagannith Tronk Road. It houses a police station, a post and telegraph office, a dispensary, and a sub-registry office.\n\nThe location serves as a center for a considerable trade in rice and cloth. Local residents prepare bafuds or cloth-begs and sujnis or embroidered quilts, which are much prized by the Oriyãs. An Oriya named Daitāri came to Pipli in 1840.\n\nAdditionally, the village contains a colony of Native Christians, a mission bungalow, a church, and schools.",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "one_line": "The 1908 gazetteer records that Pipli is a village on the Jagannith Tronk Road with a trade in rice and cloth.",
+  "place_id": "pl_pipli-8c8e",
+  "prompt_version": "summarise-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "summarise-v1:gemini-3.5-flash-lite",
+  "short": "The 1908 gazetteer records that Pipli is a village situated on the Jagannith Tronk Road. It features a police station, a post and telegraph office, a dispensary, and a sub-registry office. The location serves as a center for trade in rice and cloth, and features a colony of Native Christians alongside a mission bungalow, church, and schools.",
+  "source_id": "omalley-puri-1908",
+  "summary_id": "sm_4af9d3e9b8a4"
+ },
+ {
+  "fact_ids": [
+   "ft_09abbaa8853c",
+   "ft_d460a324085a",
+   "ft_018728c602e5",
+   "ft_1602d065256b",
+   "ft_2c3ca72d02cf",
+   "ft_481df8f5a15b",
+   "ft_4d4c1db66217",
+   "ft_557e95f49f98",
+   "ft_69c59826881f",
+   "ft_6fb2c7e9038c",
+   "ft_e3f8d2ce34c4",
+   "ft_75f8c5a14228",
+   "ft_3b936ec03df6",
+   "ft_17c6fb753542",
+   "ft_599ee3d4aa18",
+   "ft_569d1f08ceb7",
+   "ft_cfe2e0f3b38e",
+   "ft_f21ad89838d6",
+   "ft_91cfb2a7fa3e",
+   "ft_3e17eeee8c02",
+   "ft_257bd63a9e5f",
+   "ft_8f167e246830",
+   "ft_b3e3a1bfb4e6",
+   "ft_c03e93ad4945",
+   "ft_3feebe762809",
+   "ft_2ad265030871",
+   "ft_973b42dd2ea3",
+   "ft_d0856b32f8a3",
+   "ft_db71009d2ffb",
+   "ft_8406674773e8",
+   "ft_2e6662a92624",
+   "ft_9c0d88c713f1",
+   "ft_8ae69c5c2a20",
+   "ft_3b96041ff901",
+   "ft_a7741dcbd1f8",
+   "ft_929a7aaab8a1",
+   "ft_4a0c70338742",
+   "ft_640925f8f68d",
+   "ft_6d7d0e7ad15e",
+   "ft_77d6eef17526"
+  ],
+  "lang": "en",
+  "long": "The 1908 gazetteer records that Purī spanned 4 square miles and was located 55 miles by rail. Its population reached 28,794 persons in 1891 and 49,334 persons in 1901. Local industries produced practically only a few painted pictures and earthen images, while local hospitals noted the town was singularly free from malaria and tuberculosis.\n\nFeatures of the town included a railway station, a cemetery, and roads such as the Car Road, the main road named Bara Dānda, the Jagannāth Trunk Road, and the Trunk Road. Landmarks and monuments included a monument said to mark the grave of Haridasa, a Musalmān follower of Chaitanya, and references to Chaitanya's biography and William Bruton's 1633 travels.\n\nThe town contains the great temple consisting of four buildings within double walls along the Car Road, alongside other shrines such as the Baleswara, Lokenāth, Markandeswar, Nilakantheswar, Vimala, Nrisinha, Indra (now Siirya), and Lakshmi temples. The gazetteer mentions a hurricane that once blew down the temple wheel, as well as historical looting and damage. Various festivals and rites took place here, including the Govinda dwidasi festival, Chandana-jatra, the stick festival of the Deccan, the Sivardtri festival, Durga Paja days, and the dragging of the famous car.",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "one_line": "The 1908 gazetteer records that Purī covered 4 square miles and had a population of 49,334 persons in 1901.",
+  "place_id": "pl_puri-0741",
+  "prompt_version": "summarise-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "summarise-v1:gemini-3.5-flash-lite",
+  "short": "The 1908 gazetteer records that Purī covered an area of 4 square miles, with a population of 28,794 persons in 1891 and 49,334 persons in 1901. Local products were limited to a few painted pictures and earthen images, and local hospitals reported the town was free from malaria and tuberculosis. The town features various roads, a railway station, and a great temple complex surrounded by double walls.",
+  "source_id": "omalley-puri-1908",
+  "summary_id": "sm_bde61780233e"
+ },
+ {
+  "fact_ids": [
+   "ft_84fddc39788f",
+   "ft_88eb74a9dd22",
+   "ft_b78e4e8891e3",
+   "ft_c4cbed5cdabd",
+   "ft_d8e9c0a8b1e3",
+   "ft_f49b65ba6f57"
+  ],
+  "lang": "en",
+  "long": "The 1908 gazetteer records an area of 2,499 square miles for Purī.\n\nThe publication records population figures from multiple census years. In 1872, the population was recorded at 769,779 persons. This number grew to 888,592 persons by 1881.\n\nBy 1891, the population was returned at 944,998 persons. The census of 1901 recorded that the population had risen to 1,017,284 persons.",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "one_line": "The 1908 gazetteer records that Purī covers an area of 2,499 square miles.",
+  "place_id": "pl_puri-district-080c",
+  "prompt_version": "summarise-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "summarise-v1:gemini-3.5-flash-lite",
+  "short": "The 1908 gazetteer records that Purī spans an area of 2,499 square miles. It also records population figures across several census years. The recorded population was 769,779 persons in 1872, 888,592 in 1881, 944,998 in 1891, and rose to 1,017,284 by 1901.",
+  "source_id": "omalley-puri-1908",
+  "summary_id": "sm_ab789baba756"
+ },
+ {
+  "fact_ids": [
+   "ft_3aeb71588cd3",
+   "ft_593e0cbafe5a",
+   "ft_7605ce82a728",
+   "ft_2c9dbc64feaa",
+   "ft_51834435ad87",
+   "ft_54b2a0c445f0",
+   "ft_5c060e5050e8"
+  ],
+  "lang": "en",
+  "long": "The 1908 gazetteer records that the Purī subdivision has an area of 1,528 square miles. Its population was recorded as 613,575 persons in 1891, rising to 658,048 in 1901.\n\nTransportation and notable landmarks mentioned include Jagadalpur, which is located close to the Delāng station of the Puri branch railway. Famous sites in the area include the temple of Jagannath situated in Puri town and the Black Pagoda at Konārak.\n\nOther important historical remains noted in the subdivision are the Asoka inscriptions at Dhauli.",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "one_line": "The 1908 gazetteer records that the Purī subdivision covers 1,528 square miles and had 658,048 persons in 1901.",
+  "place_id": "pl_puri-subdivision-1dce",
+  "prompt_version": "summarise-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "summarise-v1:gemini-3.5-flash-lite",
+  "short": "The 1908 gazetteer records an area of 1,528 square miles for the Purī subdivision. The population was 613,575 persons in 1891 and 658,048 in 1901. Local features include the Delāng station of the Puri branch railway, the temple of Jagannath in Puri town, the Black Pagoda at Konārak, and the Asoka inscriptions at Dhauli.",
+  "source_id": "omalley-puri-1908",
+  "summary_id": "sm_4f2d667698fc"
+ },
+ {
+  "fact_ids": [
+   "ft_ef073a1d0096",
+   "ft_17ad0999437d",
+   "ft_43d3f43e0397",
+   "ft_be8cf24a4501",
+   "ft_e10b684488b2"
+  ],
+  "lang": "en",
+  "long": "The 1908 gazetteer records that Satyabādī had a population of 1,547 persons according to the census of 1901. Local trade in the area consisted of grain and cocoanuts.\n\nThe location was situated within less than a mile of the Sakshigopal railway station. It was also home to a temple dedicated to Sakshigopal, who was described as an incarnation of Krishna.",
+  "method": "llm",
+  "model": "gemini-3.5-flash-lite",
+  "one_line": "The 1908 gazetteer records that Satyabādī had a 1901 population of 1,547 and a local trade in grain and cocoanuts.",
+  "place_id": "pl_satyabadi-9ab9",
+  "prompt_version": "summarise-v1",
+  "review": {
+   "status": "unreviewed"
+  },
+  "run_id": "summarise-v1:gemini-3.5-flash-lite",
+  "short": "The 1908 gazetteer records that Satyabādī had a population of 1,547 persons in 1901. The place featured a local trade in grain and cocoanuts. It also had a temple dedicated to Sakshigopal, an incarnation of Krishna, and lay within less than a mile of the Sakshigopal railway station.",
+  "source_id": "omalley-puri-1908",
+  "summary_id": "sm_6c038bc8be7d"
+ }
+]
